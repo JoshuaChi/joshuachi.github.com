@@ -1,0 +1,14 @@
+---
+layout: post
+title: Looking back on Selling Gravatar to Automattic
+---
+
+h1. {{ page.title }}
+
+p(meta). 30 Nov 2010 - Shanghai
+
+Finally, I decide to move my blog to githubpages. I know github do a great job. I want to give a try.
+
+Later I will try to import my old blog entries.
+
+Until now, everything looks amazing.
