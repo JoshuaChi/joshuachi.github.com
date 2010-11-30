@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Looking back on Selling Gravatar to Automattic
+title: Try to Use Github Pages As My Blog
 ---
 
 h1. {{ page.title }}
