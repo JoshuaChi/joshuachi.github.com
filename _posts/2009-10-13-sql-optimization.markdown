@@ -3,7 +3,7 @@ layout: post
 title: "SQL Optimization"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-13 21:16:41</p>
+<p class='meta'>2009-10-13 21:16:41</p>
 
 Two tables:
 city

@@ -3,7 +3,7 @@ layout: post
 title: "How to remove a specific value from a javascript array"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-17 20:32:11</p>
+<p class='meta'>2009-10-17 20:32:11</p>
 
 <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/splice">splice</a> - Changes the content of an array, adding new elements while removing old elements.
 

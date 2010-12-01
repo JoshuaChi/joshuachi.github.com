@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2009-09-14"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-09-14 18:00:00</p>
+<p class='meta'>2009-09-14 18:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li>在我的生命某段时期，我一定要用两年写谱作曲，我要把我最强烈的感受，每个作一首 <a href="http://twitter.com/Joshua_C/statuses/3909413610">#</a></li>

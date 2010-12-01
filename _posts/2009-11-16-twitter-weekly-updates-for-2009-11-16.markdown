@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2009-11-16"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-11-16 17:00:00</p>
+<p class='meta'>2009-11-16 17:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li>amazing with this php code &#39;public function executeIndex(sfWebRequest $request)&#39; the parameter type was defined there. ....? <a href="http://twitter.com/Joshua_C/statuses/5765597472">#</a></li>

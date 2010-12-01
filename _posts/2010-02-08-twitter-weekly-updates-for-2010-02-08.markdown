@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2010-02-08"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-02-08 17:00:00</p>
+<p class='meta'>2010-02-08 17:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li>I found it was so big different in their business mode between taobao.com and amazon.com until today. <a href="http://twitter.com/Joshua_C/statuses/8756126714">#</a></li>

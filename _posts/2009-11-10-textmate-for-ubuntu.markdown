@@ -3,7 +3,7 @@ layout: post
 title: "Textmate  for Ubuntu"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-11-10 12:25:33</p>
+<p class='meta'>2009-11-10 12:25:33</p>
 
 GEdit + Gmate = Textmate on Ubuntu
 

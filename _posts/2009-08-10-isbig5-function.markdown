@@ -3,7 +3,7 @@ layout: post
 title: "isBig5 function"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-08-10 22:05:10</p>
+<p class='meta'>2009-08-10 22:05:10</p>
 
 <pre name='code' class='php'>
 /**

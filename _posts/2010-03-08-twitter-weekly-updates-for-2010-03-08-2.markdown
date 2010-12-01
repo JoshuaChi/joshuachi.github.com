@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2010-03-08"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-03-08 17:00:00</p>
+<p class='meta'>2010-03-08 17:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li><a href="http://ss64.com/nt/" rel="nofollow">http://ss64.com/nt/</a> An A-Z Index of the Windows XP command line <a href="http://twitter.com/Joshua_C/statuses/10172817942">#</a></li>

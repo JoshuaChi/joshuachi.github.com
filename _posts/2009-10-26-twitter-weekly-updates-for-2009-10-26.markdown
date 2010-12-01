@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2009-10-26"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-26 18:00:00</p>
+<p class='meta'>2009-10-26 18:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li>Google will announce &quot;Google Audio&quot; next Wednesday to Mash Up 4 Cool Web 2.0 Music Services: <a href="http://bit.ly/2qTE7c" rel="nofollow">http://bit.ly/2qTE7c</a> // ‘谷歌音乐‘ in china? <a href="http://twitter.com/Joshua_C/statuses/5160868495">#</a></li>

@@ -3,7 +3,7 @@ layout: post
 title: "Byte and bit"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-12 22:11:52</p>
+<p class='meta'>2009-10-12 22:11:52</p>
 
 Bit意为“位”或“比特”，是计算机运算的基础，属于二进制的范筹；
 　 Byte意为“字节”，是计算机文件大小的基本计算单位； 

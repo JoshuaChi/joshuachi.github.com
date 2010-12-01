@@ -3,7 +3,7 @@ layout: post
 title: "Symfony 1.0 addJoin an array"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-07-03 14:51:48</p>
+<p class='meta'>2010-07-03 14:51:48</p>
 
 In sf1.3, we can use addJoin(array('id_a'm 'id_b'), array('id_1', 'id_2'))
 <pre name='code' class='php'>

@@ -3,7 +3,7 @@ layout: post
 title: "Cake Tips from my App"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-07-17 22:12:34</p>
+<p class='meta'>2009-07-17 22:12:34</p>
 
 1. If you turn on cache in core.php, everytime when you modify your model , don't forget to clear the files under /tmp/cache/models/.
 

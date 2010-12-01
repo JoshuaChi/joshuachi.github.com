@@ -3,7 +3,7 @@ layout: post
 title: "Schema Optimization and Indexing"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-18 16:46:44</p>
+<p class='meta'>2009-10-18 16:46:44</p>
 
 1.
 Choosing Data Type >

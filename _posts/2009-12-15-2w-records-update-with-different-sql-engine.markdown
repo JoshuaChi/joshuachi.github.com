@@ -3,7 +3,7 @@ layout: post
 title: "2W records update with different sql engine"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-12-15 00:03:47</p>
+<p class='meta'>2009-12-15 00:03:47</p>
 
 This is just a test result:
 20000 records in table animals;

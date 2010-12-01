@@ -3,7 +3,7 @@ layout: post
 title: "[scrum] Perfect Estimate"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-04-17 12:16:56</p>
+<p class='meta'>2010-04-17 12:16:56</p>
 
 1.
 Estimates can be better done by the people who have the experience of similar kind of work already done, Peers and Historical data. It is always better to involve the people who have similar work experience for appropriate estimations. 

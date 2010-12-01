@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2009-07-27"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-07-27 18:00:00</p>
+<p class='meta'>2009-07-27 18:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li>RT: @kavenyan: 上午发现IE、Opera、Safari和Chrome均不能打开网页而Firefox却没有问题。//Ie8上我也遇到相同的问题，而且yahoo message也受影响，但还不清楚究竟它们和IE啥关系，可能最后还是windows底层的问题 <a href="http://twitter.com/Joshua_C/statuses/2835064685">#</a></li>

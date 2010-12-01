@@ -3,7 +3,7 @@ layout: post
 title: "After auto redirect from PayPal, the session was lost[Cake App]"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-06-30 14:11:42</p>
+<p class='meta'>2009-06-30 14:11:42</p>
 
 Reproduce steps:
 

@@ -3,7 +3,7 @@ layout: post
 title: "Query Performance Optimization"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-25 20:42:40</p>
+<p class='meta'>2009-10-25 20:42:40</p>
 
 1.
 Simple Treatment Method for a bad query is accessing less data and fecting less columns.

@@ -3,7 +3,7 @@ layout: post
 title: "Fighting with subdomain problem in Lunarpages"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-06-06 07:10:51</p>
+<p class='meta'>2009-06-06 07:10:51</p>
 
 HostROOT -
 

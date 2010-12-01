@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2009-11-02"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-11-02 17:00:00</p>
+<p class='meta'>2009-11-02 17:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li>RT @<a href="http://twitter.com/jeresig">jeresig</a>  

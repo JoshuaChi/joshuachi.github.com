@@ -3,7 +3,7 @@ layout: post
 title: "One pixel notched corners"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-19 22:23:23</p>
+<p class='meta'>2009-10-19 22:23:23</p>
 
 An interesting article <a href="http://www.askthecssguy.com/2008/03/one_pixel_notched_corners_as_u.html">One pixel notched corners as used by Google Analytics</a>.
 

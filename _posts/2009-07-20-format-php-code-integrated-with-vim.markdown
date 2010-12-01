@@ -3,7 +3,7 @@ layout: post
 title: "Format PHP Code integrated with VIM"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-07-20 13:12:40</p>
+<p class='meta'>2009-07-20 13:12:40</p>
 
 I like this post <a href="http://shadsplace.org/beautify-php/">Command line PHP Code Formatter for use with VIM</a>. It really save me a lot of time on format the past code in VIM.
 1. 

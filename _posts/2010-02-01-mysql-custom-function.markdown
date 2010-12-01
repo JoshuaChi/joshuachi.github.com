@@ -3,7 +3,7 @@ layout: post
 title: "MySQL Custom Function"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-02-01 21:45:04</p>
+<p class='meta'>2010-02-01 21:45:04</p>
 
 Today when I try to update a table in sql command, I didn't want to use the mysql function <a href="http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_uuid">uuid </a>to generate a string with middle line in it. So I try to use mysql <a href="http://dev.mysql.com/doc/refman/5.0/en/create-procedure.html">custom function</a> to generate a 32-bit length string without middle line. 
 

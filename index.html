@@ -3,10 +3,38 @@ layout: default
 title: Joshua Chi's Blog
 ---
 <div id="home">
-	<h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
+<div class="post">
+  <ul class="content">
+		{% for post in paginator.posts %}
+			<div class="post" id="postid-{{post.id}}">
+				<h3 class="title"><a href="{{post.url}}">{{ post.title }}</a></h3>
+
+				{{ post.content }}
+
+
+				<div class="post-metadata"
+				<p>Posted {{ post.date | date: "%b %d, %Y" }}.&nbsp;
+				{% if post.categories %} 
+				Tagged: {{ post.categories | array_to_sentence_string }}.
+				{% endif %}</p>
+				</div>
+
+			</div>
+		{% endfor %}
+		
+		<div class="paging">
+		{% if paginator.next_page %}
+			<a href="/page{{paginator.next_page}}" class="previous">&#x25C4; Previous</a>
+		{% endif %}
+		{% if paginator.previous_page %}
+			{% if paginator.previous_page == 1 %}
+			  <a href="/" class="next">Next &#x25BA;</a>
+			{% else %}
+			  <a href="/page{{paginator.previous_page}}" class="next">Next &#x25BA;</a>
+			{% endif %}
+		{% endif %}
+		</div>
+
   </ul>
+</div>
 </div>

@@ -3,7 +3,7 @@ layout: post
 title: "require_once case sensitive in PHP5.1.6 on WIN32 platform"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-05-13 12:28:32</p>
+<p class='meta'>2009-05-13 12:28:32</p>
 
 require_once('a.php');
 require_once('A.php');

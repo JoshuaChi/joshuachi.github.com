@@ -3,7 +3,7 @@ layout: post
 title: "Generate a friendly URLS for your site"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-07-21 14:37:52</p>
+<p class='meta'>2009-07-21 14:37:52</p>
 
 'We are fighting with SEO everyday ...'
 It is true! If you want Google 'know' more about you, it is time to give a friendly URLS to him.

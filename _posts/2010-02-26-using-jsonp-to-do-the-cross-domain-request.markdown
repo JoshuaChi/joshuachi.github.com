@@ -3,7 +3,7 @@ layout: post
 title: "Using JSONP to do the cross domain request "
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-02-26 11:57:36</p>
+<p class='meta'>2010-02-26 11:57:36</p>
 
 JSONP (script insertion)
 

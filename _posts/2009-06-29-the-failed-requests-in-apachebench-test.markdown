@@ -3,7 +3,7 @@ layout: post
 title: "The Failed requests in ApacheBench Test"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-06-29 09:47:30</p>
+<p class='meta'>2009-06-29 09:47:30</p>
 
 Problem: I run <a href="http://httpd.apache.org/docs/2.0/programs/ab.html">ab </a>test<ab -c 10 -t 60 http://www.xxx.com> for my website yesterday, and there are so many failed request. 
 And I found the following explanation from <a href="http://fixunix.com/linux/269587-apache-benchmark.html">fixunix</a>:

@@ -3,7 +3,7 @@ layout: post
 title: "One Week Review"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-31 16:50:06</p>
+<p class='meta'>2009-10-31 16:50:06</p>
 
 <ul>
 	<li><strong>YUI Conference</strong> has been closed recently. There are a lot of valuable <a href="http://yuilibrary.com/yuiconf2009/">presentation</a>.</li>

@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2009-07-13"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-07-13 18:00:00</p>
+<p class='meta'>2009-07-13 18:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li>RT @kunshou: FriendFeed 撞墙后，可使用 <a href="http://dev.ctor.org/f2p/" rel="nofollow">http://dev.ctor.org/f2p/</a> 和 fftogo.com <a href="http://ff.im/-59sHt" rel="nofollow">http://ff.im/-59sHt</a> <a href="http://twitter.com/Joshua_C/statuses/2613452570">#</a></li>

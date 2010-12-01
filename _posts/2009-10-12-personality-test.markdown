@@ -3,7 +3,7 @@ layout: post
 title: "Personality Test"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-12 21:02:05</p>
+<p class='meta'>2009-10-12 21:02:05</p>
 
 DISC性格测试
 

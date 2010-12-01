@@ -3,7 +3,7 @@ layout: post
 title: "The simplest and quickest way to create mysql table demo records."
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-12-14 23:28:59</p>
+<p class='meta'>2009-12-14 23:28:59</p>
 
 Take animals table as example,
 Field        Type     Extra

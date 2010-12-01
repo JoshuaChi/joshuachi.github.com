@@ -3,7 +3,7 @@ layout: post
 title: "Code Smell"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-22 17:17:28</p>
+<p class='meta'>2009-10-22 17:17:28</p>
 
 There is a <a href="http://www.cnblogs.com/idior/archive/2006/06/13/424592.html">code smell list</a> that we can then as a reference.
 

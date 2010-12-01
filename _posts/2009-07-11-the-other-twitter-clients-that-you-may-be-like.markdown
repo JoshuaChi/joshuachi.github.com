@@ -3,7 +3,7 @@ layout: post
 title: "The other twitter clients that you may be like"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-07-11 10:13:50</p>
+<p class='meta'>2009-07-11 10:13:50</p>
 
 <ul>
 <li>http://itweet.net/web/</li>

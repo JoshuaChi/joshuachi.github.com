@@ -3,7 +3,7 @@ layout: post
 title: "MySQL Database Backup and Restore"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-12-14 23:08:07</p>
+<p class='meta'>2009-12-14 23:08:07</p>
 
 <strong>Backup</strong>
 I was trying to find some backup and restore system for our product mysql database. There are a lot of tools can do this. But I think the simple way is using <a href="https://help.ubuntu.com/community/CronHowto">crontab</a> + <a href="http://www.ntchosting.com/mysql/database-dump.html">mysqldump</a>.

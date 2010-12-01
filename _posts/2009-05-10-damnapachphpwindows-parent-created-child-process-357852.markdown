@@ -3,7 +3,7 @@ layout: post
 title: "Damn!Apach+PHP+Windows = Parent: Created child process 357852"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-05-10 04:20:58</p>
+<p class='meta'>2009-05-10 04:20:58</p>
 
 <strong>Parent: Created child process 357852</strong>
 

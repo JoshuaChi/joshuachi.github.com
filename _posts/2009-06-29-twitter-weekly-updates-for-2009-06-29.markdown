@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2009-06-29"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-06-29 18:00:00</p>
+<p class='meta'>2009-06-29 18:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li>看到baidu blog上面一大堆的我顶我顶,让我想到可以诱导中国一大堆没有脱离幼稚的网民群体来给网站带点PV <a href="http://twitter.com/Joshua_C/statuses/2370909243">#</a></li>

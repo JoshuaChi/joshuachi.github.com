@@ -1,2 +1,8 @@
 markdown: rdiscount
 pygments: true
+paginate: true
+url: freetofeel.com
+name: Joshua Chi
+email: joshokn@gmail.com
+paginate: 7
+feedurl: /feed/

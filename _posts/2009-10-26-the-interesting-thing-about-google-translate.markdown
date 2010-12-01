@@ -3,7 +3,7 @@ layout: post
 title: "The interesting thing about Google Translate"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-26 10:01:15</p>
+<p class='meta'>2009-10-26 10:01:15</p>
 
 Have you noticed that when you open the <a href="http://translate.google.com">Google Translate page</a>, and you enter some simple words or a sentence you want to translate.
 The translated URL in your address bar looks like 

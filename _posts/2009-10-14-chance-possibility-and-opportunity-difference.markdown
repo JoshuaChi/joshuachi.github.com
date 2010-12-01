@@ -3,7 +3,7 @@ layout: post
 title: "Chance, Possibility and Opportunity, difference?"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-14 20:37:38</p>
+<p class='meta'>2009-10-14 20:37:38</p>
 
 I got the answer from internet, maybe wrong, hope somebody can help me correct it.
 

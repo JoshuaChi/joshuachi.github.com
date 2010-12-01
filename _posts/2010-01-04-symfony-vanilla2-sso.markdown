@@ -3,7 +3,7 @@ layout: post
 title: "Symfony + Vanilla2 + SSO"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-01-04 00:42:45</p>
+<p class='meta'>2010-01-04 00:42:45</p>
 
 Vanilla2 is really really cool! Both the interface and functionality are very good.
 I give a implementation of integrating the vanilla forum into a symfony project with SSO.

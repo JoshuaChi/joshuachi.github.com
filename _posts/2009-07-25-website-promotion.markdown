@@ -3,7 +3,7 @@ layout: post
 title: "Website promotion"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-07-25 16:36:57</p>
+<p class='meta'>2009-07-25 16:36:57</p>
 
 I try to gather all the website promotion techniques together here. Of course, I am not the original author of them. They are all widely used and are almost deserted as the techniques changes. So don't rely on a method or two method. As a beginner, we should learn the philosophy principles in them and make more thinking. 
 <ul>

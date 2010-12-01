@@ -3,7 +3,7 @@ layout: post
 title: "Apache Unable to load dynamic library php_openssl.dll"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-03-09 23:28:18</p>
+<p class='meta'>2010-03-09 23:28:18</p>
 
 As a windows user, sometimes you have to face and handle this kind of problems. 
 

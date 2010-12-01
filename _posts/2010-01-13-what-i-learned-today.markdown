@@ -3,7 +3,7 @@ layout: post
 title: "What I learned today"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-01-13 22:36:42</p>
+<p class='meta'>2010-01-13 22:36:42</p>
 
 1. <a href="http://www.shinguz.ch/MySQL/mysql_mv.html">Materialised Views with MySQL</a></li> -
 I gave a simple test as this '<a href="Materialized view makes login process 25k times faster">article</a>'. 10 times faster in my case.

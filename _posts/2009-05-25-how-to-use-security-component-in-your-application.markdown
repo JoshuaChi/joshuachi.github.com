@@ -3,7 +3,7 @@ layout: post
 title: "How to use Security component in your application"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-05-25 11:51:51</p>
+<p class='meta'>2009-05-25 11:51:51</p>
 
 The right way is generate all your filed use form helper.
 

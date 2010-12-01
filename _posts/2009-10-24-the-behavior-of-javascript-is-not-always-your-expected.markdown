@@ -3,7 +3,7 @@ layout: post
 title: "The behavior of javascript is not always your expected"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-24 09:58:35</p>
+<p class='meta'>2009-10-24 09:58:35</p>
 
 Let's raise the issue '07 + 08 = 07' firstly from <a href="http://www.debuggable.com/posts/7+8===7-in-javascript:4acba016-d204-489b-b5a0-1fd0cbdd56cb">this guy's article</a>.
 <pre name='code' class='javascript'>

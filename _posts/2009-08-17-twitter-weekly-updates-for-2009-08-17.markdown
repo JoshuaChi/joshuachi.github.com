@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2009-08-17"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-08-17 18:00:00</p>
+<p class='meta'>2009-08-17 18:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li>Too many redundant information in tweets. I need a tweets filter! <a href="http://twitter.com/Joshua_C/statuses/3344346039">#</a></li>

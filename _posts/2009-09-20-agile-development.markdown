@@ -3,7 +3,7 @@ layout: post
 title: "Agile Development"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-09-20 13:16:40</p>
+<p class='meta'>2009-09-20 13:16:40</p>
 
 时隔一年再读agile，理解更加深入，遂做些读书笔记.
 <div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">C1, C2</div>

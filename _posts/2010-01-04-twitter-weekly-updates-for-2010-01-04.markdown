@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2010-01-04"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-01-04 17:00:00</p>
+<p class='meta'>2010-01-04 17:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li><a href="http://www.addedbytes.com/cheat-sheets/" rel="nofollow">http://www.addedbytes.com/cheat-sheets/</a> <a href="http://twitter.com/Joshua_C/statuses/7361828037">#</a></li>

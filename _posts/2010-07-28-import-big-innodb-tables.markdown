@@ -3,7 +3,7 @@ layout: post
 title: "Import Big InnoDB Tables"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-07-28 21:09:41</p>
+<p class='meta'>2010-07-28 21:09:41</p>
 
 1. turn off the logs;
 2. turn off unique key check if the table has;

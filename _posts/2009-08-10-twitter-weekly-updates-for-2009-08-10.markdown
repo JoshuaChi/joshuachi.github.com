@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2009-08-10"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-08-10 18:00:00</p>
+<p class='meta'>2009-08-10 18:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li>RT @herrbenz:Man shaves head, walks across China 4 year makes a timelapse of his hair/beard growth: <a href="http://bit.ly/3KA37B" rel="nofollow">http://bit.ly/3KA37B</a> // cool man <a href="http://twitter.com/Joshua_C/statuses/3235410472">#</a></li>

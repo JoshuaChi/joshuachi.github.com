@@ -19,7 +19,7 @@ while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
   $id = $row[5];
 	$guid = $row[6];
 	$name = date('Y-m-d',strtotime($date)).'-'.$slug.'.markdown';
-	$body = "---\nlayout: post\ntitle: ".$title."\n---\n\n"."<h1> {{ page.title }} </h1> <p class='meta'>".$date."</p>\n\n".$content;
+	$body = "---\nlayout: post\ntitle: ".$title."\n---\n\n"."<p class='meta'>".$date."</p>\n\n".$content;
 echo $title."\n\n";
 	$file = fopen($name, 'w+');
 	fputs($file, $body);

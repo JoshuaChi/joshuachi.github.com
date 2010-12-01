@@ -3,7 +3,7 @@ layout: post
 title: "check your current php.ini path"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-10-31 23:51:11</p>
+<p class='meta'>2009-10-31 23:51:11</p>
 
 You might have two different PHP versions installed: one for the command line, and another for the web. So use this function which was provided by symfony that can be easily judge.
 <pre name='code' class='php'>

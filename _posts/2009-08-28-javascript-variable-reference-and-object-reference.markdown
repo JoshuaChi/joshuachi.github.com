@@ -3,7 +3,7 @@ layout: post
 title: "Javascript value copy and reference copy"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-08-28 08:22:34</p>
+<p class='meta'>2009-08-28 08:22:34</p>
 
 I will take an example in &lt;JavaScript: The Definitive Guide&gt;
 <pre name='code' class='javascript'>

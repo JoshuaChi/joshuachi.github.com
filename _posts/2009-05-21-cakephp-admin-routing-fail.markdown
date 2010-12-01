@@ -3,7 +3,7 @@ layout: post
 title: "CakePHP admin routing fail"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-05-21 10:15:40</p>
+<p class='meta'>2009-05-21 10:15:40</p>
 
 If your router wirte like this
 <blockquote>Router::connect('/:controller/:action/*', array('controller' =&gt; 'projects', 'action' =&gt; 'index'));</blockquote>

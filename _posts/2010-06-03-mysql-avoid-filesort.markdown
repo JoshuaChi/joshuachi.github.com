@@ -3,7 +3,7 @@ layout: post
 title: "Mysql : Avoid Filesort"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2010-06-03 10:34:28</p>
+<p class='meta'>2010-06-03 10:34:28</p>
 
 <ul>
 	<li>You can avoid the filesort by making order by column appear in the where clause</li>

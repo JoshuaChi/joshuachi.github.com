@@ -3,7 +3,7 @@ layout: post
 title: "Twitter Weekly Updates for 2009-12-07"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-12-07 17:00:00</p>
+<p class='meta'>2009-12-07 17:00:00</p>
 
 <ul class="aktt_tweet_digest">
 	<li>HTM::Sanitizer, this lib help you to parse html easier.Don&#39;t invent the wheel anymore. <a href="http://www.codinghorror.com/blog/archives/001311.html" rel="nofollow">http://www.codinghorror.com/blog/archives/001311.html</a> <a href="http://twitter.com/Joshua_C/statuses/6433320128">#</a></li>

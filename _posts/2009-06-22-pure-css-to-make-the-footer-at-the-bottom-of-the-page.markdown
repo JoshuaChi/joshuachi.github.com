@@ -3,7 +3,7 @@ layout: post
 title: "Pure CSS to make the footer at the bottom of the page"
 ---
 
-<h1> {{ page.title }} </h1> <p class='meta'>2009-06-22 20:20:42</p>
+<p class='meta'>2009-06-22 20:20:42</p>
 
 Pure CSS, no javascript to make the footer at the bottom of the page.
 Imaging you have the html layout like the following:
