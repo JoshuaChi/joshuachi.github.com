@@ -1,0 +1,12 @@
+---
+layout: post
+title: "规律"
+---
+
+<h1> {{ page.title }} </h1> <p class='meta'>2009-09-06 11:10:46</p>
+
+发现了英文好的，写blog都是中文，半点不透漏英文的踪迹；而像我们这种土人，英文刚学习走路的时候，写blog都是英文（希望看着每天自己英语能进步点，流畅点，稍微不那么土点），这就是差别啊。唉，反正已经土了就继续土下去了。
+
+听完ROR作者的解释，我有些明白了。如果你发现你的效率不高，是因为你工作太久了，你需要的是5各小时的工作时间而不是8个小时或者有甚者14个小时。Focus and dedicated on one thing  需要的是持续的新鲜血液，并学会给自己奖励。
+
+How determination seems to work: it consists of willfulness balanced with  discipline, aimed by ambition.

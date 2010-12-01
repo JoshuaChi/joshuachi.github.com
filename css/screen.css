@@ -158,6 +158,11 @@ ul.posts {
     border: 1px solid #ddd;
     background-color: #eef;
     padding: 0 .4em;
+		white-space: pre-wrap;       /* css-3 */
+		white-space: -pre-wrap;      /* Opera 4-6 */
+		white-space: -o-pre-wrap;    /* Opera 7 */
+		word-wrap: break-word;       /* Internet Explorer 5+ */
+		white-space: -moz-pre-wrap;  /* Older Versions of Mozilla */
   }
 
   #post ul,

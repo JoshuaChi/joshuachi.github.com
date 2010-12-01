@@ -19,12 +19,15 @@ module Jekyll
     # have valid dates.
     QUERY = "select post_title, post_name, post_date, post_content, post_excerpt, ID, guid from wp_posts where post_status = 'publish' and post_type = 'post'"
 
-    def self.process(dbname, user, pass, host = 'localhost')
-      db = Sequel.mysql('freetofeel', :user => 'root', :password => 'root', :host => '127.0.0.1', :encoding => 'utf8')
+    def self.process(dbname, user, pass, host)
+      db = Sequel.mysql(dbname, :user => user, :password => pass, :host => host)
+      #db = Sequel.connect(:adapter => 'mysql', :database=>dbname, :user => user, :password => pass, :host => host)
+      #db = Sequel.connect('mysql://localhost/freetofeel?user=root&password=root')
 
       FileUtils.mkdir_p "_posts"
 
       db[QUERY].each do |post|
+      #db['wp_posts'].each do |post|
         # Get required fields and construct Jekyll compatible name
         title = post[:post_title]
         slug = post[:post_name]
