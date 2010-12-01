@@ -5,7 +5,8 @@ title: Try to Use Github Pages As My Blog
 
 
 Finally, I decide to move my blog to githubpages. I know github do a great job. I want to give a try.
-
 Later I will try to import my old blog entries.
-
 Until now, everything looks amazing.
+
+--
+I finished the import from wordpress blog to github. I make a import.php script. Don't forget to change the user name, password and database in this script.
