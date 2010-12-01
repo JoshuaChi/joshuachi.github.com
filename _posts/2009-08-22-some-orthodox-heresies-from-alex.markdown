@@ -3,8 +3,6 @@ layout: post
 title: "Some Orthodox Heresies from alex"
 ---
 
-<p class='meta'>2009-08-22 19:59:04</p>
-
 <div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Plugins are not evil.</div>
 <div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">The web is a force for social change.</div>
 <div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">The internet centralizes power…slowly…oh so slowly…</div>

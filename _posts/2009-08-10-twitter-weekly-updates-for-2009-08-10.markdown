@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-08-10"
 ---
 
-<p class='meta'>2009-08-10 18:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>RT @herrbenz:Man shaves head, walks across China 4 year makes a timelapse of his hair/beard growth: <a href="http://bit.ly/3KA37B" rel="nofollow">http://bit.ly/3KA37B</a> // cool man <a href="http://twitter.com/Joshua_C/statuses/3235410472">#</a></li>
 	<li><a href="http://tinyurl.com/7lqsrr" rel="nofollow">http://tinyurl.com/7lqsrr</a> //I&#39;d like to recommend this to all of you, if you want to know what Chopin is saying! <a href="http://twitter.com/Joshua_C/statuses/3224364793">#</a></li>

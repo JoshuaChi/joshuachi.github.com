@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-10-19"
 ---
 
-<p class='meta'>2009-10-19 18:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>Browser support for CSS3 and HTML5 - <a href="http://bit.ly/qnWQU" rel="nofollow">http://bit.ly/qnWQU</a> <a href="http://twitter.com/Joshua_C/statuses/4966533845">#</a></li>
 	<li>10 secrets to staying informed about web design - <a href="http://boagworld.com/reviews/usingrss" rel="nofollow">http://boagworld.com/reviews/usingrss</a> <a href="http://twitter.com/Joshua_C/statuses/4962957714">#</a></li>

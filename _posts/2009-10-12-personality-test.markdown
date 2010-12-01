@@ -3,8 +3,6 @@ layout: post
 title: "Personality Test"
 ---
 
-<p class='meta'>2009-10-12 21:02:05</p>
-
 DISC性格测试
 
  

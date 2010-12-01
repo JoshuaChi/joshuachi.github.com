@@ -3,8 +3,6 @@ layout: post
 title: "Report plugin for Vanilla 2"
 ---
 
-<p class='meta'>2010-02-15 16:47:05</p>
-
 You can find it <a href="http://vanillaforums.org/addon/520/report-system">here</a>.
 
 Install

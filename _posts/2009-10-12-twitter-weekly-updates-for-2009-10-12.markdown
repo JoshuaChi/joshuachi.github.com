@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-10-12"
 ---
 
-<p class='meta'>2009-10-12 18:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>一天某sb问我，你都关注些什么新技术。答曰：有什么看什么，但除非感兴趣不到用时从来不当回事情。那个sb像是没有满足的样子，继续问之，但你到底都关注哪些呢？ 靠，我突然不知道该说什么好，想了想说，上中学的时候我对永动机这种‘新’技术很感兴趣,... <a href="http://twitter.com/Joshua_C/statuses/4782085588">#</a></li>
 	<li>Route of GFW - <a href="http://twitpic.com/ky0uw" rel="nofollow">http://twitpic.com/ky0uw</a> <a href="http://twitter.com/Joshua_C/statuses/4779834434">#</a></li>

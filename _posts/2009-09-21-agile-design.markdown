@@ -3,8 +3,6 @@ layout: post
 title: "Agile Design"
 ---
 
-<p class='meta'>2009-09-21 21:25:21</p>
-
 <div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">1.</div>
 <div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">敏捷设计之着眼于当下的需求，不预测未来的需求和需要</div>
 <div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">2.</div>

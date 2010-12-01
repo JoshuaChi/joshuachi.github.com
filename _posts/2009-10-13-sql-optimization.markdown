@@ -3,8 +3,6 @@ layout: post
 title: "SQL Optimization"
 ---
 
-<p class='meta'>2009-10-13 21:16:41</p>
-
 Two tables:
 city
 id,name,country_id

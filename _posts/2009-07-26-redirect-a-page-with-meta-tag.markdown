@@ -3,8 +3,6 @@ layout: post
 title: "Redirect a page with meta tag"
 ---
 
-<p class='meta'>2009-07-26 09:34:14</p>
-
 I have never imaged it can be so simple to redirect a page.
 
 <strong>&lt;meta http-equiv="refresh" content="600"&gt;</strong>

@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-09-28"
 ---
 
-<p class='meta'>2009-09-28 18:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>确实够勇猛的 <a href="http://bit.ly/Fjuvy" rel="nofollow">http://bit.ly/Fjuvy</a> 只适合老年人 <a href="http://twitter.com/Joshua_C/statuses/4415500118">#</a></li>
 	<li>twitter里有些人成了角以后就喜欢屁话连篇，十句有两句是retweet，7句在废话，偶尔一句有点参考性，还发现在做自己广告，remove <a href="http://twitter.com/Joshua_C/statuses/4366929469">#</a></li>

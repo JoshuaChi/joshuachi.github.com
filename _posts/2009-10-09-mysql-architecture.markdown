@@ -3,8 +3,6 @@ layout: post
 title: "MySQL Architecture"
 ---
 
-<p class='meta'>2009-10-09 22:05:07</p>
-
 1.
 Each client connection gets its own thread within the server process.
 

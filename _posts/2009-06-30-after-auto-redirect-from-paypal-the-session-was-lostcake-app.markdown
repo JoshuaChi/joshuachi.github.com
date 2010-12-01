@@ -3,8 +3,6 @@ layout: post
 title: "After auto redirect from PayPal, the session was lost[Cake App]"
 ---
 
-<p class='meta'>2009-06-30 14:11:42</p>
-
 Reproduce steps:
 
 1. Customer login <a href="https://www.mysite.com">my site</a>;

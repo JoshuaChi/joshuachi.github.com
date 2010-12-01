@@ -3,8 +3,6 @@ layout: post
 title: "The other twitter clients that you may be like"
 ---
 
-<p class='meta'>2009-07-11 10:13:50</p>
-
 <ul>
 <li>http://itweet.net/web/</li>
 <li>http://m.tweete.net/login</li>

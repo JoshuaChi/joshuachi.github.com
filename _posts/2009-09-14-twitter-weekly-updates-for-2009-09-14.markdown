@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-09-14"
 ---
 
-<p class='meta'>2009-09-14 18:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>在我的生命某段时期，我一定要用两年写谱作曲，我要把我最强烈的感受，每个作一首 <a href="http://twitter.com/Joshua_C/statuses/3909413610">#</a></li>
 	<li>比毛片好看： <a href="http://j.mp/hWIC7" rel="nofollow">http://j.mp/hWIC7</a> - Want learn more about China? This is for you! <a href="http://twitter.com/Joshua_C/statuses/3863783383">#</a></li>

@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-12-07"
 ---
 
-<p class='meta'>2009-12-07 17:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>HTM::Sanitizer, this lib help you to parse html easier.Don&#39;t invent the wheel anymore. <a href="http://www.codinghorror.com/blog/archives/001311.html" rel="nofollow">http://www.codinghorror.com/blog/archives/001311.html</a> <a href="http://twitter.com/Joshua_C/statuses/6433320128">#</a></li>
 	<li>node.js + NOSQL database , cool idea. Hope I can get a project to give a try. <a href="http://simonwillison.net/2009/Nov/23/node/" rel="nofollow">http://simonwillison.net/2009/Nov/23/node/</a> <a href="http://twitter.com/Joshua_C/statuses/6432961969">#</a></li>

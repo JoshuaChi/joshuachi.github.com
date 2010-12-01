@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-08-24"
 ---
 
-<p class='meta'>2009-08-24 18:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>季节交替，无法赶走的困意 <a href="http://twitter.com/Joshua_C/statuses/3513811200">#</a></li>
 	<li>有时候对自己太苛刻会发现很多事情会停滞不前，因为大量的时间浪费在了如何是事情做得更好上面。其实是否可以迭代一下呢... <a href="http://twitter.com/Joshua_C/statuses/3511897331">#</a></li>

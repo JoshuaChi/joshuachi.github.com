@@ -3,8 +3,6 @@ layout: post
 title: "isBig5 function"
 ---
 
-<p class='meta'>2009-08-10 22:05:10</p>
-
 <pre name='code' class='php'>
 /**
  * isBig5:Determine whether the sentence contain the entire phrase in Chinese (The mixture of Chinese and English is not the scope of this deal)

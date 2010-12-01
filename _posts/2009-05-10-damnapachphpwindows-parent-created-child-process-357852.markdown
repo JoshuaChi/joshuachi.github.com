@@ -3,8 +3,6 @@ layout: post
 title: "Damn!Apach+PHP+Windows = Parent: Created child process 357852"
 ---
 
-<p class='meta'>2009-05-10 04:20:58</p>
-
 <strong>Parent: Created child process 357852</strong>
 
 C:\Program Files\Apache Software Foundation\Apache2.2\logs\error.log

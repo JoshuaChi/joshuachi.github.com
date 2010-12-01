@@ -3,8 +3,6 @@ layout: post
 title: "Sign in your PDF document"
 ---
 
-<p class='meta'>2009-11-19 21:53:46</p>
-
 Have you ever succeed to sign in a PDF file?
 Today I try several methods of <a href="http://www.labnol.org/software/sign-pdf-documents/9333/">How to Sign Documents Electronically – No Ink or Paper Required></a>. 
 1. 

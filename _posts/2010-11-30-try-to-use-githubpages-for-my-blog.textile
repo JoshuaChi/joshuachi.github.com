@@ -3,7 +3,6 @@ layout: post
 title: Try to Use Github Pages As My Blog
 ---
 
-p(meta). 30 Nov 2010 - Shanghai
 
 Finally, I decide to move my blog to githubpages. I know github do a great job. I want to give a try.
 

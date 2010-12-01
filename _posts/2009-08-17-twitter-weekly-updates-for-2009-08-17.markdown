@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-08-17"
 ---
 
-<p class='meta'>2009-08-17 18:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>Too many redundant information in tweets. I need a tweets filter! <a href="http://twitter.com/Joshua_C/statuses/3344346039">#</a></li>
 	<li>#<a href="http://search.twitter.com/search?q=%23winMBP">winMBP</a> @<a href="http://twitter.com/taptaptap">taptaptap</a> is giving away a $5999 ColorWare STEALTH MacBook Pro to celebrate launching Convert for iPhone! <a href="http://taptaptap.com/+Gpv" rel="nofollow">http://taptaptap.com/+Gpv</a> <a href="http://twitter.com/Joshua_C/statuses/3302096894">#</a></li>

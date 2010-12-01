@@ -3,8 +3,6 @@ layout: post
 title: "Schema Optimization and Indexing"
 ---
 
-<p class='meta'>2009-10-18 16:46:44</p>
-
 1.
 Choosing Data Type >
 a. Smaller is usually better;

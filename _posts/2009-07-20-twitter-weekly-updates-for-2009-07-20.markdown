@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-07-20"
 ---
 
-<p class='meta'>2009-07-20 18:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>现在任务栏托盘上面一看不见卡巴斯基，我就心慌慌 <a href="http://twitter.com/Joshua_C/statuses/2740065556">#</a></li>
 	<li>IE 还是很大的市场份额，大家都不敢轻易放弃它 <a href="http://www.w3counter.com/globalstats.php" rel="nofollow">http://www.w3counter.com/globalstats.php</a> <a href="http://twitter.com/Joshua_C/statuses/2735675893">#</a></li>

@@ -3,8 +3,6 @@ layout: post
 title: "The interesting thing about Google Translate"
 ---
 
-<p class='meta'>2009-10-26 10:01:15</p>
-
 Have you noticed that when you open the <a href="http://translate.google.com">Google Translate page</a>, and you enter some simple words or a sentence you want to translate.
 The translated URL in your address bar looks like 
 'http://translate.google.com/translate_t#el|en|%CE%9C%CE%BF%CF%85%20%CE%B1%CF%81%CE%AD%CF%83%CE%B5%CE%B9%20%CE%B1%CF%85%CF%84%CE%AE%20%CE%B7%20%CE%BC%CE%BF%CF%85%CF%83%CE%B9%CE%BA%CE%AE'

@@ -3,8 +3,6 @@ layout: post
 title: "Cake Tips from my App"
 ---
 
-<p class='meta'>2009-07-17 22:12:34</p>
-
 1. If you turn on cache in core.php, everytime when you modify your model , don't forget to clear the files under /tmp/cache/models/.
 
 2. Don't cache the element which has include the pagination logic. Because the sort and pagination will fail to work.

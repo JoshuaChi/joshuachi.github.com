@@ -3,8 +3,6 @@ layout: post
 title: "ERROR:  While executing gem ... (Gem::GemNotFoundException)"
 ---
 
-<p class='meta'>2010-05-31 21:58:06</p>
-
 Try
 <pre name='code' class='php'>
 gem clean

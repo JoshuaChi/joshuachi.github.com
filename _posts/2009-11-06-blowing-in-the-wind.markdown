@@ -3,8 +3,6 @@ layout: post
 title: "Blowing in the wind"
 ---
 
-<p class='meta'>2009-11-06 11:51:21</p>
-
 <object height="100" width="400" align="middle" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"><param value="best" name="quality"/><param value="never" name="allowScriptAccess"/><param value="true" name="allowFullScreen"/><param value="transparent" name="wmode"/><param value="http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;playerID=10&amp;bg=0xeeeeee&amp;leftbg=0x99ff00&amp;lefticon=0x666666&amp;rightbg=0x666666&amp;rightbghover=0x99ff00&amp;righticon=0xffffff&amp;righticonhover=0xffffff&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0x99ff00&amp;loop=no&amp;autostart=no" name="movie"/><embed height="100" width="400" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="playerMode=embedded" wmode="transparent" bgcolor="#ffffff" quality="best" allowfullscreen="true" allowscriptaccess="never" src="http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;playerID=10&amp;bg=0xeeeeee&amp;leftbg=0x99ff00&amp;lefticon=0x666666&amp;rightbg=0x666666&amp;rightbghover=0x99ff00&amp;righticon=0xffffff&amp;righticonhover=0xffffff&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0x99ff00&amp;loop=no&amp;autostart=no" type="application/x-shockwave-flash"/></object>
 
     How many roads must a man walk down  一个人要经历多长的旅途

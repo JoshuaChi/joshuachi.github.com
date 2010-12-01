@@ -3,8 +3,6 @@ layout: post
 title: "JQuery validate password function can not work on Firefox3.1.10"
 ---
 
-<p class='meta'>2009-05-09 07:06:53</p>
-
 When I use JQuery(Revision: 6246) with firefox 3.0.10, I found it is difficulty to validate the password field.
 //js code
 "data[User][password]": {

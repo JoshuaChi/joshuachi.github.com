@@ -1,10 +1,28 @@
+.site{
+  font-size: 110%;
+  line-height: 1.5em;
+  margin: 3em auto 2em;
+  text-align: left;
+  width: 40em;
+}
+
 body {
 	margin: 0;
 	padding: 0;
-	font: 16px  "ff-dagny-web-pro-1","ff-dagny-web-pro-2";
-	line-height: 1.7em;
-	color: black;
-	background: white;
+	font: 15px "helvetica neue",helvetica,arial,clean,sans-serif;
+  text-align: center;
+}
+
+.site .header a:link, .site .header a:visited {
+    font-size: 4em;
+    margin-left: -0.5em;
+    text-decoration: none;
+}
+
+.header{
+	font-weight: bold;
+	padding-left: 55px;
+	margin-bottom: 2em;
 }
 
 #container {
@@ -53,6 +71,7 @@ h2 {
 h3 {
   font-size: 1.3em;
   font-weight: normal;
+	padding-left: 10px;
 }
 
 h1 {
@@ -95,7 +114,7 @@ code {
   -webkit-border-radius: 0.2em;	
 }
 
-.meta {
+.post-metadata, .meta {
   font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2";
   font-size: 0.9em;
   font-weight: bold;
@@ -121,6 +140,10 @@ code {
   border-bottom: 1px solid #d3dfee;
 }
 
+.title{
+	font-weight: bold;
+}
+
 .title a {
   color: black;
   text-decoration: none;
@@ -128,6 +151,10 @@ code {
   padding: 0;
   margin: 0;
   background: white;
+	font-size: 1.3em;
+  margin-left: -0.5em;
+  text-decoration: none;
+	line-height: 25px;
 }
 
 .title a:hover {

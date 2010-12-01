@@ -3,8 +3,6 @@ layout: post
 title: "Symfony + Vanilla2 + SSO"
 ---
 
-<p class='meta'>2010-01-04 00:42:45</p>
-
 Vanilla2 is really really cool! Both the interface and functionality are very good.
 I give a implementation of integrating the vanilla forum into a symfony project with SSO.
 I have given some investigation of the SSO. If you have a lot of applications deployed in different domains, <a href="http://www.jasig.org/cas">CAS</a> is a better choice. But it will take you a lot of time to implement. As I can think, there is a CAS server using 8080 port that you should deploy.

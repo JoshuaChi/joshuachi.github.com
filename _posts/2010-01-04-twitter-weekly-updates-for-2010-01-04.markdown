@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2010-01-04"
 ---
 
-<p class='meta'>2010-01-04 17:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li><a href="http://www.addedbytes.com/cheat-sheets/" rel="nofollow">http://www.addedbytes.com/cheat-sheets/</a> <a href="http://twitter.com/Joshua_C/statuses/7361828037">#</a></li>
 	<li>RT @<a href="http://twitter.com/kejunz">kejunz</a> 2010 = 1+2-(3-4-5)*6*7*8-9 <a href="http://bit.ly/5bVDir" rel="nofollow">http://bit.ly/5bVDir</a> <a href="http://twitter.com/Joshua_C/statuses/7359868857">#</a></li>

@@ -3,8 +3,6 @@ layout: post
 title: "Javascript value copy and reference copy"
 ---
 
-<p class='meta'>2009-08-28 08:22:34</p>
-
 I will take an example in &lt;JavaScript: The Definitive Guide&gt;
 <pre name='code' class='javascript'>
 var a= 3.14;

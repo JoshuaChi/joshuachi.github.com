@@ -3,8 +3,6 @@ layout: post
 title: "Fighting with an issue in cracked mac machine"
 ---
 
-<p class='meta'>2010-06-01 10:33:15</p>
-
 Problem: There is always a black border for every window in a cracked mac, including 'Finder', 'Terminal', even the icon on the desktop.
 
 Solution: Delete 'com.apple.universalaccess.plist' in /Usr/$YOURNAME/Library/Preferences/. And then Logout and login.

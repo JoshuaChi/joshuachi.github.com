@@ -3,8 +3,6 @@ layout: post
 title: "Pure CSS to make the footer at the bottom of the page"
 ---
 
-<p class='meta'>2009-06-22 20:20:42</p>
-
 Pure CSS, no javascript to make the footer at the bottom of the page.
 Imaging you have the html layout like the following:
 <pre name="code" class="php">&lt;body&gt;

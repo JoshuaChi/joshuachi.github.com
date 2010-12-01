@@ -3,8 +3,6 @@ layout: post
 title: "How to use Security component in your application"
 ---
 
-<p class='meta'>2009-05-25 11:51:51</p>
-
 The right way is generate all your filed use form helper.
 
 For example, the following code will prevent your app woking .

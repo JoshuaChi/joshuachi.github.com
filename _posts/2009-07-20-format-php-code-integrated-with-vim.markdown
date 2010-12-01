@@ -3,8 +3,6 @@ layout: post
 title: "Format PHP Code integrated with VIM"
 ---
 
-<p class='meta'>2009-07-20 13:12:40</p>
-
 I like this post <a href="http://shadsplace.org/beautify-php/">Command line PHP Code Formatter for use with VIM</a>. It really save me a lot of time on format the past code in VIM.
 1. 
 download the <a href="http://shadsplace.org/beautify-php/beautify.php.gz">beautify.php.gz</a>

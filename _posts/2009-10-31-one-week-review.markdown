@@ -3,8 +3,6 @@ layout: post
 title: "One Week Review"
 ---
 
-<p class='meta'>2009-10-31 16:50:06</p>
-
 <ul>
 	<li><strong>YUI Conference</strong> has been closed recently. There are a lot of valuable <a href="http://yuilibrary.com/yuiconf2009/">presentation</a>.</li>
 	<li><strong><a href="http://www.douban.com/subject/3673223/">Coders at Work</a></strong> - <br /><em><strong>What you’ll learn</strong></em><br />

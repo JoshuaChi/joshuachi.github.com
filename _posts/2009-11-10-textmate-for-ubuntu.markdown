@@ -3,8 +3,6 @@ layout: post
 title: "Textmate  for Ubuntu"
 ---
 
-<p class='meta'>2009-11-10 12:25:33</p>
-
 GEdit + Gmate = Textmate on Ubuntu
 
 Install Gedit and Gedit plugins.

@@ -3,8 +3,6 @@ layout: post
 title: "The Payroll Case Study"
 ---
 
-<p class='meta'>2009-09-23 22:06:05</p>
-
 C13
 ---------------------------------------------------
 1.

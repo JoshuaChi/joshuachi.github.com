@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-09-07"
 ---
 
-<p class='meta'>2009-09-07 18:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>沉浸是一种解脱 <a href="http://twitter.com/Joshua_C/statuses/3819061046">#</a></li>
 	<li>RT @yining: 中国移动网站抄袭事件(. <a href="http://bit.ly/11al6F" rel="nofollow">http://bit.ly/11al6F</a> //他们从来就是低能的设计，仗着垄断，养着一帮猪 <a href="http://twitter.com/Joshua_C/statuses/3793773368">#</a></li>

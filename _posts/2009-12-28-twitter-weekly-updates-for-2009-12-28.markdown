@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-12-28"
 ---
 
-<p class='meta'>2009-12-28 17:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>@<a href="http://twitter.com/YaYaZheng">YaYaZheng</a> WOW~~~ <a href="http://twitter.com/YaYaZheng/statuses/4467822814">in reply to YaYaZheng</a> <a href="http://twitter.com/Joshua_C/statuses/7118009292">#</a></li>
 	<li>所谓的编程和架构：都是做事情，只是处于事情的不同阶段而已。就技术难度而言，一样。你也可以说他没有难度。 <a href="http://twitter.com/Joshua_C/statuses/7001694475">#</a></li>

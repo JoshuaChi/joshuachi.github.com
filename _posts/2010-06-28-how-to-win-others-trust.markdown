@@ -3,8 +3,6 @@ layout: post
 title: "How to win others trust"
 ---
 
-<p class='meta'>2010-06-28 21:25:11</p>
-
 I just want to post some suggestions about 'trust' from my experience. It might not be perfect, but I am sure some of them are mostly useful for you.
 
 <a href="http://en.wikipedia.org/wiki/Trust">Trust (social sciences), reliance on another person or entity. Having faith in others and believing them.</a>

@@ -3,8 +3,6 @@ layout: post
 title: "Apache Unable to load dynamic library php_openssl.dll"
 ---
 
-<p class='meta'>2010-03-09 23:28:18</p>
-
 As a windows user, sometimes you have to face and handle this kind of problems. 
 
 The error: “PHP Startup: Unable to load dynamic library php_openssl.dll. The operating system cannot run %1“, when you are trying to start the apache server in the error.log file.

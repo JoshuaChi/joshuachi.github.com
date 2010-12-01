@@ -3,8 +3,6 @@ layout: post
 title: "Generate a friendly URLS for your site"
 ---
 
-<p class='meta'>2009-07-21 14:37:52</p>
-
 'We are fighting with SEO everyday ...'
 It is true! If you want Google 'know' more about you, it is time to give a friendly URLS to him.
 There are two main method that we can make a friendly URLS for our site. And we will take blog as example:

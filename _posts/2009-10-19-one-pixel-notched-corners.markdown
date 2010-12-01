@@ -3,8 +3,6 @@ layout: post
 title: "One pixel notched corners"
 ---
 
-<p class='meta'>2009-10-19 22:23:23</p>
-
 An interesting article <a href="http://www.askthecssguy.com/2008/03/one_pixel_notched_corners_as_u.html">One pixel notched corners as used by Google Analytics</a>.
 
 A simple explanation of the 'why':

@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2009-06-22"
 ---
 
-<p class='meta'>2009-06-22 18:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>Dinosaur is big enough , bug die out from the world; zzzzz~~~ <a href="http://twitter.com/Joshua_C/statuses/2277400408">#</a></li>
 	<li><a href="http://userfly.com/" rel="nofollow">http://userfly.com/</a> -- So cool! web master tool <a href="http://twitter.com/Joshua_C/statuses/2272200851">#</a></li>

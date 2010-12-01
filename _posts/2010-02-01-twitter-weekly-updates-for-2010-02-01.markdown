@@ -3,8 +3,6 @@ layout: post
 title: "Twitter Weekly Updates for 2010-02-01"
 ---
 
-<p class='meta'>2010-02-01 17:00:00</p>
-
 <ul class="aktt_tweet_digest">
 	<li>How to promote innovation from your web team <a href="http://briancray.com/2010/01/28/innovative-web-team/" rel="nofollow">http://briancray.com/2010/01/28/innovative-web-team/</a> <a href="http://twitter.com/Joshua_C/statuses/8500603501">#</a></li>
 	<li>GReader  - Follow changes to any website <a href="http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html" rel="nofollow">http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html</a> <a href="http://twitter.com/Joshua_C/statuses/8235514055">#</a></li>
