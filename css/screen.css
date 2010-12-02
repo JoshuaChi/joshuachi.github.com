@@ -14,9 +14,10 @@ body {
 }
 
 .site .header a:link, .site .header a:visited {
-    font-size: 4em;
-    margin-left: -0.5em;
-    text-decoration: none;
+   font-size: 4em;
+   margin-left: -0.5em;
+   text-decoration: none;
+	color: #000000;
 }
 
 .header{
