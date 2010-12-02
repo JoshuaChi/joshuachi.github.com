@@ -206,4 +206,4 @@ code, pre{
   padding: 0.6em;
 }
 
-ul, li { margin:0em; padding:0px; }
+ul, li, ol { margin:0em; padding:0px; }
