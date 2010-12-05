@@ -10,3 +10,6 @@ Until now, everything looks amazing.
 
 --
 I finished the import from wordpress blog to github. I make a import.php script. Don't forget to change the user name, password and database in this script.
+
+--
+Add <a href='http://disqus.com'>comment service</a> into my blog.
