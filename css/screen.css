@@ -20,6 +20,18 @@ body {
 	color: #000000;
 }
 
+.site .rss{
+	float: right; 
+}
+
+.site .rss a{
+	color: #4183C4;
+	text-decoration: none;
+}
+
+.site .home{
+	clear: both;
+}
 .header{
 	font-weight: bold;
 	padding-left: 55px;
