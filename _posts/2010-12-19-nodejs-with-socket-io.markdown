@@ -4,7 +4,7 @@ title: "Dig Into Nodejs"
 tags: -nodejs -js
 ---
 
-Just find a beautiful and simplest javascript code to solve :
+Just find a beautiful and simplest javascript code:
 <pre>
   // In both HTTP servers and clients it is possible to queue up several
   // outgoing messages. This is easiest to imagine in the case of a client.
