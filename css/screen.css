@@ -65,11 +65,6 @@ body {
   padding-top: 0.3em;
 }
 
-#footer {
-  margin-top: 3em;
-  padding-bottom: 0.3em;
-}
-
 h2 {
   font-size: 1.8em;
   font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2";
@@ -219,6 +214,10 @@ code {
 
 .footer .contact a {
 	color: #8085C1;
+}
+
+.footer #copyright{
+	clear:both;
 }
 
 .site .footer .rss {
