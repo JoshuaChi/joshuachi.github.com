@@ -7,8 +7,9 @@ tags: -RPC
 Thrift is a software framework for scalable cross-language services development.
 Now it supports C++, C#, Erlang, Haskell, Java, Objective C/Cocoa, OCaml, Perl, PHP, Python, Ruby, and Squeak.
 
-    * Download: <a href='http://incubator.apache.org/thrift/download/'>http://incubator.apache.org/thrift/download/</a>
-    * Install: <a href='http://wiki.apache.org/thrift/GettingUbuntuPackages'>http://wiki.apache.org/thrift/GettingUbuntuPackages</a>
+* Download: <a href='http://incubator.apache.org/thrift/download/'>http://incubator.apache.org/thrift/download/</a>
+
+* Install: <a href='http://wiki.apache.org/thrift/GettingUbuntuPackages'>http://wiki.apache.org/thrift/GettingUbuntuPackages</a>
 
 So basically, what you need to do is define a .thrift definition file. And Thrift will help you generate the RPC client and RPC server. There are a lot of examples in this <a href='http://wiki.apache.org/thrift/'>wiki</a> page.
 
