@@ -19,7 +19,7 @@ There is a similar project called <a href='http://code.google.com/apis/protocolb
 
 ------------------
 This is what I have done in todays' Innovation Day. And I totall agree:
-<pre>Individuals and interactions over processes and tools</pre>
+<pre><code>Individuals and interactions over processes and tools</code></pre>
 <br />
 We know people is the kernel in a technical company. Anything is beneficial for people should be encouraged. But of course, it also should be beneficial for company firstly. Any rule that restrict people's mind should be removed.
 
