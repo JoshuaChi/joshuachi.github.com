@@ -10,13 +10,13 @@ tags: -performance memory
 </pre>
 Output:
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; total &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; total &nbsp;&nbsp;
 used&nbsp;&nbsp; free&nbsp;&nbsp;&nbsp; shared buffers cached<br>
-Mem:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 85
+Mem:&nbsp;&nbsp; 90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 85
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 34<br>
 -/+ buffers/cache:&nbsp; 46&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 43<br>
-Swap:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0
+Swap:&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9
 </code>
 The top row 'used' (85) value will almost always nearly match the top row mem value (90).  Since Linux likes to use any spare memory to cache disk blocks (34).
