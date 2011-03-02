@@ -6,19 +6,11 @@ tags: -performance memory
 
 <h2>free-m</h2>
 <pre>
-  free-m: to see how much memory you are currently using
+free-m: to see how much memory you are currently using
 </pre>
 Output:
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp; total &nbsp;&nbsp;
-used&nbsp;&nbsp; free&nbsp;&nbsp;&nbsp; shared buffers cached<br>
-Mem:&nbsp;&nbsp; 90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 85
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 34<br>
--/+ buffers/cache:&nbsp; 46&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 43<br>
-Swap:&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9
-</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; total &nbsp;&nbsp; used&nbsp;&nbsp; free&nbsp;&nbsp;&nbsp; shared buffers cached<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mem:&nbsp;90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 85 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 34<br>
+-/+ buffers/cache:&nbsp; 46&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 43<br> &nbsp;&nbsp;&nbsp;&nbsp;Swap:&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9 </code>
 The top row 'used' (85) value will almost always nearly match the top row mem value (90).  Since Linux likes to use any spare memory to cache disk blocks (34).
 
 The key used figure to look at is the buffers/cache row used value (46).  This is how much space your applications are currently using.  For best performance, this number should be less than your total (90) memory.  To prevent out of memory errors, it needs to be less than the total memory (90) and swap space (9).
@@ -28,7 +20,7 @@ If you wish to quickly see how much memory is free look at the buffers/cache row
 
 <h2>ps aux</h2>
 <pre>
-  ps aux: to see where all your memory is going.That will show the percentage of memory each process is using.  You can use it to identify the top memory users (usually Apache, MySQL and Java processes).
+ps aux: to see where all your memory is going.That will show the percentage of memory each process is using.  You can use it to identify the top memory users (usually Apache, MySQL and Java processes).
 </pre>
 Output:
 <code>
@@ -45,10 +37,10 @@ We can see that java is using up 39.2% of the available memory.
 
 <h2>vmstat</h2>
 <pre>
-  vmstat:helps you to see, among other things, if your server is swapping.
+vmstat:helps you to see, among other things, if your server is swapping.
 </pre>
 <code>
-# vmstat 1 2
+- vmstat 1 2
    procs                      memory    swap          io     system         cpu
  r  b  w   swpd   free   buff  cache  si  so    bi    bo   in    cs  us  sy  id
  0  0  0  39132   2416    804  15668   4   3     9     6  104    13   0   0 100
@@ -124,7 +116,8 @@ In this case you can setup a script (see below) that will regularly log your ser
 <code>
 wget http://proj.ri.mu/memmon.sh -O /root/memmon.sh
 chmod +x /root/memmon.sh
-
+<code>
+<pre>
 -- create a cronjob that runs every few minutes to log the memory usage
 echo '0-59/10 * * * * root /root/memmon.sh >> /root/memmon.txt' > /etc/cron.d/memmon
 /etc/init.d/cron* restart 
@@ -132,7 +125,7 @@ echo '0-59/10 * * * * root /root/memmon.sh >> /root/memmon.txt' > /etc/cron.d/me
 -- create a logrotate entry so the log file does not get too large
 echo '/root/memmon.txt {}' > /etc/logrotate.d/memmon
 
-</code>
+</pre>
 
 --
 This article was copied from http://rimuhosting.com/howto/memory.jsp.
