@@ -106,9 +106,10 @@ Note: httpd.conf should be tuned correctly on our newer WBEL3 and FC2 distros.  
 from http://modperlbook.org/html/11-2-Setting-the-MaxRequestsPerChild-Directive.html: "Setting MaxRequestsPerChild to a non-zero limit solves some memory-leakage problems caused by sloppy programming practices and bugs, whereby a child process consumes a little more memory after each request. In such cases, and where the directive is left unbounded, after a certain number of requests the children will use up all the available memory and the server will die from memory starvation."
 
 <h2>Resolving: High MySQL Memory Usage</h2>
+
 <code>
-# if your are not using the innodb table manager, then just skip it to save some memory
-#skip-innodb
+-- if your are not using the innodb table manager, then just skip it to save some memory
+-- skip-innodb
 innodb_buffer_pool_size = 16k
 key_buffer_size = 16k
 myisam_sort_buffer_size = 16k
@@ -124,11 +125,11 @@ In this case you can setup a script (see below) that will regularly log your ser
 wget http://proj.ri.mu/memmon.sh -O /root/memmon.sh
 chmod +x /root/memmon.sh
 
-# create a cronjob that runs every few minutes to log the memory usage
+-- create a cronjob that runs every few minutes to log the memory usage
 echo '0-59/10 * * * * root /root/memmon.sh >> /root/memmon.txt' > /etc/cron.d/memmon
 /etc/init.d/cron* restart 
 
-# create a logrotate entry so the log file does not get too large
+-- create a logrotate entry so the log file does not get too large
 echo '/root/memmon.txt {}' > /etc/logrotate.d/memmon
 
 </code>
