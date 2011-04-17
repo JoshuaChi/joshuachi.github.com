@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Joshua Chi's Blog</title>
+   <meta name="author" content="Joshua Chi" />
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9434024-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		<!-- Google Analytics end -->
+</head>
+<body>
+
+<div class="site">
+  <div class="header">
+    <a href="/">Free To Feel</a>
+  </div>
+
+<!--start of side bar-->
+<div id="sidebar" >
+	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
+	<br />
+	Joshua Chi
+    <div class="contact">
+        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
+				<a href="https://github.com/joshuachi">My Github</a><br />
+			</div>
+			<div class="rss">
+				<p>
+				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+				</p>
+				<p>
+				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
+				</p>
+			</div>	
+		
+			<p class='douban'>
+				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
+				</p>
+</div>
+<!--end of side bar-->
+
+	<div id='content'>
+		<div id="home">
+
+<div class="post">
+  <ul class="content">
+		
+			<div class="post" id="postid-/2010/06/03/mysql-avoid-filesort">
+				<h3 class="title"><a href="/2010/06/03/mysql-avoid-filesort.html">Mysql : Avoid Filesort</a></h3>
+
+				<ul>
+    <li>You can avoid the filesort by making order by column appear in the where clause</li>
+
+    <li>When using join, make sure the left side join table column is used in the ORDER BY clause or change the join type</li>
+</ul>
+
+
+<p><a href="http://venublog.com/2007/11/29/mysql-how-to-avoid-filesort/">Reference</a></p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jun 03, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine">
+				<h3 class="title"><a href="/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine.html">Fighting with an issue in cracked mac machine</a></h3>
+
+				<p>Problem: There is always a black border for every window in a cracked mac, including 'Finder', 'Terminal', even the icon on the desktop.</p>
+
+<p>Solution: Delete 'com.apple.universalaccess.plist' in /Usr/$YOURNAME/Library/Preferences/. And then Logout and login.</p>
+
+<p>It can fixed in my cracked mac machine.
+And the main idea was back up your mac preferences</p>
+
+<pre name='code' class='css'>
+cp -R /Usr/$YOURNAME/Library/Preferences/ /Usr/$YOURNAME/backup/
+</pre>
+
+
+<p>And then when you login again, the preferences will be recreated again, like a new user.
+For you, you just try to copy some plist from /Usr/$YOURNAME/backup/ to /Usr/$YOURNAME/Library/Preferences/. And then you can check which plist file was the fail reason</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jun 01, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/05/31/error-while-executing-gem-gemgemnotfoundexception">
+				<h3 class="title"><a href="/2010/05/31/error-while-executing-gem-gemgemnotfoundexception.html">ERROR:  While executing gem ... (Gem::GemNotFoundException)</a></h3>
+
+				<p>Try</p>
+
+<pre name='code' class='php'>
+gem clean
+</pre>
+
+
+<p><a href="http://stackoverflow.com/questions/2273503/ruby-gem-package-manager-failing-with-gemgemnotfoundexception">reference</a></p>
+
+<p>If you got</p>
+
+<pre name='code' class='php'>
+/usr/bin/gem:10: undefined method `manage_gems' for Gem:Module (NoMethodError)
+</pre>
+
+
+<p>Check if there are two gem under /usr/bin/ directory.</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted May 31, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/05/21/joshuas-feel">
+				<h3 class="title"><a href="/2010/05/21/joshuas-feel.html">Joshuas Feel</a></h3>
+
+				<ol>
+<li><p>Important VS Urgent
+In everyone's life, there are urgent things and important things. You will feel pressure if there are a lot of urgent things. And you will pick urgent things before starting the important ones. But have you think about this logic? Sometimes the urgent things are caused by the important ones. Taking exercises is important thing for your healthy. But if you get sick, that will be the urgent thing. But if you pay more attention to the important things, may be you will not get sick. This is the logic!
+So pay more attention to the important ones, which will save you a lot of time.</p></li>
+<li><p>The best architecture will not the one that can work best for your project.</p></li>
+<li><p>Rome was not built in a day!</p></li>
+</ol>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted May 21, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/04/17/scrum-perfect-estimate">
+				<h3 class="title"><a href="/2010/04/17/scrum-perfect-estimate.html">[scrum] Perfect Estimate</a></h3>
+
+				<ol>
+<li><p>Estimates can be better done by the people who have the experience of similar kind of work already done, Peers and Historical data. It is always better to involve the people who have similar work experience for appropriate estimations.</p></li>
+<li><p>No one will estimate perfectly for the first time, for sure team members will either over estimate or under estimate the task work, but it makes them realize how much they can produce and for next sprint the team members will try to estimate a bit more precisely.</p></li>
+<li><p>After three to four sprints, team members will be in a position to understand their own strength and how much work they can do. This leads for better estimates.</p></li>
+</ol>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Apr 17, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/04/15/be-careful-when-using-propel-build-schema">
+				<h3 class="title"><a href="/2010/04/15/be-careful-when-using-propel-build-schema.html">Be careful when using propel-build-schema</a></h3>
+
+				<p>Tip1:
+The generated schema.yml will has the duplicated table when you are using propel-build-schema to generate the yml file based on Symfony Version 1.</p>
+
+<pre class='yml' name='code'>
+propel:
+  duplicated_table_name:
+</pre>
+
+
+<p>Tip 2:
+In config/propel.ini, the propel.database means the database engine.</p>
+
+<pre class='php' name='code'>
+propel.database            = mysql
+</pre>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Apr 15, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/03/09/apache-unable-to-load-dynamic-library-php_openssl-dll">
+				<h3 class="title"><a href="/2010/03/09/apache-unable-to-load-dynamic-library-php_openssl-dll.html">Apache Unable to load dynamic library php_openssl.dll</a></h3>
+
+				<p>As a windows user, sometimes you have to face and handle this kind of problems.</p>
+
+<p>The error: “PHP Startup: Unable to load dynamic library php_openssl.dll. The operating system cannot run %1“, when you are trying to start the apache server in the error.log file.</p>
+
+<p>Basically what this error is trying to mention that there is an issue with your php_openssl.dll and a possible mismatch with other depending libraries. To resolve this, follow the below steps:</p>
+
+<ol>
+<li><p>Rename ’ssleay32.dll’ and ‘libeay32.dll’ in c:\windows\system32 to ’ssleay32.dll.old’ and ‘libeay32.dll.old’ respectively.</p></li>
+<li><p>Copy ’ssleay32.dll’ and ‘libeay32.dll’ from your PHP folder to the system32.</p></li>
+<li><p>Restart the apache webserver.</p></li>
+</ol>
+
+
+<p>Even I resolve it finally , I can learn nothing from it. This such a damn rule("copy the dll file from PHP folder to system32") was made by Microsoft? I don't know. You couldn't find the solution even in php document. The solution was passed from one developer to another. But no matter how I can stay away this kind of damn things for a while.</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Mar 09, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+		
+		<div class="paging">
+		
+			<a href="/page4" class="previous">&#x25C4; Previous</a>
+		
+		
+			
+			  <a href="/page2" class="next">Next &#x25BA;</a>
+			
+		
+		</div>
+
+  </ul>
+</div>
+</div>
+
+	</div>
+  
+  <div class="footer">
+		<div id="copyright">
+			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+		</div>
+  </div>    
+</div>
+
+</body>
+</html>

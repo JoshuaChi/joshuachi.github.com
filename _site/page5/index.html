@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Joshua Chi's Blog</title>
+   <meta name="author" content="Joshua Chi" />
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9434024-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		<!-- Google Analytics end -->
+</head>
+<body>
+
+<div class="site">
+  <div class="header">
+    <a href="/">Free To Feel</a>
+  </div>
+
+<!--start of side bar-->
+<div id="sidebar" >
+	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
+	<br />
+	Joshua Chi
+    <div class="contact">
+        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
+				<a href="https://github.com/joshuachi">My Github</a><br />
+			</div>
+			<div class="rss">
+				<p>
+				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+				</p>
+				<p>
+				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
+				</p>
+			</div>	
+		
+			<p class='douban'>
+				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
+				</p>
+</div>
+<!--end of side bar-->
+
+	<div id='content'>
+		<div id="home">
+
+<div class="post">
+  <ul class="content">
+		
+			<div class="post" id="postid-/2010/02/01/mysql-custom-function">
+				<h3 class="title"><a href="/2010/02/01/mysql-custom-function.html">MySQL Custom Function</a></h3>
+
+				<p>Today when I try to update a table in sql command, I didn't want to use the mysql function <a href="http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_uuid">uuid </a>to generate a string with middle line in it. So I try to use mysql <a href="http://dev.mysql.com/doc/refman/5.0/en/create-procedure.html">custom function</a> to generate a 32-bit length string without middle line.</p>
+
+<pre name='code' class='sql'>
+DELIMITER ;
+
+DROP FUNCTION IF EXISTS uid;
+DELIMITER $$
+
+CREATE FUNCTION uid()
+    RETURNS VARCHAR(32)
+BEGIN
+    DECLARE c VARCHAR(36) DEFAULT '';
+    SET c = uuid();
+    return CONCAT(substring(c,1,8) , substring(c,10,4) , substring(c,15,4) , substring(c,20,4), substring(c,25,12));
+END$$
+
+DELIMITER ;
+
+select uid();
+</pre>
+
+
+<p>I am writing this because mysql is powerful enough to handle all the issues in web software development.</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Feb 01, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/01/25/twitter-weekly-updates-for-2010-01-25">
+				<h3 class="title"><a href="/2010/01/25/twitter-weekly-updates-for-2010-01-25.html">Twitter Weekly Updates for 2010-01-25</a></h3>
+
+				<ul class="aktt_tweet_digest">
+    <li>Vanilla Forums Raises $500,000 For Open-Source Forum Software <a href="http://www.techcrunch.com/2010/01/19/vanilla-forums-funding/" rel="nofollow">http://www.techcrunch.com/2010/01/19/vanilla-forums-funding/</a> <a href="http://twitter.com/Joshua_C/statuses/7946411510">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jan 25, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/01/18/twitter-weekly-updates-for-2010-01-18">
+				<h3 class="title"><a href="/2010/01/18/twitter-weekly-updates-for-2010-01-18.html">Twitter Weekly Updates for 2010-01-18</a></h3>
+
+				<ul class="aktt_tweet_digest">
+    <li><a href="http://blogs.wsj.com/chinarealtime/2010/01/15/clearing-up-confusion-on-google-and-china/" rel="nofollow">http://blogs.wsj.com/chinarealtime/2010/01/15/clearing-up-confusion-on-google-and-china/</a>  Clearing Up Confusion on Google and China <a href="http://twitter.com/Joshua_C/statuses/7824537607">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jan 18, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/01/13/what-i-learned-today">
+				<h3 class="title"><a href="/2010/01/13/what-i-learned-today.html">What I learned today</a></h3>
+
+				<ol>
+<li><p><a href="http://www.shinguz.ch/MySQL/mysql_mv.html">Materialised Views with MySQL</a></li> -
+I gave a simple test as this '<a href="Materialized view makes login process 25k times faster">article</a>'. 10 times faster in my case.
+Before: 56 ms;
+After: 6ms;
+But the disadvantage of this is the data on the site will not be real time. So if you want to use method to speed up your site, it depends on what business of this page is.</p></li>
+<li><p>At last I understand, <a href="http://www.kiwitask.com">kiwi</a> is dead. If you lost your customer for a while, you will lost them forever.</p></li>
+<li><p>Don't say yes or not simplely. Please give some explanation of yes or no even if no body ask you the reason.</p></li>
+<li><p>Learn more about Scrum.
+<a href="http://www.freetofeel.com/2010/01/what-i-learned-today/scrum/" rel="attachment wp-att-365"><img src="http://www.freetofeel.com/wp-content/uploads/2010/01/scrum-300x195.jpg" alt="scrum" title="scrum" width="300" height="195" class="aligncenter size-medium wp-image-365" /></a></p></li>
+</ol>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jan 13, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/01/11/twitter-weekly-updates-for-2010-01-11">
+				<h3 class="title"><a href="/2010/01/11/twitter-weekly-updates-for-2010-01-11.html">Twitter Weekly Updates for 2010-01-11</a></h3>
+
+				<ul class="aktt_tweet_digest">
+    <li>在看第二财经谈哥本哈根，同时也在看http://www.brookings.edu/opinions/2009/1222_china_climate_lieberthal.aspx <a href="http://twitter.com/Joshua_C/statuses/7557841646">#</a></li>
+    <li><a href="http://www.cool-friends.cn/archives/5" rel="nofollow">http://www.cool-friends.cn/archives/5</a> 还是关于舞女转动那个图片 <a href="http://twitter.com/Joshua_C/statuses/7391581351">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jan 11, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/01/04/twitter-weekly-updates-for-2010-01-04">
+				<h3 class="title"><a href="/2010/01/04/twitter-weekly-updates-for-2010-01-04.html">Twitter Weekly Updates for 2010-01-04</a></h3>
+
+				<ul class="aktt_tweet_digest">
+    <li><a href="http://www.addedbytes.com/cheat-sheets/" rel="nofollow">http://www.addedbytes.com/cheat-sheets/</a> <a href="http://twitter.com/Joshua_C/statuses/7361828037">#</a></li>
+    <li>RT @<a href="http://twitter.com/kejunz">kejunz</a> 2010 = 1+2-(3-4-5)*6*7*8-9 <a href="http://bit.ly/5bVDir" rel="nofollow">http://bit.ly/5bVDir</a> <a href="http://twitter.com/Joshua_C/statuses/7359868857">#</a></li>
+    <li><a href="http://www.chinaunix.net/jh/39/482118.html" rel="nofollow">http://www.chinaunix.net/jh/39/482118.html</a> 今天吃了高远球的亏，这帖子讲的不错 <a href="http://twitter.com/Joshua_C/statuses/7298751284">#</a></li>
+    <li>Spence-Chapin- accredited nonprofit agency that has been offering quality adoption services for over 100 years.http://www.spence-chapin.org/ <a href="http://twitter.com/Joshua_C/statuses/7292719362">#</a></li>
+    <li>2010！ <a href="http://twitter.com/Joshua_C/statuses/7238103258">#</a></li>
+    <li>There is a little fear for I am going to lose 2009! <a href="http://twitter.com/Joshua_C/statuses/7237792551">#</a></li>
+    <li>08做的plan 经过一年的实践，并没有像想象中的那样带来经济价值，但其他方面我都得到了。 <a href="http://twitter.com/Joshua_C/statuses/7237522656">#</a></li>
+    <li>08前做的plan 经过一年的实践，并没有像想象中的那样带来经济价值，但其他方面我都得到了。 <a href="http://twitter.com/Joshua_C/statuses/7237512078">#</a></li>
+    <li>RT @<a href="http://twitter.com/smashingmag">smashingmag</a> A Designer’s List of New Year’s Resolutions - <a href="http://bit.ly/4G0v7O" rel="nofollow">http://bit.ly/4G0v7O</a> <a href="http://twitter.com/Joshua_C/statuses/7229858111">#</a></li>
+    <li>RT @yingeli: Liu Xiaobo poems,read by Paul Auster: <a href="http://tr.my/F32" rel="nofollow">http://tr.my/F32</a> <a href="http://twitter.com/Joshua_C/statuses/7229694333">#</a></li>
+    <li>RT @<a href="http://twitter.com/keso">keso</a> 孔子过泰山，见到一妇人在哭，让子路去问问咋回事。妇人道：我老公公被老虎吃了，老公又被老虎吃了，孩子也被老虎吃了。那你怎么不离开这里呢？妇人道：这里不用办证啊。子曰：“小子识之，苛证猛于虎也。” <a href="http://twitter.com/Joshua_C/statuses/7179988038">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jan 04, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/01/04/symfony-vanilla2-sso">
+				<h3 class="title"><a href="/2010/01/04/symfony-vanilla2-sso.html">Symfony + Vanilla2 + SSO</a></h3>
+
+				<p>Vanilla2 is really really cool! Both the interface and functionality are very good.
+I give a implementation of integrating the vanilla forum into a symfony project with SSO.
+I have given some investigation of the SSO. If you have a lot of applications deployed in different domains, <a href="http://www.jasig.org/cas">CAS</a> is a better choice. But it will take you a lot of time to implement. As I can think, there is a CAS server using 8080 port that you should deploy.
+And I found an interesting post <a href="http://www.adaniels.nl/articles/simple-single-sign-on-for-php/">"Simple Single Sign-On for PHP"</a>. I really like this idea.</p>
+
+<p><img src="http://www.adaniels.nl/wp-content/uploads/sso-diagram_binck.png" alt="simple SSO" width="300" height="213" /></p>
+
+<p>The main idea is using the <a href="http://learn.clemsonlinux.org/wiki/Symlink">symlinks</a> in Linux system to link one session file in domain aaa.domain.com to another in bb.domain.com. To implementation this idea into your application is simple. But there is not so many security test for this idea. I have given a integration of <a href="http://bbpress.org/">bbpress</a> into my symfony project. But there is a lot of interface should be modified in bbpress, like login, auth_user and so on. And I didn't want to spend so much time on it. So I almost give up.</p>
+
+<p>After I installed the <a href="http://vanillaforums.org/">vanilla 2</a>, I was shocked by its UI.
+<a href="http://www.freetofeel.com/2010/01/symfony-vanilla2-sso/screenshot/" rel="attachment wp-att-346"><img src="http://www.freetofeel.com/wp-content/uploads/2010/01/screenshot-300x213.png" alt="screenshot" title="screenshot" width="300" height="213" class="aligncenter size-medium wp-image-346" /></a>
+And there is a <a href="http://vanillaforums.org/page/SingleSignOn">SSO plugin</a> for vanilla 2. The main idea to implement vanilla-SSO is sharing the domain cookie and sharing the current user information in the main site. That the vanilla will try to get the current user information. If there is, the user will sign in the vanilla. But this only limit to these sites have the same domain. For example, your main application was deployed on xx.domain.com and the vanilla should be deployed on yy.domain.com.</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jan 04, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+		
+		<div class="paging">
+		
+			<a href="/page6" class="previous">&#x25C4; Previous</a>
+		
+		
+			
+			  <a href="/page4" class="next">Next &#x25BA;</a>
+			
+		
+		</div>
+
+  </ul>
+</div>
+</div>
+
+	</div>
+  
+  <div class="footer">
+		<div id="copyright">
+			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+		</div>
+  </div>    
+</div>
+
+</body>
+</html>

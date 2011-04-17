@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Import Big InnoDB Tables</title>
+   <meta name="author" content="Joshua Chi" />
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9434024-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		<!-- Google Analytics end -->
+</head>
+<body>
+
+<div class="site">
+  <div class="header">
+    <a href="/">Free To Feel</a>
+  </div>
+
+<!--start of side bar-->
+<div id="sidebar" >
+	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
+	<br />
+	Joshua Chi
+    <div class="contact">
+        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
+				<a href="https://github.com/joshuachi">My Github</a><br />
+			</div>
+			<div class="rss">
+				<p>
+				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+				</p>
+				<p>
+				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
+				</p>
+			</div>	
+		
+			<p class='douban'>
+				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
+				</p>
+</div>
+<!--end of side bar-->
+
+	<div id='content'>
+		<div id="disqus_thread">
+  <div id="post">
+    <h3 class="title"><a href="/2010/07/28/import-big-innodb-tables.html">Import Big InnoDB Tables</a></h3>
+    <ol>
+<li>turn off the logs;</li>
+<li>turn off unique key check if the table has;</li>
+<li>turn off foreign key check;</li>
+</ol>
+
+
+<ul>
+    <li>
+When importing data into InnoDB, make sure that MySQL does not have autocommit mode enabled because that requires a log flush to disk for every insert. To disable autocommit during your import operation, surround it with SET autocommit and COMMIT statements:
+
+<code>SET autocommit=0;
+... SQL import statements ...
+COMMIT;</code>
+
+If you use the mysqldump option --opt, you get dump files that are fast to import into an InnoDB  table, even without wrapping them with the SET autocommit and COMMIT statements. </li>
+    <li>If you have UNIQUE constraints on secondary keys, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by temporarily turning off the uniqueness checks during the import session:
+
+<code>SET unique_checks=0;
+... SQL import statements ...
+SET unique_checks=1;</code>
+
+For big tables, this saves a lot of disk I/O because InnoDB can use its insert buffer to write secondary index records in a batch. Be certain that the data contains no duplicate keys.</li>
+    <li>#
+
+If you have FOREIGN KEY constraints in your tables, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by turning the foreign key checks off for a while in the import session:
+<code>
+SET foreign_key_checks=0;
+... SQL import statements ...
+SET foreign_key_checks=1;</code>
+
+For big tables, this can save a lot of disk I/O.
+</li>
+
+If the above solution still can not quick your import process. Try <a href="http://dev.mysql.com/doc/refman/5.0/en/mysqlimport.html">mysqlimport</a>.  You can use mysqldump to dump a sql file and a text file. There is an example, look like this:
+<pre name='code' class='sql'>
+shell> mysql -e 'CREATE TABLE imptest(id INT, n VARCHAR(30))' test
+shell> ed
+a
+100     Max Sydow
+101     Count Dracula
+.
+w imptest.txt
+32
+q
+shell> od -c imptest.txt
+0000000   1   0   0  \t   M   a   x       S   y   d   o   w  \n   1   0
+0000020   1  \t   C   o   u   n   t       D   r   a   c   u   l   a  \n
+0000040
+shell> mysqlimport --local test imptest.txt
+test.imptest: Records: 2  Deleted: 0  Skipped: 0  Warnings: 0
+shell> mysql -e 'SELECT * FROM imptest' test
++------+---------------+
+| id   | n             |
++------+---------------+
+|  100 | Max Sydow     |
+|  101 | Count Dracula |
++------+---------------+
+
+</pre>
+
+
+  </div>
+</div>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = "/2010/07/28/import-big-innodb-tables";
+    var disqus_url = "http://freetofeel.com"+"/2010/07/28/import-big-innodb-tables.html";
+    var disqus_title = "Import Big InnoDB Tables";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>08 Mar 2011</span> &raquo; <a href="/2011/03/08/do-we-still-need-scrum.html">Do we still need scrum if ...</a></li>
+    
+      <li><span>02 Mar 2011</span> &raquo; <a href="/2011/03/02/server-monitor.html">Web Server Memory Monitor</a></li>
+    
+      <li><span>21 Feb 2011</span> &raquo; <a href="/2011/02/21/deal-with-mysql-error-150.html">mysql ERROR 1005 (ER_CANT_CREATE_TABLE)</a></li>
+    
+  </ul>
+</div>
+
+	</div>
+  
+  <div class="footer">
+		<div id="copyright">
+			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+		</div>
+  </div>    
+</div>
+
+</body>
+</html>

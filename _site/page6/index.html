@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Joshua Chi's Blog</title>
+   <meta name="author" content="Joshua Chi" />
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9434024-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		<!-- Google Analytics end -->
+</head>
+<body>
+
+<div class="site">
+  <div class="header">
+    <a href="/">Free To Feel</a>
+  </div>
+
+<!--start of side bar-->
+<div id="sidebar" >
+	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
+	<br />
+	Joshua Chi
+    <div class="contact">
+        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
+				<a href="https://github.com/joshuachi">My Github</a><br />
+			</div>
+			<div class="rss">
+				<p>
+				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+				</p>
+				<p>
+				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
+				</p>
+			</div>	
+		
+			<p class='douban'>
+				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
+				</p>
+</div>
+<!--end of side bar-->
+
+	<div id='content'>
+		<div id="home">
+
+<div class="post">
+  <ul class="content">
+		
+			<div class="post" id="postid-/2009/12/28/twitter-weekly-updates-for-2009-12-28">
+				<h3 class="title"><a href="/2009/12/28/twitter-weekly-updates-for-2009-12-28.html">Twitter Weekly Updates for 2009-12-28</a></h3>
+
+				<ul class="aktt_tweet_digest">
+    <li>@<a href="http://twitter.com/YaYaZheng">YaYaZheng</a> WOW~~~ <a href="http://twitter.com/YaYaZheng/statuses/4467822814">in reply to YaYaZheng</a> <a href="http://twitter.com/Joshua_C/statuses/7118009292">#</a></li>
+    <li>所谓的编程和架构：都是做事情，只是处于事情的不同阶段而已。就技术难度而言，一样。你也可以说他没有难度。 <a href="http://twitter.com/Joshua_C/statuses/7001694475">#</a></li>
+    <li>终于又可以上网了，看来想和twitter保持同步是很难的。同时也发现从twitter 上节省下来的时间可不是个小数字。 <a href="http://twitter.com/Joshua_C/statuses/6985116712">#</a></li>
+    <li>Yoono - Twitter, Facebook, LinkedIn, MySpace, Flickr, IM... <a href="https://addons.mozilla.org/en-US/firefox/search?q=twitter" rel="nofollow">https://addons.mozilla.org/en-US/firefox/search?q=twitter</a> <a href="http://twitter.com/Joshua_C/statuses/6922877901">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Dec 28, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/12/18/upload-and-downfile-using-scp">
+				<h3 class="title"><a href="/2009/12/18/upload-and-downfile-using-scp.html">Upload and downfile using scp</a></h3>
+
+				<p>The <a href="http://www.linuxtutorialblog.com/post/ssh-and-scp-howto-tips-tricks">scp</a> command allows you to copy files over ssh connections. This is pretty useful if you want to transport files between computers, for example to backup something.</p>
+
+<p>Upload local file to remote server:
+scp localfile username@tohostname:/dir/</p>
+
+<p>Download remote file to local system:
+scp username@tohostname:/remotefile /localdir/</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Dec 18, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/12/15/2w-records-update-with-different-sql-engine">
+				<h3 class="title"><a href="/2009/12/15/2w-records-update-with-different-sql-engine.html">2W records update with different sql engine</a></h3>
+
+				<p>This is just a test result:
+20000 records in table animals;</p>
+
+<pre name='code' class='sql'>
+CREATE TABLE `animals` (                                                           
+           `animal_id` mediumint(8) NOT NULL auto_increment,                                
+           `animal_type` varchar(25) collate utf8_unicode_ci NOT NULL,                      
+           `animal_name` varchar(25) collate utf8_unicode_ci NOT NULL,                      
+           `created` datetime NOT NULL default '2009-02-02 00:00:00',                       
+           `doubledata` double default NULL,                                                
+           PRIMARY KEY  (`animal_id`),                                                      
+           KEY `typekey` (`animal_type`,`animal_name`),                                     
+           KEY `datetime` (`created`),                                                      
+           KEY `DOUBLE` (`doubledata`)                                                      
+         ) ENGINE=MyISAM AUTO_INCREMENT=20001 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci  
+</pre>
+
+
+<p>sql file looks like this:</p>
+
+<pre name='code' class='sql'>
+update animals set animal_type = 'xxx' where animal_id = 1;
+update animals set animal_type = 'xxx' where animal_id = 2;
+.
+.
+.
+update animals set animal_type = 'dog123' where animal_id = 20000;
+</pre>
+
+
+<p>With Innodb engine, the update time > 5min( I just have no time to wait any more)
+With MyISAM, the update time = 30 seconds.</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Dec 15, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records">
+				<h3 class="title"><a href="/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records.html">The simplest and quickest way to create mysql table demo records.</a></h3>
+
+				<p>Take animals table as example,
+Field        Type     Extra</p>
+
+<hr />
+
+<p>id    mediumint(8)  auto_increment
+animal_type  varchar(25)      <br/>
+animal_name  varchar(25)</p>
+
+<p>Create one records in this table.
+Step1. insert into animals(<code>animal_type</code>, <code>animal_name</code>) values('dingo', 'cat');
+Step2:
+insert into animals(<code>animal_type</code>, <code>animal_name</code>) select animal_type, animal_name from animals;</p>
+
+<p>Re-run the step2 serval times, you will find the records was increased as geometric progressions.</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Dec 14, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/12/14/mysql-backup-and-restore-system">
+				<h3 class="title"><a href="/2009/12/14/mysql-backup-and-restore-system.html">MySQL Database Backup and Restore</a></h3>
+
+				<p><strong>Backup</strong>
+I was trying to find some backup and restore system for our product mysql database. There are a lot of tools can do this. But I think the simple way is using <a href="https://help.ubuntu.com/community/CronHowto">crontab</a> + <a href="http://www.ntchosting.com/mysql/database-dump.html">mysqldump</a>.</p>
+
+<p>So I write a simple script</p>
+
+<pre name='code' class='sql'>
+$ mysqldump -u [uname] -p[pass] [dbname] | gzip -9 > [backupfile.sql.gz]
+example:
+
+15 2 * * * root mysqldump -u root -pPASSWORD --all-databases | gzip > /usr/local/bk/database_`data '+%m-%d-%Y'`.sql.gz 
+</pre>
+
+
+<p>If you want to extract the .gz file, use the command below:</p>
+
+<pre name='code' class='html'>
+$ gunzip [backupfile.sql.gz]
+</pre>
+
+
+<p>This script will vardump all my database into the database_<code>data '+%m-%d-%Y'</code>.sql.gz zip file at 2::15am on every day of every month.</p>
+
+<p><strong>Restoring</strong>
+Restore the databases is simple.</p>
+
+<pre name='code' class='sql'>
+$ mysql -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
+</pre>
+
+
+<p>To restore from a compress sql:</p>
+
+<pre name='code' class='sql'>
+gunzip < [backupfile.sql.gz] | mysql -u [uname] -p[pass] [dbname]
+</pre>
+
+
+<p>If you need to restore a database that already exists, you'll need to use mysqlimport command. The syntax for mysqlimport is as follows</p>
+
+<pre name='code' class='sql'>
+mysqlimport -u [uname] -p[pass] [dbname] [backupfile.sql]
+</pre>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Dec 14, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/12/11/using-rsync-and-ssh-to-synchronise-between-two-servers">
+				<h3 class="title"><a href="/2009/12/11/using-rsync-and-ssh-to-synchronise-between-two-servers.html">Using Rsync and SSH to synchronise between two servers</a></h3>
+
+				<p>$ rsync -avz -e ssh remoteuser@remotehost:/remote/dir /this/dir/</p>
+
+<p><a href="http://troy.jdmz.net/rsync/index.html">refs</a></p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Dec 11, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/12/07/twitter-weekly-updates-for-2009-12-07">
+				<h3 class="title"><a href="/2009/12/07/twitter-weekly-updates-for-2009-12-07.html">Twitter Weekly Updates for 2009-12-07</a></h3>
+
+				<ul class="aktt_tweet_digest">
+    <li>HTM::Sanitizer, this lib help you to parse html easier.Don&#39;t invent the wheel anymore. <a href="http://www.codinghorror.com/blog/archives/001311.html" rel="nofollow">http://www.codinghorror.com/blog/archives/001311.html</a> <a href="http://twitter.com/Joshua_C/statuses/6433320128">#</a></li>
+    <li>node.js + NOSQL database , cool idea. Hope I can get a project to give a try. <a href="http://simonwillison.net/2009/Nov/23/node/" rel="nofollow">http://simonwillison.net/2009/Nov/23/node/</a> <a href="http://twitter.com/Joshua_C/statuses/6432961969">#</a></li>
+    <li>google public dns <a href="http://blog.s135.com/google_public_dns/" rel="nofollow">http://blog.s135.com/google_public_dns/</a> <a href="http://twitter.com/Joshua_C/statuses/6421480322">#</a></li>
+    <li>I think it is wrong decision that integrate twitter into linkedin.  Not every product is suitable for integration twitter. #<a href="http://search.twitter.com/search?q=%23linkedin">linkedin</a> <a href="http://twitter.com/Joshua_C/statuses/6388822149">#</a></li>
+    <li>Dear Windows7, you are more quick, you are more safe? But you are definitely more difficult to use! #<a href="http://search.twitter.com/search?q=%23windows7">windows7</a> <a href="http://twitter.com/Joshua_C/statuses/6269306864">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Dec 07, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+		
+		<div class="paging">
+		
+			<a href="/page7" class="previous">&#x25C4; Previous</a>
+		
+		
+			
+			  <a href="/page5" class="next">Next &#x25BA;</a>
+			
+		
+		</div>
+
+  </ul>
+</div>
+</div>
+
+	</div>
+  
+  <div class="footer">
+		<div id="copyright">
+			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+		</div>
+  </div>    
+</div>
+
+</body>
+</html>

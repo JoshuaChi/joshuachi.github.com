@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Joshua Chi's Blog</title>
+   <meta name="author" content="Joshua Chi" />
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9434024-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		<!-- Google Analytics end -->
+</head>
+<body>
+
+<div class="site">
+  <div class="header">
+    <a href="/">Free To Feel</a>
+  </div>
+
+<!--start of side bar-->
+<div id="sidebar" >
+	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
+	<br />
+	Joshua Chi
+    <div class="contact">
+        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
+				<a href="https://github.com/joshuachi">My Github</a><br />
+			</div>
+			<div class="rss">
+				<p>
+				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+				</p>
+				<p>
+				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
+				</p>
+			</div>	
+		
+			<p class='douban'>
+				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
+				</p>
+</div>
+<!--end of side bar-->
+
+	<div id='content'>
+		<div id="home">
+
+<div class="post">
+  <ul class="content">
+		
+			<div class="post" id="postid-/2010/12/29/memcached-slabs">
+				<h3 class="title"><a href="/2010/12/29/memcached-slabs.html">Be Careful Of Your Memcached Slab Size</a></h3>
+
+				<p>Recently, we found a very 'strange' bug. The memcached's evictions keep growing. But there is stil 10% free memory in this instance. The memcached instance size is around 600M, and it has recached 90% percentage usage for a long time. This issue happened after we deployed a fix, which changed the entry size stored in memcache.</p>
+
+<p>Let's give a brief analysis:
+Memcached memory allocation: a slab has many pages. One page has many chunks. Each chunk is a fixed size, based on the maximum size for the slab. So for example, there is 600Mb memory for the whole instance. And there are 540Mb has been used. Usually you store some big entries into memcache. Let's say 1500 bytes for each of them. So there are some big slabs with chunk size from 1000 bytes to 2000 bytes. And these slabs took 400Mb memory. Now you changed the size for these entries to 500 bytes. Let's call these entries 'Changed-Entries'. So memcached try to find some slabs which have 500 bytes size chunk. There are three possibilities:</p>
+
+<ol>
+<li><p>There is no such size slabs exist. So Memcached will use the free memory to create some proper size slab for 'Changed-Entries'; There are 60Mb free memory can be used. But if these entries need 100Mb. That means some old entries will be 'kicked out' from these new slabs. Eviction happens;</p></li>
+<li><p>If memcached found some used slabs which have 500 bytes chunk. It will kickout the expired items firstly. If the memroy still not enough for 'Changed-Entries', then the least used entries will be kicked out. Eviction happens;</p></li>
+<li><p>If there is no free memory and there is no propel slabs can be used, then eviction happens.</p></li>
+</ol>
+
+
+<p>If you want to learn more detail about how it works, take a look following references:</p>
+
+<ul>
+<li><p><a href='http://code.google.com/p/memcached/wiki/FAQ#When_do_expired_cached_items_get_deleted_from_the_cache?'>When do expired cached items get deleted from the cache?</a></p></li>
+<li><p><a href='http://dev.mysql.com/doc/refman/5.0/en/ha-memcached-using-memory.html'>Memory allocation within memcached</a></p></li>
+</ul>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Dec 29, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/12/19/nodejs-with-socket-io">
+				<h3 class="title"><a href="/2010/12/19/nodejs-with-socket-io.html">Dig Into Nodejs</a></h3>
+
+				<p>Just find a beautiful and simplest javascript code:</p>
+
+<pre>
+  // In both HTTP servers and clients it is possible to queue up several
+  // outgoing messages. This is easiest to imagine in the case of a client.
+  // Take the following situation:
+  //
+  //    req1 = client.request('GET', '/');
+  //    req2 = client.request('POST', '/');
+  //
+  // The question is what happens when the user does
+  //
+  //   req2.write("hello world\n");
+  //
+  // It's possible that the first request has not been completely flushed to
+  // the socket yet. Thus the outgoing messages need to be prepared to queue
+  // up data internally before sending it on further to the socket's queue.
+  //
+  // This function, outgoingFlush(), is called by both the Server
+  // implementation and the Client implementation to attempt to flush any
+
+
+  while (message.output.length) {
+    if (!socket.writable) return; // XXX Necessary?
+
+    var data = message.output.shift();
+    var encoding = message.outputEncodings.shift();
+
+    ret = socket.write(data, encoding);
+  }
+</pre>
+
+
+<p>Now I know how nodejs talk with server, which is using <a href='http://socket.io/'>Socket.IO</a> - multi-transport socket server.</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Dec 19, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/12/05/find-ubuntu-wireless-icon">
+				<h3 class="title"><a href="/2010/12/05/find-ubuntu-wireless-icon.html">Find Ubuntu Wireless Icon</a></h3>
+
+				<p>My network-manager works fine. You can test by <code>sudo service network-manager start/stop</code>. And my wireless network can be found by <code>sudo iwlist  scan</code>.
+So there are two solutions:</p>
+
+<ul>
+<li>Right click the top panel and click 'add to panel' and select 'notifications area'. If this didn't work,then netstep:
+</li>
+<li>
+<code>sudo vim /etc/NetworkManager/nm-sysmte-settings.conf</code>. Modify false to true.
+<code>sudo service network-manager restart</code>
+
+In my ubuntu 10.10, after these trys, the wireless icon displayed in the panel again. Good luck to you.
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Dec 05, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/11/30/try-to-use-githubpages-for-my-blog">
+				<h3 class="title"><a href="/2010/11/30/try-to-use-githubpages-for-my-blog.html">Try to Use Github Pages As My Blog</a></h3>
+
+				<p>Finally, I decide to move my blog to githubpages. I know github do a great job. I want to give a try.<br />
+Later I will try to import my old blog entries.<br />
+Until now, everything looks amazing.</p>
+<p>&#8212;<br />
+I finished the import from wordpress blog to github. I make a import.php script. Don&#8217;t forget to change the user name, password and database in this script.</p>
+<p>&#8212;<br />
+Add <a href='http://disqus.com'>comment service</a> into my blog.</p>
+
+
+				<div class="post-metadata"
+				<p>Posted Nov 30, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/07/28/import-big-innodb-tables">
+				<h3 class="title"><a href="/2010/07/28/import-big-innodb-tables.html">Import Big InnoDB Tables</a></h3>
+
+				<ol>
+<li>turn off the logs;</li>
+<li>turn off unique key check if the table has;</li>
+<li>turn off foreign key check;</li>
+</ol>
+
+
+<ul>
+    <li>
+When importing data into InnoDB, make sure that MySQL does not have autocommit mode enabled because that requires a log flush to disk for every insert. To disable autocommit during your import operation, surround it with SET autocommit and COMMIT statements:
+
+<code>SET autocommit=0;
+... SQL import statements ...
+COMMIT;</code>
+
+If you use the mysqldump option --opt, you get dump files that are fast to import into an InnoDB  table, even without wrapping them with the SET autocommit and COMMIT statements. </li>
+    <li>If you have UNIQUE constraints on secondary keys, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by temporarily turning off the uniqueness checks during the import session:
+
+<code>SET unique_checks=0;
+... SQL import statements ...
+SET unique_checks=1;</code>
+
+For big tables, this saves a lot of disk I/O because InnoDB can use its insert buffer to write secondary index records in a batch. Be certain that the data contains no duplicate keys.</li>
+    <li>#
+
+If you have FOREIGN KEY constraints in your tables, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by turning the foreign key checks off for a while in the import session:
+<code>
+SET foreign_key_checks=0;
+... SQL import statements ...
+SET foreign_key_checks=1;</code>
+
+For big tables, this can save a lot of disk I/O.
+</li>
+
+If the above solution still can not quick your import process. Try <a href="http://dev.mysql.com/doc/refman/5.0/en/mysqlimport.html">mysqlimport</a>.  You can use mysqldump to dump a sql file and a text file. There is an example, look like this:
+<pre name='code' class='sql'>
+shell> mysql -e 'CREATE TABLE imptest(id INT, n VARCHAR(30))' test
+shell> ed
+a
+100     Max Sydow
+101     Count Dracula
+.
+w imptest.txt
+32
+q
+shell> od -c imptest.txt
+0000000   1   0   0  \t   M   a   x       S   y   d   o   w  \n   1   0
+0000020   1  \t   C   o   u   n   t       D   r   a   c   u   l   a  \n
+0000040
+shell> mysqlimport --local test imptest.txt
+test.imptest: Records: 2  Deleted: 0  Skipped: 0  Warnings: 0
+shell> mysql -e 'SELECT * FROM imptest' test
++------+---------------+
+| id   | n             |
++------+---------------+
+|  100 | Max Sydow     |
+|  101 | Count Dracula |
++------+---------------+
+
+</pre>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jul 28, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/07/03/symfony-1-0-addjoin-an-array">
+				<h3 class="title"><a href="/2010/07/03/symfony-1-0-addjoin-an-array.html">Symfony 1.0 addJoin an array</a></h3>
+
+				<p>In sf1.3, we can use addJoin(array('id_a'm 'id_b'), array('id_1', 'id_2'))</p>
+
+<pre name='code' class='php'>
+/**
+     * This is the way that you should add a straight (inner) join of two tables.  For
+     * example:
+     *
+     * <p>
+     * AND PROJECT.PROJECT_ID=FOO.PROJECT_ID
+     * <p>
+     *
+     * left = PROJECT.PROJECT_ID
+     * right = FOO.PROJECT_ID
+     *
+     * @param      mixed $left A String with the left side of the join.
+     * @param      mixed $right A String with the right side of the join.
+     * @param      mixed $operator A String with the join operator e.g. LEFT JOIN, ...
+   *
+     * @return     Criteria A modified Criteria object.
+     */
+    public function addJoin($left, $right, $operator = null)
+    {
+        $join = new Join();
+    if (!is_array($left)) {
+      // simple join
+      $join->addCondition($left, $right);
+    } else {
+      // join with multiple conditions
+      // deprecated: use addMultipleJoin() instead
+      foreach ($left as $key => $value)
+      {
+        $join->addCondition($value, $right[$key]);
+      }
+    }
+        $join->setJoinType($operator);
+        
+        return $this->addJoinObject($join);
+    }
+</pre>
+
+
+<p>Sometimes we still work on symfony 1.0. So when we want to join on more keys, it seems impossible.</p>
+
+<pre name='code' class='php'>
+select * from books left join categories on book.category_id = categories.id where categories.name='biography'
+</pre>
+
+
+<p>If books has 1,000,000 items. There are 100,000 categories, but only 1000 categories with name 'biography' . The above sql will go through all the categories. But we propel can generated sql like this:</p>
+
+<pre name='code' class='php'>
+select * from books left join categories on book.category_id = categories.id and categories.name='biography'
+</pre>
+
+
+<p>This sql can limit the touched categories number to 1000.</p>
+
+<p>So we can do following in symfony 1.0</p>
+
+<pre name='code' class='php'>
+$c->addJoin(BookPeer::CATEGORY_ID, CategoryPeer::ID.' AND '.CategoryPeer::NAME.'= "biography"', Criteria::LEFT_JOIN);
+</pre>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jul 03, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/06/28/how-to-win-others-trust">
+				<h3 class="title"><a href="/2010/06/28/how-to-win-others-trust.html">How to win others trust</a></h3>
+
+				<p>I just want to post some suggestions about 'trust' from my experience. It might not be perfect, but I am sure some of them are mostly useful for you.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Trust">Trust (social sciences), reliance on another person or entity. Having faith in others and believing them.</a></p>
+
+<ul>    
+    <li><strong>Be polite.</strong> Only when you respect the others, you can get the respect from the others. Only when you get respect, then it is possible for you to get the 'trust'.</li>
+    <li><strong>Trust is not two-way.</strong> It doesn't mean if you trust somebody, somebody should also trust on you. But for sure they will try to trust you firstly. And then if you break the trust from this guy, it will difficulty for you to get it back.</li>
+    <li><strong>Trust is hard to copy.</strong> If you didn't know how to be honest man, you will break it at sometime.</li>
+    <li><strong>Think before you say.</strong> When somebody ask you something seriously, please think it for a while and then make the reply. If you don't know, you can try to give some references or just say 'no'. Don't waste the others' time and the time of yourself.</li>
+    <li><strong>Contribute to the others.</strong> Try to share something or give some help for the others. Don't live in the world with yourself.</li>
+    <li><strong>Keep your promise.</strong> If you lost your promise for the others several times and everybody knows you didn't try your best, you will lost the trust forever.</li>
+    <li><strong>Try to say 'sorry'. Don't always say 'sorry'.</strong> When you lost your promise, try to say sorry and give a reasonable explanation, rather than ignore it. But..but don't always say sorry for the same mistake.</li>
+    <li><strong>Undertake your mistake.</strong> If you make something wrong in your group, please undertake the mistake, rather than hide it. If you think the others might be stupid, you will be the stupid one.</li>
+
+</ul>
+
+
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jun 28, 2010.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+		
+		<div class="paging">
+		
+			<a href="/page3" class="previous">&#x25C4; Previous</a>
+		
+		
+			
+			  <a href="/" class="next">Next &#x25BA;</a>
+			
+		
+		</div>
+
+  </ul>
+</div>
+</div>
+
+	</div>
+  
+  <div class="footer">
+		<div id="copyright">
+			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+		</div>
+  </div>    
+</div>
+
+</body>
+</html>

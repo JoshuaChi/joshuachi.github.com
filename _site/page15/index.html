@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Joshua Chi's Blog</title>
+   <meta name="author" content="Joshua Chi" />
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9434024-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		<!-- Google Analytics end -->
+</head>
+<body>
+
+<div class="site">
+  <div class="header">
+    <a href="/">Free To Feel</a>
+  </div>
+
+<!--start of side bar-->
+<div id="sidebar" >
+	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
+	<br />
+	Joshua Chi
+    <div class="contact">
+        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
+				<a href="https://github.com/joshuachi">My Github</a><br />
+			</div>
+			<div class="rss">
+				<p>
+				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+				</p>
+				<p>
+				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
+				</p>
+			</div>	
+		
+			<p class='douban'>
+				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
+				</p>
+</div>
+<!--end of side bar-->
+
+	<div id='content'>
+		<div id="home">
+
+<div class="post">
+  <ul class="content">
+		
+			<div class="post" id="postid-/2009/07/20/format-php-code-integrated-with-vim">
+				<h3 class="title"><a href="/2009/07/20/format-php-code-integrated-with-vim.html">Format PHP Code integrated with VIM</a></h3>
+
+				<p>I like this post <a href="http://shadsplace.org/beautify-php/">Command line PHP Code Formatter for use with VIM</a>. It really save me a lot of time on format the past code in VIM.
+1.
+download the <a href="http://shadsplace.org/beautify-php/beautify.php.gz">beautify.php.gz</a></p>
+
+<ol>
+<li><p>Copy the beautify.php into your user bin directory
+<strong>cp beautify.php /usr/local/bin</strong>
+<strong>chmod 755 /usr/local/bin/beautify.php</strong></p></li>
+<li><p>Select the code and then format it using the php script.
+Selecting code in visual mode (<strong>shift-v</strong> while in command mode) and then sending it to beautify.php by
+<strong>:! beautify.php</strong></p></li>
+</ol>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jul 20, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/07/17/cake-tips-from-my-app">
+				<h3 class="title"><a href="/2009/07/17/cake-tips-from-my-app.html">Cake Tips from my App</a></h3>
+
+				<ol>
+<li><p>If you turn on cache in core.php, everytime when you modify your model , don't forget to clear the files under /tmp/cache/models/.</p></li>
+<li><p>Don't cache the element which has include the pagination logic. Because the sort and pagination will fail to work.</p></li>
+<li><p>If there is anonymous role in your ACL model, don't divide your ACL model like this:
+All --
+-----Anonymous
+-----Member--
+---------------Admin
+---------------Normal</p></li>
+</ol>
+
+
+<p>There is a <a href="http://groups.google.com/group/cake-php/browse_thread/thread/cdc817b4ee5de4d5/824fccaad92bfca6?hl=en&lnk=gst&q=use+Auth+component+in+AppController%3F#">thread</a> explained this.</p>
+
+<p>The following will be fine:
+All --
+-----Member--
+---------------Admin
+---------------Normal</p>
+
+<p>If you want 'post/view' page can be visited by anonymous user, just add it into $this->Auth->allowedActions = array(//....);</p>
+
+<ol>
+<li>If you want to use Auth component, you should decide you will use it entirely in your application or use it a little.
+For example, If you want to implement your ACL like cake <a href="http://book.cakephp.org/view/641/Simple-Acl-controlled-Application">demo</a>. You should remember, there is no need to write users/login action code. Cake will help you do the left including login and redirect, if you has set the auth property.</li>
+</ol>
+
+
+<pre name="code" class="php">
+    $this->Auth->allowedActions = array(//...);
+    $this->Auth->loginAction = array('controller' => 'controller_a', 'action' => 'action_a');
+    $this->Auth->loginRedirect = array('controller' => 'controller_b', 'action' => 'action_b');
+    $this->Auth->loginError = 'Username and password do not match. Please try again.';
+    $this->Auth->fields = array(
+     //...
+    );
+    $this->Auth->allowedControllers = array(//...);
+
+</pre>
+
+
+<p>And I think Miles <a href="http://www.milesj.me/blog/read/5/using-cakephps-auth-component">post</a> will help you a lot.</p>
+
+<ol>
+<li><p>If you want to send email through Gmail, take a look at this <a href="http://groups.google.com/group/cake-php/browse_thread/thread/8573140b2e72d1aa/839b6f576077ed18?hl=en&lnk=gst&q=Need+Help+of+Email+component+-+fail+to+send+email#839b6f576077ed18">thread</a>. And Marc has wrote an <a href="http://marcgrabanski.com/article/cakephp-email-google-apps-gmail">article</a> to implement this in another way.</p></li>
+<li><p>It is easy to customize all the error pages, copying the files you needed under cake\libs\view\errors into app\views\errors. And then you can customize it to what you want.</p></li>
+<li><p>Optimize your site performance
+I don't want to write a lot about this. Because you can find there are a lot of resources[1] about this.</p></li>
+</ol>
+
+
+<p>*resource[1]:
+1. <a href="http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/">8 Ways to Speed Up the Performance of CakePHP Apps</a>
+2. <a href="http://debuggable.com/posts/how-to-save-half-a-second-on-every-request-of-your-cakephp-app:49a69610-8648-4d65-815d-754c4834cda3">How To Save Half A Second On Every CakePHP Request</a>
+3. <a href="http://www.samaxes.com/2008/04/htaccess-gzip-and-cache-your-site-for-faster-loading-and-bandwidth-saving/">Learn more about cakephp with .htaccess</a> and <a href="http://www.askapache.com/htaccess/apache-htaccess.html">another</a> one about .htaccess
+4. <a href="http://www.g-loaded.eu/2006/12/04/optimize-and-compress-css-files">CSS Compress</a></p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jul 17, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/07/13/twitter-weekly-updates-for-2009-07-13">
+				<h3 class="title"><a href="/2009/07/13/twitter-weekly-updates-for-2009-07-13.html">Twitter Weekly Updates for 2009-07-13</a></h3>
+
+				<ul class="aktt_tweet_digest">
+    <li>RT @kunshou: FriendFeed 撞墙后，可使用 <a href="http://dev.ctor.org/f2p/" rel="nofollow">http://dev.ctor.org/f2p/</a> 和 fftogo.com <a href="http://ff.im/-59sHt" rel="nofollow">http://ff.im/-59sHt</a> <a href="http://twitter.com/Joshua_C/statuses/2613452570">#</a></li>
+    <li>RT @<a href="http://twitter.com/nateabele">nateabele</a> Cake3 code now available: <a href="http://code.cakephp.org/cake3" rel="nofollow">http://code.cakephp.org/cake3</a> #<a href="http://search.twitter.com/search?q=%23CakePHP">CakePHP</a> // Cake response quickly than what I expected. Good Jobs! <a href="http://twitter.com/Joshua_C/statuses/2606047207">#</a></li>
+    <li>Write a post about how to use the third party twitter clients - <a href="http://bit.ly/itb8B" rel="nofollow">http://bit.ly/itb8B</a> <a href="http://twitter.com/Joshua_C/statuses/2577773706">#</a></li>
+    <li>I love you , gmail+twitter - <a href="http://bit.ly/XlTUu" rel="nofollow">http://bit.ly/XlTUu</a> <a href="http://twitter.com/Joshua_C/statuses/2576854626">#</a></li>
+    <li>Retweet button - <a href="http://github.com/jeresig/retweet/tree/master" rel="nofollow">http://github.com/jeresig/retweet/tree/master</a> -- Beautiful <a href="http://twitter.com/Joshua_C/statuses/2560100741">#</a></li>
+    <li>Google:Happy Birthday Nikola Tesla! <a href="http://twitter.com/Joshua_C/statuses/2559973483">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jul 13, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/07/11/the-other-twitter-clients-that-you-may-be-like">
+				<h3 class="title"><a href="/2009/07/11/the-other-twitter-clients-that-you-may-be-like.html">The other twitter clients that you may be like</a></h3>
+
+				<ul>
+<li>http://itweet.net/web/</li>
+<li>http://m.tweete.net/login</li>
+<li>http://twitzap.com/</li>
+<li>http://tweetree.com/</li>
+<li>https://filttr.com/</li>
+<li>http://twaitter.com/</li>
+<li><a href="http://twittergadget.appspot.com/">Gmail Gadget</a></li>
+</li>
+</ul>
+
+
+<p>My favorite is <a href="http://twittergadget.appspot.com/">Gmail Gadget</a> for its simple power that can break through the GFW in China.
+Let me introduce the steps to set <a href="http://twittergadget.appspot.com/">Gmail Gadget</a> in Gmail.</p>
+
+<p>Step1: Click the lab icon in Gmail home page
+<img src="http://www.freetofeel.com/wp-content/uploads/2009/07/step1.gif" alt="step1" title="step1" width="550" height="82" class="alignnone size-full wp-image-76" /></p>
+
+<p>Step 2: Enable the 'Add any gadget by URL' widget
+&lt;img src="http://www.freetofeel.com/wp-content/uploads/2009/07/step2.gif" alt="step2" title="step2" width="683" height="128" class="alignnone size-full wp-image-77"</p>
+
+<p>Step 3: Go to Gmail home page -> settings ->Gadgets
+Enter <strong>https://twittergadget.appspot.com/gadget-gmail.xml</strong> at the gadget URL.</p>
+
+<p>Step 4: After you add the gadget URL, you will find a twitter widget appeared in the left of your home page.
+<img src="http://www.freetofeel.com/wp-content/uploads/2009/07/step3.gif" alt="step3" title="step3" width="172" height="132" class="alignnone size-full wp-image-80" /></p>
+
+<p>The last step is just verifying your twitter account.
+And then you can enjoy it with its simple and powerful.
+<img src="http://www.freetofeel.com/wp-content/uploads/2009/07/step4.gif" alt="step4" title="step4" width="458" height="140" class="alignnone size-full wp-image-85" /></p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jul 11, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/07/08/whats-web-os">
+				<h3 class="title"><a href="/2009/07/08/whats-web-os.html">Whats web OS?</a></h3>
+
+				<p>We known Google announced its <a href="http://googleblog.blogspot.com/2009/07/introducing-google-chrome-os.html">web OS</a> based on Chrome. As I have discussed this about two years ago with my colleagues, Web OS is the trending of the Operation System. What we need is a machine without hard disk, just strongest CPU and a network port. All the files, maybe we will call it data in Web OS era, will be stored in a data center. Every time when we start our machine, the Web OS opened. What we will do is remote. Calculation is remote, Storage is remote and Service is remote. I think the Cloud will be part of the data center at that time. There will be computer concept. What we needed is just an end point. Everything became simple , effective and worldwide shared.</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jul 08, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/07/06/twitter-weekly-updates-for-2009-07-06">
+				<h3 class="title"><a href="/2009/07/06/twitter-weekly-updates-for-2009-07-06.html">Twitter Weekly Updates for 2009-07-06</a></h3>
+
+				<ul class="aktt_tweet_digest">
+    <li><a href="http://tinyurl.com/ngf92d" rel="nofollow">http://tinyurl.com/ngf92d</a> - The probability that you will change a piece of code in the near future increases when you make changes to... <a href="http://twitter.com/Joshua_C/statuses/2420039633">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jul 06, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app">
+				<h3 class="title"><a href="/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app.html">After auto redirect from PayPal, the session was lost[Cake App]</a></h3>
+
+				<p>Reproduce steps:</p>
+
+<ol>
+<li>Customer login <a href="https://www.mysite.com">my site</a>;</li>
+<li>Choose a product and redirect to <a href="https://developer.paypal.com/cgi-bin/devscr">Paypal sandbox site</a> to complete the payment;</li>
+<li>After the payment, the customer will be auto redirected to my site;</li>
+<li>And then the customer session was lost.</li>
+</ol>
+
+
+<p>I found the fail reason.</p>
+
+<pre name="code" class="php">
+function __initSession() {
+    $iniSet = function_exists('ini_set');
+
+    if ($iniSet && env('HTTPS')) {
+        ini_set('session.cookie_secure', 1); 
+    } 
+    switch ($this->security) {
+     case 'high': $this->cookieLifeTime = 0;
+     if ($iniSet) {
+     ini_set('session.referer_check', $this->host);
+     } 
+     break;
+     case 'medium': $this->cookieLifeTime = 7 * 86400;
+     if ($iniSet) {
+     ini_set('session.referer_check', $this->host);
+     } 
+     break;
+     case 'low': default: $this->cookieLifeTime = 788940000; break;
+    }
+}
+</pre>
+
+
+<p>If you set the security level 'high' or 'medium' , the session wil be renewed.</p>
+
+<p>A piece of comment from a guy in php.net:</p>
+
+<pre name="code" class="html">
+If you have a value specified for session.referer_check you may run into difficulty when someone accesses your site and attempts to log in with a mis-capitalized URL.  
+The logon will fail because any calls to session_start() will result in the existing session being trashed and a new one being created.  This becomes a bigger problem when the logon is followed by a header("Location: ...") redirect, because the session_start() at the top of the page will fail.</pre>
+
+
+<p>So now , I have to avoid to use the refer_check.</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Jun 30, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+		
+		<div class="paging">
+		
+			<a href="/page16" class="previous">&#x25C4; Previous</a>
+		
+		
+			
+			  <a href="/page14" class="next">Next &#x25BA;</a>
+			
+		
+		</div>
+
+  </ul>
+</div>
+</div>
+
+	</div>
+  
+  <div class="footer">
+		<div id="copyright">
+			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+		</div>
+  </div>    
+</div>
+
+</body>
+</html>

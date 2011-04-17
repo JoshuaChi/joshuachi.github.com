@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Joshua Chi's Blog</title>
+   <meta name="author" content="Joshua Chi" />
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9434024-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		<!-- Google Analytics end -->
+</head>
+<body>
+
+<div class="site">
+  <div class="header">
+    <a href="/">Free To Feel</a>
+  </div>
+
+<!--start of side bar-->
+<div id="sidebar" >
+	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
+	<br />
+	Joshua Chi
+    <div class="contact">
+        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
+				<a href="https://github.com/joshuachi">My Github</a><br />
+			</div>
+			<div class="rss">
+				<p>
+				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+				</p>
+				<p>
+				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
+				</p>
+			</div>	
+		
+			<p class='douban'>
+				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
+				</p>
+</div>
+<!--end of side bar-->
+
+	<div id='content'>
+		<div id="home">
+
+<div class="post">
+  <ul class="content">
+		
+			<div class="post" id="postid-/2009/10/12/byte-and-bit">
+				<h3 class="title"><a href="/2009/10/12/byte-and-bit.html">Byte and bit</a></h3>
+
+				<p>Bit意为“位”或“比特”，是计算机运算的基础，属于二进制的范筹；
+　 Byte意为“字节”，是计算机文件大小的基本计算单位；
+   这两者应用的场合不同。通常用bit来作数据传输的单位，因为物理层，数据链路层的传输对于用户是透明的，而这种通信传输是基于二进制的传输。在应用层通常是用byte来作单位，表示文件的大小，在用户看来就是可见的数据大小。比如一个字符就是1byte,如果是汉字，则是2byte。
+　下面是2个具体应用实例：
+　Mbps=mega bits per second(兆位/秒)是速率单位，
+　MB=mega bytes(兆比、兆字节)是量单位，1MB/S（兆字节/秒）=8MBPS（兆位/秒）。
+  我们所说的硬盘容量是40GB、80GB、100GB，这里的B指是的Byte也就是“字节”。(与容量相关，应用层）
+1 KB = 1024 bytes =2<sup>10</sup> bytes
+1 MB = 1024 KB = 2<sup>20</sup> bytes
+1 GB = 1024 MB = 2<sup>30</sup> bytes
+　USB2.0标准接口传输速率是480兆位/秒,即480MBps。这里的B指是的Bit也就是“位”。（与传输相关，底层）</p>
+
+<p>　注：另外，Byte通常简写为B(大写），而bit通常简写为b（小写）。可以这么记忆，用大写的就是数据值比较大的位，而小字的就是数据值比较小的字节，1B=8b。</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Oct 12, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/10/09/mysql-architecture">
+				<h3 class="title"><a href="/2009/10/09/mysql-architecture.html">MySQL Architecture</a></h3>
+
+				<ol>
+<li><p>Each client connection gets its own thread within the server process.</p></li>
+<li><p>If it takes a lot of time on locks, why not separate read and write lock?
+Q:  How to synchronise the read database and write database?</p></li>
+<li><p>When we want to keep reading and writing date clean, we try to implement two types lock in db.
+Expected：
+Read locks on a resource are shared, or mutually nonblocking: many clients
+may read from a resource at the same time and not interfere with each other.
+Write locks, on the other hand, are exclusive—i.e., they block both read locks and
+other write locks—because the only safe policy is to have a single client writing to
+the resource at given time and to prevent all reads when a client is writing.</p></li>
+</ol>
+
+
+<p>MySQL way:
+a. Table locks - the lowest overhead;
+b. Row locks - the greatest concurrency.</p>
+
+<ol>
+<li><p>Transactions aren’t enough unless the system passes the ACID test.
+Atomicity
+Consistency
+Isolation
+Durability - Once committed, a transaction’s changes are permanent.</p></li>
+<li><p>Isolation Levels >
+READ UNCOMMITTED - Reading uncommitted data is also known as a dirty read;
+READ COMMITTED - The default isolation level for most database systems (but not MySQL!);
+REPEATABLE READ - MySQL’s default transaction isolation level.
+SERIALIZABLE - At this level, a lot of timeouts and lock contention may occur.</p></li>
+<li><p>Deadlock -
+The way InnoDB currently handles deadlocks is to roll back the transaction
+that has the fewest exclusive row locks.
+Deadlocks are a fact of life in transactional systems, and your applications
+should be designed to handle them.</p></li>
+<li><p>Transaction in MySQL >
+MySQL AB provides three transactional storage engines: InnoDB, NDB Cluster, and
+Falcon. solidDB and PBXT.</p></li>
+<li><p>AUTOCOMMIT >
+MySQL operates in AUTOCOMMIT mode by default. It automatically executes each query in a separate transaction.
+MyISAM or Memory tables -  essentially always operate in AUTOCOMMIT mode.</p></li>
+<li><p>You can’t reliably mix different engines in a single transaction. If you mix transactional and nontransactional tables (for instance, InnoDB and MyISAM tables) in a transaction, the transaction will work properly if all goes well. However, if a rollback is required, the changes to the nontransactional table can’t be undone.</p></li>
+<li><p>InnoDB also supports explicit locking, which the SQL standard does not mention at all:
+a. SELECT ... LOCK IN SHARE MODE
+b. SELECT ... FOR UPDATE</p></li>
+</ol>
+
+
+<p>MySQL supports the LOCK TABLES and UNLOCK TABLES commands, which are implemented in the server, not in the storage engines.</p>
+
+<ol>
+<li><p>MySQL’s Storage Engines >
+The MyISAM Engine >>
+Storage: The MyISAM format is platformneutral, meaning you can copy the data and index files from an Intel-based server to a PowerPC or Sun SPARC without any trouble.
+MyISAM tables created in MySQL 5.0 with variable-length rows are configured by default to handle 256 TB of data, using 6-byte pointers to the data records.</p></li>
+</ol>
+
+
+<p>Features:
+Locking and concurrency / Automatic repair / Manual repair(You can also use the myisamchk
+command-line tool to check and repair tables when the server is offline.) / Index features / Delayed key writes(However, after a server or system crash, the indexes will definitely be corrupted and will need repair.) /</p>
+
+<p>Compressed MyISAM tables:
+Compressed MyISAM tables can have indexes, but they’re read-only.</p>
+
+<p>The MyISAM Merge Engine >>
+A Merge table is the combination of several identical MyISAM tables into one virtual table. This is particularly useful when you use MySQL in logging and data warehousing applications.</p>
+
+<p>The InnoDB Engine >>
+InnoDB can’t build indexes by sorting, which MyISAM can do.
+Any operation that changes an InnoDB table’s structure will rebuild the entire table, including all the indexes.</p>
+
+<p>The Memory Engine >>
+Here are some good uses for Memory tables:
+a. For “lookup” or “mapping” tables, such as a table that maps postal codes to
+state names
+b. For caching the results of periodically aggregated data
+c. For intermediate results when analyzing data
+Support only fixed-size rows, so they really store VARCHARs as CHARs, which can waste memory.</p>
+
+<p>The Archive Engine >>
+It causes much less disk I/O than MyISAM, because it buffers data writes and compresses each row with zlib as it’s inserted.</p>
+
+<p>The CSV Engine >></p>
+
+<p>The Federated Engine >>
+The Federated engine does not store data locally. Each Federated table refers to a table on a remote MySQL server, so it actually connects to a remote server for all operations.</p>
+
+<p>The Blackhole Engine >>
+Blackhole engine useful for fancy replication setups and audit logging.</p>
+
+<p>The NDB Cluster Engine >>
+An NDB database consists of data nodes, management nodes, and SQL nodes (MySQL instances).</p>
+
+<p>The Falcon Engine >></p>
+
+<p>The solidDB Engine >></p>
+
+<p>The PBXT (Primebase XT) Engine >></p>
+
+<p>The Maria Storage Engine >>
+The goal is to use Maria as a replacement for MyISAM, which is currently MySQL’s default storage engine.</p>
+
+<ol>
+<li><p>Table Conversions >
+a. mysql> ALTER TABLE mytable ENGINE = Falcon;</p></li>
+</ol>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Oct 09, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/10/08/15-common-mistakes-in-e-commerce-design">
+				<h3 class="title"><a href="/2009/10/08/15-common-mistakes-in-e-commerce-design.html">15 Common Mistakes in E-Commerce Design</a></h3>
+
+				<p>This <a href="http://www.smashingmagazine.com/2009/10/08/15-common-mistakes-in-e-commerce-design-and-how-to-avoid-them/">article</a> can help me optimize your E-Commerce site.</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Oct 08, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/10/05/twitter-weekly-updates-for-2009-10-05">
+				<h3 class="title"><a href="/2009/10/05/twitter-weekly-updates-for-2009-10-05.html">Twitter Weekly Updates for 2009-10-05</a></h3>
+
+				<ul class="aktt_tweet_digest">
+    <li>Eight Essential Attributes for Top Sales Performance - <a href="http://bit.ly/I6kBp" rel="nofollow">http://bit.ly/I6kBp</a> <a href="http://twitter.com/Joshua_C/statuses/4640329824">#</a></li>
+    <li>On the road to my home town. Do nothing, but thinking! <a href="http://twitter.com/Joshua_C/statuses/4487134839">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Oct 05, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/10/05/can-you-be-a-web-designer">
+				<h3 class="title"><a href="/2009/10/05/can-you-be-a-web-designer.html">Can You Be a Web Designer?</a></h3>
+
+				<p><a href="http://www.freetofeel.com/2009/10/can-you-be-a-web-designer/04-02_web_designer_flowchart/" rel="attachment wp-att-201"><img src="http://www.freetofeel.com/wp-content/uploads/2009/10/04-02_web_designer_flowchart-398x1024.jpg" alt="04-02_web_designer_flowchart" title="04-02_web_designer_flowchart" width="398" height="1024" class="aligncenter size-large wp-image-201" /></a></p>
+
+<p>This is not true. The best way is learning from others' strong points and close the gap.</p>
+
+
+
+				<div class="post-metadata"
+				<p>Posted Oct 05, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/09/28/twitter-weekly-updates-for-2009-09-28">
+				<h3 class="title"><a href="/2009/09/28/twitter-weekly-updates-for-2009-09-28.html">Twitter Weekly Updates for 2009-09-28</a></h3>
+
+				<ul class="aktt_tweet_digest">
+    <li>确实够勇猛的 <a href="http://bit.ly/Fjuvy" rel="nofollow">http://bit.ly/Fjuvy</a> 只适合老年人 <a href="http://twitter.com/Joshua_C/statuses/4415500118">#</a></li>
+    <li>twitter里有些人成了角以后就喜欢屁话连篇，十句有两句是retweet，7句在废话，偶尔一句有点参考性，还发现在做自己广告，remove <a href="http://twitter.com/Joshua_C/statuses/4366929469">#</a></li>
+    <li>主观上的接受是你很容易加深对某事物的理解 <a href="http://twitter.com/Joshua_C/statuses/4314333128">#</a></li>
+    <li>Great business development people don&#39;t waste time in endless meetings with random vendors or hassle about tiny details up front <a href="http://twitter.com/Joshua_C/statuses/4313947566">#</a></li>
+    <li>Barcamp - <a href="http://bit.ly/1BQxkK" rel="nofollow">http://bit.ly/1BQxkK</a> <a href="http://twitter.com/Joshua_C/statuses/4166033822">#</a></li>
+    <li><a href="http://bit.ly/4a60ed" rel="nofollow">http://bit.ly/4a60ed</a> - pair programming <a href="http://twitter.com/Joshua_C/statuses/4164232834">#</a></li>
+    <li>Agile Design - <a href="http://bit.ly/2sk3NZ" rel="nofollow">http://bit.ly/2sk3NZ</a> <a href="http://twitter.com/Joshua_C/statuses/4160730877">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Sep 28, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/09/23/the-payroll-case-study">
+				<h3 class="title"><a href="/2009/09/23/the-payroll-case-study.html">The Payroll Case Study</a></h3>
+
+				<h2>C13</h2>
+
+<ol>
+<li><p>Command 模式是将UI中和应用层中的执行逻辑分离到特定的运行函数中。所谓的解耦。</p></li>
+</ol>
+
+
+<h2>C17</h2>
+
+<p>1.使NULL生命化，而不是每次显示的 'x != null'. 可以构造NullObject.</p>
+
+<h2>C18</h2>
+
+<ol>
+<li>对需求分析-&gt;创建用例 -&gt; 用例分析-&gt; 抽象出接口模型</li>
+<li>初期应该抵制自己接近代码的诱惑</li>
+</ol>
+
+
+
+
+				<div class="post-metadata"
+				<p>Posted Sep 23, 2009.&nbsp;
+				 
+				Tagged: .
+				</p>
+				</div>
+
+			</div>
+		
+		
+		<div class="paging">
+		
+			<a href="/page12" class="previous">&#x25C4; Previous</a>
+		
+		
+			
+			  <a href="/page10" class="next">Next &#x25BA;</a>
+			
+		
+		</div>
+
+  </ul>
+</div>
+</div>
+
+	</div>
+  
+  <div class="footer">
+		<div id="copyright">
+			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+		</div>
+  </div>    
+</div>
+
+</body>
+</html>

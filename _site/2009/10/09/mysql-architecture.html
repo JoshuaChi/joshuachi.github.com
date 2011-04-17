@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>MySQL Architecture</title>
+   <meta name="author" content="Joshua Chi" />
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9434024-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		<!-- Google Analytics end -->
+</head>
+<body>
+
+<div class="site">
+  <div class="header">
+    <a href="/">Free To Feel</a>
+  </div>
+
+<!--start of side bar-->
+<div id="sidebar" >
+	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
+	<br />
+	Joshua Chi
+    <div class="contact">
+        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
+				<a href="https://github.com/joshuachi">My Github</a><br />
+			</div>
+			<div class="rss">
+				<p>
+				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+				</p>
+				<p>
+				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
+				</p>
+			</div>	
+		
+			<p class='douban'>
+				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
+				</p>
+</div>
+<!--end of side bar-->
+
+	<div id='content'>
+		<div id="disqus_thread">
+  <div id="post">
+    <h3 class="title"><a href="/2009/10/09/mysql-architecture.html">MySQL Architecture</a></h3>
+    <ol>
+<li><p>Each client connection gets its own thread within the server process.</p></li>
+<li><p>If it takes a lot of time on locks, why not separate read and write lock?
+Q:  How to synchronise the read database and write database?</p></li>
+<li><p>When we want to keep reading and writing date clean, we try to implement two types lock in db.
+Expected：
+Read locks on a resource are shared, or mutually nonblocking: many clients
+may read from a resource at the same time and not interfere with each other.
+Write locks, on the other hand, are exclusive—i.e., they block both read locks and
+other write locks—because the only safe policy is to have a single client writing to
+the resource at given time and to prevent all reads when a client is writing.</p></li>
+</ol>
+
+
+<p>MySQL way:
+a. Table locks - the lowest overhead;
+b. Row locks - the greatest concurrency.</p>
+
+<ol>
+<li><p>Transactions aren’t enough unless the system passes the ACID test.
+Atomicity
+Consistency
+Isolation
+Durability - Once committed, a transaction’s changes are permanent.</p></li>
+<li><p>Isolation Levels >
+READ UNCOMMITTED - Reading uncommitted data is also known as a dirty read;
+READ COMMITTED - The default isolation level for most database systems (but not MySQL!);
+REPEATABLE READ - MySQL’s default transaction isolation level.
+SERIALIZABLE - At this level, a lot of timeouts and lock contention may occur.</p></li>
+<li><p>Deadlock -
+The way InnoDB currently handles deadlocks is to roll back the transaction
+that has the fewest exclusive row locks.
+Deadlocks are a fact of life in transactional systems, and your applications
+should be designed to handle them.</p></li>
+<li><p>Transaction in MySQL >
+MySQL AB provides three transactional storage engines: InnoDB, NDB Cluster, and
+Falcon. solidDB and PBXT.</p></li>
+<li><p>AUTOCOMMIT >
+MySQL operates in AUTOCOMMIT mode by default. It automatically executes each query in a separate transaction.
+MyISAM or Memory tables -  essentially always operate in AUTOCOMMIT mode.</p></li>
+<li><p>You can’t reliably mix different engines in a single transaction. If you mix transactional and nontransactional tables (for instance, InnoDB and MyISAM tables) in a transaction, the transaction will work properly if all goes well. However, if a rollback is required, the changes to the nontransactional table can’t be undone.</p></li>
+<li><p>InnoDB also supports explicit locking, which the SQL standard does not mention at all:
+a. SELECT ... LOCK IN SHARE MODE
+b. SELECT ... FOR UPDATE</p></li>
+</ol>
+
+
+<p>MySQL supports the LOCK TABLES and UNLOCK TABLES commands, which are implemented in the server, not in the storage engines.</p>
+
+<ol>
+<li><p>MySQL’s Storage Engines >
+The MyISAM Engine >>
+Storage: The MyISAM format is platformneutral, meaning you can copy the data and index files from an Intel-based server to a PowerPC or Sun SPARC without any trouble.
+MyISAM tables created in MySQL 5.0 with variable-length rows are configured by default to handle 256 TB of data, using 6-byte pointers to the data records.</p></li>
+</ol>
+
+
+<p>Features:
+Locking and concurrency / Automatic repair / Manual repair(You can also use the myisamchk
+command-line tool to check and repair tables when the server is offline.) / Index features / Delayed key writes(However, after a server or system crash, the indexes will definitely be corrupted and will need repair.) /</p>
+
+<p>Compressed MyISAM tables:
+Compressed MyISAM tables can have indexes, but they’re read-only.</p>
+
+<p>The MyISAM Merge Engine >>
+A Merge table is the combination of several identical MyISAM tables into one virtual table. This is particularly useful when you use MySQL in logging and data warehousing applications.</p>
+
+<p>The InnoDB Engine >>
+InnoDB can’t build indexes by sorting, which MyISAM can do.
+Any operation that changes an InnoDB table’s structure will rebuild the entire table, including all the indexes.</p>
+
+<p>The Memory Engine >>
+Here are some good uses for Memory tables:
+a. For “lookup” or “mapping” tables, such as a table that maps postal codes to
+state names
+b. For caching the results of periodically aggregated data
+c. For intermediate results when analyzing data
+Support only fixed-size rows, so they really store VARCHARs as CHARs, which can waste memory.</p>
+
+<p>The Archive Engine >>
+It causes much less disk I/O than MyISAM, because it buffers data writes and compresses each row with zlib as it’s inserted.</p>
+
+<p>The CSV Engine >></p>
+
+<p>The Federated Engine >>
+The Federated engine does not store data locally. Each Federated table refers to a table on a remote MySQL server, so it actually connects to a remote server for all operations.</p>
+
+<p>The Blackhole Engine >>
+Blackhole engine useful for fancy replication setups and audit logging.</p>
+
+<p>The NDB Cluster Engine >>
+An NDB database consists of data nodes, management nodes, and SQL nodes (MySQL instances).</p>
+
+<p>The Falcon Engine >></p>
+
+<p>The solidDB Engine >></p>
+
+<p>The PBXT (Primebase XT) Engine >></p>
+
+<p>The Maria Storage Engine >>
+The goal is to use Maria as a replacement for MyISAM, which is currently MySQL’s default storage engine.</p>
+
+<ol>
+<li><p>Table Conversions >
+a. mysql> ALTER TABLE mytable ENGINE = Falcon;</p></li>
+</ol>
+
+
+  </div>
+</div>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = "/2009/10/09/mysql-architecture";
+    var disqus_url = "http://freetofeel.com"+"/2009/10/09/mysql-architecture.html";
+    var disqus_title = "MySQL Architecture";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>08 Mar 2011</span> &raquo; <a href="/2011/03/08/do-we-still-need-scrum.html">Do we still need scrum if ...</a></li>
+    
+      <li><span>02 Mar 2011</span> &raquo; <a href="/2011/03/02/server-monitor.html">Web Server Memory Monitor</a></li>
+    
+      <li><span>21 Feb 2011</span> &raquo; <a href="/2011/02/21/deal-with-mysql-error-150.html">mysql ERROR 1005 (ER_CANT_CREATE_TABLE)</a></li>
+    
+  </ul>
+</div>
+
+	</div>
+  
+  <div class="footer">
+		<div id="copyright">
+			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+		</div>
+  </div>    
+</div>
+
+</body>
+</html>
