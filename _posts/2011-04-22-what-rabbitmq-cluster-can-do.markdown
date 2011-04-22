@@ -4,12 +4,10 @@ title: "What RabbitMQ Cluster Can Do"
 tags:  -rabbitmq
 ---
 
-<h3>What RabbitMQ cluster can do</h3>
+<h3>What RabbitMQ cluster can do - Scaling and Reliability</h3>
 
-Scaling and Reliability.
-  
 
-* Example 1: 
+* <b>Example 1</b>: 
 
 All data/state required for the operation of a RabbitMQ broker is replicated across all nodes.
 
@@ -21,7 +19,7 @@ There is a publisher which publish 10 messages to RabbitMQ broker(*1).
 
 So Node_A will receive Message 1, Message 3, 5, 7, 9; Node_B will receive Message 2, Message 4, 6, 8, 10.
 
-* Example 2:
+* <b>Example 2</b>:
 
 We still use the above example. If the Node_A crashed when it is consuming the messages, what happens?
 
@@ -50,7 +48,7 @@ And you can find following explanation:
 </pre>
 
 
-<h3>What RabbitMQ cluster can not do</h3>
+<h3>What RabbitMQ cluster can not do - High Availability</h3>
 
 So the 60 seconds is what RabbitMQ can not do. We call it high availability. To build a high availability and scalable application, you can take a look <a href='http://www.rabbitmq.com/pacemaker.html'>RabbitMQ Placemaker</a>
 
