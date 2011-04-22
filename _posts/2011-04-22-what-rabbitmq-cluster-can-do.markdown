@@ -4,34 +4,42 @@ title: "What RabbitMQ Cluster Can Do"
 tags:  -rabbitmq
 ---
 
-* <h4>What RabbitMQ cluster can do</h4>
+<h3>What RabbitMQ cluster can do</h3>
 
-  <h5>Scaling + Reliability</h5>
+Scaling and Reliability.
   
-1. Example 1: 
+
+* Example 1: 
 
 All data/state required for the operation of a RabbitMQ broker is replicated across all nodes.
+
 Let's take an example to help you understand better. 
 
 There is a publisher which publish 10 messages to RabbitMQ broker(*1).
+
 |Publisher| --> |10 Messages| --> |Broker( = Node_A + Node_B)|
 
 So Node_A will receive Message 1, Message 3, 5, 7, 9; Node_B will receive Message 2, Message 4, 6, 8, 10.
 
-2. Example 2:
+* Example 2:
 
 We still use the above example. If the Node_A crashed when it is consuming the messages, what happens?
 
 Before Node_A crashed (I simply powered off this machine):
+
 Node_A finished Message 1, Message 3, and it is starting to consume Message 5;
+
 Node_B finished Message 2, Message 4 and it is starting to consume Message 6.
 
 After Node_A crashed:
+
 Node_A stopped working;
+
 Node_B finished Message 6, Message 7, Message 8, Message 9, Message 10 and Message 5.
 
 Yes, as you can see, even Node_A dies unexpected. Broker still can get the status of Message 5 and send it to Node_B. 
 And you can find following explanation:
+
 <pre>
   If a node goes down or becomes unreachable what effects can this have on the cluster? Do things 'hang' for a bit?
   
@@ -42,10 +50,11 @@ And you can find following explanation:
 </pre>
 
 
-* <h4>What RabbitMQ cluster can not do</h4>
+<h3>What RabbitMQ cluster can not do</h3>
 
 So the 60 seconds is what RabbitMQ can not do. We call it high availability. To build a high availability and scalable application, you can take a look <a href='http://www.rabbitmq.com/pacemaker.html'>RabbitMQ Placemaker</a>
 
 
 References:
-* 1. RabbitMQ broker - a logical grouping of one or several Erlang nodes, each running the RabbitMQ application and sharing users, virtual hosts, queues, exchanges, etc. Sometimes we refer to the collection of nodes as a cluster. 
+
+1. RabbitMQ broker - a logical grouping of one or several Erlang nodes, each running the RabbitMQ application and sharing users, virtual hosts, queues, exchanges, etc. Sometimes we refer to the collection of nodes as a cluster. 
