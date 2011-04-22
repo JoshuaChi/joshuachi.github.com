@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Report plugin for Vanilla 2"
+tags: forum vanilla
 ---
 
 You can find it <a href="http://vanillaforums.org/addon/520/report-system">here</a>.

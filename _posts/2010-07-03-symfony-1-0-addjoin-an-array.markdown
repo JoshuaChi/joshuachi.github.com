@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Symfony 1.0 addJoin an array"
+tags: symfony
 ---
 
 In sf1.3, we can use addJoin(array('id_a'm 'id_b'), array('id_1', 'id_2'))

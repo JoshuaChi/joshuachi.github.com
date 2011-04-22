@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The simplest and quickest way to create mysql table demo records."
+tags: mysql
 ---
 
 Take animals table as example,

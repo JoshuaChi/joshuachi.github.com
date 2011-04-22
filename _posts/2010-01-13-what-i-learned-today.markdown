@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "What I learned today"
+tags: today
 ---
 
 1. <a href="http://www.shinguz.ch/MySQL/mysql_mv.html">Materialised Views with MySQL</a></li> -

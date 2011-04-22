@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Symfony + Vanilla2 + SSO"
+tags: symfony vanilla sso
 ---
 
 Vanilla2 is really really cool! Both the interface and functionality are very good.

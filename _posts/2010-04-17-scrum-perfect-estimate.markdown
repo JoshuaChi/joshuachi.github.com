@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[scrum] Perfect Estimate"
+tags: scrum
 ---
 
 1.

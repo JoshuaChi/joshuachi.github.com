@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Using JSONP to do the cross domain request "
+tags: jsonp
 ---
 
 JSONP (script insertion)

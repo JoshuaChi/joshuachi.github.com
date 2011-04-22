@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Sign in your PDF document"
+tags: pdf
 ---
 
 Have you ever succeed to sign in a PDF file?

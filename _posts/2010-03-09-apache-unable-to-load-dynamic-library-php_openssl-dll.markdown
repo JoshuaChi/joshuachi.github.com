@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Apache Unable to load dynamic library php_openssl.dll"
+tags: apache
 ---
 
 As a windows user, sometimes you have to face and handle this kind of problems. 

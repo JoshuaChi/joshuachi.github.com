@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Fighting with an issue in cracked mac machine"
+tags: mac
 ---
 
 Problem: There is always a black border for every window in a cracked mac, including 'Finder', 'Terminal', even the icon on the desktop.

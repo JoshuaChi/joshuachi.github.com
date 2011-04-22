@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "2W records update with different sql engine"
+tags: sql
 ---
 
 This is just a test result:

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Schema Optimization and Indexing"
+tags: mysql index optimization
 ---
 
 1.

@@ -61,6 +61,68 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app">
+				<h3 class="title"><a href="/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app.html">After auto redirect from PayPal, the session was lost[Cake App]</a></h3>
+
+				<p>Reproduce steps:</p>
+
+<ol>
+<li>Customer login <a href="https://www.mysite.com">my site</a>;</li>
+<li>Choose a product and redirect to <a href="https://developer.paypal.com/cgi-bin/devscr">Paypal sandbox site</a> to complete the payment;</li>
+<li>After the payment, the customer will be auto redirected to my site;</li>
+<li>And then the customer session was lost.</li>
+</ol>
+
+
+<p>I found the fail reason.</p>
+
+<pre name="code" class="php">
+function __initSession() {
+    $iniSet = function_exists('ini_set');
+
+    if ($iniSet && env('HTTPS')) {
+        ini_set('session.cookie_secure', 1); 
+    } 
+    switch ($this->security) {
+     case 'high': $this->cookieLifeTime = 0;
+     if ($iniSet) {
+     ini_set('session.referer_check', $this->host);
+     } 
+     break;
+     case 'medium': $this->cookieLifeTime = 7 * 86400;
+     if ($iniSet) {
+     ini_set('session.referer_check', $this->host);
+     } 
+     break;
+     case 'low': default: $this->cookieLifeTime = 788940000; break;
+    }
+}
+</pre>
+
+
+<p>If you set the security level 'high' or 'medium' , the session wil be renewed.</p>
+
+<p>A piece of comment from a guy in php.net:</p>
+
+<pre name="code" class="html">
+If you have a value specified for session.referer_check you may run into difficulty when someone accesses your site and attempts to log in with a mis-capitalized URL.  
+The logon will fail because any calls to session_start() will result in the existing session being trashed and a new one being created.  This becomes a bigger problem when the logon is followed by a header("Location: ...") redirect, because the session_start() at the top of the page will fail.</pre>
+
+
+<p>So now , I have to avoid to use the refer_check.</p>
+
+
+
+				<div class="post-metadata">
+					<p>
+					June 30, 2009 | 
+					<a href='/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app.html#disqus_thread'>View Comments</a>
+					 
+					</p>
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2009/06/29/vbox-this-kernel-requires-the-following-features-not-present-on-the-cpupae">
 				<h3 class="title"><a href="/2009/06/29/vbox-this-kernel-requires-the-following-features-not-present-on-the-cpupae.html">VBOX: this kernel requires the following features not present on the CPU:pae</a></h3>
 
@@ -70,11 +132,12 @@ Enable PAE/NX is in the middle of the window in Extended Features.</p>
 
 
 
-				<div class="post-metadata"
-				<p>Posted Jun 29, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					June 29, 2009 | 
+					<a href='/2009/06/29/vbox-this-kernel-requires-the-following-features-not-present-on-the-cpupae.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>
@@ -107,11 +170,12 @@ Enable PAE/NX is in the middle of the window in Extended Features.</p>
 
 
 
-				<div class="post-metadata"
-				<p>Posted Jun 29, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					June 29, 2009 | 
+					<a href='/2009/06/29/twitter-weekly-updates-for-2009-06-29.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>
@@ -141,11 +205,12 @@ See if there are differences. If yes, then you can ignore the length-related fai
 
 
 
-				<div class="post-metadata"
-				<p>Posted Jun 29, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					June 29, 2009 | 
+					<a href='/2009/06/29/the-failed-requests-in-apachebench-test.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>
@@ -174,11 +239,12 @@ See if there are differences. If yes, then you can ignore the length-related fai
 
 
 
-				<div class="post-metadata"
-				<p>Posted Jun 22, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					June 22, 2009 | 
+					<a href='/2009/06/22/twitter-weekly-updates-for-2009-06-22.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>
@@ -225,11 +291,12 @@ background:#6cf;
 
 
 
-				<div class="post-metadata"
-				<p>Posted Jun 22, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					June 22, 2009 | 
+					<a href='/2009/06/22/pure-css-to-make-the-footer-at-the-bottom-of-the-page.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>
@@ -244,56 +311,12 @@ background:#6cf;
 
 
 
-				<div class="post-metadata"
-				<p>Posted Jun 11, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/06/06/fighting-with-subdomain-problem-in-lunarpages">
-				<h3 class="title"><a href="/2009/06/06/fighting-with-subdomain-problem-in-lunarpages.html">Fighting with subdomain problem in Lunarpages</a></h3>
-
-				<p>HostROOT -</p>
-
-<p>|- .htaccess(A)</p>
-
-<p style="text-align: left;">|--------------- |-subdirectory</p>
-
-
-<p style="text-align: left;">|--------------- -----------|- .htaccess(B)</p>
-
-
-<p>My host domain - http://www.example.com</p>
-
-<p>My sub domain - http://subdomain.example.com</p>
-
-<p>Don't forget to add a .htaccess file for your subdirectory and add the following content into it.</p>
-
-<blockquote>.htaccess(B)
-
-&lt;IfModule mod_rewrite.c&gt;
-RewriteEngine on
-RewriteBase /subdirectory/
-&lt;/IfModule&gt;</blockquote>
-
-
-<blockquote></blockquote>
-
-
-<p>It worked as true. When I recall the process I fight with the</p>
-
-<p>Reference:http://bakery.cakephp.org/articles/view/mod-rewrite-on-godaddy-shared-hosting</p>
-
-
-
-				<div class="post-metadata"
-				<p>Posted Jun 06, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					June 11, 2009 | 
+					<a href='/2009/06/11/run-cakephp-cronjob-on-web-hosting.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Personality Test"
+tags: test
 ---
 
 DISC性格测试

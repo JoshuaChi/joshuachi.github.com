@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "How to win others trust"
+tags: trust
 ---
 
 I just want to post some suggestions about 'trust' from my experience. It might not be perfect, but I am sure some of them are mostly useful for you.

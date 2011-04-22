@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Cross Lanaguage Service Development"
-tags: -RPC
+tags: RPC
 ---
 
 Thrift is a software framework for scalable cross-language services development.

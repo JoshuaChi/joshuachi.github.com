@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "SQL Optimization"
+tags: mysql optimization
 ---
 
 Two tables:

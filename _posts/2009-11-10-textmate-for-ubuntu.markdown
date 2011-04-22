@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Textmate  for Ubuntu"
+tags: textmate ubuntu
 ---
 
 GEdit + Gmate = Textmate on Ubuntu

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Twitter Weekly Updates for 2009-10-26"
+tags: twitter
 ---
 
 <ul class="aktt_tweet_digest">

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Chance, Possibility and Opportunity, difference?"
+tags: life
 ---
 
 I got the answer from internet, maybe wrong, hope somebody can help me correct it.

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "One Week Review"
+tags: life
 ---
 
 <ul>

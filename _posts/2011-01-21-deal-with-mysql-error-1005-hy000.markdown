@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Deal with mysql ERROR 1005 (HY000)"
-tags: -mysql
+tags: mysql
 ---
 
 How to deal with 'mysql ERROR 1005 (HY000): Can't create table '' (errno: 150)'? Usuall it was caused by mysql foreign key. But how you know which foreign key is wrong? Or why it is incorrect? To get more information, you can execute: <pre>SHOW ENGINE INNODB STATUS\G</pre>.

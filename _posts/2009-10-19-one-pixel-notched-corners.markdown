@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "One pixel notched corners"
+tags: css
 ---
 
 An interesting article <a href="http://www.askthecssguy.com/2008/03/one_pixel_notched_corners_as_u.html">One pixel notched corners as used by Google Analytics</a>.

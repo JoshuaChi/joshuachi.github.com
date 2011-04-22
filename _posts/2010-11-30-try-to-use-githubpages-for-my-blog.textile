@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Try to Use Github Pages As My Blog
+tags: github
 ---
 
 

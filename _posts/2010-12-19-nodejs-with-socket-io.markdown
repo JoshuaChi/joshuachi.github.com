@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Dig Into Nodejs"
-tags: -nodejs -js
+tags: nodejs js
 ---
 
 Just find a beautiful and simplest javascript code:

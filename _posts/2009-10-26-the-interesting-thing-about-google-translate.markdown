@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The interesting thing about Google Translate"
+tags: google translate
 ---
 
 Have you noticed that when you open the <a href="http://translate.google.com">Google Translate page</a>, and you enter some simple words or a sentence you want to translate.

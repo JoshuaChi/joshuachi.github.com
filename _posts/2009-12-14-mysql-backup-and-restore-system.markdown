@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "MySQL Database Backup and Restore"
+tags: mysql
 ---
 
 <strong>Backup</strong>

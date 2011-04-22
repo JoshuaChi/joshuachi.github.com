@@ -66,16 +66,12 @@ h2 {
   font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2";
   font-weight: 100;
   line-height: 1.2em;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 0.2em;
-  margin-bottom: -0.3em;
   margin-top: 0;
 }
 
 h3 {
   font-size: 1.3em;
   font-weight: normal;
-	padding-left: 10px;
 }
 
 h1 {
@@ -123,10 +119,8 @@ code {
   font-size: 0.9em;
   font-weight: bold;
   color: #999;
-  border-top: 1px solid #ddd;
   padding-top: 0.1em;
   padding-bottom: 0.1em;
-  margin-top: -0.6em;
 }
 
 .meta a, .content a, .related a {
@@ -156,7 +150,6 @@ code {
   margin: 0;
   background: white;
 	font-size: 1.3em;
-  margin-left: -0.5em;
   text-decoration: none;
 	line-height: 35px;
 }
@@ -242,6 +235,8 @@ code, pre{
 }
 
 ul, li, ol { margin:0em; padding:0px; }
+ul li { list-style: square inside; }
+ol li { list-style: inside }
 
 /**side bar **/
 #sidebar{

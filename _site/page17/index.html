@@ -61,6 +61,52 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2009/06/06/fighting-with-subdomain-problem-in-lunarpages">
+				<h3 class="title"><a href="/2009/06/06/fighting-with-subdomain-problem-in-lunarpages.html">Fighting with subdomain problem in Lunarpages</a></h3>
+
+				<p>HostROOT -</p>
+
+<p>|- .htaccess(A)</p>
+
+<p style="text-align: left;">|--------------- |-subdirectory</p>
+
+
+<p style="text-align: left;">|--------------- -----------|- .htaccess(B)</p>
+
+
+<p>My host domain - http://www.example.com</p>
+
+<p>My sub domain - http://subdomain.example.com</p>
+
+<p>Don't forget to add a .htaccess file for your subdirectory and add the following content into it.</p>
+
+<blockquote>.htaccess(B)
+
+&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine on
+RewriteBase /subdirectory/
+&lt;/IfModule&gt;</blockquote>
+
+
+<blockquote></blockquote>
+
+
+<p>It worked as true. When I recall the process I fight with the</p>
+
+<p>Reference:http://bakery.cakephp.org/articles/view/mod-rewrite-on-godaddy-shared-hosting</p>
+
+
+
+				<div class="post-metadata">
+					<p>
+					June 06, 2009 | 
+					<a href='/2009/06/06/fighting-with-subdomain-problem-in-lunarpages.html#disqus_thread'>View Comments</a>
+					 
+					</p>
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2009/05/26/solutionerror-2006-hy000-at-line-140-mysql-server-has-gone-away">
 				<h3 class="title"><a href="/2009/05/26/solutionerror-2006-hy000-at-line-140-mysql-server-has-gone-away.html">Solution:ERROR 2006 (HY000) at line 140: MySQL server has gone away</a></h3>
 
@@ -73,11 +119,12 @@
 
 
 
-				<div class="post-metadata"
-				<p>Posted May 26, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					May 26, 2009 | 
+					<a href='/2009/05/26/solutionerror-2006-hy000-at-line-140-mysql-server-has-gone-away.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>
@@ -115,11 +162,12 @@
 
 
 
-				<div class="post-metadata"
-				<p>Posted May 25, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					May 25, 2009 | 
+					<a href='/2009/05/25/how-to-use-security-component-in-your-application.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>
@@ -144,11 +192,12 @@
 
 
 
-				<div class="post-metadata"
-				<p>Posted May 21, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					May 21, 2009 | 
+					<a href='/2009/05/21/cakephp-admin-routing-fail.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>
@@ -162,11 +211,12 @@ This two lines will require the file a.php twice in WIN32 platform and give a de
 
 
 
-				<div class="post-metadata"
-				<p>Posted May 13, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					May 13, 2009 | 
+					<a href='/2009/05/13/require_once-case-sensitive-in-php516-on-win32-platform.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>
@@ -178,11 +228,12 @@ This two lines will require the file a.php twice in WIN32 platform and give a de
 
 
 
-				<div class="post-metadata"
-				<p>Posted May 11, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					May 11, 2009 | 
+					<a href='/2009/05/11/file_exists-in-ubuntu.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>
@@ -227,53 +278,20 @@ Everything should be fine now and all your PHP pages will work as normal.</block
 
 
 
-				<div class="post-metadata"
-				<p>Posted May 10, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/05/09/hello-world">
-				<h3 class="title"><a href="/2009/05/09/hello-world.html">JQuery validate password function can not work on Firefox3.1.10</a></h3>
-
-				<p>When I use JQuery(Revision: 6246) with firefox 3.0.10, I found it is difficulty to validate the password field.
-//js code
-"data[User][password]": {
-required: true,
-minlength: 6,
-maxlength: 15
-},
-"data[User][confirmPassword]": {
-required: true,
-minlength: 6,
-maxlength: 15,
-equalTo: "#UserPassword"
-},
-//code end
-The error happened at line 1040 of jquery.validate.js
-//code
-equalTo: function(value, element, param) {
-return value == $(param).val();
-}
-//end
-The '$(param).val()' here is always empty. I test this on Chrome, it works fine there.</p>
-
-
-
-				<div class="post-metadata"
-				<p>Posted May 09, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					May 10, 2009 | 
+					<a href='/2009/05/10/damnapachphpwindows-parent-created-child-process-357852.html#disqus_thread'>View Comments</a>
+					 
+					</p>
 				</div>
 
 			</div>
 		
 		
 		<div class="paging">
+		
+			<a href="/page18" class="previous">&#x25C4; Previous</a>
 		
 		
 			

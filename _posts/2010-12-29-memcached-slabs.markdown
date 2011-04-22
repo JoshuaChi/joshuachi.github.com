@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Be Careful Of Your Memcached Slab Size"
-tags: -memcached
+tags: memcached
 ---
 
 Recently, we found a very 'strange' bug. The memcached's evictions keep growing. But there is stil 10% free memory in this instance. The memcached instance size is around 600M, and it has recached 90% percentage usage for a long time. This issue happened after we deployed a fix, which changed the entry size stored in memcache. 

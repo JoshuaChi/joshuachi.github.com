@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Find Ubuntu Wireless Icon"
-tags: -ubuntu
+tags: ubuntu
 ---
 
 My network-manager works fine. You can test by <code>sudo service network-manager start/stop</code>. And my wireless network can be found by <code>sudo iwlist  scan</code>.

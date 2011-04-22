@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "How to remove a specific value from a javascript array"
+tags: javascript
 ---
 
 <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/splice">splice</a> - Changes the content of an array, adding new elements while removing old elements.

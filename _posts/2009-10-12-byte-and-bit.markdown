@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Byte and bit"
+tags: byte
 ---
 
 Bit意为“位”或“比特”，是计算机运算的基础，属于二进制的范筹；

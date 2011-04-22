@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Code Smell"
+tags: refactor
 ---
 
 There is a <a href="http://www.cnblogs.com/idior/archive/2006/06/13/424592.html">code smell list</a> that we can then as a reference.

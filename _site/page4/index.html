@@ -61,6 +61,42 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2010/03/09/apache-unable-to-load-dynamic-library-php_openssl-dll">
+				<h3 class="title"><a href="/2010/03/09/apache-unable-to-load-dynamic-library-php_openssl-dll.html">Apache Unable to load dynamic library php_openssl.dll</a></h3>
+
+				<p>As a windows user, sometimes you have to face and handle this kind of problems.</p>
+
+<p>The error: “PHP Startup: Unable to load dynamic library php_openssl.dll. The operating system cannot run %1“, when you are trying to start the apache server in the error.log file.</p>
+
+<p>Basically what this error is trying to mention that there is an issue with your php_openssl.dll and a possible mismatch with other depending libraries. To resolve this, follow the below steps:</p>
+
+<ol>
+<li><p>Rename ’ssleay32.dll’ and ‘libeay32.dll’ in c:\windows\system32 to ’ssleay32.dll.old’ and ‘libeay32.dll.old’ respectively.</p></li>
+<li><p>Copy ’ssleay32.dll’ and ‘libeay32.dll’ from your PHP folder to the system32.</p></li>
+<li><p>Restart the apache webserver.</p></li>
+</ol>
+
+
+<p>Even I resolve it finally , I can learn nothing from it. This such a damn rule("copy the dll file from PHP folder to system32") was made by Microsoft? I don't know. You couldn't find the solution even in php document. The solution was passed from one developer to another. But no matter how I can stay away this kind of damn things for a while.</p>
+
+
+
+				<div class="post-metadata">
+					<p>
+					March 09, 2010 | 
+					<a href='/2010/03/09/apache-unable-to-load-dynamic-library-php_openssl-dll.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#apache'>apache</a>
+						
+					 
+					</p>
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2010/03/08/twitter-weekly-updates-for-2010-03-08-2">
 				<h3 class="title"><a href="/2010/03/08/twitter-weekly-updates-for-2010-03-08-2.html">Twitter Weekly Updates for 2010-03-08</a></h3>
 
@@ -83,11 +119,18 @@
 
 
 
-				<div class="post-metadata"
-				<p>Posted Mar 08, 2010.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					March 08, 2010 | 
+					<a href='/2010/03/08/twitter-weekly-updates-for-2010-03-08-2.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#twitter'>twitter</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -114,11 +157,18 @@
 
 
 
-				<div class="post-metadata"
-				<p>Posted Mar 08, 2010.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					March 08, 2010 | 
+					<a href='/2010/03/08/twitter-weekly-updates-for-2010-03-08.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#twitter'>twitter</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -167,11 +217,18 @@ url = "http://dummy.server.org/Create_a_Script.php?callback=call_me&......
 
 
 
-				<div class="post-metadata"
-				<p>Posted Feb 26, 2010.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					February 26, 2010 | 
+					<a href='/2010/02/26/using-jsonp-to-do-the-cross-domain-request.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#jsonp'>jsonp</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -190,11 +247,18 @@ url = "http://dummy.server.org/Create_a_Script.php?callback=call_me&......
 
 
 
-				<div class="post-metadata"
-				<p>Posted Feb 22, 2010.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					February 22, 2010 | 
+					<a href='/2010/02/22/twitter-weekly-updates-for-2010-02-22.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#twitter'>twitter</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -239,11 +303,22 @@ $Configuration['Vanilla']['Report']['PerPage'] = 10;</p></li>
 
 
 
-				<div class="post-metadata"
-				<p>Posted Feb 15, 2010.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					February 15, 2010 | 
+					<a href='/2010/02/15/report-plugin-for-vanilla-2.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#forum'>forum</a>
+						, 
+					
+						
+						<a href='/tags#vanilla'>vanilla</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -267,36 +342,18 @@ $Configuration['Vanilla']['Report']['PerPage'] = 10;</p></li>
 
 
 
-				<div class="post-metadata"
-				<p>Posted Feb 08, 2010.&nbsp;
-				 
-				Tagged: .
-				</p>
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/02/01/twitter-weekly-updates-for-2010-02-01">
-				<h3 class="title"><a href="/2010/02/01/twitter-weekly-updates-for-2010-02-01.html">Twitter Weekly Updates for 2010-02-01</a></h3>
-
-				<ul class="aktt_tweet_digest">
-    <li>How to promote innovation from your web team <a href="http://briancray.com/2010/01/28/innovative-web-team/" rel="nofollow">http://briancray.com/2010/01/28/innovative-web-team/</a> <a href="http://twitter.com/Joshua_C/statuses/8500603501">#</a></li>
-    <li>GReader  - Follow changes to any website <a href="http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html" rel="nofollow">http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html</a> <a href="http://twitter.com/Joshua_C/statuses/8235514055">#</a></li>
-    <li>GRader This Blog - Follow changes to any website <a href="http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html" rel="nofollow">http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html</a> <a href="http://twitter.com/Joshua_C/statuses/8235488069">#</a></li>
-    <li>今天老师说，国外穷人是买不起手机的，中国，太不可思议了。-- 是啊， 我们这点做的很好，星星之火最后燎原了 <a href="http://twitter.com/Joshua_C/statuses/8235061591">#</a></li>
-</ul>
-
-
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
-
-
-
-
-				<div class="post-metadata"
-				<p>Posted Feb 01, 2010.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					February 08, 2010 | 
+					<a href='/2010/02/08/twitter-weekly-updates-for-2010-02-08.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#twitter'>twitter</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>

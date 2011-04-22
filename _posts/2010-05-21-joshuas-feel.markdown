@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Joshuas Feel"
+tags: feeling
 ---
 
 1. Important VS Urgent

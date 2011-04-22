@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Folder or file permission in php project installation process"
+tags: php
 ---
 
 Most projects will add notes like '..don't forget to change the "cache" folder permission: $chmod -R 777 xxx' in their project install guide.

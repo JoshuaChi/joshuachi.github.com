@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "mysql ERROR 1005 (ER_CANT_CREATE_TABLE)"
-tags: -mysql
+tags: mysql
 ---
 
 To deal with this error, there are a lot of <a href='http://verysimple.com/2006/10/22/mysql-error-number-1005-cant-create-table-mydbsql-328_45frm-errno-150/'>suggestions</a>.

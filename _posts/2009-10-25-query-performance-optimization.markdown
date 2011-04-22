@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Query Performance Optimization"
+tags: mysql
 ---
 
 1.

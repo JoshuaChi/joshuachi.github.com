@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Be careful when using propel-build-schema"
+tags: propel symfony
 ---
 
 Tip1:

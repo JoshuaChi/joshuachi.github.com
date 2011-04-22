@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What RabbitMQ Cluster Can Do"
-tags:  -rabbitmq
+tags:  rabbitmq
 ---
 
 <h3>What RabbitMQ cluster can do - Scaling and Reliability</h3>

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Same update query only update once"
-tags: -mysql
+tags: mysql
 ---
 
 Just learned more about the mysql update statement.

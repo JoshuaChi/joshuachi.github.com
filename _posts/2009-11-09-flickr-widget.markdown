@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "flickr widget"
+tags: plugin widget flickr
 ---
 
 I created a <a href="http://github.com/JoshuaChi/Flickr-Widget">flickr widget</a> for wordpress. It was built on <a href="http://www.flickr.com/fun/zeitgeist/">Flickr Daily Zeitgeist</a>. You can try it and welcome any comment. 

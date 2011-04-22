@@ -61,6 +61,48 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2010/01/04/symfony-vanilla2-sso">
+				<h3 class="title"><a href="/2010/01/04/symfony-vanilla2-sso.html">Symfony + Vanilla2 + SSO</a></h3>
+
+				<p>Vanilla2 is really really cool! Both the interface and functionality are very good.
+I give a implementation of integrating the vanilla forum into a symfony project with SSO.
+I have given some investigation of the SSO. If you have a lot of applications deployed in different domains, <a href="http://www.jasig.org/cas">CAS</a> is a better choice. But it will take you a lot of time to implement. As I can think, there is a CAS server using 8080 port that you should deploy.
+And I found an interesting post <a href="http://www.adaniels.nl/articles/simple-single-sign-on-for-php/">"Simple Single Sign-On for PHP"</a>. I really like this idea.</p>
+
+<p><img src="http://www.adaniels.nl/wp-content/uploads/sso-diagram_binck.png" alt="simple SSO" width="300" height="213" /></p>
+
+<p>The main idea is using the <a href="http://learn.clemsonlinux.org/wiki/Symlink">symlinks</a> in Linux system to link one session file in domain aaa.domain.com to another in bb.domain.com. To implementation this idea into your application is simple. But there is not so many security test for this idea. I have given a integration of <a href="http://bbpress.org/">bbpress</a> into my symfony project. But there is a lot of interface should be modified in bbpress, like login, auth_user and so on. And I didn't want to spend so much time on it. So I almost give up.</p>
+
+<p>After I installed the <a href="http://vanillaforums.org/">vanilla 2</a>, I was shocked by its UI.
+<a href="http://www.freetofeel.com/2010/01/symfony-vanilla2-sso/screenshot/" rel="attachment wp-att-346"><img src="http://www.freetofeel.com/wp-content/uploads/2010/01/screenshot-300x213.png" alt="screenshot" title="screenshot" width="300" height="213" class="aligncenter size-medium wp-image-346" /></a>
+And there is a <a href="http://vanillaforums.org/page/SingleSignOn">SSO plugin</a> for vanilla 2. The main idea to implement vanilla-SSO is sharing the domain cookie and sharing the current user information in the main site. That the vanilla will try to get the current user information. If there is, the user will sign in the vanilla. But this only limit to these sites have the same domain. For example, your main application was deployed on xx.domain.com and the vanilla should be deployed on yy.domain.com.</p>
+
+
+
+				<div class="post-metadata">
+					<p>
+					January 04, 2010 | 
+					<a href='/2010/01/04/symfony-vanilla2-sso.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#symfony'>symfony</a>
+						, 
+					
+						
+						<a href='/tags#vanilla'>vanilla</a>
+						, 
+					
+						
+						<a href='/tags#sso'>sso</a>
+						
+					 
+					</p>
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2009/12/28/twitter-weekly-updates-for-2009-12-28">
 				<h3 class="title"><a href="/2009/12/28/twitter-weekly-updates-for-2009-12-28.html">Twitter Weekly Updates for 2009-12-28</a></h3>
 
@@ -77,11 +119,18 @@
 
 
 
-				<div class="post-metadata"
-				<p>Posted Dec 28, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					December 28, 2009 | 
+					<a href='/2009/12/28/twitter-weekly-updates-for-2009-12-28.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#twitter'>twitter</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -99,11 +148,18 @@ scp username@tohostname:/remotefile /localdir/</p>
 
 
 
-				<div class="post-metadata"
-				<p>Posted Dec 18, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					December 18, 2009 | 
+					<a href='/2009/12/18/upload-and-downfile-using-scp.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#scp'>scp</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -146,11 +202,18 @@ With MyISAM, the update time = 30 seconds.</p>
 
 
 
-				<div class="post-metadata"
-				<p>Posted Dec 15, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					December 15, 2009 | 
+					<a href='/2009/12/15/2w-records-update-with-different-sql-engine.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#sql'>sql</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -176,11 +239,18 @@ insert into animals(<code>animal_type</code>, <code>animal_name</code>) select a
 
 
 
-				<div class="post-metadata"
-				<p>Posted Dec 14, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					December 14, 2009 | 
+					<a href='/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#mysql'>mysql</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -234,11 +304,18 @@ mysqlimport -u [uname] -p[pass] [dbname] [backupfile.sql]
 
 
 
-				<div class="post-metadata"
-				<p>Posted Dec 14, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					December 14, 2009 | 
+					<a href='/2009/12/14/mysql-backup-and-restore-system.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#mysql'>mysql</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -252,37 +329,22 @@ mysqlimport -u [uname] -p[pass] [dbname] [backupfile.sql]
 
 
 
-				<div class="post-metadata"
-				<p>Posted Dec 11, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/12/07/twitter-weekly-updates-for-2009-12-07">
-				<h3 class="title"><a href="/2009/12/07/twitter-weekly-updates-for-2009-12-07.html">Twitter Weekly Updates for 2009-12-07</a></h3>
-
-				<ul class="aktt_tweet_digest">
-    <li>HTM::Sanitizer, this lib help you to parse html easier.Don&#39;t invent the wheel anymore. <a href="http://www.codinghorror.com/blog/archives/001311.html" rel="nofollow">http://www.codinghorror.com/blog/archives/001311.html</a> <a href="http://twitter.com/Joshua_C/statuses/6433320128">#</a></li>
-    <li>node.js + NOSQL database , cool idea. Hope I can get a project to give a try. <a href="http://simonwillison.net/2009/Nov/23/node/" rel="nofollow">http://simonwillison.net/2009/Nov/23/node/</a> <a href="http://twitter.com/Joshua_C/statuses/6432961969">#</a></li>
-    <li>google public dns <a href="http://blog.s135.com/google_public_dns/" rel="nofollow">http://blog.s135.com/google_public_dns/</a> <a href="http://twitter.com/Joshua_C/statuses/6421480322">#</a></li>
-    <li>I think it is wrong decision that integrate twitter into linkedin.  Not every product is suitable for integration twitter. #<a href="http://search.twitter.com/search?q=%23linkedin">linkedin</a> <a href="http://twitter.com/Joshua_C/statuses/6388822149">#</a></li>
-    <li>Dear Windows7, you are more quick, you are more safe? But you are definitely more difficult to use! #<a href="http://search.twitter.com/search?q=%23windows7">windows7</a> <a href="http://twitter.com/Joshua_C/statuses/6269306864">#</a></li>
-</ul>
-
-
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
-
-
-
-
-				<div class="post-metadata"
-				<p>Posted Dec 07, 2009.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					December 11, 2009 | 
+					<a href='/2009/12/11/using-rsync-and-ssh-to-synchronise-between-two-servers.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#rsync'>rsync</a>
+						, 
+					
+						
+						<a href='/tags#ssh'>ssh</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>

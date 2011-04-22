@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Mysql : Avoid Filesort"
+tags: mysql
 ---
 
 <ul>

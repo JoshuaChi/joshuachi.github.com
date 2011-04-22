@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Lets make the web faster - Google Code"
+tags: google
 ---
 
 <a href="http://code.google.com/speed/articles/optimizing-php.html">Interesting post</a>.

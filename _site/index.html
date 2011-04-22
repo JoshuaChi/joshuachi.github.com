@@ -61,6 +61,100 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2011/04/22/what-rabbitmq-cluster-can-do">
+				<h3 class="title"><a href="/2011/04/22/what-rabbitmq-cluster-can-do.html">What RabbitMQ Cluster Can Do</a></h3>
+
+				<h3>What RabbitMQ cluster can do - Scaling and Reliability</h3>
+
+
+<ul>
+<li><b>Example 1</b>:</li>
+</ul>
+
+
+<p>All data/state required for the operation of a RabbitMQ broker is replicated across all nodes.</p>
+
+<p>Let's take an example to help you understand better.</p>
+
+<p>There is a publisher which publish 10 messages to RabbitMQ broker(*1).</p>
+
+<p>|Publisher| --> |10 Messages| --> |Broker( = Node_A + Node_B)|</p>
+
+<p>So Node_A will receive Message 1, Message 3, 5, 7, 9; Node_B will receive Message 2, Message 4, 6, 8, 10.</p>
+
+<ul>
+<li><b>Example 2</b>:</li>
+</ul>
+
+
+<p>We still use the above example. If the Node_A crashed when it is consuming the messages, what happens?</p>
+
+<p>Before Node_A crashed (I simply powered off this machine):</p>
+
+<p>Node_A finished Message 1, Message 3, and it is starting to consume Message 5;</p>
+
+<p>Node_B finished Message 2, Message 4 and it is starting to consume Message 6.</p>
+
+<p>After Node_A crashed:</p>
+
+<p>Node_A stopped working;</p>
+
+<p>Node_B finished Message 6, Message 7, Message 8, Message 9, Message 10 and Message 5.</p>
+
+<p>Yes, as you can see, even Node_A dies unexpected. Broker still can get the status of Message 5 and send it to Node_B.
+And you can find following explanation:</p>
+
+<pre>
+  If a node goes down or becomes unreachable what effects can this have on the cluster? Do things 'hang' for a bit?
+  
+  Topology change operations (see above) could potentially pause operation for a brief time but they will complete eventually. We use the net_kernel erlang module to do monitoring between nodes. The default "tick" time there is 60 seconds but this can be reduced. Further, in the event of a failure, any communication between the nodes will likely result in an error being generated and detected immediately: i.e. the only time at which you would not know about a node failure for 60 seconds is if there was no communication between the nodes for that amount of time.
+  
+  ....
+  
+</pre>
+
+
+
+
+<h3>What RabbitMQ cluster can not do - High Availability</h3>
+
+
+<p>So the 60 seconds is what RabbitMQ can not do. We call it high availability.</p>
+
+<pre>
+...
+Whilst RabbitMQ also supports clustering, clustering is intended to facilitate scalability, not availability. Thus in a cluster, if a node fails, queues which were on the failed node are lost. With the high availability setup described in this guide, when a node fails, the durable queues and the persistent messages within them can be recovered by a different node.
+...
+</pre>
+
+
+<p>To build a high availability and scalable application, you can take a look <a href='http://www.rabbitmq.com/pacemaker.html'>RabbitMQ Placemaker</a></p>
+
+<p>References:</p>
+
+<ol>
+<li>RabbitMQ broker - a logical grouping of one or several Erlang nodes, each running the RabbitMQ application and sharing users, virtual hosts, queues, exchanges, etc. Sometimes we refer to the collection of nodes as a cluster.</li>
+</ol>
+
+
+
+
+				<div class="post-metadata">
+					<p>
+					April 22, 2011 | 
+					<a href='/2011/04/22/what-rabbitmq-cluster-can-do.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#rabbitmq'>rabbitmq</a>
+						
+					 
+					</p>
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2011/03/08/do-we-still-need-scrum">
 				<h3 class="title"><a href="/2011/03/08/do-we-still-need-scrum.html">Do we still need scrum if ...</a></h3>
 
@@ -86,11 +180,18 @@
 
 
 
-				<div class="post-metadata"
-				<p>Posted Mar 08, 2011.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					March 08, 2011 | 
+					<a href='/2011/03/08/do-we-still-need-scrum.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#scrum'>scrum</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -247,11 +348,22 @@ This article was copied from http://rimuhosting.com/howto/memory.jsp.</p>
 
 
 
-				<div class="post-metadata"
-				<p>Posted Mar 02, 2011.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					March 02, 2011 | 
+					<a href='/2011/03/02/server-monitor.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#performance'>performance</a>
+						, 
+					
+						
+						<a href='/tags#memory'>memory</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -269,11 +381,18 @@ In my case, it is because of:</p>
 
 
 
-				<div class="post-metadata"
-				<p>Posted Feb 21, 2011.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					February 21, 2011 | 
+					<a href='/2011/02/21/deal-with-mysql-error-150.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#mysql'>mysql</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -303,11 +422,18 @@ Learn it from <a href='http://dev.mysql.com/doc/refman/5.1/en/update-speed.html'
 
 
 
-				<div class="post-metadata"
-				<p>Posted Feb 16, 2011.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					February 16, 2011 | 
+					<a href='/2011/02/16/mysql-update.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#mysql'>mysql</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -370,11 +496,18 @@ columns are defined as NOT NULL.
 
 
 
-				<div class="post-metadata"
-				<p>Posted Jan 21, 2011.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					January 21, 2011 | 
+					<a href='/2011/01/21/deal-with-mysql-error-1005-hy000.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#mysql'>mysql</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>
@@ -411,64 +544,18 @@ Now it supports C++, C#, Erlang, Haskell, Java, Objective C/Cocoa, OCaml, Perl, 
 
 
 
-				<div class="post-metadata"
-				<p>Posted Jan 14, 2011.&nbsp;
-				 
-				Tagged: .
-				</p>
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/12/31/world-is-changing">
-				<h3 class="title"><a href="/2010/12/31/world-is-changing.html">年末总结</a></h3>
-
-				<p>又到岁末了，这一年最大的感触就是世界在变,变得太快。我一直在想七八十岁的老人生活在这个年代，坐着更现代的交通工具，吃着更美味的美食，眼睁睁的目睹人的行为的变化。他们会怎么看这个时代。我现在有点同感了。</p>
-
-<p>以前从未有个new year todo list，但从工作实践中感觉这个确实还有有些效果和意义的（以前我最讨厌形式上的东西的）。</p>
-
-<p><b>2010 完成和进行中的事情</b>：</p>
-
-<ul>
-<li>kiwitask.com 年初改版上线，几次尝试都失败，最后直接将其下线。有意思的事情对这个产品的反省和思索是事情过去了几个月之后才渐渐体会到的；</li>
-<li>终于在高房价的矛盾中购房一套；</li>
-<li>开始学车历程，临近过节看着各式各样的车祸，心头一寒，不学好真不敢出来开；</li>
-<li>有幸成为SM，依然在实践中继续学习，汲取前人的经验和教训，希望不要误人子弟；</li>
-<li>做了一次国内远徒旅行，太简单了；</li>
-</ul>
-
-
-<p><b>2011 TO DO LIST</b>：</p>
-
-<ul>
-<li>结婚，自己都觉得不好意思了；</li>
-<li>下半年装修；</li>
-<li>完成学车；</li>
-<li>回家把护照给办了；</li>
-<li>上线一个新的产品， 如果有精力将其它几个产品打包上线；</li>
-<li>在互联网上混的更实在，看到这领域太多的肤浅和吹嘘；</li>
-<li>寻找一种锻炼身体的方式，这个是最急切的任务；</li>
-<li>希望可以在工作中做的更多，得到更大的认可。</li>
-<li>和亲戚朋友多联系，2010年，我们联系的太少了；</li>
-<li>争取做一次说的过去的远徒旅行或者国外旅行一次 :-)；</li>
-<li>多写点有价值的文章</li>
-</ul>
-
-
-<p><b>2011 WISH LIST</b>：</p>
-
-<ul>
-<li>冤案越来越少，人心越来越温暖，没有欺骗，诚实进步的社会；</li>
-</ul>
-
-
-
-
-				<div class="post-metadata"
-				<p>Posted Dec 31, 2010.&nbsp;
-				 
-				Tagged: .
-				</p>
+				<div class="post-metadata">
+					<p>
+					January 14, 2011 | 
+					<a href='/2011/01/14/thrift-framework.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags#RPC'>RPC</a>
+						
+					 
+					</p>
 				</div>
 
 			</div>

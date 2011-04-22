@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "check your current php.ini path"
+tags: php
 ---
 
 You might have two different PHP versions installed: one for the command line, and another for the web. So use this function which was provided by symfony that can be easily judge.

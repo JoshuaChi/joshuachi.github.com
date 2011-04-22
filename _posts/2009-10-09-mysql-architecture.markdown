@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "MySQL Architecture"
+tags: mysql
 ---
 
 1.

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "ERROR:  While executing gem ... (Gem::GemNotFoundException)"
+tags: gem
 ---
 
 Try

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Import Big InnoDB Tables"
+tags: innodb mysql
 ---
 
 1. turn off the logs;

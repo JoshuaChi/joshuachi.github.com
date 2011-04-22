@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Web Server Memory Monitor"
-tags: -performance memory
+tags: performance memory
 ---
 
 <h2>free-m</h2>

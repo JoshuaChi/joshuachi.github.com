@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Do we still need scrum if ..."
-tags: -scrum
+tags: scrum
 ---
 
 Just learned an interesting point from <a href='http://architects.dzone.com/articles/balancing-software'>'balance software' post</a>:
