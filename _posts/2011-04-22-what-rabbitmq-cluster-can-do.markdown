@@ -50,7 +50,15 @@ And you can find following explanation:
 
 <h3>What RabbitMQ cluster can not do - High Availability</h3>
 
-So the 60 seconds is what RabbitMQ can not do. We call it high availability. To build a high availability and scalable application, you can take a look <a href='http://www.rabbitmq.com/pacemaker.html'>RabbitMQ Placemaker</a>
+So the 60 seconds is what RabbitMQ can not do. We call it high availability. 
+
+<pre>
+...
+Whilst RabbitMQ also supports clustering, clustering is intended to facilitate scalability, not availability. Thus in a cluster, if a node fails, queues which were on the failed node are lost. With the high availability setup described in this guide, when a node fails, the durable queues and the persistent messages within them can be recovered by a different node.
+...
+</pre>
+
+To build a high availability and scalable application, you can take a look <a href='http://www.rabbitmq.com/pacemaker.html'>RabbitMQ Placemaker</a>
 
 
 References:
