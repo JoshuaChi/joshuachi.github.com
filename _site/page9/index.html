@@ -64,6 +64,44 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2009/10/31/check-your-current-php-ini-path">
+				<h3 class="title"><a href="/2009/10/31/check-your-current-php-ini-path.html">check your current php.ini path</a></h3>
+				
+				<p>You might have two different PHP versions installed: one for the command line, and another for the web. So use this function which was provided by symfony that can be easily judge.</p>
+
+<pre name='code' class='php'>
+/**
+ * Gets the php.ini path used by the current PHP interpretor.
+ *
+ * @return string the php.ini path
+ */
+function get_ini_path()
+{
+  if ($path = get_cfg_var('cfg_file_path'))
+  {
+    return $path;
+  }
+
+  return 'WARNING: not using a php.ini file';
+}
+</pre>
+
+
+
+				<div class="post-metadata">
+					October 31, 2009 | 
+					<a href='/2009/10/31/check-your-current-php-ini-path.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#php'>php</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2009/10/26/twitter-weekly-updates-for-2009-10-26">
 				<h3 class="title"><a href="/2009/10/26/twitter-weekly-updates-for-2009-10-26.html">Twitter Weekly Updates for 2009-10-26</a></h3>
 				
@@ -366,62 +404,6 @@ calculateEmployeeAverageAge(new Person());
 				<div class="post-metadata">
 					October 19, 2009 | 
 					<a href='/2009/10/19/twitter-weekly-updates-for-2009-10-19.html#disqus_thread'>View Comments</a>
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/19/one-pixel-notched-corners">
-				<h3 class="title"><a href="/2009/10/19/one-pixel-notched-corners.html">One pixel notched corners</a></h3>
-				
-				<p>An interesting article <a href="http://www.askthecssguy.com/2008/03/one_pixel_notched_corners_as_u.html">One pixel notched corners as used by Google Analytics</a>.</p>
-
-<p>A simple explanation of the 'why':
-<a href="http://www.freetofeel.com/2009/10/one-pixel-notched-corners/one_pixel_corner/" rel="attachment wp-att-235"><img src="http://www.freetofeel.com/wp-content/uploads/2009/10/one_pixel_corner.gif" alt="one_pixel_corner" title="one_pixel_corner" width="220" height="186" class="aligncenter size-full wp-image-235" /></a></p>
-
-<pre name='code' class='html'>
-<style type="text/css">
-/* default stuff */
-.letsGiveItAFixedWidthOf200Pixels { width:200px; }
-
-.feature {
-    border:solid red;
-    border-width:0px 4px 2px;
-    background:#b0c0e6;
-}
-.feature div {
-  position:relative;
-  top: -4px;
-  left: 0;
-  border:solid blue;
-  border-width:4px 0 0;
-}
-</style>
-</head><body>
-
-<div class="examplesGoHere letsGiveItAFixedWidthOf200Pixels">
-    <h3>A div</h3>
-    <div class="feature">
-        <div>
-            <div>
-                a
-            </div>
-        </div>
-    </div>
-</div>
-</pre>
-
-
-
-				<div class="post-metadata">
-					October 19, 2009 | 
-					<a href='/2009/10/19/one-pixel-notched-corners.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#css'>css</a>
-						
 					 
 				</div>
 

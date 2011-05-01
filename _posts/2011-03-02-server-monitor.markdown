@@ -76,7 +76,7 @@ Apache can be a big memory user.  Apache runs a number of 'servers' and shares i
 To reduce the number of servers, you can edit your httpd.conf file.  There are three settings to tweak: StartServers, MinSpareServers, and MaxSpareServers.  Each can be reduced to a value of 1 or 2 and your server will still respond promptly, even on quite busy sites.  Some distros have multiple versions of these settings depending on which process model Apache is using.  In this case, the 'prefork' values are the ones that would need to change.
 
 To get a rough idea of how to set the MaxClients directive, it is best to find out how much memory the largest apache thread is using. Then stop apache, check the free memory and divide that amount by the size of the apache thread found earlier. The result will be a rough guideline that can be used to further tune (up/down) the MaxClients directive. The following script can be used to get a general idea of how to set MaxClients for a particular server:
-<pre class="codebox"><code>
+<pre class="codebox">
 #!/bin/bash
 echo "This is intended as a guideline only!"
 if [ -e /etc/debian_version ]; then
@@ -92,7 +92,7 @@ MEM=`free -m |head -n 2 |tail -n 1 |awk '{free=($4); print free}'`
 echo "Starting $APACHE again"
 /etc/init.d/$APACHE start &amp;amp;&gt; /dev/null
 echo "MaxClients should be around" `expr $MEM / $RSS`
-</code></pre>
+</pre>
 Note: httpd.conf should be tuned correctly on our newer WBEL3 and FC2 distros.  Apache is not installed by default on our Debian distros (since some people opt for Apache 2 and others prefer Apache 1.3).  So this change should only be necessary if you have a Debian distro.
 
 from http://modperlbook.org/html/11-2-Setting-the-MaxRequestsPerChild-Directive.html: "Setting MaxRequestsPerChild to a non-zero limit solves some memory-leakage problems caused by sloppy programming practices and bugs, whereby a child process consumes a little more memory after each request. In such cases, and where the directive is left unbounded, after a certain number of requests the children will use up all the available memory and the server will die from memory starvation."
@@ -113,10 +113,12 @@ query_cache_size = 1M
 Sometimes a server's regular memory usage is fine.  But it will intermittently run out of memory.  And when that happens you may lose trace of what caused the server to run out of memory.
 
 In this case you can setup a script (see below) that will regularly log your server's memory usage.  And if there is a problem you can check the logs to see what was running.
+
 <code>
 wget http://proj.ri.mu/memmon.sh -O /root/memmon.sh
 chmod +x /root/memmon.sh
-<code>
+</code>
+
 <pre>
 -- create a cronjob that runs every few minutes to log the memory usage
 echo '0-59/10 * * * * root /root/memmon.sh >> /root/memmon.txt' > /etc/cron.d/memmon
@@ -127,6 +129,6 @@ echo '/root/memmon.txt {}' > /etc/logrotate.d/memmon
 
 </pre>
 
---
+
 This article was copied from http://rimuhosting.com/howto/memory.jsp.
 

@@ -64,6 +64,48 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2009/11/10/textmate-for-ubuntu">
+				<h3 class="title"><a href="/2009/11/10/textmate-for-ubuntu.html">Textmate  for Ubuntu</a></h3>
+				
+				<p>GEdit + Gmate = Textmate on Ubuntu</p>
+
+<p>Install Gedit and Gedit plugins.
+First you need to install the plugin extenstion for gedit</p>
+
+<pre name='code' class='text'>
+sudo apt-get install gedit gedit-plugins
+</pre>
+
+
+<p>Gmate is a usefull program (collection set of plugins and theme) transforming Gedit into a Textmate like</p>
+
+<pre name='code' class='text'>
+cd ~
+git clone git://github.com/lexrupy/gmate.git
+cd gmate
+sh ./install.sh
+</pre>
+
+
+
+				<div class="post-metadata">
+					November 10, 2009 | 
+					<a href='/2009/11/10/textmate-for-ubuntu.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#textmate'>textmate</a>
+						, 
+					
+						
+						<a href='/tags.html#ubuntu'>ubuntu</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2009/11/09/twitter-weekly-updates-for-2009-11-09">
 				<h3 class="title"><a href="/2009/11/09/twitter-weekly-updates-for-2009-11-09.html">Twitter Weekly Updates for 2009-11-09</a></h3>
 				
@@ -270,44 +312,6 @@ Programmers interested in the point of view of leaders in the field. Programmers
 							| 
 						
 						<a href='/tags.html#life'>life</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/31/check-your-current-php-ini-path">
-				<h3 class="title"><a href="/2009/10/31/check-your-current-php-ini-path.html">check your current php.ini path</a></h3>
-				
-				<p>You might have two different PHP versions installed: one for the command line, and another for the web. So use this function which was provided by symfony that can be easily judge.</p>
-
-<pre name='code' class='php'>
-/**
- * Gets the php.ini path used by the current PHP interpretor.
- *
- * @return string the php.ini path
- */
-function get_ini_path()
-{
-  if ($path = get_cfg_var('cfg_file_path'))
-  {
-    return $path;
-  }
-
-  return 'WARNING: not using a php.ini file';
-}
-</pre>
-
-
-
-				<div class="post-metadata">
-					October 31, 2009 | 
-					<a href='/2009/10/31/check-your-current-php-ini-path.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#php'>php</a>
 						
 					 
 				</div>

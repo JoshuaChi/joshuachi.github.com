@@ -4,13 +4,117 @@
 	<title>Joshua Chi</title>
 	<link href="http://freetofeel.com/atom.xml" rel="self"/>
 	<link href="http://freetofeel.com/"/>
-	<updated>2011-04-22T23:20:17+08:00</updated>
+	<updated>2011-05-01T16:11:41+08:00</updated>
 	<id>http://freetofeel.com/</id>
 	<author>
 		<name>Joshua Chi</name>
 		<email>joshokn@gmail.com</email>
 	</author>
 
+	
+		<entry>
+			<title>Solve Wireless Issue When Upgrading From 10.10 to 11.04</title>
+			<link href="http://freetofeel.com/2011/05/01/solve-ubuntu1104-wifi-issue.html"/>
+			<updated>2011-05-01T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2011/05/01/solve-ubuntu1104-wifi-issue</id>
+			<content type="html">&lt;p&gt;After upgrading from ubuntu 10.10 to ubuntu 11.04 the wireless stop working.&lt;/p&gt;
+
+&lt;p&gt;The first step, I was using &lt;a href=&quot;https://help.ubuntu.com/community/WifiDocs/WirelessTroubleShootingGuide&quot;&gt;ubuntu trouble shooting&lt;/a&gt; to detect the issue.&lt;/p&gt;
+
+&lt;p&gt;a. Detail whether there are software or hardware blocks on your rf devices. To get a list of devices and their hardware and software status, try &quot;sudo rfkill list&quot;.&lt;/p&gt;
+
+&lt;pre&gt;
+~$ sudo rfkill list
+0: hp-wifi: Wireless LAN
+    Soft blocked: yes
+    Hard blocked: yes
+&lt;/pre&gt;
+
+
+&lt;p&gt;Unblock your devices by &quot;sudo rfkill unblock 0&quot;.&lt;/p&gt;
+
+&lt;p&gt;b. Check for Device Recognition for my HP laptop(amd64)&lt;/p&gt;
+
+&lt;pre&gt;
+~$ sudo lshw -C network
+  *-network UNCLAIMED     
+       description: Network controller
+       product: BCM4311 802.11a/b/g
+       vendor: Broadcom Corporation
+       physical id: 0
+       bus info: pci@0000:30:00.0
+       version: 01
+       width: 32 bits
+       clock: 33MHz
+       capabilities: pm msi pciexpress bus_master cap_list
+       configuration: latency=0
+       resources: memory:c8000000-c8003fff
+  *-network
+       description: Ethernet interface
+       product: NetXtreme BCM5788 Gigabit Ethernet
+       vendor: Broadcom Corporation
+       physical id: 1
+       bus info: pci@0000:02:01.0
+       logical name: eth0
+       version: 03
+       serial: 00:17:08:37:6a:64
+       size: 100Mbit/s
+       capacity: 1Gbit/s
+       width: 32 bits
+       clock: 66MHz
+       capabilities: pm vpd msi bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=tg3 driverversion=3.116 duplex=full firmware=5788-v3.26 ip=192.168.1.103 latency=64 link=yes mingnt=64 multicast=yes port=twisted pair speed=100Mbit/s
+       resources: irq:23 memory:d4000000-d400ffff
+&lt;/pre&gt;
+
+
+&lt;p&gt;Here I can see 'tg3' driver was using. And by checking the loaded module the tg3 is there.&lt;/p&gt;
+
+&lt;pre&gt;
+~$ sudo lsmod
+&lt;/pre&gt;
+
+
+&lt;p&gt;If your driver was not loaded, you can load it by &quot;sudo modprobe &lt;module&gt;&quot;&lt;/p&gt;
+
+&lt;p&gt;c. Identify PCI devices with PCI ID.&lt;/p&gt;
+
+&lt;pre&gt;
+~$ sudo lspci -v | grep Ethernet
+02:01.0 Ethernet controller: Broadcom Corporation NetXtreme BCM5788 Gigabit Ethernet (rev 03)
+
+~$ sudo lspci -v | grep Network
+30:00.0 Network controller: Broadcom Corporation BCM4311 802.11a/b/g (rev 01)
+&lt;/pre&gt;
+
+
+&lt;p&gt;d. Check the addtional drivers, I found &quot;Broadcom STA wireless driver&quot; was using.&lt;/p&gt;
+
+&lt;p&gt;Everything looks good until now. Driver was working and was recognized. So I guess the issue might be the compatibility with new kernel?&lt;/p&gt;
+
+&lt;p&gt;e. With the help from google.&lt;/p&gt;
+
+&lt;p&gt;i). Someone solve it by install &lt;a herf=&quot;http://ubuntuforums.org/showthread.php?t=1653157&quot;&gt;linux-backports-modules-wireless-maverick-generic&lt;/a&gt;. It is interesting to know what &lt;a hef=&quot;https://help.ubuntu.com/community/UbuntuBackports&quot;&gt;backports&lt;/a&gt; is.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately it didn't work for me.&lt;/p&gt;
+
+&lt;p&gt;ii). So I tried the solution in this &lt;a href=&quot;http://ubuntuforums.org/showthread.php?t=1653157&amp;page=2&quot;&gt;thread&lt;/a&gt; by disable my &quot;Broadcom STA wireless driver&quot; and install b43.&lt;/p&gt;
+
+&lt;pre&gt;
+Removing &quot;bcmwl-kernel-source&quot; by using Synaptic Package Manager
+Then installing &quot;firmware-b43-installer&quot; and &quot;b43-fwcutter&quot; again by Synaptic Package Manager. 
+&lt;/pre&gt;
+
+
+&lt;p&gt;At the end of step e, and by rebooting laptop, the wifi issue was fixed. If you still has the issue, I suggest check the trouble shooting tutorial again. It is really helpful.&lt;/p&gt;
+
+&lt;p&gt;Reference:&lt;/p&gt;
+
+&lt;p&gt;1.http://linuxfans.keryxproject.org/?page_id=27&lt;/p&gt;
+
+&lt;p&gt;2.http://www.ubuntumini.com/2009/11/broadcom-wireless-driver-fix-in-karmic.html&lt;/p&gt;
+</content>
+		</entry>
 	
 		<entry>
 			<title>What RabbitMQ Cluster Can Do</title>
@@ -211,7 +315,7 @@ The first row shows your server averages.  The si (swap in) and so (swap out) co
 
 &lt;p&gt;To get a rough idea of how to set the MaxClients directive, it is best to find out how much memory the largest apache thread is using. Then stop apache, check the free memory and divide that amount by the size of the apache thread found earlier. The result will be a rough guideline that can be used to further tune (up/down) the MaxClients directive. The following script can be used to get a general idea of how to set MaxClients for a particular server:&lt;/p&gt;
 
-&lt;pre class=&quot;codebox&quot;&gt;&lt;code&gt;
+&lt;pre class=&quot;codebox&quot;&gt;
 #!/bin/bash
 echo &quot;This is intended as a guideline only!&quot;
 if [ -e /etc/debian_version ]; then
@@ -227,7 +331,7 @@ MEM=`free -m |head -n 2 |tail -n 1 |awk '{free=($4); print free}'`
 echo &quot;Starting $APACHE again&quot;
 /etc/init.d/$APACHE start &amp;amp;amp;&amp;gt; /dev/null
 echo &quot;MaxClients should be around&quot; `expr $MEM / $RSS`
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;
 
 
 &lt;p&gt;Note: httpd.conf should be tuned correctly on our newer WBEL3 and FC2 distros.  Apache is not installed by default on our Debian distros (since some people opt for Apache 2 and others prefer Apache 1.3).  So this change should only be necessary if you have a Debian distro.&lt;/p&gt;
@@ -251,11 +355,12 @@ query_cache_size = 1M
 
 &lt;p&gt;Sometimes a server's regular memory usage is fine.  But it will intermittently run out of memory.  And when that happens you may lose trace of what caused the server to run out of memory.&lt;/p&gt;
 
-&lt;p&gt;In this case you can setup a script (see below) that will regularly log your server's memory usage.  And if there is a problem you can check the logs to see what was running.
-&lt;code&gt;
+&lt;p&gt;In this case you can setup a script (see below) that will regularly log your server's memory usage.  And if there is a problem you can check the logs to see what was running.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
 wget http://proj.ri.mu/memmon.sh -O /root/memmon.sh
 chmod +x /root/memmon.sh
-&lt;code&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;pre&gt;
 -- create a cronjob that runs every few minutes to log the memory usage
@@ -268,8 +373,7 @@ echo '/root/memmon.txt {}' &gt; /etc/logrotate.d/memmon
 &lt;/pre&gt;
 
 
-&lt;p&gt;--
-This article was copied from http://rimuhosting.com/howto/memory.jsp.&lt;/p&gt;
+&lt;p&gt;This article was copied from http://rimuhosting.com/howto/memory.jsp.&lt;/p&gt;
 </content>
 		</entry>
 	

@@ -64,6 +64,125 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2011/05/01/solve-ubuntu1104-wifi-issue">
+				<h3 class="title"><a href="/2011/05/01/solve-ubuntu1104-wifi-issue.html">Solve Wireless Issue When Upgrading From 10.10 to 11.04</a></h3>
+				
+				<p>After upgrading from ubuntu 10.10 to ubuntu 11.04 the wireless stop working.</p>
+
+<p>The first step, I was using <a href="https://help.ubuntu.com/community/WifiDocs/WirelessTroubleShootingGuide">ubuntu trouble shooting</a> to detect the issue.</p>
+
+<p>a. Detail whether there are software or hardware blocks on your rf devices. To get a list of devices and their hardware and software status, try "sudo rfkill list".</p>
+
+<pre>
+~$ sudo rfkill list
+0: hp-wifi: Wireless LAN
+    Soft blocked: yes
+    Hard blocked: yes
+</pre>
+
+
+<p>Unblock your devices by "sudo rfkill unblock 0".</p>
+
+<p>b. Check for Device Recognition for my HP laptop(amd64)</p>
+
+<pre>
+~$ sudo lshw -C network
+  *-network UNCLAIMED     
+       description: Network controller
+       product: BCM4311 802.11a/b/g
+       vendor: Broadcom Corporation
+       physical id: 0
+       bus info: pci@0000:30:00.0
+       version: 01
+       width: 32 bits
+       clock: 33MHz
+       capabilities: pm msi pciexpress bus_master cap_list
+       configuration: latency=0
+       resources: memory:c8000000-c8003fff
+  *-network
+       description: Ethernet interface
+       product: NetXtreme BCM5788 Gigabit Ethernet
+       vendor: Broadcom Corporation
+       physical id: 1
+       bus info: pci@0000:02:01.0
+       logical name: eth0
+       version: 03
+       serial: 00:17:08:37:6a:64
+       size: 100Mbit/s
+       capacity: 1Gbit/s
+       width: 32 bits
+       clock: 66MHz
+       capabilities: pm vpd msi bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=tg3 driverversion=3.116 duplex=full firmware=5788-v3.26 ip=192.168.1.103 latency=64 link=yes mingnt=64 multicast=yes port=twisted pair speed=100Mbit/s
+       resources: irq:23 memory:d4000000-d400ffff
+</pre>
+
+
+<p>Here I can see 'tg3' driver was using. And by checking the loaded module the tg3 is there.</p>
+
+<pre>
+~$ sudo lsmod
+</pre>
+
+
+<p>If your driver was not loaded, you can load it by "sudo modprobe <module>"</p>
+
+<p>c. Identify PCI devices with PCI ID.</p>
+
+<pre>
+~$ sudo lspci -v | grep Ethernet
+02:01.0 Ethernet controller: Broadcom Corporation NetXtreme BCM5788 Gigabit Ethernet (rev 03)
+
+~$ sudo lspci -v | grep Network
+30:00.0 Network controller: Broadcom Corporation BCM4311 802.11a/b/g (rev 01)
+</pre>
+
+
+<p>d. Check the addtional drivers, I found "Broadcom STA wireless driver" was using.</p>
+
+<p>Everything looks good until now. Driver was working and was recognized. So I guess the issue might be the compatibility with new kernel?</p>
+
+<p>e. With the help from google.</p>
+
+<p>i). Someone solve it by install <a herf="http://ubuntuforums.org/showthread.php?t=1653157">linux-backports-modules-wireless-maverick-generic</a>. It is interesting to know what <a hef="https://help.ubuntu.com/community/UbuntuBackports">backports</a> is.</p>
+
+<p>Unfortunately it didn't work for me.</p>
+
+<p>ii). So I tried the solution in this <a href="http://ubuntuforums.org/showthread.php?t=1653157&page=2">thread</a> by disable my "Broadcom STA wireless driver" and install b43.</p>
+
+<pre>
+Removing "bcmwl-kernel-source" by using Synaptic Package Manager
+Then installing "firmware-b43-installer" and "b43-fwcutter" again by Synaptic Package Manager. 
+</pre>
+
+
+<p>At the end of step e, and by rebooting laptop, the wifi issue was fixed. If you still has the issue, I suggest check the trouble shooting tutorial again. It is really helpful.</p>
+
+<p>Reference:</p>
+
+<p>1.http://linuxfans.keryxproject.org/?page_id=27</p>
+
+<p>2.http://www.ubuntumini.com/2009/11/broadcom-wireless-driver-fix-in-karmic.html</p>
+
+
+				<div class="post-metadata">
+					May 01, 2011 | 
+					<a href='/2011/05/01/solve-ubuntu1104-wifi-issue.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#ubuntu'>ubuntu</a>
+						, 
+					
+						
+						<a href='/tags.html#wireless'>wireless</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2011/04/22/what-rabbitmq-cluster-can-do">
 				<h3 class="title"><a href="/2011/04/22/what-rabbitmq-cluster-can-do.html">What RabbitMQ Cluster Can Do</a></h3>
 				
@@ -283,7 +402,7 @@ The first row shows your server averages.  The si (swap in) and so (swap out) co
 
 <p>To get a rough idea of how to set the MaxClients directive, it is best to find out how much memory the largest apache thread is using. Then stop apache, check the free memory and divide that amount by the size of the apache thread found earlier. The result will be a rough guideline that can be used to further tune (up/down) the MaxClients directive. The following script can be used to get a general idea of how to set MaxClients for a particular server:</p>
 
-<pre class="codebox"><code>
+<pre class="codebox">
 #!/bin/bash
 echo "This is intended as a guideline only!"
 if [ -e /etc/debian_version ]; then
@@ -299,7 +418,7 @@ MEM=`free -m |head -n 2 |tail -n 1 |awk '{free=($4); print free}'`
 echo "Starting $APACHE again"
 /etc/init.d/$APACHE start &amp;amp;&gt; /dev/null
 echo "MaxClients should be around" `expr $MEM / $RSS`
-</code></pre>
+</pre>
 
 
 <p>Note: httpd.conf should be tuned correctly on our newer WBEL3 and FC2 distros.  Apache is not installed by default on our Debian distros (since some people opt for Apache 2 and others prefer Apache 1.3).  So this change should only be necessary if you have a Debian distro.</p>
@@ -323,11 +442,12 @@ query_cache_size = 1M
 
 <p>Sometimes a server's regular memory usage is fine.  But it will intermittently run out of memory.  And when that happens you may lose trace of what caused the server to run out of memory.</p>
 
-<p>In this case you can setup a script (see below) that will regularly log your server's memory usage.  And if there is a problem you can check the logs to see what was running.
-<code>
+<p>In this case you can setup a script (see below) that will regularly log your server's memory usage.  And if there is a problem you can check the logs to see what was running.</p>
+
+<p><code>
 wget http://proj.ri.mu/memmon.sh -O /root/memmon.sh
 chmod +x /root/memmon.sh
-<code></p>
+</code></p>
 
 <pre>
 -- create a cronjob that runs every few minutes to log the memory usage
@@ -340,8 +460,7 @@ echo '/root/memmon.txt {}' > /etc/logrotate.d/memmon
 </pre>
 
 
-<p>--
-This article was copied from http://rimuhosting.com/howto/memory.jsp.</p>
+<p>This article was copied from http://rimuhosting.com/howto/memory.jsp.</p>
 
 
 				<div class="post-metadata">
@@ -491,51 +610,6 @@ columns are defined as NOT NULL.
 							| 
 						
 						<a href='/tags.html#mysql'>mysql</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2011/01/14/thrift-framework">
-				<h3 class="title"><a href="/2011/01/14/thrift-framework.html">Cross Lanaguage Service Development</a></h3>
-				
-				<p>Thrift is a software framework for scalable cross-language services development.
-Now it supports C++, C#, Erlang, Haskell, Java, Objective C/Cocoa, OCaml, Perl, PHP, Python, Ruby, and Squeak.</p>
-
-<ul>
-<li><p>Download: <a href='http://incubator.apache.org/thrift/download/'>http://incubator.apache.org/thrift/download/</a></p></li>
-<li><p>Install: <a href='http://wiki.apache.org/thrift/GettingUbuntuPackages'>http://wiki.apache.org/thrift/GettingUbuntuPackages</a></p></li>
-</ul>
-
-
-<p>So basically, what you need to do is define a .thrift definition file. And Thrift will help you generate the RPC client and RPC server. There are a lot of examples in this <a href='http://wiki.apache.org/thrift/'>wiki</a> page.</p>
-
-<p>You can use this <a href='http://chanian.com/2010/05/13/thrift-tutorial-a-php-client/'>demo</a> to understand how it works.</p>
-
-<p>There is a similar project called <a href='http://code.google.com/apis/protocolbuffers/'>Protocol Buffers</a> which provided by google.</p>
-
-<hr />
-
-<p>This is what I have done in todays' Innovation Day. And I totall agree:</p>
-
-<pre><code>Individuals and interactions over processes and tools</code></pre>
-
-
-<br />
-
-
-<p>We know people is the kernel in a technical company. Anything is beneficial for people should be encouraged. But of course, it also should be beneficial for company firstly. Any rule that restrict people's mind should be removed.</p>
-
-
-				<div class="post-metadata">
-					January 14, 2011 | 
-					<a href='/2011/01/14/thrift-framework.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#RPC'>RPC</a>
 						
 					 
 				</div>

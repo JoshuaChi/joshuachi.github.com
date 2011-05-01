@@ -149,7 +149,7 @@ The first row shows your server averages.  The si (swap in) and so (swap out) co
 
 <p>To get a rough idea of how to set the MaxClients directive, it is best to find out how much memory the largest apache thread is using. Then stop apache, check the free memory and divide that amount by the size of the apache thread found earlier. The result will be a rough guideline that can be used to further tune (up/down) the MaxClients directive. The following script can be used to get a general idea of how to set MaxClients for a particular server:</p>
 
-<pre class="codebox"><code>
+<pre class="codebox">
 #!/bin/bash
 echo "This is intended as a guideline only!"
 if [ -e /etc/debian_version ]; then
@@ -165,7 +165,7 @@ MEM=`free -m |head -n 2 |tail -n 1 |awk '{free=($4); print free}'`
 echo "Starting $APACHE again"
 /etc/init.d/$APACHE start &amp;amp;&gt; /dev/null
 echo "MaxClients should be around" `expr $MEM / $RSS`
-</code></pre>
+</pre>
 
 
 <p>Note: httpd.conf should be tuned correctly on our newer WBEL3 and FC2 distros.  Apache is not installed by default on our Debian distros (since some people opt for Apache 2 and others prefer Apache 1.3).  So this change should only be necessary if you have a Debian distro.</p>
@@ -189,11 +189,12 @@ query_cache_size = 1M
 
 <p>Sometimes a server's regular memory usage is fine.  But it will intermittently run out of memory.  And when that happens you may lose trace of what caused the server to run out of memory.</p>
 
-<p>In this case you can setup a script (see below) that will regularly log your server's memory usage.  And if there is a problem you can check the logs to see what was running.
-<code>
+<p>In this case you can setup a script (see below) that will regularly log your server's memory usage.  And if there is a problem you can check the logs to see what was running.</p>
+
+<p><code>
 wget http://proj.ri.mu/memmon.sh -O /root/memmon.sh
 chmod +x /root/memmon.sh
-<code></p>
+</code></p>
 
 <pre>
 -- create a cronjob that runs every few minutes to log the memory usage
@@ -206,8 +207,7 @@ echo '/root/memmon.txt {}' > /etc/logrotate.d/memmon
 </pre>
 
 
-<p>--
-This article was copied from http://rimuhosting.com/howto/memory.jsp.</p>
+<p>This article was copied from http://rimuhosting.com/howto/memory.jsp.</p>
 
   </div>
 </div>
@@ -233,11 +233,11 @@ This article was copied from http://rimuhosting.com/howto/memory.jsp.</p>
   <h2>Related Posts</h2>
   <ul class="posts">
     
+      <li><span>01 May 2011</span> &raquo; <a href="/2011/05/01/solve-ubuntu1104-wifi-issue.html">Solve Wireless Issue When Upgrading From 10.10 to 11.04</a></li>
+    
       <li><span>22 Apr 2011</span> &raquo; <a href="/2011/04/22/what-rabbitmq-cluster-can-do.html">What RabbitMQ Cluster Can Do</a></li>
     
       <li><span>08 Mar 2011</span> &raquo; <a href="/2011/03/08/do-we-still-need-scrum.html">Do we still need scrum if ...</a></li>
-    
-      <li><span>21 Feb 2011</span> &raquo; <a href="/2011/02/21/deal-with-mysql-error-150.html">mysql ERROR 1005 (ER_CANT_CREATE_TABLE)</a></li>
     
   </ul>
 </div>

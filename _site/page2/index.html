@@ -64,6 +64,51 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2011/01/14/thrift-framework">
+				<h3 class="title"><a href="/2011/01/14/thrift-framework.html">Cross Lanaguage Service Development</a></h3>
+				
+				<p>Thrift is a software framework for scalable cross-language services development.
+Now it supports C++, C#, Erlang, Haskell, Java, Objective C/Cocoa, OCaml, Perl, PHP, Python, Ruby, and Squeak.</p>
+
+<ul>
+<li><p>Download: <a href='http://incubator.apache.org/thrift/download/'>http://incubator.apache.org/thrift/download/</a></p></li>
+<li><p>Install: <a href='http://wiki.apache.org/thrift/GettingUbuntuPackages'>http://wiki.apache.org/thrift/GettingUbuntuPackages</a></p></li>
+</ul>
+
+
+<p>So basically, what you need to do is define a .thrift definition file. And Thrift will help you generate the RPC client and RPC server. There are a lot of examples in this <a href='http://wiki.apache.org/thrift/'>wiki</a> page.</p>
+
+<p>You can use this <a href='http://chanian.com/2010/05/13/thrift-tutorial-a-php-client/'>demo</a> to understand how it works.</p>
+
+<p>There is a similar project called <a href='http://code.google.com/apis/protocolbuffers/'>Protocol Buffers</a> which provided by google.</p>
+
+<hr />
+
+<p>This is what I have done in todays' Innovation Day. And I totall agree:</p>
+
+<pre><code>Individuals and interactions over processes and tools</code></pre>
+
+
+<br />
+
+
+<p>We know people is the kernel in a technical company. Anything is beneficial for people should be encouraged. But of course, it also should be beneficial for company firstly. Any rule that restrict people's mind should be removed.</p>
+
+
+				<div class="post-metadata">
+					January 14, 2011 | 
+					<a href='/2011/01/14/thrift-framework.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#RPC'>RPC</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2010/12/31/world-is-changing">
 				<h3 class="title"><a href="/2010/12/31/world-is-changing.html">年末总结</a></h3>
 				
@@ -350,88 +395,6 @@ shell> mysql -e 'SELECT * FROM imptest' test
 					
 						
 						<a href='/tags.html#mysql'>mysql</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/07/03/symfony-1-0-addjoin-an-array">
-				<h3 class="title"><a href="/2010/07/03/symfony-1-0-addjoin-an-array.html">Symfony 1.0 addJoin an array</a></h3>
-				
-				<p>In sf1.3, we can use addJoin(array('id_a'm 'id_b'), array('id_1', 'id_2'))</p>
-
-<pre name='code' class='php'>
-/**
-     * This is the way that you should add a straight (inner) join of two tables.  For
-     * example:
-     *
-     * <p>
-     * AND PROJECT.PROJECT_ID=FOO.PROJECT_ID
-     * <p>
-     *
-     * left = PROJECT.PROJECT_ID
-     * right = FOO.PROJECT_ID
-     *
-     * @param      mixed $left A String with the left side of the join.
-     * @param      mixed $right A String with the right side of the join.
-     * @param      mixed $operator A String with the join operator e.g. LEFT JOIN, ...
-   *
-     * @return     Criteria A modified Criteria object.
-     */
-    public function addJoin($left, $right, $operator = null)
-    {
-        $join = new Join();
-    if (!is_array($left)) {
-      // simple join
-      $join->addCondition($left, $right);
-    } else {
-      // join with multiple conditions
-      // deprecated: use addMultipleJoin() instead
-      foreach ($left as $key => $value)
-      {
-        $join->addCondition($value, $right[$key]);
-      }
-    }
-        $join->setJoinType($operator);
-        
-        return $this->addJoinObject($join);
-    }
-</pre>
-
-
-<p>Sometimes we still work on symfony 1.0. So when we want to join on more keys, it seems impossible.</p>
-
-<pre name='code' class='php'>
-select * from books left join categories on book.category_id = categories.id where categories.name='biography'
-</pre>
-
-
-<p>If books has 1,000,000 items. There are 100,000 categories, but only 1000 categories with name 'biography' . The above sql will go through all the categories. But we propel can generated sql like this:</p>
-
-<pre name='code' class='php'>
-select * from books left join categories on book.category_id = categories.id and categories.name='biography'
-</pre>
-
-
-<p>This sql can limit the touched categories number to 1000.</p>
-
-<p>So we can do following in symfony 1.0</p>
-
-<pre name='code' class='php'>
-$c->addJoin(BookPeer::CATEGORY_ID, CategoryPeer::ID.' AND '.CategoryPeer::NAME.'= "biography"', Criteria::LEFT_JOIN);
-</pre>
-
-
-
-				<div class="post-metadata">
-					July 03, 2010 | 
-					<a href='/2010/07/03/symfony-1-0-addjoin-an-array.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#symfony'>symfony</a>
 						
 					 
 				</div>
