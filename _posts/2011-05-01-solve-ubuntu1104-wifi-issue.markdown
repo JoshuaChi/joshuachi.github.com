@@ -92,6 +92,6 @@ At the end of step e, and by rebooting laptop, the wifi issue was fixed. If you 
 
 Reference:
 
-1. http://linuxfans.keryxproject.org/?page_id=27
+1.http://linuxfans.keryxproject.org/?page_id=27
 
-2. http://www.ubuntumini.com/2009/11/broadcom-wireless-driver-fix-in-karmic.html 
+2.http://www.ubuntumini.com/2009/11/broadcom-wireless-driver-fix-in-karmic.html 
