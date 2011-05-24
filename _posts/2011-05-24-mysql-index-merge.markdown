@@ -166,3 +166,7 @@ Now I want to remove these single column indexes in table1 to see what will happ
 
 After removing the single column indexes in table 1, this select query only takes <b>2.4ms</b>. To explain this, we can simply treat (status1,status2,status3,status4,status5,status6) as one column in table1. I think the single columns indexes affected the 'join' performance. MySQL need to use these single indexes to filter the table1 firstly and then make a join with table2.
 
+
+Summary:
+
+Combine index is not always better than index merge. To know which one is better, explain your query, analyze it and adjust the index.
