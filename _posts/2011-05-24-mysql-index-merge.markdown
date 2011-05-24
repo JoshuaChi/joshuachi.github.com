@@ -10,7 +10,7 @@ There are already a lot of posts which gave a introduction of what index merge i
 
 Today I just noticed the combined index also can be affected by the single column index. For example:
 
-1. Let's say we have a table named `table1` which have 100,000 items. The size of this table is 35MB.
+1. Let's say we have a table named table1 which have 100,000 items. The size of this table is 35MB.
 
 Table structure:
 
@@ -48,17 +48,17 @@ Explain result:
   select_type: SIMPLE
   table: table1
   type: index_merge
-  possible_keys: PRIMARY,`table1_status1`,`table1_status2`,`table1_status3`,`table1_status4`,`table1_status5`,`table1_status6`,`table1_combine_index`
-  key: `table1_status1`,`table1_status2`,`table1_status3`,`table1_status4`,`table1_status5`,`table1_status6`
+  possible_keys: PRIMARY,table1_status1,table1_status2,table1_status3,table1_status4,table1_status5,table1_status6,table1_combine_index
+  key: table1_status1,table1_status2,table1_status3,table1_status4,table1_status5,table1_status6
   key_len: 1,1,4,4,4,5
   refs: NULL
   rows: 1955
-  Extra: Using intersect(`table1_status1`,`table1_status2`,`table1_status3`,`table1_status4`,`table1_status5`,`table1_status6`); Using where
+  Extra: Using intersect(table1_status1,table1_status2,table1_status3,table1_status4,table1_status5,table1_status6); Using where
 </pre>
 
 The select query takes <b>3.5ms</b> by intersecting indexes.
 
-What happened if we force index to use `table1_combine_index`:
+What happened if we force index to use table1_combine_index:
 
 <pre>
 explain select * from table1 force index (table1_combine_index)  where status1=1 and status2=1 and status3=1 and status4=1 and status5=1 and status6=1  
@@ -87,7 +87,7 @@ In this example, intersecting index is more useful than combine index. There is 
 
 2. Now it's time to make this example a little complicated.
 
-We have another table named `table2`, the structure looks like:
+We have another table named table2, the structure looks like:
 
 <pre>
 CREATE TABLE `table2` (
@@ -164,5 +164,5 @@ Now I want to remove these single column indexes in table1 to see what will happ
 </pre>
 
 
-After removing the single column indexes in table 1, this select query only takes <b>2.4ms</b>. To explain this, we can simply treat (`status1`,`status2`,`status3`,`status4`,`status5`,`status6``) as one column in table1. I think the single columns indexes affected the 'join' performance. MySQL need to use these single indexes to filter the table1 firstly and then make a join with table2.
+After removing the single column indexes in table 1, this select query only takes <b>2.4ms</b>. To explain this, we can simply treat (status1,status2,status3,status4,status5,status6) as one column in table1. I think the single columns indexes affected the 'join' performance. MySQL need to use these single indexes to filter the table1 firstly and then make a join with table2.
 
