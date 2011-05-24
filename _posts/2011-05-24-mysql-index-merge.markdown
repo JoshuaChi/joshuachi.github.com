@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Why The Combine Index Was Not Used"
+title: "When To Use Combine Index"
 tags:  mysql
 ---
 
