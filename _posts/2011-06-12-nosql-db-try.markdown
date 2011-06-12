@@ -5,7 +5,7 @@ tags:  mysql,nosql,mongodb
 ---
 
 
-<h4>Backgroud</h4>:
+<h4>Backgroud:</h4>
 
 I am not nosql fans. I don't have the habit to replace whole mysql db with nosql db. But if a mysql table can be replaced with nosql db and expensive queries are generated againest this table, I will give a try of nosql DB.
 
@@ -31,7 +31,7 @@ select date, count(`user_id`) from unique_login_logs group by date order by date
 And the other related operations will be save an entry into this table or check the user entry for a specify date is in the table or not. Nothing more.
 
 
-<h4>Choose NoSQL DB from <a href='http://en.wikipedia.org/wiki/NoSQL'>wiki page</a></h4> :
+<h4>Choose NoSQL DB from <a href='http://en.wikipedia.org/wiki/NoSQL'>wiki page</a>: </h4>
 
 <pre>
 ...
@@ -148,6 +148,7 @@ mongo   1.1.4 (stable)        MongoDB database driver
 <h4>Get stored items with php function</h4>
 
 <pre>
+
 <?php
 // connect
 $m = new Mongo();
@@ -171,6 +172,7 @@ $g = $collection->group($keys, $initial, $reduce);
 
 echo '<pre>';
 var_dump($g);
+
 </pre>
 
 Output looks like:
