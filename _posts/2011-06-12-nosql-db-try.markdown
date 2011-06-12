@@ -147,9 +147,9 @@ mongo   1.1.4 (stable)        MongoDB database driver
 
 <h4>Get stored items with php function</h4>
 
-<pre>
+PHP code:
 
-<?php
+<pre>
 $m = new Mongo();
 
 $db = $m->mydb;
