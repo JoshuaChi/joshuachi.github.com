@@ -167,7 +167,6 @@ $initial = array("count" => 0);
 $reduce = "function(obj,prev) { prev.count ++; }";
 $g = $collection->group($keys, $initial, $reduce);
 
-echo '<pre>';
 var_dump($g);
 
 </pre>
