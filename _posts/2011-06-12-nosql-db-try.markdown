@@ -150,19 +150,16 @@ mongo   1.1.4 (stable)        MongoDB database driver
 <pre>
 
 <?php
-// connect
 $m = new Mongo();
 
-// select a database
 $db = $m->mydb;
 
-// select a collection (analogous to a relational database's table)
 $collection = $db->uniqueLoginLog;
 
-//...
+
 $obj = array('date'=> '2011-06-09', 'user_id'=> 101);
 $collection->insert($obj);
-//...
+
 
 
 $keys = array("date" => 1);
