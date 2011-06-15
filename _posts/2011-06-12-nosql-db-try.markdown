@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Replace MySql Table with NoSQL DB"
-tags:  mysql,nosql,mongodb
+tags:  mysql nosql mongodb
 ---
 
 
