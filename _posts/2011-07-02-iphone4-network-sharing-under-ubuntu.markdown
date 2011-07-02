@@ -12,7 +12,7 @@ sudo add-apt-repository ppa:pmcenery/ppa
 sudo apt-get update
 
 sudo apt-get install gvfs ipheth-dkms ipheth-utils
-<pre>
+</pre>
 
 If you can pass all these steps, and then restart your machine. Bingo!
 
