@@ -57,4 +57,4 @@ Symfony Backend:
 </pre>
 
 
-You can check <a href='http://malsup.com/jquery/form/#file-upload'>plugin document</a> to know why you need 'echo "<textarea>"'.  :-D
+You can check <a href='http://malsup.com/jquery/form/#file-upload'>plugin document</a> to know why you need 'echo "&lt;textarea&gt;"'.  :-D
