@@ -48,7 +48,7 @@ Symfony Backend:
 
 		$json = json_encode($data);
 		if(!$request->isXmlHttpRequest()){
-		  echo '<textarea>'.$json.'</textarea>';
+		  echo '&lt;textarea&gt;'.$json.'&lt;/textarea&gt;';
 		  return sfView::NONE;
 		}else{
   		echo $json;
