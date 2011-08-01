@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How And When To Use Mysql Federated Storage Engine"
-tags:  mysql
+tags:  mysql federated
 ---
 
 Learned from <a href='http://conferences.oreillynet.com/presentations/mysql06/mixi_update.pdf'>mixi update</a> that they are using mysql federated engine for db partitioning.
