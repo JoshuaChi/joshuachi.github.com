@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Linode Facility Migration to Fremont"
-tags:  linode, vps, fremont
+tags:  linode vps fremont
 ---
 
 After using <a href='www.linode.com'>linode</a> host center at Tokyo for a while, I decided to migrate my node to Fremont.
