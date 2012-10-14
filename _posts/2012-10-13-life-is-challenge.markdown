@@ -12,13 +12,13 @@ Since the beginning of this summer, I made some videos to record "nature & life"
 </video>
 </p>
 
-<h3>The end of Summer</h3>
+<h3>The end of Summer(Right click and 'play')</h3>
 <p>
 <video width="400" height="600" style="-moz-transform:rotate(90deg);
-  -webkit-transform:rotate(20deg);
-    -o-transform:rotate(20deg);
-      -ms-transform:rotate(20deg);
-        transform:rotate(20deg);" controls preload source src="https://dl.dropbox.com/u/13976659/videos/office-summer-end.MOV" type="video/mov">
+  -webkit-transform:rotate(40deg);
+    -o-transform:rotate(40deg);
+      -ms-transform:rotate(40deg);
+        transform:rotate(40deg);" controls preload source src="https://dl.dropbox.com/u/13976659/videos/office-summer-end.MOV" type="video/mov">
 </video>
 </p>
 
