@@ -18,7 +18,7 @@ Since the beginning of this summer, I made some videos to record "nature & life"
   -webkit-transform:rotate(40deg);
     -o-transform:rotate(40deg);
       -ms-transform:rotate(40deg);
-        transform:rotate(40deg);" controls preload source src="https://dl.dropbox.com/u/13976659/videos/office-summer-end.MOV" type="video/mov">
+        transform:rotate(40deg);" controls preload src="https://dl.dropbox.com/u/13976659/videos/office-summer-end.MOV" type="video/mov">
 </video>
 </p>
 
@@ -28,9 +28,13 @@ Since the beginning of this summer, I made some videos to record "nature & life"
 </video>
 </p>
 
-<h3>The middle of Autumn</h3>
+<h3>The middle of Autumn(Right click and 'play')</h3>
 <p>
-<video width="300" height="600" controls="controls" src="https://dl.dropbox.com/u/13976659/videos/changzhou-tweets.MOV" type="video/mov">
+<video width="400" height="600" style="-moz-transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  transform:rotate(90deg);" preload controls src="https://dl.dropbox.com/u/13976659/videos/changzhou-tweets.MOV" type="video/mov">
 </video>
 </p>
 
