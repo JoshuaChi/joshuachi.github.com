@@ -8,29 +8,25 @@ Since the beginning of this summer, I made some videos to record "nature & life"
 <br />
 <h3>The beginning of Summer</h3>
 <p>
-<video width="600" height="400" controls="controls">
-  <source src="https://dl.dropbox.com/u/13976659/videos/office-summer-beginning.MOV" type="video/mov">Your browser does not support the video tag.
+<video width="600" height="400" controls="controls" src="https://dl.dropbox.com/u/13976659/videos/office-summer-beginning.MOV" type="video/mov">
 </video>
 </p>
 
 <h3>The end of Summer</h3>
 <p>
-<video width="300" height="600" controls="controls">
-  <source src="https://dl.dropbox.com/u/13976659/videos/office-summer-end.MOV" type="video/mov">Your browser does not support the video tag.
+<video width="300" height="600" controls="controls" src="https://dl.dropbox.com/u/13976659/videos/office-summer-end.MOV" type="video/mov">
 </video>
 </p>
 
 <h3>The beginning of Autumn</h3>
 <p>
-<video width="600" height="300" controls="controls">
-  <source src="https://dl.dropbox.com/u/13976659/videos/nanjing-xuanwuhu.MOV" type="video/mov">Your browser does not support the video tag.
+<video width="600" height="300" controls="controls" src="https://dl.dropbox.com/u/13976659/videos/nanjing-xuanwuhu.MOV" type="video/mov">
 </video>
 </p>
 
 <h3>The middle of Autumn</h3>
 <p>
-<video width="300" height="600" controls="controls">
-  <source src="https://dl.dropbox.com/u/13976659/videos/changzhou-tweets.MOV" type="video/mov">Your browser does not support the video tag.
+<video width="300" height="600" controls="controls" src="https://dl.dropbox.com/u/13976659/videos/changzhou-tweets.MOV" type="video/mov">
 </video>
 </p>
 
