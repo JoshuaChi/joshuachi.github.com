@@ -14,7 +14,11 @@ Since the beginning of this summer, I made some videos to record "nature & life"
 
 <h3>The end of Summer</h3>
 <p>
-<video width="300" height="600" controls="controls" src="https://dl.dropbox.com/u/13976659/videos/office-summer-end.MOV" type="video/mov">
+<video width="300" height="600" style="-moz-transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+      -ms-transform:rotate(90deg);
+        transform:rotate(90deg);" controls="controls" src="https://dl.dropbox.com/u/13976659/videos/office-summer-end.MOV" type="video/mov">
 </video>
 </p>
 
