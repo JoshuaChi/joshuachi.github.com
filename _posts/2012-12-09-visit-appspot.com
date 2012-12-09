@@ -8,7 +8,7 @@ The reason behind this blog is to show you how to make <b>GAppProxy</b> work aga
 
 The idea is very simple: find the workable google IP and add it to hosts file.
 
-
+<br />
 Step1: 
 
 <pre>
@@ -40,6 +40,7 @@ Address: 74.125.128.104
 Basically you just need to try https://74.125.128.x/ to check which one is working. 'x' can be any number. If you can visit https://74.125.128.x/, continue to <b>Step2</b>.
 
 
+<br />
 Step2:
 
 
