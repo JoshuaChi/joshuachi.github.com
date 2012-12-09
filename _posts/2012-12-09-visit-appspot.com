@@ -8,7 +8,9 @@ The reason behind this blog is to show you how to make <b>GAppProxy</b> work aga
 
 The idea is very simple: find the workable google IP and add it to hosts file.
 
+
 Step1: 
+
 <pre>
 nslookup www.google.com
 </pre>
@@ -34,9 +36,12 @@ Name: www.google.com
 Address: 74.125.128.104
 </pre>
 
+
 Basically you just need to try https://74.125.128.x/ to check which one is working. 'x' can be any number. If you can visit https://74.125.128.x/, continue to <b>Step2</b>.
 
+
 Step2:
+
 
 Modify /etc/hosts file and add one line:
 <pre>
