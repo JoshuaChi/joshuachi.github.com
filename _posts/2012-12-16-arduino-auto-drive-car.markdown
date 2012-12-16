@@ -6,7 +6,8 @@ tags:  arduino robot
 
 这里介绍的是自己装配的arduino小车，周末阴雨连绵，找点乐趣玩玩。<a href='http://arduino.cc/en'>arduino</a>很容易上手，如果你懂一两门程序语言就更简单了。电路电压知识，虽然初中高中都有学过，但都记不得了，不过用什么学什么，也来得容易。
 收到新电池，几经折腾，终于又重新装配好小车。
-现在就是我所用到的大部分材料，有些工具就不罗列在这里了。
+
+下面就是我所用到的大部分材料，有些工具就不罗列在这里了。
 
 <h2>1. 材料(总价: ¥379.1)</h2>
 
@@ -58,6 +59,9 @@ Arduino Uno R3 Plus(Atmega16U2),10月最新生产预订送电源/USB线 - ¥64.8
 
 <ul>
 <li>
+<a href='http://arduino.cc/en'>arduino</a>
+</li>
+<li>
 <a href='http://blog.sina.com.cn/s/articlelist_1581720921_0_1.html'>http://blog.sina.com.cn/s/articlelist_1581720921_0_1.html</a>
 </li>
 <li>
@@ -71,7 +75,9 @@ Arduino Uno R3 Plus(Atmega16U2),10月最新生产预订送电源/USB线 - ¥64.8
 </li>
 </ul>
 
+
 <h2>3. 上一小段视频, 就算是小车的第一个版本吧</h2>
+
 <embed src="http://player.youku.com/player.php/sid/XNDg5Mjk3MjI0/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
 
 
