@@ -39,11 +39,14 @@
     <div class="contact">
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
+				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
 				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
 			</div>
 			<div class="rss">
+                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
 				<p>
 				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
 				</p>
@@ -64,552 +67,554 @@
 <div class="post">
   <ul class="content">
 		
-			<div class="post" id="postid-/2011/05/01/solve-ubuntu1104-wifi-issue">
-				<h3 class="title"><a href="/2011/05/01/solve-ubuntu1104-wifi-issue.html">Solve Wireless Issue When Upgrading From 10.10 to 11.04</a></h3>
+			<div class="post" id="postid-/2013/02/08/year-summary">
+				<h3 class="title"><a href="/2013/02/08/year-summary.html">2013 Resolution</a></h3>
 				
-				<p>After upgrading from ubuntu 10.10 to ubuntu 11.04 the wireless stop working.</p>
+				<p>过去的一年慢慢开始enjoy之前的辛劳。但很多新的挑战接踵而来。我希望记住的是七月中旬那美丽的天空。我希望忘记的是十月和十一月的噩梦。
+大脑的活动规律就是你越是希望忘记的东西，它会越拼命的记住。</p>
 
-<p>The first step, I was using <a href="https://help.ubuntu.com/community/WifiDocs/WirelessTroubleShootingGuide">ubuntu trouble shooting</a> to detect the issue.</p>
+<p>一年没见到雪，昨天开始下起。或者过去的一年，也许就在最近某个月曾经下过雪。</p>
 
-<p>a. Detail whether there are software or hardware blocks on your rf devices. To get a list of devices and their hardware and software status, try "sudo rfkill list".</p>
-
-<pre>
-~$ sudo rfkill list
-0: hp-wifi: Wireless LAN
-    Soft blocked: yes
-    Hard blocked: yes
-</pre>
+<h3>2012 完成的目标</h3>
 
 
-<p>Unblock your devices by "sudo rfkill unblock 0".</p>
-
-<p>b. Check for Device Recognition for my HP laptop(amd64)</p>
-
-<pre>
-~$ sudo lshw -C network
-  *-network UNCLAIMED     
-       description: Network controller
-       product: BCM4311 802.11a/b/g
-       vendor: Broadcom Corporation
-       physical id: 0
-       bus info: pci@0000:30:00.0
-       version: 01
-       width: 32 bits
-       clock: 33MHz
-       capabilities: pm msi pciexpress bus_master cap_list
-       configuration: latency=0
-       resources: memory:c8000000-c8003fff
-  *-network
-       description: Ethernet interface
-       product: NetXtreme BCM5788 Gigabit Ethernet
-       vendor: Broadcom Corporation
-       physical id: 1
-       bus info: pci@0000:02:01.0
-       logical name: eth0
-       version: 03
-       serial: 00:17:08:37:6a:64
-       size: 100Mbit/s
-       capacity: 1Gbit/s
-       width: 32 bits
-       clock: 66MHz
-       capabilities: pm vpd msi bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
-       configuration: autonegotiation=on broadcast=yes driver=tg3 driverversion=3.116 duplex=full firmware=5788-v3.26 ip=192.168.1.103 latency=64 link=yes mingnt=64 multicast=yes port=twisted pair speed=100Mbit/s
-       resources: irq:23 memory:d4000000-d400ffff
-</pre>
-
-
-<p>Here I can see 'tg3' driver was using. And by checking the loaded module the tg3 is there.</p>
-
-<pre>
-~$ sudo lsmod
-</pre>
-
-
-<p>If your driver was not loaded, you can load it by "sudo modprobe <module>"</p>
-
-<p>c. Identify PCI devices with PCI ID.</p>
-
-<pre>
-~$ sudo lspci -v | grep Ethernet
-02:01.0 Ethernet controller: Broadcom Corporation NetXtreme BCM5788 Gigabit Ethernet (rev 03)
-
-~$ sudo lspci -v | grep Network
-30:00.0 Network controller: Broadcom Corporation BCM4311 802.11a/b/g (rev 01)
-</pre>
-
-
-<p>d. Check the addtional drivers, I found "Broadcom STA wireless driver" was using.</p>
-
-<p>Everything looks good until now. Driver was working and was recognized. So I guess the issue might be the compatibility with new kernel?</p>
-
-<p>e. With the help from google.</p>
-
-<p>i). Someone solve it by install <a herf="http://ubuntuforums.org/showthread.php?t=1653157">linux-backports-modules-wireless-maverick-generic</a>. It is interesting to know what <a hef="https://help.ubuntu.com/community/UbuntuBackports">backports</a> is.</p>
-
-<p>Unfortunately it didn't work for me.</p>
-
-<p>ii). So I tried the solution in this <a href="http://ubuntuforums.org/showthread.php?t=1653157&page=2">thread</a> by disable my "Broadcom STA wireless driver" and install b43.</p>
-
-<pre>
-Removing "bcmwl-kernel-source" by using Synaptic Package Manager
-Then installing "firmware-b43-installer" and "b43-fwcutter" again by Synaptic Package Manager. 
-</pre>
-
-
-<p>At the end of step e, and by rebooting laptop, the wifi issue was fixed. If you still has the issue, I suggest check the trouble shooting tutorial again. It is really helpful.</p>
-
-<p>Reference:</p>
-
-<p>1.http://linuxfans.keryxproject.org/?page_id=27</p>
-
-<p>2.http://www.ubuntumini.com/2009/11/broadcom-wireless-driver-fix-in-karmic.html</p>
-
-
-				<div class="post-metadata">
-					May 01, 2011 | 
-					<a href='/2011/05/01/solve-ubuntu1104-wifi-issue.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#ubuntu'>ubuntu</a>
-						, 
-					
-						
-						<a href='/tags.html#wireless'>wireless</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2011/04/22/what-rabbitmq-cluster-can-do">
-				<h3 class="title"><a href="/2011/04/22/what-rabbitmq-cluster-can-do.html">What RabbitMQ Cluster Can Do</a></h3>
-				
-				<h3>What RabbitMQ cluster can do - Scaling and Reliability</h3>
 
 
 <ul>
-<li><b>Example 1</b>:</li>
+  <li>
+    <del>强身健体第一位，具体目标是锻炼腰部腹部肌肉，提高身体协调能力。</del>
+    去年确实腰部力量明显好于2011年，看来坚持锻炼是王道。但协调能力还有待提高，也许我还没找到答案。
+  </li>
+  <li>
+    <del>
+    职业发展： <br />
+    a. 空间的预测;<br />
+    b. 时间的估计，把持重点;<br />
+    c. Have a better idea about how to manage team and how to manage company.
+    </del>
+    很多东西已经被更重要的事情取代或被看淡。
+  </li>
+  <li>
+    <del>增加静心休息的时间。</del>
+    休息的时间至少double 2011年的。
+  </li>
+  <li>
+    <del>买车。</del>
+    买好车的第一个月就刮蹭了两次，起初觉得很心疼，现在已经没有感觉。身外之物。
+  </li>
+  <li>
+    <del>读书>=15本；<br />
+    电影>=5;<br /></del>
+    Finish 了25本，什么书都有。
+  </li>
+  <li>
+    完成网站建设，其实现在已经不再是为了完成而完成了。练手；练脑；提高思维的整体性，连续性，可扩展性。
+    － 该完成的没有完成。不该完成的始终没有起色。
+  </li>
+  <li>
+    <del>蜜月履行。</del>
+    日本之行成为了美好的记忆。
+  </li>
+  <li>
+    <del>去年的时间管理基本满意，需要继续坚持下来。</del>
+  </li>
 </ul>
 
 
-<p>All data/state required for the operation of a RabbitMQ broker is replicated across all nodes.</p>
 
-<p>Let's take an example to help you understand better.</p>
 
-<p>There is a publisher which publish 10 messages to RabbitMQ broker(*1).</p>
+<h3>2012 Time Spending：</h3>
 
-<p>|Publisher| --> |10 Messages| --> |Broker( = Node_A + Node_B)|</p>
-
-<p>So Node_A will receive Message 1, Message 3, 5, 7, 9; Node_B will receive Message 2, Message 4, 6, 8, 10.</p>
 
 <ul>
-<li><b>Example 2</b>:</li>
+  <li>
+    30% - spent @hospital or on the road to hospital
+  </li>
+  <li>
+    5% - spent at self-building
+  </li>
 </ul>
 
 
-<p>We still use the above example. If the Node_A crashed when it is consuming the messages, what happens?</p>
-
-<p>Before Node_A crashed (I simply powered off this machine):</p>
-
-<p>Node_A finished Message 1, Message 3, and it is starting to consume Message 5;</p>
-
-<p>Node_B finished Message 2, Message 4 and it is starting to consume Message 6.</p>
-
-<p>After Node_A crashed:</p>
-
-<p>Node_A stopped working;</p>
-
-<p>Node_B finished Message 6, Message 7, Message 8, Message 9, Message 10 and Message 5.</p>
-
-<p>Yes, as you can see, even Node_A dies unexpected. Broker still can get the status of Message 5 and send it to Node_B.
-And you can find following explanation:</p>
-
-<pre>
-  If a node goes down or becomes unreachable what effects can this have on the cluster? Do things 'hang' for a bit?
-  
-  Topology change operations (see above) could potentially pause operation for a brief time but they will complete eventually. We use the net_kernel erlang module to do monitoring between nodes. The default "tick" time there is 60 seconds but this can be reduced. Further, in the event of a failure, any communication between the nodes will likely result in an error being generated and detected immediately: i.e. the only time at which you would not know about a node failure for 60 seconds is if there was no communication between the nodes for that amount of time.
-  
-  ....
-  
-</pre>
 
 
+<h3>2013 TODO LIST：</h3>
 
 
-<h3>What RabbitMQ cluster can not do - High Availability</h3>
+<ul>
+  <li>
+    身体第一位，继续坚持体育锻炼
+  </li>
+  <li>
+    继续管理自己的性格
+  </li>
+  <li>
+    养娃 - 学习如何养好
+  </li>
+  <li>
+    读书 > 20 本(杂而不偏就可以)
+  </li>
+  <li>
+    个人理财规划投资
+  </li>
+  <li>
+    建站 > 1000pv/day 我就心满意足. :-) 还未得道.
+  </li>
+</ul>
 
 
-<p>So the 60 seconds is what RabbitMQ can not do. We call it high availability.</p>
-
-<pre>
-...
-Whilst RabbitMQ also supports clustering, clustering is intended to facilitate scalability, not availability. Thus in a cluster, if a node fails, queues which were on the failed node are lost. With the high availability setup described in this guide, when a node fails, the durable queues and the persistent messages within them can be recovered by a different node.
-...
-</pre>
 
 
-<p>To build a high availability and scalable application, you can take a look <a href='http://www.rabbitmq.com/pacemaker.html'>RabbitMQ Placemaker</a></p>
+<h3>2013 WISH LIST(The same as 2012's)：</h3>
 
-<p>References:</p>
 
-<ol>
-<li>RabbitMQ broker - a logical grouping of one or several Erlang nodes, each running the RabbitMQ application and sharing users, virtual hosts, queues, exchanges, etc. Sometimes we refer to the collection of nodes as a cluster.</li>
-</ol>
-
+<p>祝福我，我的家人，我认识的亲戚朋友身体健健康康！</p>
 
 
 				<div class="post-metadata">
-					April 22, 2011 | 
-					<a href='/2011/04/22/what-rabbitmq-cluster-can-do.html#disqus_thread'>View Comments</a>
+					February 08, 2013 | 
+					<a href='/2013/02/08/year-summary.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#rabbitmq'>rabbitmq</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2011/03/08/do-we-still-need-scrum">
-				<h3 class="title"><a href="/2011/03/08/do-we-still-need-scrum.html">Do we still need scrum if ...</a></h3>
-				
-				<p>Just learned an interesting point from <a href='http://architects.dzone.com/articles/balancing-software'>'balance software' post</a>:</p>
-
-<h4>When Scrum has died</h4>
-
-
-<pre>
-  In the journey of dramatic improvements to bring your code base under control, there are few things that you should take notice off.
-
-  * An architecture will emerge that supports the design of the resident parts.  Things fit together sweetly and each part supports the other part in symbiotic relationships.
-  * The code base will get smaller and the team will shrink to, perhaps,  just 2 or 3 people.
-  * Each developer will take on greater responsibility and will find it difficult to break core principles.  The act of living those principles will result in a values that don't need to be listed on a poster on the wall.
-  * The scrum master will become redundant.
-  * The product owner will do more by working directly with the developers.
-  * The developers will represent the interest of their customers directly.
-  * The bottleneck will shift from development to the product owner and eventually the customer.
-</pre>
-
-
-<p>In my opinion, Scrum is used for company to delivery features to users quickly and interactively. As a team, with scrum you can easily prove your works after a short time. You don't have to wait for one year or longer. And big feature can be split into small ones. Everyone know what need to be done in following weeks. You don't have to write so many documents to trace what's going on. Ideally, as the authors said, if the code base can be made smaller and smaller. And the new feature will be just a plugin to your platform. Of course you don't need scrum. Should we call it as 'factory model'? As workers(developers) just need to collect the feature request and compose it by some existing functions. And plug it into the platform(codebase). I have not seen a company who has such a powerful platform. Will the bottleneck be the platform itself then?</p>
-
-
-				<div class="post-metadata">
-					March 08, 2011 | 
-					<a href='/2011/03/08/do-we-still-need-scrum.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#scrum'>scrum</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2011/03/02/server-monitor">
-				<h3 class="title"><a href="/2011/03/02/server-monitor.html">Web Server Memory Monitor</a></h3>
-				
-				<h2>free-m</h2>
-
-
-<pre>
-free-m: to see how much memory you are currently using
-</pre>
-
-
-<p>Output:
-<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; total &nbsp;&nbsp; used&nbsp;&nbsp; free&nbsp;&nbsp;&nbsp; shared buffers cached<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mem:&nbsp;90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 85 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 34<br>
--/+ buffers/cache:&nbsp; 46&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 43<br> &nbsp;&nbsp;&nbsp;&nbsp;Swap:&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9 </code>
-The top row 'used' (85) value will almost always nearly match the top row mem value (90).  Since Linux likes to use any spare memory to cache disk blocks (34).</p>
-
-<p>The key used figure to look at is the buffers/cache row used value (46).  This is how much space your applications are currently using.  For best performance, this number should be less than your total (90) memory.  To prevent out of memory errors, it needs to be less than the total memory (90) and swap space (9).</p>
-
-<p>If you wish to quickly see how much memory is free look at the buffers/cache row free value (43). This is the total memory (90)- the actual used (46). (90 - 46 = 44, not 43, this will just be a rounding issue)</p>
-
-<h2>ps aux</h2>
-
-
-<pre>
-ps aux: to see where all your memory is going.That will show the percentage of memory each process is using.  You can use it to identify the top memory users (usually Apache, MySQL and Java processes).
-</pre>
-
-
-<p>Output:
-<code>
-USER PID %CPU %MEM VSZ&nbsp;&nbsp;&nbsp;&nbsp; RSS&nbsp;&nbsp; TTY&nbsp;&nbsp; STAT
-&nbsp; START TIME COMMAND<br>
-root 854 0.5&nbsp; 39.2 239372&nbsp; 36208 pts/0 S&nbsp;&nbsp;&nbsp;&nbsp; 22:50 0:05
-/usr/local/jdk/bi<br>
-n/java -Xms16m -Xmx64m -Djava.awt.headless=true -Djetty.home=/opt/jetty -cp /opt<br>
-/jetty/ext/ant.jar:/opt/jetty/ext/jasper-compiler.jar:/opt/jetty/ext/jasper-runt<br>
-ime.jar:/opt/jetty/ext/jcert.jar:/opt/jetty/ext/jmxri.jar:/opt/jetty/ext/jmxtool
-</code>
-We can see that java is using up 39.2% of the available memory.</p>
-
-<h2>vmstat</h2>
-
-
-<pre>
-vmstat:helps you to see, among other things, if your server is swapping.
-</pre>
-
-
-<p><code>
-- vmstat 1 2
-   procs                      memory    swap          io     system         cpu
- r  b  w   swpd   free   buff  cache  si  so    bi    bo   in    cs  us  sy  id
- 0  0  0  39132   2416    804  15668   4   3     9     6  104    13   0   0 100
- 0  0  0  39132   2416    804  15668   0   0     0     0   53     8   0   0 100
- 0  0  0  39132   2416    804  15668   0   0     0     0   54     6   0   0 100
-</code>
-The first row shows your server averages.  The si (swap in) and so (swap out) columns show if you have been swapping (i.e. needing to dip into 'virtual' memory) in order to run your server's applications.  The si/so numbers should be 0 (or close to it).  Numbers in the hundreds or thousands indicate your server is swapping heavily.  This consumes a lot of CPU and other server resources and you would get a very (!) significant benefit from adding more memory to your server.</p>
-
-<p>Some other columns of interest: The r (runnable) b (blocked) and w (waiting) columns help see your server load.  Waiting processes are swapped out.  Blocked processes are typically waiting on I/O.  The runnable column is the number of processes trying to something.  These numbers combine to form the 'load' value on your server.  Typically you want the load value to be one or less per CPU in your server.</p>
-
-<p>The bi (bytes in) and bo (bytes out) column show disk I/O (including swapping memory to/from disk) on your server.</p>
-
-<p>The us (user), sy (system) and id (idle) show the amount of CPU your server is using.  The higher the idle value, the better.</p>
-
-<h2>Resolving: High Java Memory Usage</h2>
-
-
-<p>Java processes can often consume more memory than any other application running on a server.</p>
-
-<p>Java processes can be passed a -Xmx option.  This controls the maximum Java memory heap size.  It is important to set a limit on the heap size, otherwise the heap will keep increasing until you get out of memory errors on your VPS (resulting in the Java process - or even some other, random, process - dying.</p>
-
-<p>Usually the setting can be found in your /usr/local/jboss/bin/run.conf or /usr/local/tomcat/bin/setenv.sh config files.  And your RimuHosting default install should have a reasonable value in there already.</p>
-
-<p>If you are running a custom Java application, check there is a -XmxNNm (where NN is a number of megabytes) option on the Java command line.</p>
-
-<p>The optimal -Xmx setting value will depend on what you are running.  And how much memory is available on your server.</p>
-
-<p>From experience we have found that Tomcat often runs well with an -Xmx between 48m and 64m.  JBoss will need a -Xmx of at least 96m to 128m.  You can set the value higher.  However, you should ensure that there is memory available on your server.</p>
-
-<p>To determine how much memory you can spare for Java, try this: stop your Java process; run free -m; subtract the 'used' value from the "-/+ cache" row from the total memory allocated to your server and then subtract another 'just in case' margin of about 10% of your total server memory.  The number you come up with is a rough indicator of the largest -Xmx setting you can use on your server.</p>
-
-<h2>Resolving: High Apache Memory Usage</h2>
-
-
-<p>Apache can be a big memory user.  Apache runs a number of 'servers' and shares incoming requests among them.  The memory used by each server grows, especially when the web page being returned by that server includes PHP or Perl that needs to load in new libraries.  It is common for each server process to use as much as 10% of a server's memory.</p>
-
-<p>To reduce the number of servers, you can edit your httpd.conf file.  There are three settings to tweak: StartServers, MinSpareServers, and MaxSpareServers.  Each can be reduced to a value of 1 or 2 and your server will still respond promptly, even on quite busy sites.  Some distros have multiple versions of these settings depending on which process model Apache is using.  In this case, the 'prefork' values are the ones that would need to change.</p>
-
-<p>To get a rough idea of how to set the MaxClients directive, it is best to find out how much memory the largest apache thread is using. Then stop apache, check the free memory and divide that amount by the size of the apache thread found earlier. The result will be a rough guideline that can be used to further tune (up/down) the MaxClients directive. The following script can be used to get a general idea of how to set MaxClients for a particular server:</p>
-
-<pre class="codebox">
-#!/bin/bash
-echo "This is intended as a guideline only!"
-if [ -e /etc/debian_version ]; then
-    APACHE="apache2"
-elif [ -e /etc/redhat-release ]; then
-    APACHE="httpd"
-fi
-RSS=`ps -aylC $APACHE |grep "$APACHE" |awk '{print $8'} |sort -n |tail -n 1`
-RSS=`expr $RSS / 1024`
-echo "Stopping $APACHE to calculate free memory"
-/etc/init.d/$APACHE stop &amp;amp;ampamp&gt; /dev/null
-MEM=`free -m |head -n 2 |tail -n 1 |awk '{free=($4); print free}'`
-echo "Starting $APACHE again"
-/etc/init.d/$APACHE start &amp;amp;&gt; /dev/null
-echo "MaxClients should be around" `expr $MEM / $RSS`
-</pre>
-
-
-<p>Note: httpd.conf should be tuned correctly on our newer WBEL3 and FC2 distros.  Apache is not installed by default on our Debian distros (since some people opt for Apache 2 and others prefer Apache 1.3).  So this change should only be necessary if you have a Debian distro.</p>
-
-<p>from http://modperlbook.org/html/11-2-Setting-the-MaxRequestsPerChild-Directive.html: "Setting MaxRequestsPerChild to a non-zero limit solves some memory-leakage problems caused by sloppy programming practices and bugs, whereby a child process consumes a little more memory after each request. In such cases, and where the directive is left unbounded, after a certain number of requests the children will use up all the available memory and the server will die from memory starvation."</p>
-
-<h2>Resolving: High MySQL Memory Usage</h2>
-
-
-<p><code>
--- if your are not using the innodb table manager, then just skip it to save some memory
--- skip-innodb
-innodb_buffer_pool_size = 16k
-key_buffer_size = 16k
-myisam_sort_buffer_size = 16k
-query_cache_size = 1M
-</code></p>
-
-<h2>Troubleshooting Irregular Out Of Memory Errors</h2>
-
-
-<p>Sometimes a server's regular memory usage is fine.  But it will intermittently run out of memory.  And when that happens you may lose trace of what caused the server to run out of memory.</p>
-
-<p>In this case you can setup a script (see below) that will regularly log your server's memory usage.  And if there is a problem you can check the logs to see what was running.</p>
-
-<p><code>
-wget http://proj.ri.mu/memmon.sh -O /root/memmon.sh
-chmod +x /root/memmon.sh
-</code></p>
-
-<pre>
--- create a cronjob that runs every few minutes to log the memory usage
-echo '0-59/10 * * * * root /root/memmon.sh >> /root/memmon.txt' > /etc/cron.d/memmon
-/etc/init.d/cron* restart 
-
--- create a logrotate entry so the log file does not get too large
-echo '/root/memmon.txt {}' > /etc/logrotate.d/memmon
-
-</pre>
-
-
-<p>This article was copied from http://rimuhosting.com/howto/memory.jsp.</p>
-
-
-				<div class="post-metadata">
-					March 02, 2011 | 
-					<a href='/2011/03/02/server-monitor.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#performance'>performance</a>
+						<a href='/tags.html#2013'>2013</a>
 						, 
 					
 						
-						<a href='/tags.html#memory'>memory</a>
+						<a href='/tags.html#newyear'>newyear</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2011/02/21/deal-with-mysql-error-150">
-				<h3 class="title"><a href="/2011/02/21/deal-with-mysql-error-150.html">mysql ERROR 1005 (ER_CANT_CREATE_TABLE)</a></h3>
+			<div class="post" id="postid-/2012/12/16/arduino-auto-drive-car">
+				<h3 class="title"><a href="/2012/12/16/arduino-auto-drive-car.html">Arduino Auto Drive Car</a></h3>
 				
-				<p>To deal with this error, there are a lot of <a href='http://verysimple.com/2006/10/22/mysql-error-number-1005-cant-create-table-mydbsql-328_45frm-errno-150/'>suggestions</a>.
-In my case, it is because of:</p>
+				<p>这里介绍的是自己装配的arduino小车，周末阴雨连绵，找点乐趣玩玩。<a href='http://arduino.cc/en'>arduino</a>很容易上手，如果你懂一两门程序语言就更简单了。电路电压知识，虽然初中高中都有学过，但都记不得了，不过用什么学什么，也来得容易。
+收到新电池，几经折腾，终于又重新装配好小车。</p>
 
-<pre>
-  Make sure that the Charset and Collate options are the same both at the table level as well as individual field level for the key columns. (Thanks to FRR for this tip)
-</pre>
+<p>下面就是我所用到的大部分材料，有些工具就不罗列在这里了。</p>
 
+<h2>1. 材料(总价: ¥379.1)</h2>
+
+
+
+
+<ul>
+<li>
+智能小车底盘 寻迹小车 机器人小车底盘 带码盘/测速/送电池盒 - ¥ 43.00
+</li>
+<li>
+40P公端杜邦线 彩排杜邦线 面包板连接线 面包板线 万能板连接线 - ¥5.9
+</li>
+<li>
+SYB-170 面包板 透明 面包板 迷你小小面包板 万能板 -  ¥2.80
+</li>
+<li>
+140条盒装 面包板线 面包板专用线 面包板跳线 - ¥15.00
+</li>
+<li>
+新版红外线数字避障传感器,超小型,3-100cm可调,电流6ma - ¥16.00
+</li>
+<li>
+1P 双头杜邦线 单根双头杜邦插头线 杜邦线 20CM - ¥0.15x20
+</li>
+<li>
+原装芯片 L298N 电机驱动板/步进电机、直流电机驱动器 L298 - ¥19.00
+</li>
+<li>
+HC-SR04超声波模块 超声波测距模块 测距模块 超声波 传感器 资料 - ¥7.50
+</li>
+<li>
+Arduino Uno R3 Plus(Atmega16U2),10月最新生产预订送电源/USB线 - ¥64.80
+</li>
+<li>
+狮子遥控飞机航模船模车模型锂电池2200mAH 11.1V 30C -  ¥78.00
+</li>
+<li>
+双皇冠 IMAX B6 B8 B6AC 多功能平衡充 充电器(1台起批)高级彩盒 -  ¥108.00
+</li>
+<li>
+单片机开发板学习板、智能小车配件-M3 20+6 铜柱+螺帽 - ¥0.36x10
+</li>
+<li>
+单片机开发板学习板配件-原装正品 辉盛SG90 9G小舵机 9克伺服器 - ¥12.50
+</li>
+</ul>
+
+
+<p>我的程序现在还很烂，就不贴出来误人子弟了，网上搜索很多。</p>
+
+<h2>2. 参考资料</h2>
+
+
+
+
+<ul>
+<li>
+<a href='http://arduino.cc/en'>arduino</a>
+</li>
+<li>
+<a href='http://blog.sina.com.cn/s/articlelist_1581720921_0_1.html'>http://blog.sina.com.cn/s/articlelist_1581720921_0_1.html</a>
+</li>
+<li>
+<a href='http://letsmakerobots.com/start'>http://letsmakerobots.com/start</a>
+</li>
+<li>
+<a href='http://www.roboticfan.com/blog/user_2005/1229/index.shtml'>机器人爱好者</a>
+</li>
+<li>
+<a href='http://zpht2010.blog.163.com/blog/static/16561107720124811359823/?latestBlog'>跟老林学机器人系列</a>
+</li>
+</ul>
+
+
+
+
+<h2>3. 上一小段视频, 就算是小车的第一个版本吧</h2>
+
+
+<p><embed src="http://player.youku.com/player.php/sid/XNDg5Mjk3MjI0/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
 
 
 				<div class="post-metadata">
-					February 21, 2011 | 
-					<a href='/2011/02/21/deal-with-mysql-error-150.html#disqus_thread'>View Comments</a>
+					December 16, 2012 | 
+					<a href='/2012/12/16/arduino-auto-drive-car.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#mysql'>mysql</a>
+						<a href='/tags.html#arduino'>arduino</a>
+						, 
+					
+						
+						<a href='/tags.html#robot'>robot</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2011/02/16/mysql-update">
-				<h3 class="title"><a href="/2011/02/16/mysql-update.html">Same update query only update once</a></h3>
+			<div class="post" id="postid-/2012/12/09/visit-appspot">
+				<h3 class="title"><a href="/2012/12/09/visit-appspot.html">Visit Appspot.com From China</a></h3>
 				
-				<p>Just learned more about the mysql update statement.
-I am very curious with this query:</p>
+				<p>The reason behind this blog is to show you how to make <b>GAppProxy</b> work again. In China, most of people rely on <a href='https://code.google.com/p/gappproxy/'>GAppProxy</a> to access the 'outside world'. But appspot.com is blocked in China. So here is a simple tutorial to show you how to make it work.</p>
+
+<p>The idea is very simple: find the workable google IP and add it to hosts file.</p>
+
+<br />
+
+
+<p>Step1:</p>
 
 <pre>
-UPDATE `table_name` SET `column3` = (`column1` | (`column2` * 2) ;
+nslookup www.google.com
 </pre>
 
 
-<p>The first time, there are 10,000 items were updated. When I execute it again, 0 affected.</p>
-
-<p>So there is no where condition, how can this happen?
-Learn it from <a href='http://dev.mysql.com/doc/refman/5.1/en/update-speed.html'>mysql doc: Speed of UPDATE Statements</a>.</p>
-
-<p>Yes, it is because of the index.</p>
+<p>You can find something like:</p>
 
 <pre>
-  ...The speed of the write depends on the amount of data being updated and the number of indexes that are updated. Indexes that are not changed do not get updated. 
+nslookup www.google.com
+Server:   192.168.1.1
+Address:  192.168.1.1#53
+
+Non-authoritative answer:
+Name: www.google.com
+Address: 74.125.128.99
+Name: www.google.com
+Address: 74.125.128.105
+Name: www.google.com
+Address: 74.125.128.103
+Name: www.google.com
+Address: 74.125.128.147
+Name: www.google.com
+Address: 74.125.128.106
+Name: www.google.com
+Address: 74.125.128.104
 </pre>
 
+
+<p>Basically you just need to try https://74.125.128.x/ to check which one is working. 'x' can be any number. If you can visit https://74.125.128.x/, continue to <b>Step2</b>.</p>
+
+<br />
+
+
+<p>Step2:</p>
+
+<p>Modify /etc/hosts file and add one line:</p>
+
+<pre>
+74.125.128.x $your_app_engine_id.appspot.com
+</pre>
+
+
+<p>Replace $your_app_engine_id with your registered google app engine ID.</p>
+
+<p>Hope this will help you.</p>
 
 
 				<div class="post-metadata">
-					February 16, 2011 | 
-					<a href='/2011/02/16/mysql-update.html#disqus_thread'>View Comments</a>
+					December 09, 2012 | 
+					<a href='/2012/12/09/visit-appspot.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#mysql'>mysql</a>
+						<a href='/tags.html#google'>google</a>
+						, 
+					
+						
+						<a href='/tags.html#gfw'>gfw</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2011/01/21/deal-with-mysql-error-1005-hy000">
-				<h3 class="title"><a href="/2011/01/21/deal-with-mysql-error-1005-hy000.html">Deal with mysql ERROR 1005 (HY000)</a></h3>
+			<div class="post" id="postid-/2012/11/29/how-to-face-life">
+				<h3 class="title"><a href="/2012/11/29/how-to-face-life.html">如何面对疾病</a></h3>
 				
-				<p>How to deal with 'mysql ERROR 1005 (HY000): Can't create table '' (errno: 150)'? Usuall it was caused by mysql foreign key. But how you know which foreign key is wrong? Or why it is incorrect? To get more information, you can execute: <pre>SHOW ENGINE INNODB STATUS\G</pre>.
-In my case:</p>
+				<p>我一直踌躇如何下笔这篇blog，原因始于前一阵子做过的一次手术以及最近看的几篇文章.</p>
 
-<pre>
-CREATE TABLE `table3`
-(
-  `id` INTEGER  NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255),
-  `author_id` INTEGER  NOT NULL,
-  `is_published` TINYINT default 0,
-  `identifier` VARCHAR(100),
-  `path` VARCHAR(255),
-  `description` TEXT,
-  PRIMARY KEY (`id`),
-  KEY `books_I_1`(`is_published`),
-  INDEX `books_FI_1` (`author_id`),
-  CONSTRAINT `books_FK_1`
-    FOREIGN KEY (`author_id`)
-    REFERENCES `users` (`id`)
-    ON DELETE SET NULL
-)Type=InnoDB
-</pre>
+<p>以前一直是觉得生活无所谓写，都是些琐事，只有工作的东西，技术的东西写出来才有意思。曾有段时间将一个维持了很久的blog彻底丢弃。</p>
+
+<p>而立之年，理解和意识已经慢慢的转了180度。我现在觉得除了生活之外的东西，其它都不重要。如果再细致，除了你自己的生活和思想，其它都不重要。你可能会说，这样说太自私了。
+其实一点都不自私，而且很宏大。没有很好的在意自己，就会拖累别人；没有很好的在意自己就不能在关键的时刻帮助别人。</p>
+
+<p>
+我想写这篇blog，还有一个目的就是想把我搜集的，我想的，我总结的分享给更多人，引起更多人的思考，虽然本站从来就是少有人来。但我还是想做，也许是为了以后给自己回顾。
+</p>
 
 
-<p>I get mysql 1005 error with above sql, if I execute show innodb status, I will get:</p>
+<p>我先把文章的连接列出来：</p>
 
-<pre>
-=====================================
-110121 16:11:12 INNODB MONITOR OUTPUT
-=====================================
-Per second averages calculated from the last 13 seconds
-----------
-SEMAPHORES
-----------
-OS WAIT ARRAY INFO: reservation count 28, signal count 28
-Mutex spin waits 0, rounds 81, OS waits 4
-RW-shared spins 38, OS waits 19; RW-excl spins 5, OS waits 5
-------------------------
-LATEST FOREIGN KEY ERROR
-------------------------
-110121 16:05:56 Error in foreign key constraint of table table3:
-
-   FOREIGN KEY (`author_id`)
-   REFERENCES `users` (`id`)
-   ON DELETE SET NULL
-)Type=InnoDB:
-You have defined a SET NULL condition though some of the
-columns are defined as NOT NULL.
-</pre>
+<ul>
+  <li><a href='http://vip.book.sina.com.cn/book/index_216231.html'>一个癌症患者的康复之路：重生手记</a></li>
+  <li><a href='http://v.feibo.com/yunkeji/373?rdn=1353851035348&from=timeline&isappinstalled=0'>杨振宁：佛教与科学彻底相容</a></li>
+  <li><a href='http://www.huzheng.org/getdoclist.php?category=note&&docpage=0'>星际译王作者胡正的几篇文章</a></li>
+  <li><a href='http://book.douban.com/subject/1066108/'>易经杂说-南怀瑾</a></li>
+</ul>
 
 
-<p>Yes, as you can see, the last sentence is what I want. Actually, I define author_id can not be null. Good luck to you.</p>
+<p>所有的这些放在一起，以及加上我自己生病前前后后做的很多资料的调查以及思考，让我想说，鉴于中国医疗的环境的现状，鉴于目前科技水平医疗水平的现状，以及现阶段中国社会大部分职业工作者的那种向“钱”主义。如果你生病了，首先自己先去了解自己的病情，再者一定要去找个正规的大医院（现在三级甲等已经不算什么了）好点的医生（一般的医生非专家，碰上好医生的几率微忽甚微）.</p>
+
+<p>
+以我的情况做个描述，当你听到医生告知你病情的时候，内心慌张，不知所措。因为之前很少去医院，加上当时以为只有医生能有办法解决你的困难，医生一句“开刀”，已经让我有点不知所措了. 值得庆幸的是之前一直看一个内分泌的专家，她有推荐一个外科医生，就像《重生日记》里面写的，可能不是科室里面最大的那个官，但却可能是当时来讲最可信的。因为我对这个内分泌专家的信任，传递了我的信心到这个外科医生身上。事实证明，不是最坏的那个。
+</p>
+
+
+<p>
+我还有放易经杂说的连接，这个资料让我想到了几件事情，而且和重生日记中的条目很吻合。《易经杂说》中说：人重重的摔在地上，不要立刻站起来，在原地不要动，等身体恢复了“精气”再慢慢站起来。如果立刻站起来，大部分情况是受伤，如果等身体稍微恢复点站起来，反而可能什么事情也没有。还有一个例子说，我们出门在外地，总是带一包家乡的土，在生了水土不服病后，将土拿出来冲下去喝掉，有时候就突然好了。我挑这两个例子说，是因为都有听到或者自己亲身经历过。 这里也是想说，要相信人类身体的自我恢复功能，目前来看，没有医生会告诉你这个。尤其是西医更是循规蹈矩，在“钱”面前，一切更都得自食其力。不过不要误解我，我不是说所有医生都这样，但你能碰到好医生，现在只能靠碰运气，或者靠“抢”。
+<br />
+重生手记中给出的理智的做法是：自己先研究病情，做各种资料收集，如果你能联系到国外医生，或者能读懂英文，那么帮助会很大；（如果你自己有点中医知识，效果会更好－这是我加的）。西医的意见你可以听做参考，但在这之前，你需要对这个西医做个认识，所以之前的医生搜索也很关键。综合所有信息，加上自己的心理承受能力，自己做最理智，最合适的判断。
+</p>
+
+
+
+
+<p>
+另外杨振宁的文章和星际译王胡正的文章放在一起，有没有发现你脑海中的所谓的那些“非科学”，“迷信” 的东西，正在被越来越广泛的意识与接受。想起来小时候外婆给我说的事情，一直到了成年还是用书本老师交的那些全盘否定。直到慢慢的意识到也许可以试着观察，试着找证据，试着被证明。
+</p>
+
+
+<p>文章可以结束了，想送给所有看到这篇文章的读者：多发善心，多结善果。</p>
 
 
 				<div class="post-metadata">
-					January 21, 2011 | 
-					<a href='/2011/01/21/deal-with-mysql-error-1005-hy000.html#disqus_thread'>View Comments</a>
+					November 29, 2012 | 
+					<a href='/2012/11/29/how-to-face-life.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#mysql'>mysql</a>
+						<a href='/tags.html#life'>life</a>
+						, 
+					
+						
+						<a href='/tags.html#甲状腺结节'>甲状腺结节</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2012/10/13/life-is-challenge">
+				<h3 class="title"><a href="/2012/10/13/life-is-challenge.html">Life Is Challenge</a></h3>
+				
+				<p>Since the beginning of this summer, I made some videos to record "nature &amp; life". I wish it will give me the same feeling when I look back them. And I also hope it will bring the others the happiness.</p>
+
+<br />
+
+
+<h3>The beginning of Summer</h3>
+
+
+<p>
+<video width="600" height="400" controls="controls" src="https://dl.dropbox.com/u/13976659/videos/office-summer-beginning.MOV" type="video/mov">
+</video>
+</p>
+
+
+
+
+<h3>The end of Summer(Right click and 'play')</h3>
+
+
+<p>
+<video width="400" height="600" style="-moz-transform:rotate(90deg);
+  -webkit-transform:rotate(40deg);
+    -o-transform:rotate(40deg);
+      -ms-transform:rotate(40deg);
+        transform:rotate(40deg);" controls preload src="https://dl.dropbox.com/u/13976659/videos/office-summer-end.MOV" type="video/mov">
+</video>
+</p>
+
+
+
+
+<h3>The beginning of Autumn</h3>
+
+
+<p>
+<video width="600" height="300" controls="controls" src="https://dl.dropbox.com/u/13976659/videos/nanjing-xuanwuhu.MOV" type="video/mov">
+</video>
+</p>
+
+
+
+
+<h3>The middle of Autumn(Right click and 'play')</h3>
+
+
+<p>
+<video width="400" height="600" style="-moz-transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  transform:rotate(90deg);" preload controls src="https://dl.dropbox.com/u/13976659/videos/changzhou-tweets.MOV" type="video/mov">
+</video>
+</p>
+
+
+<p>When you expected more from life, more are taken from your life. What you can expected? <br /> Except taking your courge and accepting the challenge, what else?</p>
+
+
+				<div class="post-metadata">
+					October 13, 2012 | 
+					<a href='/2012/10/13/life-is-challenge.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#life'>life</a>
+						, 
+					
+						
+						<a href='/tags.html#videos'>videos</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2012/10/02/move-to-dnspod">
+				<h3 class="title"><a href="/2012/10/02/move-to-dnspod.html">Move From Godaddy DNS to Dnspod</a></h3>
+				
+				<p>It's the first time that my domain can not be resolved for around 6 hours. I learned <a href='http://www.godaddy.com'>godaddy</a> DNS was blocked in China sometimes.</p>
+
+<p>This is what I hate to work on a Chinese site. After several minutes struggle, I decide to move my dns from <a href='http://www.godaddy.com'>godaddy</a> to <a href='https://www.dnspod.cn/'>dnspod</a>.</p>
+
+<p><a href='https://www.dnspod.cn/'>dnspod</a> did really a nice work. No matter the user interfaces or the services. All of them  meet my requirements.</p>
+
+<p>I don't want to repeat how to setup the dnspod. <a href='https://www.google.com/search?q=dns+godaddy+dnspod&oq=dns+godaddy+dnspod&sugexp=chrome,mod=1&sourceid=chrome&ie=UTF-8'>google search</a> will tell you more about this.</p>
+
+<p>Now I will just wait for the new dns takes affect. Actaully dns was solved quickly in China, but not in JiangSu province in my testing. Good luck to my <a href='http://www.dachebang.com'>www.dachebang.com</>.</p>
+
+
+				<div class="post-metadata">
+					October 02, 2012 | 
+					<a href='/2012/10/02/move-to-dnspod.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#dns'>dns</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2012/08/26/linode-migration">
+				<h3 class="title"><a href="/2012/08/26/linode-migration.html">Linode Facility Migration to Fremont</a></h3>
+				
+				<p>After using <a href='www.linode.com'>linode</a> host center at Tokyo for a while, I decided to migrate my node to Fremont.</p>
+
+<p>Linode provide you a <a href='http://www.linode.com/speedtest/'>speedtest page</a></p>
+
+<p>Here is my speed testing result. Those two tasks are started at the same time.</p>
+
+<pre>
+100MB-tokyo.bin 1.2/100MB, 47 min left
+100MB-fremont.bin 66.5/100MB, 22 secs left
+</pre>
+
+
+<p>But If I ping the speed test domain:</p>
+
+<pre>
+$ ping speedtest.tokyo.linode.com
+PING speedtest.tokyo.linode.com (106.187.96.148): 56 data bytes
+64 bytes from 106.187.96.148: icmp_seq=0 ttl=51 time=82.885 ms
+64 bytes from 106.187.96.148: icmp_seq=1 ttl=51 time=77.757 ms
+64 bytes from 106.187.96.148: icmp_seq=2 ttl=51 time=77.919 ms
+
+$ ping speedtest.fremont.linode.com
+PING speedtest.fremont.linode.com (50.116.14.9): 56 data bytes
+64 bytes from 50.116.14.9: icmp_seq=0 ttl=51 time=146.268 ms
+Request timeout for icmp_seq 1
+64 bytes from 50.116.14.9: icmp_seq=2 ttl=51 time=146.403 ms
+64 bytes from 50.116.14.9: icmp_seq=3 ttl=51 time=145.409 ms
+64 bytes from 50.116.14.9: icmp_seq=4 ttl=51 time=146.396 ms
+64 bytes from 50.116.14.9: icmp_seq=5 ttl=51 time=148.467 ms
+</pre>
+
+
+<p>As you can see the result is totaly different. So which one you can trust?</p>
+
+<p>The response from linode support:</p>
+
+<pre>
+Individual packets take less time to travel between our Tokyo datacenter and your location than our Fremont datacenter, but that our Fremont datacenter is able to provide you with faster download speeds to your location. Which location is better for you depends on whether your use case likes decreased latency, or better download speeds.
+</pre>
+
+
+<p>At last I decide to switch to Fremont anyhow. So Linode provide me a new ip address. The interesting thing comes. My ISP blocked this ip address for some reason. You can find the fail point by using either "traceroute" or <a href='http://library.linode.com/linux-tools/mtr/'>MTR</a>.</p>
+
+<p>So I asked for a new ip address and reboot my node.</p>
+
+<p>Don't forget to update your hosts file with new ip address to make your application work again. Good luck!</p>
+
+
+				<div class="post-metadata">
+					August 26, 2012 | 
+					<a href='/2012/08/26/linode-migration.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#linode'>linode</a>
+						, 
+					
+						
+						<a href='/tags.html#vps'>vps</a>
+						, 
+					
+						
+						<a href='/tags.html#fremont'>fremont</a>
 						
 					 
 				</div>

@@ -39,11 +39,14 @@
     <div class="contact">
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
+				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
 				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
 			</div>
 			<div class="rss">
+                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
 				<p>
 				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
 				</p>
@@ -64,141 +67,510 @@
 <div class="post">
   <ul class="content">
 		
-			<div class="post" id="postid-/2010/07/03/symfony-1-0-addjoin-an-array">
-				<h3 class="title"><a href="/2010/07/03/symfony-1-0-addjoin-an-array.html">Symfony 1.0 addJoin an array</a></h3>
+			<div class="post" id="postid-/2011/05/06/upgrade-ubuntu-fpm-404-error">
+				<h3 class="title"><a href="/2011/05/06/upgrade-ubuntu-fpm-404-error.html">Nginx, PHP-FPM, 404 error after upgrading to Ubuntu 11.04</a></h3>
 				
-				<p>In sf1.3, we can use addJoin(array('id_a'm 'id_b'), array('id_1', 'id_2'))</p>
+				<p>After upgrading from ubuntu 10.10 to ubuntu 11.04 my local site didn't work anymore. It reponsed with a 404 page.</p>
 
-<pre name='code' class='php'>
-/**
-     * This is the way that you should add a straight (inner) join of two tables.  For
-     * example:
-     *
-     * <p>
-     * AND PROJECT.PROJECT_ID=FOO.PROJECT_ID
-     * <p>
-     *
-     * left = PROJECT.PROJECT_ID
-     * right = FOO.PROJECT_ID
-     *
-     * @param      mixed $left A String with the left side of the join.
-     * @param      mixed $right A String with the right side of the join.
-     * @param      mixed $operator A String with the join operator e.g. LEFT JOIN, ...
-   *
-     * @return     Criteria A modified Criteria object.
-     */
-    public function addJoin($left, $right, $operator = null)
-    {
-        $join = new Join();
-    if (!is_array($left)) {
-      // simple join
-      $join->addCondition($left, $right);
-    } else {
-      // join with multiple conditions
-      // deprecated: use addMultipleJoin() instead
-      foreach ($left as $key => $value)
-      {
-        $join->addCondition($value, $right[$key]);
-      }
+<p>After researcing for a while, I found the root should be put outside the location property:
+Before:</p>
+
+<pre>
+server {
+  server_name  localhost;
+
+  location / {
+        root   /var/www;
+        index  index.php index.html index.htm;
     }
-        $join->setJoinType($operator);
-        
-        return $this->addJoinObject($join);
-    }
+ ....
+}
+
 </pre>
 
 
-<p>Sometimes we still work on symfony 1.0. So when we want to join on more keys, it seems impossible.</p>
+<p>After:</p>
 
-<pre name='code' class='php'>
-select * from books left join categories on book.category_id = categories.id where categories.name='biography'
+<pre>
+server {
+
+  root   /var/www;
+  index  index.php index.html index.htm;
+  server_name  localhost;
+
+ ....
+}
 </pre>
 
 
-<p>If books has 1,000,000 items. There are 100,000 categories, but only 1000 categories with name 'biography' . The above sql will go through all the categories. But we propel can generated sql like this:</p>
-
-<pre name='code' class='php'>
-select * from books left join categories on book.category_id = categories.id and categories.name='biography'
-</pre>
-
-
-<p>This sql can limit the touched categories number to 1000.</p>
-
-<p>So we can do following in symfony 1.0</p>
-
-<pre name='code' class='php'>
-$c->addJoin(BookPeer::CATEGORY_ID, CategoryPeer::ID.' AND '.CategoryPeer::NAME.'= "biography"', Criteria::LEFT_JOIN);
-</pre>
-
+<p>Now it works, but have no idea what has been changed since Ubuntu upgrade.</p>
 
 
 				<div class="post-metadata">
-					July 03, 2010 | 
-					<a href='/2010/07/03/symfony-1-0-addjoin-an-array.html#disqus_thread'>View Comments</a>
+					May 06, 2011 | 
+					<a href='/2011/05/06/upgrade-ubuntu-fpm-404-error.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#symfony'>symfony</a>
+						<a href='/tags.html#ubuntu'>ubuntu</a>
+						, 
+					
+						
+						<a href='/tags.html#php-fpm'>php-fpm</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2010/06/28/how-to-win-others-trust">
-				<h3 class="title"><a href="/2010/06/28/how-to-win-others-trust.html">How to win others trust</a></h3>
+			<div class="post" id="postid-/2011/05/01/solve-ubuntu1104-wifi-issue">
+				<h3 class="title"><a href="/2011/05/01/solve-ubuntu1104-wifi-issue.html">Solve Wireless Issue When Upgrading From 10.10 to 11.04</a></h3>
 				
-				<p>I just want to post some suggestions about 'trust' from my experience. It might not be perfect, but I am sure some of them are mostly useful for you.</p>
+				<p>After upgrading from ubuntu 10.10 to ubuntu 11.04 the wireless stop working.</p>
 
-<p><a href="http://en.wikipedia.org/wiki/Trust">Trust (social sciences), reliance on another person or entity. Having faith in others and believing them.</a></p>
+<p>The first step, I was using <a href="https://help.ubuntu.com/community/WifiDocs/WirelessTroubleShootingGuide">ubuntu trouble shooting</a> to detect the issue.</p>
 
-<ul>    
-    <li><strong>Be polite.</strong> Only when you respect the others, you can get the respect from the others. Only when you get respect, then it is possible for you to get the 'trust'.</li>
-    <li><strong>Trust is not two-way.</strong> It doesn't mean if you trust somebody, somebody should also trust on you. But for sure they will try to trust you firstly. And then if you break the trust from this guy, it will difficulty for you to get it back.</li>
-    <li><strong>Trust is hard to copy.</strong> If you didn't know how to be honest man, you will break it at sometime.</li>
-    <li><strong>Think before you say.</strong> When somebody ask you something seriously, please think it for a while and then make the reply. If you don't know, you can try to give some references or just say 'no'. Don't waste the others' time and the time of yourself.</li>
-    <li><strong>Contribute to the others.</strong> Try to share something or give some help for the others. Don't live in the world with yourself.</li>
-    <li><strong>Keep your promise.</strong> If you lost your promise for the others several times and everybody knows you didn't try your best, you will lost the trust forever.</li>
-    <li><strong>Try to say 'sorry'. Don't always say 'sorry'.</strong> When you lost your promise, try to say sorry and give a reasonable explanation, rather than ignore it. But..but don't always say sorry for the same mistake.</li>
-    <li><strong>Undertake your mistake.</strong> If you make something wrong in your group, please undertake the mistake, rather than hide it. If you think the others might be stupid, you will be the stupid one.</li>
-
-</ul>
+<ol type="a">
+<li>Detail whether there are software or hardware blocks on your rf devices. To get a list of devices and their hardware and software status, try "sudo rfkill list".</li>
+</ol>
 
 
+<pre>
+~$ sudo rfkill list
+0: hp-wifi: Wireless LAN
+    Soft blocked: yes
+    Hard blocked: yes
+</pre>
 
+
+<p>Unblock your devices by "sudo rfkill unblock 0".</p>
+
+<ol type="a">
+<li>Check for Device Recognition for my HP laptop(amd64)</li>
+</ol>
+
+
+<pre>
+~$ sudo lshw -C network
+  *-network UNCLAIMED     
+       description: Network controller
+       product: BCM4311 802.11a/b/g
+       vendor: Broadcom Corporation
+       physical id: 0
+       bus info: pci@0000:30:00.0
+       version: 01
+       width: 32 bits
+       clock: 33MHz
+       capabilities: pm msi pciexpress bus_master cap_list
+       configuration: latency=0
+       resources: memory:c8000000-c8003fff
+  *-network
+       description: Ethernet interface
+       product: NetXtreme BCM5788 Gigabit Ethernet
+       vendor: Broadcom Corporation
+       physical id: 1
+       bus info: pci@0000:02:01.0
+       logical name: eth0
+       version: 03
+       serial: 00:17:08:37:6a:64
+       size: 100Mbit/s
+       capacity: 1Gbit/s
+       width: 32 bits
+       clock: 66MHz
+       capabilities: pm vpd msi bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=tg3 driverversion=3.116 duplex=full firmware=5788-v3.26 ip=192.168.1.103 latency=64 link=yes mingnt=64 multicast=yes port=twisted pair speed=100Mbit/s
+       resources: irq:23 memory:d4000000-d400ffff
+</pre>
+
+
+<p>Here I can see 'tg3' driver was using. And by checking the loaded module the tg3 is there.</p>
+
+<pre>
+~$ sudo lsmod
+</pre>
+
+
+<p>If your driver was not loaded, you can load it by "sudo modprobe <module>"</p>
+
+<ol type="a">
+<li>Identify PCI devices with PCI ID.</li>
+</ol>
+
+
+<pre>
+~$ sudo lspci -v | grep Ethernet
+02:01.0 Ethernet controller: Broadcom Corporation NetXtreme BCM5788 Gigabit Ethernet (rev 03)
+
+~$ sudo lspci -v | grep Network
+30:00.0 Network controller: Broadcom Corporation BCM4311 802.11a/b/g (rev 01)
+</pre>
+
+
+<ol type="a">
+<li>Check the addtional drivers, I found "Broadcom STA wireless driver" was using.</li>
+</ol>
+
+
+<p>Everything looks good until now. Driver was working and was recognized. So I guess the issue might be the compatibility with new kernel?</p>
+
+<ol type="a">
+<li>With the help from google.</li>
+</ol>
+
+
+<p>i). Someone solve it by install <a herf="http://ubuntuforums.org/showthread.php?t=1653157">linux-backports-modules-wireless-maverick-generic</a>. It is interesting to know what <a hef="https://help.ubuntu.com/community/UbuntuBackports">backports</a> is.</p>
+
+<p>Unfortunately it didn't work for me.</p>
+
+<p>ii). So I tried the solution in this <a href="http://ubuntuforums.org/showthread.php?t=1653157&page=2">thread</a> by disable my "Broadcom STA wireless driver" and install b43.</p>
+
+<pre>
+Removing "bcmwl-kernel-source" by using Synaptic Package Manager
+Then installing "firmware-b43-installer" and "b43-fwcutter" again by Synaptic Package Manager. 
+</pre>
+
+
+<p>At the end of step e, and by rebooting laptop, the wifi issue was fixed. If you still has the issue, I suggest check the trouble shooting tutorial again. It is really helpful.</p>
+
+<p>Reference:</p>
+
+<p>1.http://linuxfans.keryxproject.org/?page_id=27</p>
+
+<p>2.http://www.ubuntumini.com/2009/11/broadcom-wireless-driver-fix-in-karmic.html</p>
 
 
 				<div class="post-metadata">
-					June 28, 2010 | 
-					<a href='/2010/06/28/how-to-win-others-trust.html#disqus_thread'>View Comments</a>
+					May 01, 2011 | 
+					<a href='/2011/05/01/solve-ubuntu1104-wifi-issue.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#trust'>trust</a>
+						<a href='/tags.html#ubuntu'>ubuntu</a>
+						, 
+					
+						
+						<a href='/tags.html#wireless'>wireless</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2010/06/03/mysql-avoid-filesort">
-				<h3 class="title"><a href="/2010/06/03/mysql-avoid-filesort.html">Mysql : Avoid Filesort</a></h3>
+			<div class="post" id="postid-/2011/04/22/what-rabbitmq-cluster-can-do">
+				<h3 class="title"><a href="/2011/04/22/what-rabbitmq-cluster-can-do.html">What RabbitMQ Cluster Can Do</a></h3>
 				
-				<ul>
-    <li>You can avoid the filesort by making order by column appear in the where clause</li>
+				<h3>What RabbitMQ cluster can do - Scaling and Reliability</h3>
 
-    <li>When using join, make sure the left side join table column is used in the ORDER BY clause or change the join type</li>
+
+<ul>
+<li><b>Example 1</b>:</li>
 </ul>
 
 
-<p><a href="http://venublog.com/2007/11/29/mysql-how-to-avoid-filesort/">Reference</a></p>
+<p>All data/state required for the operation of a RabbitMQ broker is replicated across all nodes.</p>
+
+<p>Let's take an example to help you understand better.</p>
+
+<p>There is a publisher which publish 10 messages to RabbitMQ broker(*1).</p>
+
+<p>|Publisher| --> |10 Messages| --> |Broker( = Node_A + Node_B)|</p>
+
+<p>So Node_A will receive Message 1, Message 3, 5, 7, 9; Node_B will receive Message 2, Message 4, 6, 8, 10.</p>
+
+<ul>
+<li><b>Example 2</b>:</li>
+</ul>
+
+
+<p>We still use the above example. If the Node_A crashed when it is consuming the messages, what happens?</p>
+
+<p>Before Node_A crashed (I simply powered off this machine):</p>
+
+<p>Node_A finished Message 1, Message 3, and it is starting to consume Message 5;</p>
+
+<p>Node_B finished Message 2, Message 4 and it is starting to consume Message 6.</p>
+
+<p>After Node_A crashed:</p>
+
+<p>Node_A stopped working;</p>
+
+<p>Node_B finished Message 6, Message 7, Message 8, Message 9, Message 10 and Message 5.</p>
+
+<p>Yes, as you can see, even Node_A dies unexpected. Broker still can get the status of Message 5 and send it to Node_B.
+And you can find following explanation:</p>
+
+<pre>
+  If a node goes down or becomes unreachable what effects can this have on the cluster? Do things 'hang' for a bit?
+  
+  Topology change operations (see above) could potentially pause operation for a brief time but they will complete eventually. We use the net_kernel erlang module to do monitoring between nodes. The default "tick" time there is 60 seconds but this can be reduced. Further, in the event of a failure, any communication between the nodes will likely result in an error being generated and detected immediately: i.e. the only time at which you would not know about a node failure for 60 seconds is if there was no communication between the nodes for that amount of time.
+  
+  ....
+  
+</pre>
+
+
+
+
+<h3>What RabbitMQ cluster can not do - High Availability</h3>
+
+
+<p>So the 60 seconds is what RabbitMQ can not do. We call it high availability.</p>
+
+<pre>
+...
+Whilst RabbitMQ also supports clustering, clustering is intended to facilitate scalability, not availability. Thus in a cluster, if a node fails, queues which were on the failed node are lost. With the high availability setup described in this guide, when a node fails, the durable queues and the persistent messages within them can be recovered by a different node.
+...
+</pre>
+
+
+<p>To build a high availability and scalable application, you can take a look <a href='http://www.rabbitmq.com/pacemaker.html'>RabbitMQ Placemaker</a></p>
+
+<p>References:</p>
+
+<ol>
+<li>RabbitMQ broker - a logical grouping of one or several Erlang nodes, each running the RabbitMQ application and sharing users, virtual hosts, queues, exchanges, etc. Sometimes we refer to the collection of nodes as a cluster.</li>
+</ol>
+
 
 
 				<div class="post-metadata">
-					June 03, 2010 | 
-					<a href='/2010/06/03/mysql-avoid-filesort.html#disqus_thread'>View Comments</a>
+					April 22, 2011 | 
+					<a href='/2011/04/22/what-rabbitmq-cluster-can-do.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#rabbitmq'>rabbitmq</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2011/03/08/do-we-still-need-scrum">
+				<h3 class="title"><a href="/2011/03/08/do-we-still-need-scrum.html">Do we still need scrum if ...</a></h3>
+				
+				<p>Just learned an interesting point from <a href='http://architects.dzone.com/articles/balancing-software'>'balance software' post</a>:</p>
+
+<h4>When Scrum has died</h4>
+
+
+<pre>
+  In the journey of dramatic improvements to bring your code base under control, there are few things that you should take notice off.
+
+  * An architecture will emerge that supports the design of the resident parts.  Things fit together sweetly and each part supports the other part in symbiotic relationships.
+  * The code base will get smaller and the team will shrink to, perhaps,  just 2 or 3 people.
+  * Each developer will take on greater responsibility and will find it difficult to break core principles.  The act of living those principles will result in a values that don't need to be listed on a poster on the wall.
+  * The scrum master will become redundant.
+  * The product owner will do more by working directly with the developers.
+  * The developers will represent the interest of their customers directly.
+  * The bottleneck will shift from development to the product owner and eventually the customer.
+</pre>
+
+
+<p>In my opinion, Scrum is used for company to delivery features to users quickly and interactively. As a team, with scrum you can easily prove your works after a short time. You don't have to wait for one year or longer. And big feature can be split into small ones. Everyone know what need to be done in following weeks. You don't have to write so many documents to trace what's going on. Ideally, as the authors said, if the code base can be made smaller and smaller. And the new feature will be just a plugin to your platform. Of course you don't need scrum. Should we call it as 'factory model'? As workers(developers) just need to collect the feature request and compose it by some existing functions. And plug it into the platform(codebase). I have not seen a company who has such a powerful platform. Will the bottleneck be the platform itself then?</p>
+
+
+				<div class="post-metadata">
+					March 08, 2011 | 
+					<a href='/2011/03/08/do-we-still-need-scrum.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#scrum'>scrum</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2011/03/02/server-monitor">
+				<h3 class="title"><a href="/2011/03/02/server-monitor.html">Web Server Memory Monitor</a></h3>
+				
+				<h2>free-m</h2>
+
+
+<pre>
+free-m: to see how much memory you are currently using
+</pre>
+
+
+<p>Output:
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; total &nbsp;&nbsp; used&nbsp;&nbsp; free&nbsp;&nbsp;&nbsp; shared buffers cached<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mem:&nbsp;90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 85 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 34<br>
+-/+ buffers/cache:&nbsp; 46&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 43<br> &nbsp;&nbsp;&nbsp;&nbsp;Swap:&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9 </code>
+The top row 'used' (85) value will almost always nearly match the top row mem value (90).  Since Linux likes to use any spare memory to cache disk blocks (34).</p>
+
+<p>The key used figure to look at is the buffers/cache row used value (46).  This is how much space your applications are currently using.  For best performance, this number should be less than your total (90) memory.  To prevent out of memory errors, it needs to be less than the total memory (90) and swap space (9).</p>
+
+<p>If you wish to quickly see how much memory is free look at the buffers/cache row free value (43). This is the total memory (90)- the actual used (46). (90 - 46 = 44, not 43, this will just be a rounding issue)</p>
+
+<h2>ps aux</h2>
+
+
+<pre>
+ps aux: to see where all your memory is going.That will show the percentage of memory each process is using.  You can use it to identify the top memory users (usually Apache, MySQL and Java processes).
+</pre>
+
+
+<p>Output:
+<code>
+USER PID %CPU %MEM VSZ&nbsp;&nbsp;&nbsp;&nbsp; RSS&nbsp;&nbsp; TTY&nbsp;&nbsp; STAT
+&nbsp; START TIME COMMAND<br>
+root 854 0.5&nbsp; 39.2 239372&nbsp; 36208 pts/0 S&nbsp;&nbsp;&nbsp;&nbsp; 22:50 0:05
+/usr/local/jdk/bi<br>
+n/java -Xms16m -Xmx64m -Djava.awt.headless=true -Djetty.home=/opt/jetty -cp /opt<br>
+/jetty/ext/ant.jar:/opt/jetty/ext/jasper-compiler.jar:/opt/jetty/ext/jasper-runt<br>
+ime.jar:/opt/jetty/ext/jcert.jar:/opt/jetty/ext/jmxri.jar:/opt/jetty/ext/jmxtool
+</code>
+We can see that java is using up 39.2% of the available memory.</p>
+
+<h2>vmstat</h2>
+
+
+<pre>
+vmstat:helps you to see, among other things, if your server is swapping.
+</pre>
+
+
+<p><code>
+- vmstat 1 2
+   procs                      memory    swap          io     system         cpu
+ r  b  w   swpd   free   buff  cache  si  so    bi    bo   in    cs  us  sy  id
+ 0  0  0  39132   2416    804  15668   4   3     9     6  104    13   0   0 100
+ 0  0  0  39132   2416    804  15668   0   0     0     0   53     8   0   0 100
+ 0  0  0  39132   2416    804  15668   0   0     0     0   54     6   0   0 100
+</code>
+The first row shows your server averages.  The si (swap in) and so (swap out) columns show if you have been swapping (i.e. needing to dip into 'virtual' memory) in order to run your server's applications.  The si/so numbers should be 0 (or close to it).  Numbers in the hundreds or thousands indicate your server is swapping heavily.  This consumes a lot of CPU and other server resources and you would get a very (!) significant benefit from adding more memory to your server.</p>
+
+<p>Some other columns of interest: The r (runnable) b (blocked) and w (waiting) columns help see your server load.  Waiting processes are swapped out.  Blocked processes are typically waiting on I/O.  The runnable column is the number of processes trying to something.  These numbers combine to form the 'load' value on your server.  Typically you want the load value to be one or less per CPU in your server.</p>
+
+<p>The bi (bytes in) and bo (bytes out) column show disk I/O (including swapping memory to/from disk) on your server.</p>
+
+<p>The us (user), sy (system) and id (idle) show the amount of CPU your server is using.  The higher the idle value, the better.</p>
+
+<h2>Resolving: High Java Memory Usage</h2>
+
+
+<p>Java processes can often consume more memory than any other application running on a server.</p>
+
+<p>Java processes can be passed a -Xmx option.  This controls the maximum Java memory heap size.  It is important to set a limit on the heap size, otherwise the heap will keep increasing until you get out of memory errors on your VPS (resulting in the Java process - or even some other, random, process - dying.</p>
+
+<p>Usually the setting can be found in your /usr/local/jboss/bin/run.conf or /usr/local/tomcat/bin/setenv.sh config files.  And your RimuHosting default install should have a reasonable value in there already.</p>
+
+<p>If you are running a custom Java application, check there is a -XmxNNm (where NN is a number of megabytes) option on the Java command line.</p>
+
+<p>The optimal -Xmx setting value will depend on what you are running.  And how much memory is available on your server.</p>
+
+<p>From experience we have found that Tomcat often runs well with an -Xmx between 48m and 64m.  JBoss will need a -Xmx of at least 96m to 128m.  You can set the value higher.  However, you should ensure that there is memory available on your server.</p>
+
+<p>To determine how much memory you can spare for Java, try this: stop your Java process; run free -m; subtract the 'used' value from the "-/+ cache" row from the total memory allocated to your server and then subtract another 'just in case' margin of about 10% of your total server memory.  The number you come up with is a rough indicator of the largest -Xmx setting you can use on your server.</p>
+
+<h2>Resolving: High Apache Memory Usage</h2>
+
+
+<p>Apache can be a big memory user.  Apache runs a number of 'servers' and shares incoming requests among them.  The memory used by each server grows, especially when the web page being returned by that server includes PHP or Perl that needs to load in new libraries.  It is common for each server process to use as much as 10% of a server's memory.</p>
+
+<p>To reduce the number of servers, you can edit your httpd.conf file.  There are three settings to tweak: StartServers, MinSpareServers, and MaxSpareServers.  Each can be reduced to a value of 1 or 2 and your server will still respond promptly, even on quite busy sites.  Some distros have multiple versions of these settings depending on which process model Apache is using.  In this case, the 'prefork' values are the ones that would need to change.</p>
+
+<p>To get a rough idea of how to set the MaxClients directive, it is best to find out how much memory the largest apache thread is using. Then stop apache, check the free memory and divide that amount by the size of the apache thread found earlier. The result will be a rough guideline that can be used to further tune (up/down) the MaxClients directive. The following script can be used to get a general idea of how to set MaxClients for a particular server:</p>
+
+<pre class="codebox">
+#!/bin/bash
+echo "This is intended as a guideline only!"
+if [ -e /etc/debian_version ]; then
+    APACHE="apache2"
+elif [ -e /etc/redhat-release ]; then
+    APACHE="httpd"
+fi
+RSS=`ps -aylC $APACHE |grep "$APACHE" |awk '{print $8'} |sort -n |tail -n 1`
+RSS=`expr $RSS / 1024`
+echo "Stopping $APACHE to calculate free memory"
+/etc/init.d/$APACHE stop &amp;amp;ampamp&gt; /dev/null
+MEM=`free -m |head -n 2 |tail -n 1 |awk '{free=($4); print free}'`
+echo "Starting $APACHE again"
+/etc/init.d/$APACHE start &amp;amp;&gt; /dev/null
+echo "MaxClients should be around" `expr $MEM / $RSS`
+</pre>
+
+
+<p>Note: httpd.conf should be tuned correctly on our newer WBEL3 and FC2 distros.  Apache is not installed by default on our Debian distros (since some people opt for Apache 2 and others prefer Apache 1.3).  So this change should only be necessary if you have a Debian distro.</p>
+
+<p>from http://modperlbook.org/html/11-2-Setting-the-MaxRequestsPerChild-Directive.html: "Setting MaxRequestsPerChild to a non-zero limit solves some memory-leakage problems caused by sloppy programming practices and bugs, whereby a child process consumes a little more memory after each request. In such cases, and where the directive is left unbounded, after a certain number of requests the children will use up all the available memory and the server will die from memory starvation."</p>
+
+<h2>Resolving: High MySQL Memory Usage</h2>
+
+
+<p><code>
+-- if your are not using the innodb table manager, then just skip it to save some memory
+-- skip-innodb
+innodb_buffer_pool_size = 16k
+key_buffer_size = 16k
+myisam_sort_buffer_size = 16k
+query_cache_size = 1M
+</code></p>
+
+<h2>Troubleshooting Irregular Out Of Memory Errors</h2>
+
+
+<p>Sometimes a server's regular memory usage is fine.  But it will intermittently run out of memory.  And when that happens you may lose trace of what caused the server to run out of memory.</p>
+
+<p>In this case you can setup a script (see below) that will regularly log your server's memory usage.  And if there is a problem you can check the logs to see what was running.</p>
+
+<p><code>
+wget http://proj.ri.mu/memmon.sh -O /root/memmon.sh
+chmod +x /root/memmon.sh
+</code></p>
+
+<pre>
+-- create a cronjob that runs every few minutes to log the memory usage
+echo '0-59/10 * * * * root /root/memmon.sh >> /root/memmon.txt' > /etc/cron.d/memmon
+/etc/init.d/cron* restart 
+
+-- create a logrotate entry so the log file does not get too large
+echo '/root/memmon.txt {}' > /etc/logrotate.d/memmon
+
+</pre>
+
+
+<p>This article was copied from http://rimuhosting.com/howto/memory.jsp.</p>
+
+
+				<div class="post-metadata">
+					March 02, 2011 | 
+					<a href='/2011/03/02/server-monitor.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#performance'>performance</a>
+						, 
+					
+						
+						<a href='/tags.html#memory'>memory</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2011/02/21/deal-with-mysql-error-150">
+				<h3 class="title"><a href="/2011/02/21/deal-with-mysql-error-150.html">mysql ERROR 1005 (ER_CANT_CREATE_TABLE)</a></h3>
+				
+				<p>To deal with this error, there are a lot of <a href='http://verysimple.com/2006/10/22/mysql-error-number-1005-cant-create-table-mydbsql-328_45frm-errno-150/'>suggestions</a>.
+In my case, it is because of:</p>
+
+<pre>
+  Make sure that the Charset and Collate options are the same both at the table level as well as individual field level for the key columns. (Thanks to FRR for this tip)
+</pre>
+
+
+
+				<div class="post-metadata">
+					February 21, 2011 | 
+					<a href='/2011/02/21/deal-with-mysql-error-150.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
@@ -210,121 +582,38 @@ $c->addJoin(BookPeer::CATEGORY_ID, CategoryPeer::ID.' AND '.CategoryPeer::NAME.'
 
 			</div>
 		
-			<div class="post" id="postid-/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine">
-				<h3 class="title"><a href="/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine.html">Fighting with an issue in cracked mac machine</a></h3>
+			<div class="post" id="postid-/2011/02/16/mysql-update">
+				<h3 class="title"><a href="/2011/02/16/mysql-update.html">Same update query only update once</a></h3>
 				
-				<p>Problem: There is always a black border for every window in a cracked mac, including 'Finder', 'Terminal', even the icon on the desktop.</p>
+				<p>Just learned more about the mysql update statement.
+I am very curious with this query:</p>
 
-<p>Solution: Delete 'com.apple.universalaccess.plist' in /Usr/$YOURNAME/Library/Preferences/. And then Logout and login.</p>
-
-<p>It can fixed in my cracked mac machine.
-And the main idea was back up your mac preferences</p>
-
-<pre name='code' class='css'>
-cp -R /Usr/$YOURNAME/Library/Preferences/ /Usr/$YOURNAME/backup/
+<pre>
+UPDATE `table_name` SET `column3` = (`column1` | (`column2` * 2) ;
 </pre>
 
 
-<p>And then when you login again, the preferences will be recreated again, like a new user.
-For you, you just try to copy some plist from /Usr/$YOURNAME/backup/ to /Usr/$YOURNAME/Library/Preferences/. And then you can check which plist file was the fail reason</p>
+<p>The first time, there are 10,000 items were updated. When I execute it again, 0 affected.</p>
 
+<p>So there is no where condition, how can this happen?
+Learn it from <a href='http://dev.mysql.com/doc/refman/5.1/en/update-speed.html'>mysql doc: Speed of UPDATE Statements</a>.</p>
 
-				<div class="post-metadata">
-					June 01, 2010 | 
-					<a href='/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mac'>mac</a>
-						
-					 
-				</div>
+<p>Yes, it is because of the index.</p>
 
-			</div>
-		
-			<div class="post" id="postid-/2010/05/31/error-while-executing-gem-gemgemnotfoundexception">
-				<h3 class="title"><a href="/2010/05/31/error-while-executing-gem-gemgemnotfoundexception.html">ERROR:  While executing gem ... (Gem::GemNotFoundException)</a></h3>
-				
-				<p>Try</p>
-
-<pre name='code' class='php'>
-gem clean
+<pre>
+  ...The speed of the write depends on the amount of data being updated and the number of indexes that are updated. Indexes that are not changed do not get updated. 
 </pre>
 
 
-<p><a href="http://stackoverflow.com/questions/2273503/ruby-gem-package-manager-failing-with-gemgemnotfoundexception">reference</a></p>
-
-<p>If you got</p>
-
-<pre name='code' class='php'>
-/usr/bin/gem:10: undefined method `manage_gems' for Gem:Module (NoMethodError)
-</pre>
-
-
-<p>Check if there are two gem under /usr/bin/ directory.</p>
-
 
 				<div class="post-metadata">
-					May 31, 2010 | 
-					<a href='/2010/05/31/error-while-executing-gem-gemgemnotfoundexception.html#disqus_thread'>View Comments</a>
+					February 16, 2011 | 
+					<a href='/2011/02/16/mysql-update.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#gem'>gem</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/05/21/joshuas-feel">
-				<h3 class="title"><a href="/2010/05/21/joshuas-feel.html">Joshuas Feel</a></h3>
-				
-				<ol>
-<li><p>Important VS Urgent
-In everyone's life, there are urgent things and important things. You will feel pressure if there are a lot of urgent things. And you will pick urgent things before starting the important ones. But have you think about this logic? Sometimes the urgent things are caused by the important ones. Taking exercises is important thing for your healthy. But if you get sick, that will be the urgent thing. But if you pay more attention to the important things, may be you will not get sick. This is the logic!
-So pay more attention to the important ones, which will save you a lot of time.</p></li>
-<li><p>The best architecture will not the one that can work best for your project.</p></li>
-<li><p>Rome was not built in a day!</p></li>
-</ol>
-
-
-
-				<div class="post-metadata">
-					May 21, 2010 | 
-					<a href='/2010/05/21/joshuas-feel.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#feeling'>feeling</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/04/17/scrum-perfect-estimate">
-				<h3 class="title"><a href="/2010/04/17/scrum-perfect-estimate.html">[scrum] Perfect Estimate</a></h3>
-				
-				<ol>
-<li><p>Estimates can be better done by the people who have the experience of similar kind of work already done, Peers and Historical data. It is always better to involve the people who have similar work experience for appropriate estimations.</p></li>
-<li><p>No one will estimate perfectly for the first time, for sure team members will either over estimate or under estimate the task work, but it makes them realize how much they can produce and for next sprint the team members will try to estimate a bit more precisely.</p></li>
-<li><p>After three to four sprints, team members will be in a position to understand their own strength and how much work they can do. This leads for better estimates.</p></li>
-</ol>
-
-
-
-				<div class="post-metadata">
-					April 17, 2010 | 
-					<a href='/2010/04/17/scrum-perfect-estimate.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#scrum'>scrum</a>
+						<a href='/tags.html#mysql'>mysql</a>
 						
 					 
 				</div>

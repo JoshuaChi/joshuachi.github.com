@@ -39,11 +39,14 @@
     <div class="contact">
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
+				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
 				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
 			</div>
 			<div class="rss">
+                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
 				<p>
 				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
 				</p>
@@ -64,344 +67,195 @@
 <div class="post">
   <ul class="content">
 		
-			<div class="post" id="postid-/2009/10/19/one-pixel-notched-corners">
-				<h3 class="title"><a href="/2009/10/19/one-pixel-notched-corners.html">One pixel notched corners</a></h3>
+			<div class="post" id="postid-/2009/11/16/folder-or-file-permission-in-php-project-installation-process">
+				<h3 class="title"><a href="/2009/11/16/folder-or-file-permission-in-php-project-installation-process.html">Folder or file permission in php project installation process</a></h3>
 				
-				<p>An interesting article <a href="http://www.askthecssguy.com/2008/03/one_pixel_notched_corners_as_u.html">One pixel notched corners as used by Google Analytics</a>.</p>
+				<p>Most projects will add notes like '..don't forget to change the "cache" folder permission: $chmod -R 777 xxx' in their project install guide.
+But have you noticed that there are still a lot of users will ask the same question in their project forums? Yes, the solution is simple and easier. but why not make the simple thing more easier?</p>
 
-<p>A simple explanation of the 'why':
-<a href="http://www.freetofeel.com/2009/10/one-pixel-notched-corners/one_pixel_corner/" rel="attachment wp-att-235"><img src="http://www.freetofeel.com/wp-content/uploads/2009/10/one_pixel_corner.gif" alt="one_pixel_corner" title="one_pixel_corner" width="220" height="186" class="aligncenter size-full wp-image-235" /></a></p>
-
-<pre name='code' class='html'>
-<style type="text/css">
-/* default stuff */
-.letsGiveItAFixedWidthOf200Pixels { width:200px; }
-
-.feature {
-    border:solid red;
-    border-width:0px 4px 2px;
-    background:#b0c0e6;
-}
-.feature div {
-  position:relative;
-  top: -4px;
-  left: 0;
-  border:solid blue;
-  border-width:4px 0 0;
-}
-</style>
-</head><body>
-
-<div class="examplesGoHere letsGiveItAFixedWidthOf200Pixels">
-    <h3>A div</h3>
-    <div class="feature">
-        <div>
-            <div>
-                a
-            </div>
-        </div>
-    </div>
-</div>
-</pre>
-
+<p><pre name='code' class='php'>
+chmod($options['file'], isset($options['file_mode']) ? $options['file_mode'] : 0666);
+mkdir($dir, isset($options['dir_mode']) ? $options['dir_mode'] : 0777, true);
+&lt;/pre
+These code comes from symfony source code. It make me feels good in the installation process.
+It is easier to make this permission modification process transparent for your user.</p>
 
 
 				<div class="post-metadata">
-					October 19, 2009 | 
-					<a href='/2009/10/19/one-pixel-notched-corners.html#disqus_thread'>View Comments</a>
+					November 16, 2009 | 
+					<a href='/2009/11/16/folder-or-file-permission-in-php-project-installation-process.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#css'>css</a>
+						<a href='/tags.html#php'>php</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2009/10/19/lets-make-the-web-faster-google-code">
-				<h3 class="title"><a href="/2009/10/19/lets-make-the-web-faster-google-code.html">Lets make the web faster - Google Code</a></h3>
+			<div class="post" id="postid-/2009/11/10/textmate-for-ubuntu">
+				<h3 class="title"><a href="/2009/11/10/textmate-for-ubuntu.html">Textmate  for Ubuntu</a></h3>
 				
-				<p><a href="http://code.google.com/speed/articles/optimizing-php.html">Interesting post</a>.</p>
+				<p>GEdit + Gmate = Textmate on Ubuntu</p>
 
-<ul>
-<li>Use caching</li>
-<li>Use output buffering</li>
-<li>Avoid writing naive setters and getters</li>
-<li>Don't copy variables for no reason</li>
-<li>Use caching</li>
-<li>Avoid doing SQL queries within a loop</li>
+<p>Install Gedit and Gedit plugins.
+First you need to install the plugin extenstion for gedit</p>
+
+<pre name='code' class='text'>
+sudo apt-get install gedit gedit-plugins
+</pre>
+
+
+<p>Gmate is a usefull program (collection set of plugins and theme) transforming Gedit into a Textmate like</p>
+
+<pre name='code' class='text'>
+cd ~
+git clone git://github.com/lexrupy/gmate.git
+cd gmate
+sh ./install.sh
+</pre>
+
+
+
+				<div class="post-metadata">
+					November 10, 2009 | 
+					<a href='/2009/11/10/textmate-for-ubuntu.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#textmate'>textmate</a>
+						, 
+					
+						
+						<a href='/tags.html#ubuntu'>ubuntu</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/11/09/twitter-weekly-updates-for-2009-11-09">
+				<h3 class="title"><a href="/2009/11/09/twitter-weekly-updates-for-2009-11-09.html">Twitter Weekly Updates for 2009-11-09</a></h3>
+				
+				<ul class="aktt_tweet_digest">
+    <li>Nic Cage bought it: yachts, a jet, a castle, over 50 cars, ... <a href="http://bit.ly/494EvK" rel="nofollow">http://bit.ly/494EvK</a> <a href="http://twitter.com/Joshua_C/statuses/5435774974">#</a></li>
 </ul>
 
 
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
 
 
 
 				<div class="post-metadata">
-					October 19, 2009 | 
-					<a href='/2009/10/19/lets-make-the-web-faster-google-code.html#disqus_thread'>View Comments</a>
+					November 09, 2009 | 
+					<a href='/2009/11/09/twitter-weekly-updates-for-2009-11-09.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#google'>google</a>
+						<a href='/tags.html#twitter'>twitter</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2009/10/18/the-start-up-feedback-loop">
-				<h3 class="title"><a href="/2009/10/18/the-start-up-feedback-loop.html">The Start-up Feedback Loop</a></h3>
+			<div class="post" id="postid-/2009/11/09/flickr-widget">
+				<h3 class="title"><a href="/2009/11/09/flickr-widget.html">flickr widget</a></h3>
 				
-				<p><a href="http://www.freetofeel.com/2009/10/the-start-up-feedback-loop/startup-feedback-loop1-287x300/" rel="attachment wp-att-227"><img src="http://www.freetofeel.com/wp-content/uploads/2009/10/startup-feedback-loop1-287x300.png" alt="startup-feedback-loop1-287x300" title="startup-feedback-loop1-287x300" width="287" height="300" class="aligncenter size-full wp-image-227" /></a></p>
+				<p>I created a <a href="http://github.com/JoshuaChi/Flickr-Widget">flickr widget</a> for wordpress. It was built on <a href="http://www.flickr.com/fun/zeitgeist/">Flickr Daily Zeitgeist</a>. You can try it and welcome any comment.</p>
 
-<p>After reading <a href="http://kevindewalt.com/blog/2009/10/14/the-best-programming-language-for-a-lean-startup/">The Best Programming Language for a Lean Startup</a>, I agree with the author's opinion. There is no a best language for your startup, even the language you choosed is not the key point for your startup. The proper is the best.</p>
+<p><a href="http://github.com/JoshuaChi/Flickr-Widget/archives/master"><strong>Download it NOW!</strong></a></p>
+
+
+<p><a href="http://www.freetofeel.com/projects/flickr_widget_1-2/" rel="attachment wp-att-293"><img src="http://www.freetofeel.com/wp-content/uploads/2009/08/flickr_widget_11.gif" alt="flickr_widget_1" title="flickr_widget_1" width="530" height="289" class="aligncenter size-full wp-image-293" /></a>
+<a href="http://www.freetofeel.com/projects/flickr_widget_2/" rel="attachment wp-att-290"><img src="http://www.freetofeel.com/wp-content/uploads/2009/08/flickr_widget_2.gif" alt="flickr_widget_2" title="flickr_widget_2" width="177" height="261" class="aligncenter size-full wp-image-290" /></a></p>
 
 
 				<div class="post-metadata">
-					October 18, 2009 | 
-					<a href='/2009/10/18/the-start-up-feedback-loop.html#disqus_thread'>View Comments</a>
+					November 09, 2009 | 
+					<a href='/2009/11/09/flickr-widget.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#startup'>startup</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/18/schema-optimization-and-indexing">
-				<h3 class="title"><a href="/2009/10/18/schema-optimization-and-indexing.html">Schema Optimization and Indexing</a></h3>
-				
-				<ol>
-<li><p>Choosing Data Type >
-a. Smaller is usually better;
-b. Simple is good;
-c. Avoid NULL if possible - When a nullable column is indexed, it requires an extra byte per entry and can even cause a fixed-size index;</p></li>
-<li><p>Two kinds of numbers: whole numbers and real numbers (numbers with a fractional part)
-TINYINT, SMALLINT, MEDIUMINT, INT, or BIGINT. These require 8, 16, 24, 32, and 64 bits of storage space. Signed and unsigned types use the same amount of storage space and have the same performance, so use whatever’s best for your data range.</p></li>
-<li><p>MySQL lets you specify a “width” for integer types, such as INT(11). &lt;@author:Oh, I was cheated!>This is meaningless for most applications: it does not restrict the legal range of values, but simply specifies the number of characters MySQL’s interactive tools (such as the commandline client) will reserve for display purposes. For storage and computational purposes, INT(1) is identical to INT(20).</p></li>
-<li><p>VARCHAR - helps performance because it saves space. However, because the rows are variable-length, they can grow when you update them, which can cause extra work.</p></li>
-</ol>
-
-
-<p>CHAR - is fixed-length: MySQL always allocates enough space for the specified number of characters. When storing a CHAR value, MySQL removes any trailing
-spaces.</p>
-
-<ol>
-<li><p>Binary comparisons can be much simpler than character comparisons, so they are faster.</p></li>
-<li><p>Using ENUM instead of a string type.
-Note:ENUM field sorts by the internal integer values, not by the strings themselves.</p></li>
-<li><p>TIMESTAMP >
-By default, MySQL will set the first TIMESTAMP column to the current time when you insert a
-row without specifying a value for the column. MySQL also updates the first TIMESTAMP column’s value by default when you update the row, unless you assign a value explicitly in the UPDATE statement.</p></li>
-<li><p>What if you need to store a date and time value with subsecond resolution?
-You can use the BIGINT data type and store the value as a timestamp in microseconds, or you can use a DOUBLE.</p></li>
-<li><p>Date type choose priciple:
-Choose the smallest size that can hold your required range of values, and leave room for future growth if necessary.</p></li>
-<li><p>String types >
-Avoid string types for identifiers if possible, as they take up a lot of space and are generally slower than integer types. Be especially cautious when using string identifiers with MyISAM tables. MyISAM uses packed indexes for strings by default, which may make lookups much slower. In our tests, we’ve noted up to six times slower performance with packed indexes on MyISAM.</p></li>
-<li><p>Types of Indexes >
-B-Tree indexes - all the values are stored in order, and each leaf page is the same distance from the root.</p></li>
-<li><p>Full-text indexes >
-It finds keywords in the text instead of comparing values directly to the values in the index.</p></li>
-<li><p>Indexing Strategies for High Performance > Isolate the Column
-“Isolating” the column means it should not be part of an expression or be inside a function in the query.
-i).mysql> SELECT ... WHERE TO_DAYS(CURRENT_DATE) - TO_DAYS(date_col) &lt;= 10;
-ii). mysql> SELECT ... WHERE date_col >= DATE_SUB(CURRENT_DATE, INTERVAL 10 DAY);
-iii). mysql> SELECT ... WHERE date_col >= DATE_SUB('2008-01-17', INTERVAL 10 DAY);</p></li>
-<li><p>If you want to make index for a long column, the best way is using the prefix.
-Prefix indexes can be a great way to make indexes smaller and faster, but they have downsides too: MySQL cannot use prefix indexes for ORDER BY or GROUP BY queries, nor can it use them as covering indexes.</p>
-
-<blockquote><p>mysql> SELECT COUNT(DISTINCT city)/COUNT(<em>) FROM sakila.city_demo;
-+-------------------------------+
-| COUNT(DISTINCT city)/COUNT(</em>) |
-+-------------------------------+
-| 0.0312 |
-+-------------------------------+
-mysql> SELECT COUNT(DISTINCT LEFT(city, 3))/COUNT(<em>) AS sel3,
--> COUNT(DISTINCT LEFT(city, 4))/COUNT(</em>) AS sel4,
--> COUNT(DISTINCT LEFT(city, 5))/COUNT(<em>) AS sel5,
--> COUNT(DISTINCT LEFT(city, 6))/COUNT(</em>) AS sel6,
--> COUNT(DISTINCT LEFT(city, 7))/COUNT(*) AS sel7
--> FROM sakila.city_demo;
-+--------+--------+--------+--------+--------+
-| sel3 | sel4 | sel5 | sel6 | sel7 |
-+--------+--------+--------+--------+--------+
-| 0.0239 | 0.0293 | 0.0305 | 0.0309 | 0.0310 |
-+--------+--------+--------+--------+--------+
-mysql> ALTER TABLE sakila.city_demo ADD KEY (city(7));</p></blockquote></li>
-<li><p>Clustered Indexes >
-solidDB and InnoDB are the only ones that support this type index.</p></li>
-<li><p>You should strive to insert data in primary key order when using InnoDB, and you should try to use a clustering key that will give a monotonically increasing value for each new row.</p></li>
-<li><p>MySQL can use the same index for both sorting and finding rows.
-Ordering the results by the index works only when the index’s order is exactly the same as the ORDER BY clause and all columns are sorted in the same direction (ascending or descending). If the query joins multiple tables, it works only when all columns in the ORDER BY clause refer to the first table. The ORDER BY clause also has the same limitation as lookup queries: it needs to form a leftmost prefix of the index.</p></li>
-<li><p>MySQL implements UNIQUE constraints and PRIMARY KEY constraints with indexes.</p></li>
-<li><p>Redundant indexes are a bit different from duplicated indexes. If there is an index on (A, B), another index on (A) would be redundant because it is a prefix of the first index. That is, the index on (A, B) can also be used as an index on (A) alone. (This type of redundancy applies only to B-Tree indexes.) However, an index on (B, A) would not be redundant, and neither would an index on (B), because B is not a leftmost prefix of (A, B).</p></li>
-<li><p>Where possible, try to extend existing indexes rather than adding new ones. It is usually more efficient to maintain one multicolumn index than several single-column indexes.</p></li>
-<li><p>?--
-If you don’t yet know your query distribution, strive to make your indexes as selective as you can, because highly selective indexes are usually more beneficial.</p></li>
-<li><p>As this example shows, InnoDB can lock rows it doesn’t really need even when it uses an index.
-Note:
-The problem is even worse when it can’t use an index to find and lock the rows: if there’s no index for the query, MySQL will do a full table scan and lock every row, whether it “needs” it or not.</p></li>
-<li><p>!--
-If MySQL uses an index for a range criterion in a query, it cannot also use another index (or a suffix of the same index) for ordering.</p></li>
-<li><p>Run 'CHECK TABLE xxx' to see if the table is corrupt;
-Fix corrupt tables with the 'REPAIR TABLE xxx' command.</p></li>
-<li><p>Two types of data fragmentation:
-a). Row fragmentation
-b). Intra-row fragmentation
-MyISAM tables may suffer from both types of fragmentation, but InnoDB never fragments short rows.
-!--To defragment data, you can either run OPTIMIZE TABLE or dump and reload the data;
-!--For storage engines that don’t support OPTIMIZE TABLE, you can rebuild the table with a no-op ALTER TABLE. Just alter the table to have the same engine it currently uses:
- mysql> ALTER TABLE $table ENGINE=$engine;</p></li>
-<li><p>Example, you can change or drop a column’s default value in two ways (one fast, and one slow).
-slow}mysql> ALTER TABLE sakila.film
- -> MODIFY COLUMN rental_duration TINYINT(3) NOT NULL DEFAULT 5;
-In theory, MySQL could have skipped building a new table. The default value for the column is actually stored in the table’s .frm file, so you should be able to change it without touching the table itself. MySQL doesn’t yet use this optimization, however: any MODIFY COLUMN will cause a table rebuild. You can change a column’s default with ALTER COLUMN,* though:
-fast}mysql> ALTER TABLE sakila.film
- -> ALTER COLUMN rental_duration SET DEFAULT 5;</p></li>
-<li><p>Building MyISAM Indexes Quickly >>
-The usual trick for loading MyISAM tables efficiently is to disable keys, load the data, and reenable the keys:
-mysql> ALTER TABLE test.load_data DISABLE KEYS;
--- load the data
-mysql> ALTER TABLE test.load_data ENABLE KEYS;</p></li>
-</ol>
-
-
-
-				<div class="post-metadata">
-					October 18, 2009 | 
-					<a href='/2009/10/18/schema-optimization-and-indexing.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mysql'>mysql</a>
+						<a href='/tags.html#plugin'>plugin</a>
 						, 
 					
 						
-						<a href='/tags.html#index'>index</a>
+						<a href='/tags.html#widget'>widget</a>
 						, 
 					
 						
-						<a href='/tags.html#optimization'>optimization</a>
+						<a href='/tags.html#flickr'>flickr</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array">
-				<h3 class="title"><a href="/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array.html">How to remove a specific value from a javascript array</a></h3>
+			<div class="post" id="postid-/2009/11/06/blowing-in-the-wind">
+				<h3 class="title"><a href="/2009/11/06/blowing-in-the-wind.html">Blowing in the wind</a></h3>
 				
-				<p><a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/splice">splice</a> - Changes the content of an array, adding new elements while removing old elements.</p>
-
-<blockquote>array.splice(index, howMany, [element1][, ..., elementN]);
-array.splice(index, [howMany, [element1][, ..., elementN]]);  // SpiderMonkey extension
-</blockquote>
+				<object height="100" width="400" align="middle" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"><param value="best" name="quality"/><param value="never" name="allowScriptAccess"/><param value="true" name="allowFullScreen"/><param value="transparent" name="wmode"/><param value="http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;playerID=10&amp;bg=0xeeeeee&amp;leftbg=0x99ff00&amp;lefticon=0x666666&amp;rightbg=0x666666&amp;rightbghover=0x99ff00&amp;righticon=0xffffff&amp;righticonhover=0xffffff&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0x99ff00&amp;loop=no&amp;autostart=no" name="movie"/><embed height="100" width="400" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="playerMode=embedded" wmode="transparent" bgcolor="#ffffff" quality="best" allowfullscreen="true" allowscriptaccess="never" src="http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;playerID=10&amp;bg=0xeeeeee&amp;leftbg=0x99ff00&amp;lefticon=0x666666&amp;rightbg=0x666666&amp;rightbghover=0x99ff00&amp;righticon=0xffffff&amp;righticonhover=0xffffff&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0x99ff00&amp;loop=no&amp;autostart=no" type="application/x-shockwave-flash"/></object>
 
 
-<p>index</p>
+<pre><code>How many roads must a man walk down  一个人要经历多长的旅途
 
-<pre><code>Index at which to start changing the array. If negative, will begin that many elements from the end.
+Before they call him a man  才能成为真正的男人
+
+How many seas must a white dove sail  鸽子要飞跃几重大海
+
+Before she sleeps in the sand  才能在沙滩上安眠
+
+How many times must the cannon balls fly 要多少炮火
+
+Before they’re forever banned  才能换来和平
+
+The answer, my friend, is blowing in the wind  那答案，我的朋友，飘零在风中
+
+The answer is blowing in the wind  答案随风飘逝
+
+How many years must a mountain exist  山峰要屹立多久
+
+Before it is washed to the sea  才是沧海桑田
+
+How many years can some people exist  人们要等待多久
+
+Before they’re allowed to be free  才能得到自由
+
+How many times can a man turn his head  一个人要季度回首
+
+And pretend that he just doesn’t see  才能视而不见
+
+The answer, my friend, is blowing in the wind 那答案，我的朋友，在风中飘零
+
+The answer is blowing in the wind  答案随风而逝
+
+How many times must a man look up  一个人要仰望多少次
+
+Before he can see the sky 才能见苍穹
+
+How many ears must one man have  一个人要多么善听
+
+Before he can hear people cry  才能听见他人的呐喊
+
+How many deaths will it take  多少生命要陨落
+
+‘Till he knows that too many people have died  才知道那已故的众生
+
+The answer, my friend, is blowing in the wind  答案，我的朋友，在风中飘零
+
+The answer is blowing in the wind 答案随风而逝
 </code></pre>
-
-<p>howMany</p>
-
-<pre><code>An integer indicating the number of old array elements to remove. If howMany is 0, no elements are removed. In this case, you should specify at least one new element. If no howMany parameter is specified (second syntax above, which is a SpiderMonkey extension), all elements after index are removed. 
-</code></pre>
-
-<p>element1, ..., elementN</p>
-
-<pre><code>The elements to add to the array. If you don't specify any elements, splice simply removes elements from the array. 
-</code></pre>
-
-<pre name='code' class='javascript'>
-// from this
-var arr = ['remove', 'specific', 'value', 'from', 'javascript', 'array']; // 6 items
- 
-// to this ("specific" value removed)
-var arr = ['remove', 'value', 'from', 'javascript', 'array']; //  5 items
- 
-// use this (removes "specific")
-arr.splice(arr.indexOf('specific'), 1);
- 
- 
-// full example
-var arr = ['remove', 'specific', 'value', 'from', 'javascript', 'array'];
-var value_to_remove = 'specific';
-arr.splice(arr.indexOf(value_to_remove), 1);
- 
- 
-// note: to support IE (anger rising as I type), you'll need this (thanks James!):
-if (!Array.prototype.indexOf)
-{
-  Array.prototype.indexOf = function(elt /*, from*/)
-  {
-    var len = this.length >>> 0;
- 
-    var from = Number(arguments[1]) || 0;
-    from = (from < 0)
-         ? Math.ceil(from)
-         : Math.floor(from);
-    if (from < 0)
-      from += len;
- 
-    for (; from < len; from++)
-    {
-      if (from in this &&
-          this[from] === elt)
-        return from;
-    }
-    return -1;
-  };
-}
-</pre>
-
 
 
 				<div class="post-metadata">
-					October 17, 2009 | 
-					<a href='/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#javascript'>javascript</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/14/chance-possibility-and-opportunity-difference">
-				<h3 class="title"><a href="/2009/10/14/chance-possibility-and-opportunity-difference.html">Chance, Possibility and Opportunity, difference?</a></h3>
-				
-				<p>I got the answer from internet, maybe wrong, hope somebody can help me correct it.</p>
-
-<p>possibility is the chance for something to happen.
-as in, "ladies and gents, this is your pilot. it is stormy and lightning is everywhere, so there's a possibility that the plane will crash."</p>
-
-<p>opportunity is the chance to do something.
-as in, "there came an opportunity for him to break up with his girlfriend, but he backed out when he saw that she has a collection of guns."</p>
-
-<p>chance is a word you can use for both.
-as in, "there's a chance (possibility) for you to flunk the exam because all you do is sleep and eat your toenails."
-and "this is your chance (opportunity) to be a senator! all you have to do is get money from the taxpayers!"</p>
-
-<p>Chance = You are lucky it's passing by
-Possibility= It is possible that it happen
-Opportunity=It pass by you only once , so grab it</p>
-
-
-				<div class="post-metadata">
-					October 14, 2009 | 
-					<a href='/2009/10/14/chance-possibility-and-opportunity-difference.html#disqus_thread'>View Comments</a>
+					November 06, 2009 | 
+					<a href='/2009/11/06/blowing-in-the-wind.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
@@ -413,46 +267,53 @@ Opportunity=It pass by you only once , so grab it</p>
 
 			</div>
 		
-			<div class="post" id="postid-/2009/10/13/sql-optimization">
-				<h3 class="title"><a href="/2009/10/13/sql-optimization.html">SQL Optimization</a></h3>
+			<div class="post" id="postid-/2009/11/03/push-and-pull-mode">
+				<h3 class="title"><a href="/2009/11/03/push-and-pull-mode.html">Push and pull mode </a></h3>
 				
-				<p>Two tables:
-city
-id,name,country_id
-1,xx,21
-2,tt,22
-3,tts,21
-4,ss,31</p>
+				<p>Push and pull are two data transfer mode in Internet. At the beginning of my studying of web development four years ago, there is only pull mode in fact. Everything is pull. When client send a request to server, it is pulling data from server actually. The result can be null or not null.  That means the response depend on server, not the pull object. We all know it is resource-wasting. If each time pull, the client can get something back, or the client pull the data when there should be response data in server side. So the geek invent many ways to achieve this. The following <a href="http://code.google.com/p/pubsubhubbub/">pubsubhubbub</a> is one of them. It can be used to replace the traditional Feed 'pull' mode.</p>
 
-<p>country
-id,name
-21,AA
-22,BB
-31,CC
-41,EE
-51,TT</p>
+<iframe src="http://docs.google.com/present/embed?id=ajd8t6gk4mh2_34dvbpchfs&size=m" frameborder="0" width="555" height="451"></iframe>
 
-<p>The question is selecting the country name which has not attached with any city.</p>
-
-<blockquote><p>select * from country where id is not in (select id from country right join city where city.country_id = country.id);</p></blockquote>
-
-<p>But we can optimize this SQL like this:</p>
-
-<blockquote><p>select * from country left join city where city.country_id is null;</p></blockquote>
 
 
 				<div class="post-metadata">
-					October 13, 2009 | 
-					<a href='/2009/10/13/sql-optimization.html#disqus_thread'>View Comments</a>
+					November 03, 2009 | 
+					<a href='/2009/11/03/push-and-pull-mode.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#mysql'>mysql</a>
-						, 
+						<a href='/tags.html#web'>web</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/11/02/twitter-weekly-updates-for-2009-11-02">
+				<h3 class="title"><a href="/2009/11/02/twitter-weekly-updates-for-2009-11-02.html">Twitter Weekly Updates for 2009-11-02</a></h3>
+				
+				<ul class="aktt_tweet_digest">
+    <li>RT @<a href="http://twitter.com/jeresig">jeresig</a>  
+The most important part of Google Wave uses jQuery: <a href="http://j.mp/2xBtuF" rel="nofollow">http://j.mp/2xBtuF</a> <a href="http://twitter.com/Joshua_C/statuses/5310065557">#</a></li>
+    <li>key-value stored, http, json to connect and read, javascript is the &#39;SQL&#39; language, it is cool - #<a href="http://search.twitter.com/search?q=%23CouchDB">CouchDB</a> <a href="http://twitter.com/Joshua_C/statuses/5287867410">#</a></li>
+    <li>#<a href="http://search.twitter.com/search?q=%23erlang">erlang</a> map,list is so cool <a href="http://twitter.com/Joshua_C/statuses/5229964092">#</a></li>
+    <li>#<a href="http://search.twitter.com/search?q=%23cakephp">cakephp</a> Helloween? <a href="http://bit.ly/15SJGu" rel="nofollow">http://bit.ly/15SJGu</a> <a href="http://cakephp.org/" rel="nofollow">http://cakephp.org/</a> <a href="http://twitter.com/Joshua_C/statuses/5228405202">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+				<div class="post-metadata">
+					November 02, 2009 | 
+					<a href='/2009/11/02/twitter-weekly-updates-for-2009-11-02.html#disqus_thread'>View Comments</a>
 					
 						
-						<a href='/tags.html#optimization'>optimization</a>
+							| 
+						
+						<a href='/tags.html#twitter'>twitter</a>
 						
 					 
 				</div>

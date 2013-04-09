@@ -39,11 +39,14 @@
     <div class="contact">
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
+				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
 				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
 			</div>
 			<div class="rss">
+                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
 				<p>
 				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
 				</p>
@@ -64,98 +67,231 @@
 <div class="post">
   <ul class="content">
 		
-			<div class="post" id="postid-/2010/02/08/twitter-weekly-updates-for-2010-02-08">
-				<h3 class="title"><a href="/2010/02/08/twitter-weekly-updates-for-2010-02-08.html">Twitter Weekly Updates for 2010-02-08</a></h3>
+			<div class="post" id="postid-/2010/07/28/import-big-innodb-tables">
+				<h3 class="title"><a href="/2010/07/28/import-big-innodb-tables.html">Import Big InnoDB Tables</a></h3>
 				
-				<ul class="aktt_tweet_digest">
-    <li>I found it was so big different in their business mode between taobao.com and amazon.com until today. <a href="http://twitter.com/Joshua_C/statuses/8756126714">#</a></li>
-    <li>京东：价格都还未标出，一大堆的好评就出来了，‘价格合适....’ 真的是这样？ <a href="http://twitter.com/Joshua_C/statuses/8725366937">#</a></li>
-    <li><a href="http://tinyurl.com/ylrpw4r" rel="nofollow">http://tinyurl.com/ylrpw4r</a> <a href="http://twitter.com/Joshua_C/statuses/8715460310">#</a></li>
-    <li>等有空再收拾了，没有一个UI合我意 <a href="http://twitter.com/Joshua_C/statuses/8715391975">#</a></li>
-    <li>Tried several ways to cross. I like the feeling after I cross it successfully. <a href="http://twitter.com/Joshua_C/statuses/8714650350">#</a></li>
-    <li>Build google app engine proxy. <a href="http://twitter.com/Joshua_C/statuses/8714622072">#</a></li>
-    <li>Spend two hours to cross the GFW <a href="http://twitter.com/Joshua_C/statuses/8714592641">#</a></li>
-</ul>
+				<ol>
+<li>turn off the logs;</li>
+<li>turn off unique key check if the table has;</li>
+<li>turn off foreign key check;</li>
+</ol>
 
 
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+<p><ul></p>
 
+<pre><code>&lt;li&gt;
+</code></pre>
 
+<p>When importing data into InnoDB, make sure that MySQL does not have autocommit mode enabled because that requires a log flush to disk for every insert. To disable autocommit during your import operation, surround it with SET autocommit and COMMIT statements:</p>
 
-				<div class="post-metadata">
-					February 08, 2010 | 
-					<a href='/2010/02/08/twitter-weekly-updates-for-2010-02-08.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#twitter'>twitter</a>
-						
-					 
-				</div>
+<p><code>SET autocommit=0;
+... SQL import statements ...
+COMMIT;</code></p>
 
-			</div>
-		
-			<div class="post" id="postid-/2010/02/01/twitter-weekly-updates-for-2010-02-01">
-				<h3 class="title"><a href="/2010/02/01/twitter-weekly-updates-for-2010-02-01.html">Twitter Weekly Updates for 2010-02-01</a></h3>
-				
-				<ul class="aktt_tweet_digest">
-    <li>How to promote innovation from your web team <a href="http://briancray.com/2010/01/28/innovative-web-team/" rel="nofollow">http://briancray.com/2010/01/28/innovative-web-team/</a> <a href="http://twitter.com/Joshua_C/statuses/8500603501">#</a></li>
-    <li>GReader  - Follow changes to any website <a href="http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html" rel="nofollow">http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html</a> <a href="http://twitter.com/Joshua_C/statuses/8235514055">#</a></li>
-    <li>GRader This Blog - Follow changes to any website <a href="http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html" rel="nofollow">http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html</a> <a href="http://twitter.com/Joshua_C/statuses/8235488069">#</a></li>
-    <li>今天老师说，国外穷人是买不起手机的，中国，太不可思议了。-- 是啊， 我们这点做的很好，星星之火最后燎原了 <a href="http://twitter.com/Joshua_C/statuses/8235061591">#</a></li>
-</ul>
+<p>If you use the mysqldump option --opt, you get dump files that are fast to import into an InnoDB  table, even without wrapping them with the SET autocommit and COMMIT statements. </li></p>
 
+<pre><code>&lt;li&gt;If you have UNIQUE constraints on secondary keys, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by temporarily turning off the uniqueness checks during the import session:
+</code></pre>
 
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+<p><code>SET unique_checks=0;
+... SQL import statements ...
+SET unique_checks=1;</code></p>
 
+<p>For big tables, this saves a lot of disk I/O because InnoDB can use its insert buffer to write secondary index records in a batch. Be certain that the data contains no duplicate keys.</li></p>
 
+<pre><code>&lt;li&gt;#
+</code></pre>
 
-				<div class="post-metadata">
-					February 01, 2010 | 
-					<a href='/2010/02/01/twitter-weekly-updates-for-2010-02-01.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#twitter'>twitter</a>
-						
-					 
-				</div>
+<p>If you have FOREIGN KEY constraints in your tables, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by turning the foreign key checks off for a while in the import session:
+<code>
+SET foreign_key_checks=0;
+... SQL import statements ...
+SET foreign_key_checks=1;</code></p>
 
-			</div>
-		
-			<div class="post" id="postid-/2010/02/01/mysql-custom-function">
-				<h3 class="title"><a href="/2010/02/01/mysql-custom-function.html">MySQL Custom Function</a></h3>
-				
-				<p>Today when I try to update a table in sql command, I didn't want to use the mysql function <a href="http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_uuid">uuid </a>to generate a string with middle line in it. So I try to use mysql <a href="http://dev.mysql.com/doc/refman/5.0/en/create-procedure.html">custom function</a> to generate a 32-bit length string without middle line.</p>
+<p>For big tables, this can save a lot of disk I/O.
+</li></p>
 
+<p>If the above solution still can not quick your import process. Try <a href="http://dev.mysql.com/doc/refman/5.0/en/mysqlimport.html">mysqlimport</a>.  You can use mysqldump to dump a sql file and a text file. There is an example, look like this:
 <pre name='code' class='sql'>
-DELIMITER ;
+shell> mysql -e 'CREATE TABLE imptest(id INT, n VARCHAR(30))' test
+shell> ed
+a
+100     Max Sydow
+101     Count Dracula
+.
+w imptest.txt
+32
+q
+shell> od -c imptest.txt
+0000000   1   0   0  \t   M   a   x       S   y   d   o   w  \n   1   0
+0000020   1  \t   C   o   u   n   t       D   r   a   c   u   l   a  \n
+0000040
+shell> mysqlimport --local test imptest.txt
+test.imptest: Records: 2  Deleted: 0  Skipped: 0  Warnings: 0
+shell> mysql -e 'SELECT * FROM imptest' test
++------+---------------+
+| id   | n             |
++------+---------------+
+|  100 | Max Sydow     |
+|  101 | Count Dracula |
++------+---------------+</p>
 
-DROP FUNCTION IF EXISTS uid;
-DELIMITER $$
+<p></pre></p>
 
-CREATE FUNCTION uid()
-    RETURNS VARCHAR(32)
-BEGIN
-    DECLARE c VARCHAR(36) DEFAULT '';
-    SET c = uuid();
-    return CONCAT(substring(c,1,8) , substring(c,10,4) , substring(c,15,4) , substring(c,20,4), substring(c,25,12));
-END$$
 
-DELIMITER ;
+				<div class="post-metadata">
+					July 28, 2010 | 
+					<a href='/2010/07/28/import-big-innodb-tables.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#innodb'>innodb</a>
+						, 
+					
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						
+					 
+				</div>
 
-select uid();
+			</div>
+		
+			<div class="post" id="postid-/2010/07/03/symfony-1-0-addjoin-an-array">
+				<h3 class="title"><a href="/2010/07/03/symfony-1-0-addjoin-an-array.html">Symfony 1.0 addJoin an array</a></h3>
+				
+				<p>In sf1.3, we can use addJoin(array('id_a'm 'id_b'), array('id_1', 'id_2'))</p>
+
+<pre name='code' class='php'>
+/**
+     * This is the way that you should add a straight (inner) join of two tables.  For
+     * example:
+     *
+     * <p>
+     * AND PROJECT.PROJECT_ID=FOO.PROJECT_ID
+     * <p>
+     *
+     * left = PROJECT.PROJECT_ID
+     * right = FOO.PROJECT_ID
+     *
+     * @param      mixed $left A String with the left side of the join.
+     * @param      mixed $right A String with the right side of the join.
+     * @param      mixed $operator A String with the join operator e.g. LEFT JOIN, ...
+   *
+     * @return     Criteria A modified Criteria object.
+     */
+    public function addJoin($left, $right, $operator = null)
+    {
+        $join = new Join();
+    if (!is_array($left)) {
+      // simple join
+      $join->addCondition($left, $right);
+    } else {
+      // join with multiple conditions
+      // deprecated: use addMultipleJoin() instead
+      foreach ($left as $key => $value)
+      {
+        $join->addCondition($value, $right[$key]);
+      }
+    }
+        $join->setJoinType($operator);
+        
+        return $this->addJoinObject($join);
+    }
 </pre>
 
 
-<p>I am writing this because mysql is powerful enough to handle all the issues in web software development.</p>
+<p>Sometimes we still work on symfony 1.0. So when we want to join on more keys, it seems impossible.</p>
+
+<pre name='code' class='php'>
+select * from books left join categories on book.category_id = categories.id where categories.name='biography'
+</pre>
+
+
+<p>If books has 1,000,000 items. There are 100,000 categories, but only 1000 categories with name 'biography' . The above sql will go through all the categories. But we propel can generated sql like this:</p>
+
+<pre name='code' class='php'>
+select * from books left join categories on book.category_id = categories.id and categories.name='biography'
+</pre>
+
+
+<p>This sql can limit the touched categories number to 1000.</p>
+
+<p>So we can do following in symfony 1.0</p>
+
+<pre name='code' class='php'>
+$c->addJoin(BookPeer::CATEGORY_ID, CategoryPeer::ID.' AND '.CategoryPeer::NAME.'= "biography"', Criteria::LEFT_JOIN);
+</pre>
+
 
 
 				<div class="post-metadata">
-					February 01, 2010 | 
-					<a href='/2010/02/01/mysql-custom-function.html#disqus_thread'>View Comments</a>
+					July 03, 2010 | 
+					<a href='/2010/07/03/symfony-1-0-addjoin-an-array.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#symfony'>symfony</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/06/28/how-to-win-others-trust">
+				<h3 class="title"><a href="/2010/06/28/how-to-win-others-trust.html">How to win others trust</a></h3>
+				
+				<p>I just want to post some suggestions about 'trust' from my experience. It might not be perfect, but I am sure some of them are mostly useful for you.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Trust">Trust (social sciences), reliance on another person or entity. Having faith in others and believing them.</a></p>
+
+<ul>    
+    <li><strong>Be polite.</strong> Only when you respect the others, you can get the respect from the others. Only when you get respect, then it is possible for you to get the 'trust'.</li>
+    <li><strong>Trust is not two-way.</strong> It doesn't mean if you trust somebody, somebody should also trust on you. But for sure they will try to trust you firstly. And then if you break the trust from this guy, it will difficulty for you to get it back.</li>
+    <li><strong>Trust is hard to copy.</strong> If you didn't know how to be honest man, you will break it at sometime.</li>
+    <li><strong>Think before you say.</strong> When somebody ask you something seriously, please think it for a while and then make the reply. If you don't know, you can try to give some references or just say 'no'. Don't waste the others' time and the time of yourself.</li>
+    <li><strong>Contribute to the others.</strong> Try to share something or give some help for the others. Don't live in the world with yourself.</li>
+    <li><strong>Keep your promise.</strong> If you lost your promise for the others several times and everybody knows you didn't try your best, you will lost the trust forever.</li>
+    <li><strong>Try to say 'sorry'. Don't always say 'sorry'.</strong> When you lost your promise, try to say sorry and give a reasonable explanation, rather than ignore it. But..but don't always say sorry for the same mistake.</li>
+    <li><strong>Undertake your mistake.</strong> If you make something wrong in your group, please undertake the mistake, rather than hide it. If you think the others might be stupid, you will be the stupid one.</li>
+
+</ul>
+
+
+
+
+
+				<div class="post-metadata">
+					June 28, 2010 | 
+					<a href='/2010/06/28/how-to-win-others-trust.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#trust'>trust</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/06/03/mysql-avoid-filesort">
+				<h3 class="title"><a href="/2010/06/03/mysql-avoid-filesort.html">Mysql : Avoid Filesort</a></h3>
+				
+				<ul>
+    <li>You can avoid the filesort by making order by column appear in the where clause</li>
+
+    <li>When using join, make sure the left side join table column is used in the ORDER BY clause or change the join type</li>
+</ul>
+
+
+<p><a href="http://venublog.com/2007/11/29/mysql-how-to-avoid-filesort/">Reference</a></p>
+
+
+				<div class="post-metadata">
+					June 03, 2010 | 
+					<a href='/2010/06/03/mysql-avoid-filesort.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
@@ -167,110 +303,96 @@ select uid();
 
 			</div>
 		
-			<div class="post" id="postid-/2010/01/25/twitter-weekly-updates-for-2010-01-25">
-				<h3 class="title"><a href="/2010/01/25/twitter-weekly-updates-for-2010-01-25.html">Twitter Weekly Updates for 2010-01-25</a></h3>
+			<div class="post" id="postid-/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine">
+				<h3 class="title"><a href="/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine.html">Fighting with an issue in cracked mac machine</a></h3>
 				
-				<ul class="aktt_tweet_digest">
-    <li>Vanilla Forums Raises $500,000 For Open-Source Forum Software <a href="http://www.techcrunch.com/2010/01/19/vanilla-forums-funding/" rel="nofollow">http://www.techcrunch.com/2010/01/19/vanilla-forums-funding/</a> <a href="http://twitter.com/Joshua_C/statuses/7946411510">#</a></li>
-</ul>
+				<p>Problem: There is always a black border for every window in a cracked mac, including 'Finder', 'Terminal', even the icon on the desktop.</p>
+
+<p>Solution: Delete 'com.apple.universalaccess.plist' in /Usr/$YOURNAME/Library/Preferences/. And then Logout and login.</p>
+
+<p>It can fixed in my cracked mac machine.
+And the main idea was back up your mac preferences</p>
+
+<pre name='code' class='css'>
+cp -R /Usr/$YOURNAME/Library/Preferences/ /Usr/$YOURNAME/backup/
+</pre>
 
 
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
-
+<p>And then when you login again, the preferences will be recreated again, like a new user.
+For you, you just try to copy some plist from /Usr/$YOURNAME/backup/ to /Usr/$YOURNAME/Library/Preferences/. And then you can check which plist file was the fail reason</p>
 
 
 				<div class="post-metadata">
-					January 25, 2010 | 
-					<a href='/2010/01/25/twitter-weekly-updates-for-2010-01-25.html#disqus_thread'>View Comments</a>
+					June 01, 2010 | 
+					<a href='/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#twitter'>twitter</a>
+						<a href='/tags.html#mac'>mac</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2010/01/18/twitter-weekly-updates-for-2010-01-18">
-				<h3 class="title"><a href="/2010/01/18/twitter-weekly-updates-for-2010-01-18.html">Twitter Weekly Updates for 2010-01-18</a></h3>
+			<div class="post" id="postid-/2010/05/31/error-while-executing-gem-gemgemnotfoundexception">
+				<h3 class="title"><a href="/2010/05/31/error-while-executing-gem-gemgemnotfoundexception.html">ERROR:  While executing gem ... (Gem::GemNotFoundException)</a></h3>
 				
-				<ul class="aktt_tweet_digest">
-    <li><a href="http://blogs.wsj.com/chinarealtime/2010/01/15/clearing-up-confusion-on-google-and-china/" rel="nofollow">http://blogs.wsj.com/chinarealtime/2010/01/15/clearing-up-confusion-on-google-and-china/</a>  Clearing Up Confusion on Google and China <a href="http://twitter.com/Joshua_C/statuses/7824537607">#</a></li>
-</ul>
+				<p>Try</p>
+
+<pre name='code' class='php'>
+gem clean
+</pre>
 
 
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+<p><a href="http://stackoverflow.com/questions/2273503/ruby-gem-package-manager-failing-with-gemgemnotfoundexception">reference</a></p>
 
+<p>If you got</p>
+
+<pre name='code' class='php'>
+/usr/bin/gem:10: undefined method `manage_gems' for Gem:Module (NoMethodError)
+</pre>
+
+
+<p>Check if there are two gem under /usr/bin/ directory.</p>
 
 
 				<div class="post-metadata">
-					January 18, 2010 | 
-					<a href='/2010/01/18/twitter-weekly-updates-for-2010-01-18.html#disqus_thread'>View Comments</a>
+					May 31, 2010 | 
+					<a href='/2010/05/31/error-while-executing-gem-gemgemnotfoundexception.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#twitter'>twitter</a>
+						<a href='/tags.html#gem'>gem</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2010/01/13/what-i-learned-today">
-				<h3 class="title"><a href="/2010/01/13/what-i-learned-today.html">What I learned today</a></h3>
+			<div class="post" id="postid-/2010/05/21/joshuas-feel">
+				<h3 class="title"><a href="/2010/05/21/joshuas-feel.html">Joshuas Feel</a></h3>
 				
 				<ol>
-<li><p><a href="http://www.shinguz.ch/MySQL/mysql_mv.html">Materialised Views with MySQL</a></li> -
-I gave a simple test as this '<a href="Materialized view makes login process 25k times faster">article</a>'. 10 times faster in my case.
-Before: 56 ms;
-After: 6ms;
-But the disadvantage of this is the data on the site will not be real time. So if you want to use method to speed up your site, it depends on what business of this page is.</p></li>
-<li><p>At last I understand, <a href="http://www.kiwitask.com">kiwi</a> is dead. If you lost your customer for a while, you will lost them forever.</p></li>
-<li><p>Don't say yes or not simplely. Please give some explanation of yes or no even if no body ask you the reason.</p></li>
-<li><p>Learn more about Scrum.
-<a href="http://www.freetofeel.com/2010/01/what-i-learned-today/scrum/" rel="attachment wp-att-365"><img src="http://www.freetofeel.com/wp-content/uploads/2010/01/scrum-300x195.jpg" alt="scrum" title="scrum" width="300" height="195" class="aligncenter size-medium wp-image-365" /></a></p></li>
+<li><p>Important VS Urgent
+In everyone's life, there are urgent things and important things. You will feel pressure if there are a lot of urgent things. And you will pick urgent things before starting the important ones. But have you think about this logic? Sometimes the urgent things are caused by the important ones. Taking exercises is important thing for your healthy. But if you get sick, that will be the urgent thing. But if you pay more attention to the important things, may be you will not get sick. This is the logic!
+So pay more attention to the important ones, which will save you a lot of time.</p></li>
+<li><p>The best architecture will not the one that can work best for your project.</p></li>
+<li><p>Rome was not built in a day!</p></li>
 </ol>
 
 
 
 				<div class="post-metadata">
-					January 13, 2010 | 
-					<a href='/2010/01/13/what-i-learned-today.html#disqus_thread'>View Comments</a>
+					May 21, 2010 | 
+					<a href='/2010/05/21/joshuas-feel.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#today'>today</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/01/11/twitter-weekly-updates-for-2010-01-11">
-				<h3 class="title"><a href="/2010/01/11/twitter-weekly-updates-for-2010-01-11.html">Twitter Weekly Updates for 2010-01-11</a></h3>
-				
-				<ul class="aktt_tweet_digest">
-    <li>在看第二财经谈哥本哈根，同时也在看http://www.brookings.edu/opinions/2009/1222_china_climate_lieberthal.aspx <a href="http://twitter.com/Joshua_C/statuses/7557841646">#</a></li>
-    <li><a href="http://www.cool-friends.cn/archives/5" rel="nofollow">http://www.cool-friends.cn/archives/5</a> 还是关于舞女转动那个图片 <a href="http://twitter.com/Joshua_C/statuses/7391581351">#</a></li>
-</ul>
-
-
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
-
-
-
-				<div class="post-metadata">
-					January 11, 2010 | 
-					<a href='/2010/01/11/twitter-weekly-updates-for-2010-01-11.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#twitter'>twitter</a>
+						<a href='/tags.html#feeling'>feeling</a>
 						
 					 
 				</div>

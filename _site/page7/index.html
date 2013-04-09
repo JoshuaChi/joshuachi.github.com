@@ -39,11 +39,14 @@
     <div class="contact">
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
+				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
 				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
 			</div>
 			<div class="rss">
+                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
 				<p>
 				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
 				</p>
@@ -64,159 +67,74 @@
 <div class="post">
   <ul class="content">
 		
-			<div class="post" id="postid-/2009/12/11/using-rsync-and-ssh-to-synchronise-between-two-servers">
-				<h3 class="title"><a href="/2009/12/11/using-rsync-and-ssh-to-synchronise-between-two-servers.html">Using Rsync and SSH to synchronise between two servers</a></h3>
+			<div class="post" id="postid-/2010/02/15/report-plugin-for-vanilla-2">
+				<h3 class="title"><a href="/2010/02/15/report-plugin-for-vanilla-2.html">Report plugin for Vanilla 2</a></h3>
 				
-				<p>$ rsync -avz -e ssh remoteuser@remotehost:/remote/dir /this/dir/</p>
+				<p>You can find it <a href="http://vanillaforums.org/addon/520/report-system">here</a>.</p>
 
-<p><a href="http://troy.jdmz.net/rsync/index.html">refs</a></p>
+<p>Install
+1. Unzip the plugin package and put it into Garden/plugins;
+2. Enable it in admin panel;</p>
 
+<p>Configure:
+1. Add the following code into file Garden\applications\vanilla\views\discussion\index.php
+//Arround line 12 ~14
+[CODE]
+&lt;?php $this->FireEvent('AfterDiscussionHeaderRender'); ?>
+[/CODE]</p>
 
-				<div class="post-metadata">
-					December 11, 2009 | 
-					<a href='/2009/12/11/using-rsync-and-ssh-to-synchronise-between-two-servers.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#rsync'>rsync</a>
-						, 
-					
-						
-						<a href='/tags.html#ssh'>ssh</a>
-						
-					 
-				</div>
+<p>Then the code likes:
+[PIECE]
+&lt;?php $this->FireEvent('AfterDiscussionHeaderRender'); ?>
+&lt;h2&gt;&lt;?php
+   if (Gdn::Config('Vanilla.Categories.Use') === TRUE) {</p>
 
-			</div>
-		
-			<div class="post" id="postid-/2009/12/07/twitter-weekly-updates-for-2009-12-07">
-				<h3 class="title"><a href="/2009/12/07/twitter-weekly-updates-for-2009-12-07.html">Twitter Weekly Updates for 2009-12-07</a></h3>
-				
-				<ul class="aktt_tweet_digest">
-    <li>HTM::Sanitizer, this lib help you to parse html easier.Don&#39;t invent the wheel anymore. <a href="http://www.codinghorror.com/blog/archives/001311.html" rel="nofollow">http://www.codinghorror.com/blog/archives/001311.html</a> <a href="http://twitter.com/Joshua_C/statuses/6433320128">#</a></li>
-    <li>node.js + NOSQL database , cool idea. Hope I can get a project to give a try. <a href="http://simonwillison.net/2009/Nov/23/node/" rel="nofollow">http://simonwillison.net/2009/Nov/23/node/</a> <a href="http://twitter.com/Joshua_C/statuses/6432961969">#</a></li>
-    <li>google public dns <a href="http://blog.s135.com/google_public_dns/" rel="nofollow">http://blog.s135.com/google_public_dns/</a> <a href="http://twitter.com/Joshua_C/statuses/6421480322">#</a></li>
-    <li>I think it is wrong decision that integrate twitter into linkedin.  Not every product is suitable for integration twitter. #<a href="http://search.twitter.com/search?q=%23linkedin">linkedin</a> <a href="http://twitter.com/Joshua_C/statuses/6388822149">#</a></li>
-    <li>Dear Windows7, you are more quick, you are more safe? But you are definitely more difficult to use! #<a href="http://search.twitter.com/search?q=%23windows7">windows7</a> <a href="http://twitter.com/Joshua_C/statuses/6269306864">#</a></li>
-</ul>
+<pre><code>  echo Anchor($this-&gt;Discussion-&gt;Category, 'categories/'.$this-&gt;Discussion-&gt;CategoryID.'/'.Format::Url($this-&gt;Discussion-&gt;Category));
+  echo '&lt;span&gt;&amp;bull;&lt;/span&gt;';
+</code></pre>
 
-
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
-
-
-
-				<div class="post-metadata">
-					December 07, 2009 | 
-					<a href='/2009/12/07/twitter-weekly-updates-for-2009-12-07.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#twitter'>twitter</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/11/30/twitter-weekly-updates-for-2009-11-30">
-				<h3 class="title"><a href="/2009/11/30/twitter-weekly-updates-for-2009-11-30.html">Twitter Weekly Updates for 2009-11-30</a></h3>
-				
-				<ul class="aktt_tweet_digest">
-    <li>Client-side JavaScript file processing <a href="http://arstechnica.com/open-source/news/2009/11/w3c-publishes-draft-of-new-file-api-spec.ars" rel="nofollow">http://arstechnica.com/open-source/news/2009/11/w3c-publishes-draft-of-new-file-api-spec.ars</a> <a href="http://twitter.com/Joshua_C/statuses/6166425316">#</a></li>
-    <li>cn.scs.msg.yahoo.com for Yahoo message on pidgin <a href="http://twitter.com/Joshua_C/statuses/6163527876">#</a></li>
-    <li>每次搬家都是一次新的适应。每次启程都是一个新的视角。 <a href="http://twitter.com/Joshua_C/statuses/6162589567">#</a></li>
-</ul>
-
-
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
-
-
-
-				<div class="post-metadata">
-					November 30, 2009 | 
-					<a href='/2009/11/30/twitter-weekly-updates-for-2009-11-30.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#twitter'>twitter</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/11/23/twitter-weekly-updates-for-2009-11-23">
-				<h3 class="title"><a href="/2009/11/23/twitter-weekly-updates-for-2009-11-23.html">Twitter Weekly Updates for 2009-11-23</a></h3>
-				
-				<ul class="aktt_tweet_digest">
-    <li>看着老外学习中国古典文化，研究甲骨文，研究易经。我们崇外的日子太久了，该内敛一些了，昨天看了2012，最后还是中国人拯救了全世界人民。 <a href="http://twitter.com/Joshua_C/statuses/5974127427">#</a></li>
-    <li>Are you enjoying (life( and )work)? <a href="http://www.ry-to-job.com/ry-to-job/flame/j-mainflame-template.html" rel="nofollow">http://www.ry-to-job.com/ry-to-job/flame/j-mainflame-template.html</a> <a href="http://twitter.com/Joshua_C/statuses/5882098738">#</a></li>
-    <li>Finally, tweets has its own &#39;Reply&#39; and &#39;Retweet&#39; #<a href="http://search.twitter.com/search?q=%23twitter">twitter</a> <a href="http://twitter.com/Joshua_C/statuses/5797626254">#</a></li>
-</ul>
-
-
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
-
-
-
-				<div class="post-metadata">
-					November 23, 2009 | 
-					<a href='/2009/11/23/twitter-weekly-updates-for-2009-11-23.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#twitter'>twitter</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/11/19/sign-in-your-pdf-document">
-				<h3 class="title"><a href="/2009/11/19/sign-in-your-pdf-document.html">Sign in your PDF document</a></h3>
-				
-				<p>Have you ever succeed to sign in a PDF file?
-Today I try several methods of <a href="http://www.labnol.org/software/sign-pdf-documents/9333/">How to Sign Documents Electronically – No Ink or Paper Required></a>.
-1.
-I try to make an image signature at <a href="http://www.mylivesignature.com/mls_sigdraw.php">MyLiveSignature</a>. And then download it into my local machine;
-Try to convert my PDF file to word file via <a href="http://www.pdftoword.com/">web service</a>.
-And then upload the doc file and attached the signature image at the right place. Save it as PDF file again.
-The PDF file will be messed through this way. So I suggest the second way, easier and faster.</p>
+<p>   }
+   echo Format::Text($this->Discussion->Name);
+?>&lt;/h2&gt;
+[/PIECE]</p>
 
 <ol>
-<li><p><a href="http://www.echosign.com/">Echosign</a>
-Upload you PDF file ask signature and get the signature document.</p></li>
+<li><p>Config pagination for admin page:
+Add following line into config.php
+$Configuration['Vanilla']['Report']['PerPage'] = 10;</p></li>
 </ol>
 
 
 
 				<div class="post-metadata">
-					November 19, 2009 | 
-					<a href='/2009/11/19/sign-in-your-pdf-document.html#disqus_thread'>View Comments</a>
+					February 15, 2010 | 
+					<a href='/2010/02/15/report-plugin-for-vanilla-2.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#pdf'>pdf</a>
+						<a href='/tags.html#forum'>forum</a>
+						, 
+					
+						
+						<a href='/tags.html#vanilla'>vanilla</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2009/11/16/twitter-weekly-updates-for-2009-11-16">
-				<h3 class="title"><a href="/2009/11/16/twitter-weekly-updates-for-2009-11-16.html">Twitter Weekly Updates for 2009-11-16</a></h3>
+			<div class="post" id="postid-/2010/02/08/twitter-weekly-updates-for-2010-02-08">
+				<h3 class="title"><a href="/2010/02/08/twitter-weekly-updates-for-2010-02-08.html">Twitter Weekly Updates for 2010-02-08</a></h3>
 				
 				<ul class="aktt_tweet_digest">
-    <li>amazing with this php code &#39;public function executeIndex(sfWebRequest $request)&#39; the parameter type was defined there. ....? <a href="http://twitter.com/Joshua_C/statuses/5765597472">#</a></li>
-    <li>RT @digitalboy
-  
-RT @jasontsui: 交通大学消息人士透露，交大被挑选6名学生参加与奥巴马的对话。与奥巴马对话学生名单是从上海各高校（大学）挑选出2到5人，学生们日前就被限制部分自由，集中活动和生活。 <a href="http://twitter.com/Joshua_C/statuses/5649158974">#</a></li>
-    <li>许久没有担心 windows的文件夹只读属性了，今天也体验了一把它的厉害。windows需要通过共享设权来去掉readonly文件夹属性 <a href="http://twitter.com/Joshua_C/statuses/5591664083">#</a></li>
+    <li>I found it was so big different in their business mode between taobao.com and amazon.com until today. <a href="http://twitter.com/Joshua_C/statuses/8756126714">#</a></li>
+    <li>京东：价格都还未标出，一大堆的好评就出来了，‘价格合适....’ 真的是这样？ <a href="http://twitter.com/Joshua_C/statuses/8725366937">#</a></li>
+    <li><a href="http://tinyurl.com/ylrpw4r" rel="nofollow">http://tinyurl.com/ylrpw4r</a> <a href="http://twitter.com/Joshua_C/statuses/8715460310">#</a></li>
+    <li>等有空再收拾了，没有一个UI合我意 <a href="http://twitter.com/Joshua_C/statuses/8715391975">#</a></li>
+    <li>Tried several ways to cross. I like the feeling after I cross it successfully. <a href="http://twitter.com/Joshua_C/statuses/8714650350">#</a></li>
+    <li>Build google app engine proxy. <a href="http://twitter.com/Joshua_C/statuses/8714622072">#</a></li>
+    <li>Spend two hours to cross the GFW <a href="http://twitter.com/Joshua_C/statuses/8714592641">#</a></li>
 </ul>
 
 
@@ -225,8 +143,8 @@ RT @jasontsui: 交通大学消息人士透露，交大被挑选6名学生参加�
 
 
 				<div class="post-metadata">
-					November 16, 2009 | 
-					<a href='/2009/11/16/twitter-weekly-updates-for-2009-11-16.html#disqus_thread'>View Comments</a>
+					February 08, 2010 | 
+					<a href='/2010/02/08/twitter-weekly-updates-for-2010-02-08.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
@@ -238,29 +156,154 @@ RT @jasontsui: 交通大学消息人士透露，交大被挑选6名学生参加�
 
 			</div>
 		
-			<div class="post" id="postid-/2009/11/16/folder-or-file-permission-in-php-project-installation-process">
-				<h3 class="title"><a href="/2009/11/16/folder-or-file-permission-in-php-project-installation-process.html">Folder or file permission in php project installation process</a></h3>
+			<div class="post" id="postid-/2010/02/01/twitter-weekly-updates-for-2010-02-01">
+				<h3 class="title"><a href="/2010/02/01/twitter-weekly-updates-for-2010-02-01.html">Twitter Weekly Updates for 2010-02-01</a></h3>
 				
-				<p>Most projects will add notes like '..don't forget to change the "cache" folder permission: $chmod -R 777 xxx' in their project install guide.
-But have you noticed that there are still a lot of users will ask the same question in their project forums? Yes, the solution is simple and easier. but why not make the simple thing more easier?</p>
+				<ul class="aktt_tweet_digest">
+    <li>How to promote innovation from your web team <a href="http://briancray.com/2010/01/28/innovative-web-team/" rel="nofollow">http://briancray.com/2010/01/28/innovative-web-team/</a> <a href="http://twitter.com/Joshua_C/statuses/8500603501">#</a></li>
+    <li>GReader  - Follow changes to any website <a href="http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html" rel="nofollow">http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html</a> <a href="http://twitter.com/Joshua_C/statuses/8235514055">#</a></li>
+    <li>GRader This Blog - Follow changes to any website <a href="http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html" rel="nofollow">http://googlereader.blogspot.com/2010/01/follow-changes-to-any-website.html</a> <a href="http://twitter.com/Joshua_C/statuses/8235488069">#</a></li>
+    <li>今天老师说，国外穷人是买不起手机的，中国，太不可思议了。-- 是啊， 我们这点做的很好，星星之火最后燎原了 <a href="http://twitter.com/Joshua_C/statuses/8235061591">#</a></li>
+</ul>
 
-<pre name='code' class='php'>
-chmod($options['file'], isset($options['file_mode']) ? $options['file_mode'] : 0666);
-mkdir($dir, isset($options['dir_mode']) ? $options['dir_mode'] : 0777, true);
-</pre
-These code comes from symfony source code. It make me feels good in the installation process.
-It is easier to make this permission modification process transparent for your user. 
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
 
 
 
 				<div class="post-metadata">
-					November 16, 2009 | 
-					<a href='/2009/11/16/folder-or-file-permission-in-php-project-installation-process.html#disqus_thread'>View Comments</a>
+					February 01, 2010 | 
+					<a href='/2010/02/01/twitter-weekly-updates-for-2010-02-01.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#php'>php</a>
+						<a href='/tags.html#twitter'>twitter</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/02/01/mysql-custom-function">
+				<h3 class="title"><a href="/2010/02/01/mysql-custom-function.html">MySQL Custom Function</a></h3>
+				
+				<p>Today when I try to update a table in sql command, I didn't want to use the mysql function <a href="http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_uuid">uuid </a>to generate a string with middle line in it. So I try to use mysql <a href="http://dev.mysql.com/doc/refman/5.0/en/create-procedure.html">custom function</a> to generate a 32-bit length string without middle line.</p>
+
+<pre name='code' class='sql'>
+DELIMITER ;
+
+DROP FUNCTION IF EXISTS uid;
+DELIMITER $$
+
+CREATE FUNCTION uid()
+    RETURNS VARCHAR(32)
+BEGIN
+    DECLARE c VARCHAR(36) DEFAULT '';
+    SET c = uuid();
+    return CONCAT(substring(c,1,8) , substring(c,10,4) , substring(c,15,4) , substring(c,20,4), substring(c,25,12));
+END$$
+
+DELIMITER ;
+
+select uid();
+</pre>
+
+
+<p>I am writing this because mysql is powerful enough to handle all the issues in web software development.</p>
+
+
+				<div class="post-metadata">
+					February 01, 2010 | 
+					<a href='/2010/02/01/mysql-custom-function.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/01/25/twitter-weekly-updates-for-2010-01-25">
+				<h3 class="title"><a href="/2010/01/25/twitter-weekly-updates-for-2010-01-25.html">Twitter Weekly Updates for 2010-01-25</a></h3>
+				
+				<ul class="aktt_tweet_digest">
+    <li>Vanilla Forums Raises $500,000 For Open-Source Forum Software <a href="http://www.techcrunch.com/2010/01/19/vanilla-forums-funding/" rel="nofollow">http://www.techcrunch.com/2010/01/19/vanilla-forums-funding/</a> <a href="http://twitter.com/Joshua_C/statuses/7946411510">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+				<div class="post-metadata">
+					January 25, 2010 | 
+					<a href='/2010/01/25/twitter-weekly-updates-for-2010-01-25.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#twitter'>twitter</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/01/18/twitter-weekly-updates-for-2010-01-18">
+				<h3 class="title"><a href="/2010/01/18/twitter-weekly-updates-for-2010-01-18.html">Twitter Weekly Updates for 2010-01-18</a></h3>
+				
+				<ul class="aktt_tweet_digest">
+    <li><a href="http://blogs.wsj.com/chinarealtime/2010/01/15/clearing-up-confusion-on-google-and-china/" rel="nofollow">http://blogs.wsj.com/chinarealtime/2010/01/15/clearing-up-confusion-on-google-and-china/</a>  Clearing Up Confusion on Google and China <a href="http://twitter.com/Joshua_C/statuses/7824537607">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+				<div class="post-metadata">
+					January 18, 2010 | 
+					<a href='/2010/01/18/twitter-weekly-updates-for-2010-01-18.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#twitter'>twitter</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/01/13/what-i-learned-today">
+				<h3 class="title"><a href="/2010/01/13/what-i-learned-today.html">What I learned today</a></h3>
+				
+				<ol>
+<li><p><a href="http://www.shinguz.ch/MySQL/mysql_mv.html">Materialised Views with MySQL</a></li> -
+I gave a simple test as this '<a href="Materialized view makes login process 25k times faster">article</a>'. 10 times faster in my case.
+Before: 56 ms;
+After: 6ms;
+But the disadvantage of this is the data on the site will not be real time. So if you want to use method to speed up your site, it depends on what business of this page is.</p></li>
+<li><p>At last I understand, <a href="http://www.kiwitask.com">kiwi</a> is dead. If you lost your customer for a while, you will lost them forever.</p></li>
+<li><p>Don't say yes or not simplely. Please give some explanation of yes or no even if no body ask you the reason.</p></li>
+<li><p>Learn more about Scrum.
+<a href="http://www.freetofeel.com/2010/01/what-i-learned-today/scrum/" rel="attachment wp-att-365"><img src="http://www.freetofeel.com/wp-content/uploads/2010/01/scrum-300x195.jpg" alt="scrum" title="scrum" width="300" height="195" class="aligncenter size-medium wp-image-365" /></a></p></li>
+</ol>
+
+
+
+				<div class="post-metadata">
+					January 13, 2010 | 
+					<a href='/2010/01/13/what-i-learned-today.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#today'>today</a>
 						
 					 
 				</div>

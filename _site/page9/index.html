@@ -39,11 +39,14 @@
     <div class="contact">
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
+				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
 				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
 			</div>
 			<div class="rss">
+                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
 				<p>
 				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
 				</p>
@@ -64,188 +67,57 @@
 <div class="post">
   <ul class="content">
 		
-			<div class="post" id="postid-/2009/10/31/check-your-current-php-ini-path">
-				<h3 class="title"><a href="/2009/10/31/check-your-current-php-ini-path.html">check your current php.ini path</a></h3>
+			<div class="post" id="postid-/2009/12/14/mysql-backup-and-restore-system">
+				<h3 class="title"><a href="/2009/12/14/mysql-backup-and-restore-system.html">MySQL Database Backup and Restore</a></h3>
 				
-				<p>You might have two different PHP versions installed: one for the command line, and another for the web. So use this function which was provided by symfony that can be easily judge.</p>
+				<p><strong>Backup</strong>
+I was trying to find some backup and restore system for our product mysql database. There are a lot of tools can do this. But I think the simple way is using <a href="https://help.ubuntu.com/community/CronHowto">crontab</a> + <a href="http://www.ntchosting.com/mysql/database-dump.html">mysqldump</a>.</p>
 
-<pre name='code' class='php'>
-/**
- * Gets the php.ini path used by the current PHP interpretor.
- *
- * @return string the php.ini path
- */
-function get_ini_path()
-{
-  if ($path = get_cfg_var('cfg_file_path'))
-  {
-    return $path;
-  }
+<p>So I write a simple script</p>
 
-  return 'WARNING: not using a php.ini file';
-}
+<pre name='code' class='sql'>
+$ mysqldump -u [uname] -p[pass] [dbname] | gzip -9 > [backupfile.sql.gz]
+example:
+
+15 2 * * * root mysqldump -u root -pPASSWORD --all-databases | gzip > /usr/local/bk/database_`data '+%m-%d-%Y'`.sql.gz 
+</pre>
+
+
+<p>If you want to extract the .gz file, use the command below:</p>
+
+<pre name='code' class='html'>
+$ gunzip [backupfile.sql.gz]
+</pre>
+
+
+<p>This script will vardump all my database into the database_<code>data '+%m-%d-%Y'</code>.sql.gz zip file at 2::15am on every day of every month.</p>
+
+<p><strong>Restoring</strong>
+Restore the databases is simple.</p>
+
+<pre name='code' class='sql'>
+$ mysql -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
+</pre>
+
+
+<p>To restore from a compress sql:</p>
+
+<pre name='code' class='sql'>
+gunzip < [backupfile.sql.gz] | mysql -u [uname] -p[pass] [dbname]
+</pre>
+
+
+<p>If you need to restore a database that already exists, you'll need to use mysqlimport command. The syntax for mysqlimport is as follows</p>
+
+<pre name='code' class='sql'>
+mysqlimport -u [uname] -p[pass] [dbname] [backupfile.sql]
 </pre>
 
 
 
 				<div class="post-metadata">
-					October 31, 2009 | 
-					<a href='/2009/10/31/check-your-current-php-ini-path.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#php'>php</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/26/twitter-weekly-updates-for-2009-10-26">
-				<h3 class="title"><a href="/2009/10/26/twitter-weekly-updates-for-2009-10-26.html">Twitter Weekly Updates for 2009-10-26</a></h3>
-				
-				<ul class="aktt_tweet_digest">
-    <li>Google will announce &quot;Google Audio&quot; next Wednesday to Mash Up 4 Cool Web 2.0 Music Services: <a href="http://bit.ly/2qTE7c" rel="nofollow">http://bit.ly/2qTE7c</a> // ‘谷歌音乐‘ in china? <a href="http://twitter.com/Joshua_C/statuses/5160868495">#</a></li>
-    <li>There will be no PDO_MySQL in PHP5.3 <a href="http://twitter.com/Joshua_C/statuses/5138923041">#</a></li>
-    <li>There will be no PDO_MySQL <a href="http://twitter.com/Joshua_C/statuses/5138361963">#</a></li>
-    <li>@<a href="http://twitter.com/sklivvz">sklivvz</a> <a href="mailto:joshokn@gmail.com">joshokn@gmail.com</a> Thanks! <a href="http://twitter.com/Joshua_C/statuses/5119114371">#</a></li>
-    <li>RT @<a href="http://twitter.com/sklivvz">sklivvz</a> <a href="mailto:joshokn@gmail.com">joshokn@gmail.com</a> Thanks! <a href="http://twitter.com/Joshua_C/statuses/5119103417">#</a></li>
-    <li>RT @<a href="http://twitter.com/sklivvz">sklivvz</a> is it possible for you to send me a google wave invitation? Thanks in advance. <a href="http://twitter.com/Joshua_C/statuses/5118745631">#</a></li>
-    <li>RT @mengite: 又将迎来一波放送 Google Wave 的高潮, 我得到了 20 个邀请的权限.//可以赠送一枚吗？十分感谢。 <a href="http://twitter.com/Joshua_C/statuses/5118443615">#</a></li>
-    <li>arguments is not an array. And turn objects into an array - var args = Array.prototype.slice.call(arguments); <a href="http://twitter.com/Joshua_C/statuses/5113968257">#</a></li>
-    <li>Turn Your Office into Whiteboard  <a href="http://bit.ly/hQiPm" rel="nofollow">http://bit.ly/hQiPm</a> <a href="http://twitter.com/Joshua_C/statuses/5085198549">#</a></li>
-    <li>RT @<a href="http://twitter.com/wangpei">wangpei</a> RT @<a href="http://twitter.com/anmin_wang">anmin_wang</a> 如果是通过hunter找的工作，面试完hunter故作关心打电话给你，询问表现，顺便问“他/她问了什么问题？”“他/她有没有问xxx&quot;，不要告诉他。他是把这些信息传递给其它candidate以增加成功机会。很流氓~~ <a href="http://twitter.com/Joshua_C/statuses/5084740441">#</a></li>
-    <li>Can somebody give an answer to the question in this article(http://bit.ly/C8bGD) about the code smell? <a href="http://twitter.com/Joshua_C/statuses/5069970853">#</a></li>
-    <li>RT @<a href="http://twitter.com/wangpei">wangpei</a> 男人为什么应当结婚？那是因为，当他遭遇绑架，他的妻子会为他奔走呼告，如果不结婚，奔走呼告者将是他年迈的母亲。 <a href="http://twitter.com/Joshua_C/statuses/5064726515">#</a></li>
-</ul>
-
-
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
-
-
-
-				<div class="post-metadata">
-					October 26, 2009 | 
-					<a href='/2009/10/26/twitter-weekly-updates-for-2009-10-26.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#twitter'>twitter</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/26/the-interesting-thing-about-google-translate">
-				<h3 class="title"><a href="/2009/10/26/the-interesting-thing-about-google-translate.html">The interesting thing about Google Translate</a></h3>
-				
-				<p>Have you noticed that when you open the <a href="http://translate.google.com">Google Translate page</a>, and you enter some simple words or a sentence you want to translate.
-The translated URL in your address bar looks like
-'http://translate.google.com/translate_t#el|en|%CE%9C%CE%BF%CF%85%20%CE%B1%CF%81%CE%AD%CF%83%CE%B5%CE%B9%20%CE%B1%CF%85%CF%84%CE%AE%20%CE%B7%20%CE%BC%CE%BF%CF%85%CF%83%CE%B9%CE%BA%CE%AE'
-Here we take the example,
-Translate sentence 'Μου αρέσει αυτή η μουσική' -> 'I like this music'
-Greek -> English
-As we seen, the sentence was encoded and appended as a parameter in the URL.
-But if you try to translate some longer sentence, like,
-'Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.'</p>
-
-<p>Now your address bar will look like 'http://translate.google.com/translate_t#'.
-No matter which case, the translation words will be stored in cache. The next time, the translation words will be searched in cache firstly.
-But why the translation words was added into Get parameter in first case? The only convenient that I can think is that we can copy and past the link from one browser to another. This convenient can not be achieved in the second case for the Get Parameter Length Limit. Is there any other secrets you know?</p>
-
-
-				<div class="post-metadata">
-					October 26, 2009 | 
-					<a href='/2009/10/26/the-interesting-thing-about-google-translate.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#google'>google</a>
-						, 
-					
-						
-						<a href='/tags.html#translate'>translate</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/25/query-performance-optimization">
-				<h3 class="title"><a href="/2009/10/25/query-performance-optimization.html">Query Performance Optimization</a></h3>
-				
-				<ol>
-<li><p>Simple Treatment Method for a bad query is accessing less data and fecting less columns.</p></li>
-<li><p>In MySQL, the simplest query cost metrics are:
-a. Execution time
-b. Number of rows examined
-c. Number of rows returned</p></li>
-<li><p>The access types range from a full table scan to index scans, range scans, unique index lookups, and constants. Each of these is faster than the one before it. If you aren’t getting a good access type, the best way to solve the problem is usually by adding an appropriate index.</p></li>
-<li><p>Duplicated test record with a cool SQL:
-Assuming there was serval record in your table 'animals[id,animal_type , animal_name]'</p>
-
-<blockquote><blockquote><p>insert into animals(animal_type , animal_name ) select animal_type , animal_name from animals.</p></blockquote></blockquote></li>
-<li><p>'The traditional approach to database design emphasizes doing as much work as possible with as few queries as possible.' - This advice doesn’t apply as much to MySQL. MySQL can run more than 50,000 simple queries per second on commodity server hardware and over 2,000 queries per second from a single correspondent on a Gigabit network.</p></li>
-<li><p>Summary: When Application Joins May Be More Efficient >>
-Not doing joins in the application may be more efficient when:
-You cache and reuse a lot of data from earlier queries
-You use multiple MyISAM tables
-You distribute data across multiple servers
-You replace joins with IN( ) lists on large tables
-A join refers to the same table multiple times</p></li>
-<li><p>Follow along with the illustration to see what happens when you send MySQL a query:
-1). The client sends the SQL statement to the server.
-2). The server checks the query cache. If there’s a hit, it returns the stored result from the cache; otherwise, it passes the SQL statement to the next step.
-3). The server parses, preprocesses, and optimizes the SQL into a query execution plan.
-4). The query execution engine executes the plan by making calls to the storage engine API.
-5). The server sends the result to the client.</p></li>
-<li><p>Fetching result directly without buffering:
-[code]</p>
-
-<h1>!/usr/bin/perl</h1>
-
-use DBI;
-my $dbh = DBI->connect('DBI:mysql:;host=localhost', 'user', 'p4ssword');
-my $sth = $dbh->prepare('SELECT * FROM HUGE_TABLE', { mysql_use_result => 1 });
-$sth->execute( );
-while ( my $row = $sth->fetchrow_array( ) ) {
-
-<h1>Do something with result</h1>
-
-<p>}
-[/code]
-Notice that the call to prepare( ) specified to “use” the result instead of “buffering” it. You can also specify this when connecting, which will make every statement unbuffered:
-[code]
-my $dbh = DBI->connect('DBI:mysql:;mysql_use_result=1', 'user', 'p4ssword');
-[/code]
-This will be usfully when your fetching data is too big.</p></li>
-<li><p>Query states:
-Sleep -
-  The thread is waiting for a new query from the client.
-Query -
-  The thread is either executing the query or sending the result back to the client.
-Locked -
-  The thread is waiting for a table lock to be granted at the server level.
-Analyzing and statistics -
-  The thread is checking storage engine statistics and optimizing the query.
-Copying to tmp table [on disk] -
-  The thread is processing the query and copying results to a temporary table, probably for a GROUP BY, for a filesort, or to satisfy a UNION. If the state ends with “on disk,” MySQL is converting an in-memory table to an on-disk table.
-Sorting result -
-  The thread is sorting a result set.
-Sending data -
-  This can mean several things: the thread might be sending data between stages of the query, generating the result set, or returning the result set to the client.</p></li>
-<li><p>MySQL uses the term “join” more broadly than you might be used to. In sum, it considers every query a join—not just every query that matches rows from two tables, but every query.</p></li>
-</ol>
-
-
-
-				<div class="post-metadata">
-					October 25, 2009 | 
-					<a href='/2009/10/25/query-performance-optimization.html#disqus_thread'>View Comments</a>
+					December 14, 2009 | 
+					<a href='/2009/12/14/mysql-backup-and-restore-system.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
@@ -257,143 +129,41 @@ Sending data -
 
 			</div>
 		
-			<div class="post" id="postid-/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected">
-				<h3 class="title"><a href="/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected.html">The behavior of javascript is not always your expected</a></h3>
+			<div class="post" id="postid-/2009/12/11/using-rsync-and-ssh-to-synchronise-between-two-servers">
+				<h3 class="title"><a href="/2009/12/11/using-rsync-and-ssh-to-synchronise-between-two-servers.html">Using Rsync and SSH to synchronise between two servers</a></h3>
 				
-				<p>Let's raise the issue '07 + 08 = 07' firstly from <a href="http://www.debuggable.com/posts/7+8===7-in-javascript:4acba016-d204-489b-b5a0-1fd0cbdd56cb">this guy's article</a>.</p>
+				<p>$ rsync -avz -e ssh remoteuser@remotehost:/remote/dir /this/dir/</p>
 
-<pre name='code' class='javascript'>
-var a = '07';
-var b = '08'
-
-alert(a + b); //'0708';
-</pre>
-
-
-<p>OK. We knew the result. What we will do is using the 'parseInt' method.</p>
-
-<pre name='code' class='javascript'>
-var a = '07';
-var b = '08'
-
-alert(parseInt(a) + parseInt(b)); //'07';
-</pre>
-
-
-<p>The result is not our expected this time.</p>
-
-<p>So boys give a lot of solutions.
-solution 1:</p>
-
-<pre name='code' class='javascript'>
-var a = '07';
-var b = '08'
-
-alert(parseInt(a, 10) + parseInt(b, 10)); //'15';
-</pre>
-
-
-<p>solution 2:</p>
-
-<pre name='code' class='javascript'>
-var a = '07';
-var b = '08'
-
-alert(Number(a) + Number(b)); //'15';
-</pre>
-
-
-<p>I like this solution. If the variable is a number, transform it to 'Number' directly to keep it safe. If the variable is a string, transform it to 'String' directly.
-The same issue occurred in Date function too.</p>
-
-<pre name='code' class='javascript'>
-var d = new Date(2009, 08, 02); //It's 2nd of JULY
-</pre>
-
-
-<p>The <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Date">reason</a>.</p>
-
-<blockquote>year
-    Integer value representing the year. For compatibility (in order to avoid the Y2K problem), you should always specify the year in full; use 1998, rather than 98.
-
-month
-    Integer value representing the month, beginning with 0 for January to 11 for December.
-
-date
-    Integer value representing the day of the month (1-31). </blockquote>
-
-
-
+<p><a href="http://troy.jdmz.net/rsync/index.html">refs</a></p>
 
 
 				<div class="post-metadata">
-					October 24, 2009 | 
-					<a href='/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected.html#disqus_thread'>View Comments</a>
+					December 11, 2009 | 
+					<a href='/2009/12/11/using-rsync-and-ssh-to-synchronise-between-two-servers.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#javascript'>javascript</a>
+						<a href='/tags.html#rsync'>rsync</a>
+						, 
+					
+						
+						<a href='/tags.html#ssh'>ssh</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2009/10/22/code-smell">
-				<h3 class="title"><a href="/2009/10/22/code-smell.html">Code Smell</a></h3>
-				
-				<p>There is a <a href="http://www.cnblogs.com/idior/archive/2006/06/13/424592.html">code smell list</a> that we can then as a reference.</p>
-
-<blockquote>
-In computer programming, code smell is any symptom in the source code of a computer program that indicates something may be wrong. It generally indicates that the code should be refactored or the overall design should be reexamined. The term appears to have been coined by Kent Beck on WardsWiki. Usage of the term increased after it was featured in Refactoring. Improving the Design of Existing Code.</blockquote>
-
-
-<p>Interesting Discussion about '<a href="http://stackoverflow.com/questions/114342/what-are-code-smells-what-is-the-best-way-to-correct-them">What are Code Smells? What is the best way to correct them?</a>'.</p>
-
-<p>A question is flying on my head:</p>
-
-<pre name='code' class='php'>
-class Person{
- var $name;
- var $age;
-//....
-}
-
-function calculateEmployeeAverageAge($employee){
-//...
-}
-
-calculateEmployeeAverageAge(new Person());
-</pre>
-
-
-<p>If there is a function like 'calculateEmployeeAverageAge', is it a code smell? I have met this before in our own product code. I mean the function must know much about the Person structure. But actually, we didn't want to a function rely on too much outside. I always avoid this way in my application. But the guy said 'Methods with a ridiculous (e.g. 7+) amount of parameters. This usually means that there should be a new class introduced (which, when passed, is called an indirect parameter.)' in this <a href="http://stackoverflow.com/questions/114342/what-are-code-smells-what-is-the-best-way-to-correct-them">discussion</a>.</p>
-
-
-				<div class="post-metadata">
-					October 22, 2009 | 
-					<a href='/2009/10/22/code-smell.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#refactor'>refactor</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/19/twitter-weekly-updates-for-2009-10-19">
-				<h3 class="title"><a href="/2009/10/19/twitter-weekly-updates-for-2009-10-19.html">Twitter Weekly Updates for 2009-10-19</a></h3>
+			<div class="post" id="postid-/2009/12/07/twitter-weekly-updates-for-2009-12-07">
+				<h3 class="title"><a href="/2009/12/07/twitter-weekly-updates-for-2009-12-07.html">Twitter Weekly Updates for 2009-12-07</a></h3>
 				
 				<ul class="aktt_tweet_digest">
-    <li>Browser support for CSS3 and HTML5 - <a href="http://bit.ly/qnWQU" rel="nofollow">http://bit.ly/qnWQU</a> <a href="http://twitter.com/Joshua_C/statuses/4966533845">#</a></li>
-    <li>10 secrets to staying informed about web design - <a href="http://boagworld.com/reviews/usingrss" rel="nofollow">http://boagworld.com/reviews/usingrss</a> <a href="http://twitter.com/Joshua_C/statuses/4962957714">#</a></li>
-    <li>Earth and Jupiter in the same shot - <a href="http://bit.ly/dlgFb" rel="nofollow">http://bit.ly/dlgFb</a> <a href="http://twitter.com/Joshua_C/statuses/4962887490">#</a></li>
-    <li>Clojure - Functional Programming for the JVM - <a href="http://bit.ly/nN8tj" rel="nofollow">http://bit.ly/nN8tj</a> <a href="http://twitter.com/Joshua_C/statuses/4962873149">#</a></li>
-    <li>Remove a specific value from a javascript array <a href="http://bit.ly/4F3aeJ" rel="nofollow">http://bit.ly/4F3aeJ</a> <a href="http://twitter.com/Joshua_C/statuses/4957514824">#</a></li>
+    <li>HTM::Sanitizer, this lib help you to parse html easier.Don&#39;t invent the wheel anymore. <a href="http://www.codinghorror.com/blog/archives/001311.html" rel="nofollow">http://www.codinghorror.com/blog/archives/001311.html</a> <a href="http://twitter.com/Joshua_C/statuses/6433320128">#</a></li>
+    <li>node.js + NOSQL database , cool idea. Hope I can get a project to give a try. <a href="http://simonwillison.net/2009/Nov/23/node/" rel="nofollow">http://simonwillison.net/2009/Nov/23/node/</a> <a href="http://twitter.com/Joshua_C/statuses/6432961969">#</a></li>
+    <li>google public dns <a href="http://blog.s135.com/google_public_dns/" rel="nofollow">http://blog.s135.com/google_public_dns/</a> <a href="http://twitter.com/Joshua_C/statuses/6421480322">#</a></li>
+    <li>I think it is wrong decision that integrate twitter into linkedin.  Not every product is suitable for integration twitter. #<a href="http://search.twitter.com/search?q=%23linkedin">linkedin</a> <a href="http://twitter.com/Joshua_C/statuses/6388822149">#</a></li>
+    <li>Dear Windows7, you are more quick, you are more safe? But you are definitely more difficult to use! #<a href="http://search.twitter.com/search?q=%23windows7">windows7</a> <a href="http://twitter.com/Joshua_C/statuses/6269306864">#</a></li>
 </ul>
 
 
@@ -402,8 +172,132 @@ calculateEmployeeAverageAge(new Person());
 
 
 				<div class="post-metadata">
-					October 19, 2009 | 
-					<a href='/2009/10/19/twitter-weekly-updates-for-2009-10-19.html#disqus_thread'>View Comments</a>
+					December 07, 2009 | 
+					<a href='/2009/12/07/twitter-weekly-updates-for-2009-12-07.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#twitter'>twitter</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/11/30/twitter-weekly-updates-for-2009-11-30">
+				<h3 class="title"><a href="/2009/11/30/twitter-weekly-updates-for-2009-11-30.html">Twitter Weekly Updates for 2009-11-30</a></h3>
+				
+				<ul class="aktt_tweet_digest">
+    <li>Client-side JavaScript file processing <a href="http://arstechnica.com/open-source/news/2009/11/w3c-publishes-draft-of-new-file-api-spec.ars" rel="nofollow">http://arstechnica.com/open-source/news/2009/11/w3c-publishes-draft-of-new-file-api-spec.ars</a> <a href="http://twitter.com/Joshua_C/statuses/6166425316">#</a></li>
+    <li>cn.scs.msg.yahoo.com for Yahoo message on pidgin <a href="http://twitter.com/Joshua_C/statuses/6163527876">#</a></li>
+    <li>每次搬家都是一次新的适应。每次启程都是一个新的视角。 <a href="http://twitter.com/Joshua_C/statuses/6162589567">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+				<div class="post-metadata">
+					November 30, 2009 | 
+					<a href='/2009/11/30/twitter-weekly-updates-for-2009-11-30.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#twitter'>twitter</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/11/23/twitter-weekly-updates-for-2009-11-23">
+				<h3 class="title"><a href="/2009/11/23/twitter-weekly-updates-for-2009-11-23.html">Twitter Weekly Updates for 2009-11-23</a></h3>
+				
+				<ul class="aktt_tweet_digest">
+    <li>看着老外学习中国古典文化，研究甲骨文，研究易经。我们崇外的日子太久了，该内敛一些了，昨天看了2012，最后还是中国人拯救了全世界人民。 <a href="http://twitter.com/Joshua_C/statuses/5974127427">#</a></li>
+    <li>Are you enjoying (life( and )work)? <a href="http://www.ry-to-job.com/ry-to-job/flame/j-mainflame-template.html" rel="nofollow">http://www.ry-to-job.com/ry-to-job/flame/j-mainflame-template.html</a> <a href="http://twitter.com/Joshua_C/statuses/5882098738">#</a></li>
+    <li>Finally, tweets has its own &#39;Reply&#39; and &#39;Retweet&#39; #<a href="http://search.twitter.com/search?q=%23twitter">twitter</a> <a href="http://twitter.com/Joshua_C/statuses/5797626254">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+				<div class="post-metadata">
+					November 23, 2009 | 
+					<a href='/2009/11/23/twitter-weekly-updates-for-2009-11-23.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#twitter'>twitter</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/11/19/sign-in-your-pdf-document">
+				<h3 class="title"><a href="/2009/11/19/sign-in-your-pdf-document.html">Sign in your PDF document</a></h3>
+				
+				<p>Have you ever succeed to sign in a PDF file?
+Today I try several methods of <a href="http://www.labnol.org/software/sign-pdf-documents/9333/">How to Sign Documents Electronically – No Ink or Paper Required></a>.
+1.
+I try to make an image signature at <a href="http://www.mylivesignature.com/mls_sigdraw.php">MyLiveSignature</a>. And then download it into my local machine;
+Try to convert my PDF file to word file via <a href="http://www.pdftoword.com/">web service</a>.
+And then upload the doc file and attached the signature image at the right place. Save it as PDF file again.
+The PDF file will be messed through this way. So I suggest the second way, easier and faster.</p>
+
+<ol>
+<li><p><a href="http://www.echosign.com/">Echosign</a>
+Upload you PDF file ask signature and get the signature document.</p></li>
+</ol>
+
+
+
+				<div class="post-metadata">
+					November 19, 2009 | 
+					<a href='/2009/11/19/sign-in-your-pdf-document.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#pdf'>pdf</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/11/16/twitter-weekly-updates-for-2009-11-16">
+				<h3 class="title"><a href="/2009/11/16/twitter-weekly-updates-for-2009-11-16.html">Twitter Weekly Updates for 2009-11-16</a></h3>
+				
+				<ul class="aktt_tweet_digest">
+    <li>amazing with this php code &#39;public function executeIndex(sfWebRequest $request)&#39; the parameter type was defined there. ....? <a href="http://twitter.com/Joshua_C/statuses/5765597472">#</a></li>
+    <li>RT @digitalboy
+  
+RT @jasontsui: 交通大学消息人士透露，交大被挑选6名学生参加与奥巴马的对话。与奥巴马对话学生名单是从上海各高校（大学）挑选出2到5人，学生们日前就被限制部分自由，集中活动和生活。 <a href="http://twitter.com/Joshua_C/statuses/5649158974">#</a></li>
+    <li>许久没有担心 windows的文件夹只读属性了，今天也体验了一把它的厉害。windows需要通过共享设权来去掉readonly文件夹属性 <a href="http://twitter.com/Joshua_C/statuses/5591664083">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+				<div class="post-metadata">
+					November 16, 2009 | 
+					<a href='/2009/11/16/twitter-weekly-updates-for-2009-11-16.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#twitter'>twitter</a>
+						
 					 
 				</div>
 

@@ -39,11 +39,14 @@
     <div class="contact">
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
+				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
 				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
 			</div>
 			<div class="rss">
+                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
 				<p>
 				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
 				</p>
@@ -64,283 +67,323 @@
 <div class="post">
   <ul class="content">
 		
-			<div class="post" id="postid-/2010/04/15/be-careful-when-using-propel-build-schema">
-				<h3 class="title"><a href="/2010/04/15/be-careful-when-using-propel-build-schema.html">Be careful when using propel-build-schema</a></h3>
+			<div class="post" id="postid-/2011/01/21/deal-with-mysql-error-1005-hy000">
+				<h3 class="title"><a href="/2011/01/21/deal-with-mysql-error-1005-hy000.html">Deal with mysql ERROR 1005 (HY000)</a></h3>
 				
-				<p>Tip1:
-The generated schema.yml will has the duplicated table when you are using propel-build-schema to generate the yml file based on Symfony Version 1.</p>
+				<p>How to deal with 'mysql ERROR 1005 (HY000): Can't create table '' (errno: 150)'? Usuall it was caused by mysql foreign key. But how you know which foreign key is wrong? Or why it is incorrect? To get more information, you can execute: <pre>SHOW ENGINE INNODB STATUS\G</pre>.
+In my case:</p>
 
-<pre class='yml' name='code'>
-propel:
-  duplicated_table_name:
+<pre>
+CREATE TABLE `table3`
+(
+  `id` INTEGER  NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255),
+  `author_id` INTEGER  NOT NULL,
+  `is_published` TINYINT default 0,
+  `identifier` VARCHAR(100),
+  `path` VARCHAR(255),
+  `description` TEXT,
+  PRIMARY KEY (`id`),
+  KEY `books_I_1`(`is_published`),
+  INDEX `books_FI_1` (`author_id`),
+  CONSTRAINT `books_FK_1`
+    FOREIGN KEY (`author_id`)
+    REFERENCES `users` (`id`)
+    ON DELETE SET NULL
+)Type=InnoDB
 </pre>
 
 
-<p>Tip 2:
-In config/propel.ini, the propel.database means the database engine.</p>
+<p>I get mysql 1005 error with above sql, if I execute show innodb status, I will get:</p>
 
-<pre class='php' name='code'>
-propel.database            = mysql
+<pre>
+=====================================
+110121 16:11:12 INNODB MONITOR OUTPUT
+=====================================
+Per second averages calculated from the last 13 seconds
+----------
+SEMAPHORES
+----------
+OS WAIT ARRAY INFO: reservation count 28, signal count 28
+Mutex spin waits 0, rounds 81, OS waits 4
+RW-shared spins 38, OS waits 19; RW-excl spins 5, OS waits 5
+------------------------
+LATEST FOREIGN KEY ERROR
+------------------------
+110121 16:05:56 Error in foreign key constraint of table table3:
+
+   FOREIGN KEY (`author_id`)
+   REFERENCES `users` (`id`)
+   ON DELETE SET NULL
+)Type=InnoDB:
+You have defined a SET NULL condition though some of the
+columns are defined as NOT NULL.
 </pre>
 
+
+<p>Yes, as you can see, the last sentence is what I want. Actually, I define author_id can not be null. Good luck to you.</p>
 
 
 				<div class="post-metadata">
-					April 15, 2010 | 
-					<a href='/2010/04/15/be-careful-when-using-propel-build-schema.html#disqus_thread'>View Comments</a>
+					January 21, 2011 | 
+					<a href='/2011/01/21/deal-with-mysql-error-1005-hy000.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#propel'>propel</a>
-						, 
-					
-						
-						<a href='/tags.html#symfony'>symfony</a>
+						<a href='/tags.html#mysql'>mysql</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2010/03/09/apache-unable-to-load-dynamic-library-php_openssl-dll">
-				<h3 class="title"><a href="/2010/03/09/apache-unable-to-load-dynamic-library-php_openssl-dll.html">Apache Unable to load dynamic library php_openssl.dll</a></h3>
+			<div class="post" id="postid-/2011/01/14/thrift-framework">
+				<h3 class="title"><a href="/2011/01/14/thrift-framework.html">Cross Lanaguage Service Development</a></h3>
 				
-				<p>As a windows user, sometimes you have to face and handle this kind of problems.</p>
+				<p>Thrift is a software framework for scalable cross-language services development.
+Now it supports C++, C#, Erlang, Haskell, Java, Objective C/Cocoa, OCaml, Perl, PHP, Python, Ruby, and Squeak.</p>
 
-<p>The error: “PHP Startup: Unable to load dynamic library php_openssl.dll. The operating system cannot run %1“, when you are trying to start the apache server in the error.log file.</p>
+<ul>
+<li><p>Download: <a href='http://incubator.apache.org/thrift/download/'>http://incubator.apache.org/thrift/download/</a></p></li>
+<li><p>Install: <a href='http://wiki.apache.org/thrift/GettingUbuntuPackages'>http://wiki.apache.org/thrift/GettingUbuntuPackages</a></p></li>
+</ul>
 
-<p>Basically what this error is trying to mention that there is an issue with your php_openssl.dll and a possible mismatch with other depending libraries. To resolve this, follow the below steps:</p>
+
+<p>So basically, what you need to do is define a .thrift definition file. And Thrift will help you generate the RPC client and RPC server. There are a lot of examples in this <a href='http://wiki.apache.org/thrift/'>wiki</a> page.</p>
+
+<p>You can use this <a href='http://chanian.com/2010/05/13/thrift-tutorial-a-php-client/'>demo</a> to understand how it works.</p>
+
+<p>There is a similar project called <a href='http://code.google.com/apis/protocolbuffers/'>Protocol Buffers</a> which provided by google.</p>
+
+<hr />
+
+<p>This is what I have done in todays' Innovation Day. And I totall agree:</p>
+
+<pre><code>Individuals and interactions over processes and tools</code></pre>
+
+
+<br />
+
+
+<p>We know people is the kernel in a technical company. Anything is beneficial for people should be encouraged. But of course, it also should be beneficial for company firstly. Any rule that restrict people's mind should be removed.</p>
+
+
+				<div class="post-metadata">
+					January 14, 2011 | 
+					<a href='/2011/01/14/thrift-framework.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#RPC'>RPC</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/12/31/world-is-changing">
+				<h3 class="title"><a href="/2010/12/31/world-is-changing.html">年末总结</a></h3>
+				
+				<p>又到岁末了，这一年最大的感触就是世界在变,变得太快。我一直在想七八十岁的老人生活在这个年代，坐着更现代的交通工具，吃着更美味的美食，眼睁睁的目睹人的行为的变化。他们会怎么看这个时代。我现在有点同感了。</p>
+
+<p>以前从未有个new year todo list，但从工作实践中感觉这个确实还有有些效果和意义的（以前我最讨厌形式上的东西的）。</p>
+
+<p><b>2010 完成和进行中的事情</b>：</p>
+
+<ul>
+<li>kiwitask.com 年初改版上线，几次尝试都失败，最后直接将其下线。有意思的事情对这个产品的反省和思索是事情过去了几个月之后才渐渐体会到的；</li>
+<li>终于在高房价的矛盾中购房一套；</li>
+<li>开始学车历程，临近过节看着各式各样的车祸，心头一寒，不学好真不敢出来开；</li>
+<li>有幸成为SM，依然在实践中继续学习，汲取前人的经验和教训，希望不要误人子弟；</li>
+<li>做了一次国内远徒旅行，太简单了；</li>
+</ul>
+
+
+<p><b>2011 TO DO LIST</b>：</p>
+
+<ul>
+<li>结婚，自己都觉得不好意思了；</li>
+<li>下半年装修；</li>
+<li>完成学车；</li>
+<li>回家把护照给办了；</li>
+<li>上线一个新的产品， 如果有精力将其它几个产品打包上线；</li>
+<li>在互联网上混的更实在，看到这领域太多的肤浅和吹嘘；</li>
+<li>寻找一种锻炼身体的方式，这个是最急切的任务；</li>
+<li>希望可以在工作中做的更多，得到更大的认可。</li>
+<li>和亲戚朋友多联系，2010年，我们联系的太少了；</li>
+<li>争取做一次说的过去的远徒旅行或者国外旅行一次 :-)；</li>
+<li>多写点有价值的文章</li>
+</ul>
+
+
+<p><b>2011 WISH LIST</b>：</p>
+
+<ul>
+<li>冤案越来越少，人心越来越温暖，没有欺骗，诚实进步的社会；</li>
+</ul>
+
+
+
+				<div class="post-metadata">
+					December 31, 2010 | 
+					<a href='/2010/12/31/world-is-changing.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#newyear'>newyear</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/12/29/memcached-slabs">
+				<h3 class="title"><a href="/2010/12/29/memcached-slabs.html">Be Careful Of Your Memcached Slab Size</a></h3>
+				
+				<p>Recently, we found a very 'strange' bug. The memcached's evictions keep growing. But there is stil 10% free memory in this instance. The memcached instance size is around 600M, and it has recached 90% percentage usage for a long time. This issue happened after we deployed a fix, which changed the entry size stored in memcache.</p>
+
+<p>Let's give a brief analysis:
+Memcached memory allocation: a slab has many pages. One page has many chunks. Each chunk is a fixed size, based on the maximum size for the slab. So for example, there is 600Mb memory for the whole instance. And there are 540Mb has been used. Usually you store some big entries into memcache. Let's say 1500 bytes for each of them. So there are some big slabs with chunk size from 1000 bytes to 2000 bytes. And these slabs took 400Mb memory. Now you changed the size for these entries to 500 bytes. Let's call these entries 'Changed-Entries'. So memcached try to find some slabs which have 500 bytes size chunk. There are three possibilities:</p>
 
 <ol>
-<li><p>Rename ’ssleay32.dll’ and ‘libeay32.dll’ in c:\windows\system32 to ’ssleay32.dll.old’ and ‘libeay32.dll.old’ respectively.</p></li>
-<li><p>Copy ’ssleay32.dll’ and ‘libeay32.dll’ from your PHP folder to the system32.</p></li>
-<li><p>Restart the apache webserver.</p></li>
+<li><p>There is no such size slabs exist. So Memcached will use the free memory to create some proper size slab for 'Changed-Entries'; There are 60Mb free memory can be used. But if these entries need 100Mb. That means some old entries will be 'kicked out' from these new slabs. Eviction happens;</p></li>
+<li><p>If memcached found some used slabs which have 500 bytes chunk. It will kickout the expired items firstly. If the memroy still not enough for 'Changed-Entries', then the least used entries will be kicked out. Eviction happens;</p></li>
+<li><p>If there is no free memory and there is no propel slabs can be used, then eviction happens.</p></li>
 </ol>
 
 
-<p>Even I resolve it finally , I can learn nothing from it. This such a damn rule("copy the dll file from PHP folder to system32") was made by Microsoft? I don't know. You couldn't find the solution even in php document. The solution was passed from one developer to another. But no matter how I can stay away this kind of damn things for a while.</p>
+<p>If you want to learn more detail about how it works, take a look following references:</p>
 
-
-				<div class="post-metadata">
-					March 09, 2010 | 
-					<a href='/2010/03/09/apache-unable-to-load-dynamic-library-php_openssl-dll.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#apache'>apache</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/03/08/twitter-weekly-updates-for-2010-03-08-2">
-				<h3 class="title"><a href="/2010/03/08/twitter-weekly-updates-for-2010-03-08-2.html">Twitter Weekly Updates for 2010-03-08</a></h3>
-				
-				<ul class="aktt_tweet_digest">
-    <li><a href="http://ss64.com/nt/" rel="nofollow">http://ss64.com/nt/</a> An A-Z Index of the Windows XP command line <a href="http://twitter.com/Joshua_C/statuses/10172817942">#</a></li>
-    <li>xcopy source_folder destination_folder /E /D /Y <a href="http://twitter.com/Joshua_C/statuses/10161212004">#</a></li>
-    <li>Nginx 0.8.34 + PHP 5.2.13 (FastCGI) 可以承受3万以上的并发连接数，相当于同等环境下Apache的10倍 <a href="http://blog.s135.com/nginx_php_v6/" rel="nofollow">http://blog.s135.com/nginx_php_v6/</a> <a href="http://twitter.com/Joshua_C/statuses/10147838282">#</a></li>
-    <li>Google 1 gigabit per second, network <a href="http://www.google.com/appserve/fiberrfi" rel="nofollow">http://www.google.com/appserve/fiberrfi</a> <a href="http://twitter.com/Joshua_C/statuses/10064675925">#</a></li>
-    <li>It would be interesting to build a &#39;no dependence plugin&#39; with nodejs <a href="http://s3.amazonaws.com/four.livejournal/20091117/jsconf.pdf" rel="nofollow">http://s3.amazonaws.com/four.livejournal/20091117/jsconf.pdf</a> #<a href="http://search.twitter.com/search?q=%23nodejs">nodejs</a> <a href="http://twitter.com/Joshua_C/statuses/10064480377">#</a></li>
-    <li>If just want to improve the speed, I would prefer to hiphop instead of Objective-PHP. <a href="http://twitter.com/Joshua_C/statuses/10064076979">#</a></li>
-    <li>It seems jquery was the right choice. <a href="http://ejohn.org/apps/workshop/todo/" rel="nofollow">http://ejohn.org/apps/workshop/todo/</a> <a href="http://ejohn.org/apps/workshop/social/" rel="nofollow">http://ejohn.org/apps/workshop/social/</a> <a href="http://twitter.com/Joshua_C/statuses/10003325256">#</a></li>
-    <li>Diferent company culture will result in different result. Different attitudes towards different life. <a href="http://twitter.com/Joshua_C/statuses/9973621157">#</a></li>
-    <li>Interesting thing, yahoo logo can not be saved. google logo can be viewed and saved as an normal pictures. baidu logo was using &#39;usemap&#39;. <a href="http://twitter.com/Joshua_C/statuses/9973524607">#</a></li>
-    <li>Everytime I could relaxed from here -  <a href="http://www.douban.com/artist/baishui/" rel="nofollow">http://www.douban.com/artist/baishui/</a>. <a href="http://twitter.com/Joshua_C/statuses/9972268887">#</a></li>
+<ul>
+<li><p><a href='http://code.google.com/p/memcached/wiki/FAQ#When_do_expired_cached_items_get_deleted_from_the_cache?'>When do expired cached items get deleted from the cache?</a></p></li>
+<li><p><a href='http://dev.mysql.com/doc/refman/5.0/en/ha-memcached-using-memory.html'>Memory allocation within memcached</a></p></li>
 </ul>
 
 
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
-
-
 
 				<div class="post-metadata">
-					March 08, 2010 | 
-					<a href='/2010/03/08/twitter-weekly-updates-for-2010-03-08-2.html#disqus_thread'>View Comments</a>
+					December 29, 2010 | 
+					<a href='/2010/12/29/memcached-slabs.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#twitter'>twitter</a>
+						<a href='/tags.html#memcached'>memcached</a>
 						
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2010/03/08/twitter-weekly-updates-for-2010-03-08">
-				<h3 class="title"><a href="/2010/03/08/twitter-weekly-updates-for-2010-03-08.html">Twitter Weekly Updates for 2010-03-08</a></h3>
+			<div class="post" id="postid-/2010/12/19/nodejs-with-socket-io">
+				<h3 class="title"><a href="/2010/12/19/nodejs-with-socket-io.html">Dig Into Nodejs</a></h3>
 				
-				<ul class="aktt_tweet_digest">
-    <li><a href="http://ss64.com/nt/" rel="nofollow">http://ss64.com/nt/</a> An A-Z Index of the Windows XP command line <a href="http://twitter.com/Joshua_C/statuses/10172817942">#</a></li>
-    <li>xcopy source_folder destination_folder /E /D /Y <a href="http://twitter.com/Joshua_C/statuses/10161212004">#</a></li>
-    <li>Nginx 0.8.34 + PHP 5.2.13 (FastCGI) 可以承受3万以上的并发连接数，相当于同等环境下Apache的10倍 <a href="http://blog.s135.com/nginx_php_v6/" rel="nofollow">http://blog.s135.com/nginx_php_v6/</a> <a href="http://twitter.com/Joshua_C/statuses/10147838282">#</a></li>
-    <li>Google 1 gigabit per second, network <a href="http://www.google.com/appserve/fiberrfi" rel="nofollow">http://www.google.com/appserve/fiberrfi</a> <a href="http://twitter.com/Joshua_C/statuses/10064675925">#</a></li>
-    <li>It would be interesting to build a &#39;no dependence plugin&#39; with nodejs <a href="http://s3.amazonaws.com/four.livejournal/20091117/jsconf.pdf" rel="nofollow">http://s3.amazonaws.com/four.livejournal/20091117/jsconf.pdf</a> #<a href="http://search.twitter.com/search?q=%23nodejs">nodejs</a> <a href="http://twitter.com/Joshua_C/statuses/10064480377">#</a></li>
-    <li>If just want to improve the speed, I would prefer to hiphop instead of Objective-PHP. <a href="http://twitter.com/Joshua_C/statuses/10064076979">#</a></li>
-    <li>It seems jquery was the right choice. <a href="http://ejohn.org/apps/workshop/todo/" rel="nofollow">http://ejohn.org/apps/workshop/todo/</a> <a href="http://ejohn.org/apps/workshop/social/" rel="nofollow">http://ejohn.org/apps/workshop/social/</a> <a href="http://twitter.com/Joshua_C/statuses/10003325256">#</a></li>
-    <li>Diferent company culture will result in different result. Different attitudes towards different life. <a href="http://twitter.com/Joshua_C/statuses/9973621157">#</a></li>
-    <li>Interesting thing, yahoo logo can not be saved. google logo can be viewed and saved as an normal pictures. baidu logo was using &#39;usemap&#39;. <a href="http://twitter.com/Joshua_C/statuses/9973524607">#</a></li>
-    <li>Everytime I could relaxed from here -  <a href="http://www.douban.com/artist/baishui/" rel="nofollow">http://www.douban.com/artist/baishui/</a>. <a href="http://twitter.com/Joshua_C/statuses/9972268887">#</a></li>
-</ul>
+				<p>Just find a beautiful and simplest javascript code:</p>
+
+<pre>
+  // In both HTTP servers and clients it is possible to queue up several
+  // outgoing messages. This is easiest to imagine in the case of a client.
+  // Take the following situation:
+  //
+  //    req1 = client.request('GET', '/');
+  //    req2 = client.request('POST', '/');
+  //
+  // The question is what happens when the user does
+  //
+  //   req2.write("hello world\n");
+  //
+  // It's possible that the first request has not been completely flushed to
+  // the socket yet. Thus the outgoing messages need to be prepared to queue
+  // up data internally before sending it on further to the socket's queue.
+  //
+  // This function, outgoingFlush(), is called by both the Server
+  // implementation and the Client implementation to attempt to flush any
 
 
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+  while (message.output.length) {
+    if (!socket.writable) return; // XXX Necessary?
 
+    var data = message.output.shift();
+    var encoding = message.outputEncodings.shift();
+
+    ret = socket.write(data, encoding);
+  }
+</pre>
+
+
+<p>Now I know how nodejs talk with server, which is using <a href='http://socket.io/'>Socket.IO</a> - multi-transport socket server.</p>
 
 
 				<div class="post-metadata">
-					March 08, 2010 | 
-					<a href='/2010/03/08/twitter-weekly-updates-for-2010-03-08.html#disqus_thread'>View Comments</a>
+					December 19, 2010 | 
+					<a href='/2010/12/19/nodejs-with-socket-io.html#disqus_thread'>View Comments</a>
 					
 						
 							| 
 						
-						<a href='/tags.html#twitter'>twitter</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/02/26/using-jsonp-to-do-the-cross-domain-request">
-				<h3 class="title"><a href="/2010/02/26/using-jsonp-to-do-the-cross-domain-request.html">Using JSONP to do the cross domain request </a></h3>
-				
-				<p>JSONP (script insertion)</p>
-
-<p>How does it work?</p>
-
-<p>Lets assume, that we have a textarea iResponse and we want to set its value to something that we will receive from the server. And that we have some server in a different domain. With script insertion we can send a HTTP-GET request to the server like this:</p>
-
-<pre name='code' class='javascript'>
-function insertScript( url){
-    var script = document.createElement("script");
-    script.setAttribute("src",url);
-    script.setAttribute("type","text/javascript");
-    document.body.appendChild(script);
-}
-</pre>
-
-
-<p>url in the request is a proper HTTP-GET request with the parameters. Hence server can receive input to work with. The trick with JSONP is how the output is passed back to the client. The newly downloaded “script” will be evaluated on load. Hence, if the script contains:</p>
-
-<pre name='code' class='javascript'>
-call_me( value );
-</pre>
-
-
-<p>A method call_me() will be called with the value as a parameter. Hence we should have another bit of script in our client to have a callback:</p>
-
-<pre name='code' class='javascript'>
-function call_me( vParam ){
-        document.getElementsByName("iResponse")[0].value = vParam;
-}
-</pre>
-
-
-<p>Finally, JSONP-based services are (if they are not tailored to a single client when the callback is predefined) should take the callback name as a parameter:</p>
-
-<pre name='code' class='javascript'>
-url = "http://dummy.server.org/Create_a_Script.php?callback=call_me&......
-</pre>
-
-
-
-				<div class="post-metadata">
-					February 26, 2010 | 
-					<a href='/2010/02/26/using-jsonp-to-do-the-cross-domain-request.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#jsonp'>jsonp</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/02/22/twitter-weekly-updates-for-2010-02-22">
-				<h3 class="title"><a href="/2010/02/22/twitter-weekly-updates-for-2010-02-22.html">Twitter Weekly Updates for 2010-02-22</a></h3>
-				
-				<ul class="aktt_tweet_digest">
-    <li>google buzz tips <a href="http://googlesystem.blogspot.com/2010/02/google-buzz-tips.html" rel="nofollow">http://googlesystem.blogspot.com/2010/02/google-buzz-tips.html</a> <a href="http://twitter.com/Joshua_C/statuses/9428245415">#</a></li>
-    <li>Protocol Buffers and Hadoop at Twitter <a href="http://slidesha.re/biq2Po" rel="nofollow">http://slidesha.re/biq2Po</a> <a href="http://twitter.com/Joshua_C/statuses/9382297551">#</a></li>
-</ul>
-
-
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
-
-
-
-				<div class="post-metadata">
-					February 22, 2010 | 
-					<a href='/2010/02/22/twitter-weekly-updates-for-2010-02-22.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#twitter'>twitter</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/02/15/report-plugin-for-vanilla-2">
-				<h3 class="title"><a href="/2010/02/15/report-plugin-for-vanilla-2.html">Report plugin for Vanilla 2</a></h3>
-				
-				<p>You can find it <a href="http://vanillaforums.org/addon/520/report-system">here</a>.</p>
-
-<p>Install
-1. Unzip the plugin package and put it into Garden/plugins;
-2. Enable it in admin panel;</p>
-
-<p>Configure:
-1. Add the following code into file Garden\applications\vanilla\views\discussion\index.php
-//Arround line 12 ~14
-[CODE]
-&lt;?php $this->FireEvent('AfterDiscussionHeaderRender'); ?>
-[/CODE]</p>
-
-<p>Then the code likes:
-[PIECE]
-&lt;?php $this->FireEvent('AfterDiscussionHeaderRender'); ?>
-&lt;h2&gt;&lt;?php
-   if (Gdn::Config('Vanilla.Categories.Use') === TRUE) {</p>
-
-<pre><code>  echo Anchor($this-&gt;Discussion-&gt;Category, 'categories/'.$this-&gt;Discussion-&gt;CategoryID.'/'.Format::Url($this-&gt;Discussion-&gt;Category));
-  echo '&lt;span&gt;&amp;bull;&lt;/span&gt;';
-</code></pre>
-
-<p>   }
-   echo Format::Text($this->Discussion->Name);
-?>&lt;/h2&gt;
-[/PIECE]</p>
-
-<ol>
-<li><p>Config pagination for admin page:
-Add following line into config.php
-$Configuration['Vanilla']['Report']['PerPage'] = 10;</p></li>
-</ol>
-
-
-
-				<div class="post-metadata">
-					February 15, 2010 | 
-					<a href='/2010/02/15/report-plugin-for-vanilla-2.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#forum'>forum</a>
+						<a href='/tags.html#nodejs'>nodejs</a>
 						, 
 					
 						
-						<a href='/tags.html#vanilla'>vanilla</a>
+						<a href='/tags.html#js'>js</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/12/05/find-ubuntu-wireless-icon">
+				<h3 class="title"><a href="/2010/12/05/find-ubuntu-wireless-icon.html">Find Ubuntu Wireless Icon</a></h3>
+				
+				<p>My network-manager works fine. You can test by <code>sudo service network-manager start/stop</code>. And my wireless network can be found by <code>sudo iwlist  scan</code>.
+So there are two solutions:</p>
+
+<p><ul>
+<li>Right click the top panel and click 'add to panel' and select 'notifications area'. If this didn't work,then netstep:
+</li>
+<li>
+<code>sudo vim /etc/NetworkManager/nm-sysmte-settings.conf</code>. Modify false to true.
+<code>sudo service network-manager restart</code></p>
+
+<p>In my ubuntu 10.10, after these trys, the wireless icon displayed in the panel again. Good luck to you.</p>
+
+
+				<div class="post-metadata">
+					December 05, 2010 | 
+					<a href='/2010/12/05/find-ubuntu-wireless-icon.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#ubuntu'>ubuntu</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2010/11/30/try-to-use-githubpages-for-my-blog">
+				<h3 class="title"><a href="/2010/11/30/try-to-use-githubpages-for-my-blog.html">Try to Use Github Pages As My Blog</a></h3>
+				
+				<p>Finally, I decide to move my blog to githubpages. I know github do a great job. I want to give a try.<br />
+Later I will try to import my old blog entries.<br />
+Until now, everything looks amazing.</p>
+<p>&#8212;<br />
+I finished the import from wordpress blog to github. I make a import.php script. Don&#8217;t forget to change the user name, password and database in this script.</p>
+<p>&#8212;<br />
+Add <a href='http://disqus.com'>comment service</a> into my blog.</p>
+
+				<div class="post-metadata">
+					November 30, 2010 | 
+					<a href='/2010/11/30/try-to-use-githubpages-for-my-blog.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#github'>github</a>
 						
 					 
 				</div>

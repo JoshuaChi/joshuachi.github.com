@@ -4,13 +4,1186 @@
 	<title>Joshua Chi</title>
 	<link href="http://freetofeel.com/atom.xml" rel="self"/>
 	<link href="http://freetofeel.com/"/>
-	<updated>2011-05-01T16:11:41+08:00</updated>
+	<updated>2013-04-09T15:50:51+08:00</updated>
 	<id>http://freetofeel.com/</id>
 	<author>
 		<name>Joshua Chi</name>
 		<email>joshokn@gmail.com</email>
 	</author>
 
+	
+		<entry>
+			<title>2013 Resolution</title>
+			<link href="http://freetofeel.com/2013/02/08/year-summary.html"/>
+			<updated>2013-02-08T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2013/02/08/year-summary</id>
+			<content type="html">&lt;p&gt;过去的一年慢慢开始enjoy之前的辛劳。但很多新的挑战接踵而来。我希望记住的是七月中旬那美丽的天空。我希望忘记的是十月和十一月的噩梦。
+大脑的活动规律就是你越是希望忘记的东西，它会越拼命的记住。&lt;/p&gt;
+
+&lt;p&gt;一年没见到雪，昨天开始下起。或者过去的一年，也许就在最近某个月曾经下过雪。&lt;/p&gt;
+
+&lt;h3&gt;2012 完成的目标&lt;/h3&gt;
+
+
+
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;del&gt;强身健体第一位，具体目标是锻炼腰部腹部肌肉，提高身体协调能力。&lt;/del&gt;
+    去年确实腰部力量明显好于2011年，看来坚持锻炼是王道。但协调能力还有待提高，也许我还没找到答案。
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;
+    职业发展： &lt;br /&gt;
+    a. 空间的预测;&lt;br /&gt;
+    b. 时间的估计，把持重点;&lt;br /&gt;
+    c. Have a better idea about how to manage team and how to manage company.
+    &lt;/del&gt;
+    很多东西已经被更重要的事情取代或被看淡。
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;增加静心休息的时间。&lt;/del&gt;
+    休息的时间至少double 2011年的。
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;买车。&lt;/del&gt;
+    买好车的第一个月就刮蹭了两次，起初觉得很心疼，现在已经没有感觉。身外之物。
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;读书&gt;=15本；&lt;br /&gt;
+    电影&gt;=5;&lt;br /&gt;&lt;/del&gt;
+    Finish 了25本，什么书都有。
+  &lt;/li&gt;
+  &lt;li&gt;
+    完成网站建设，其实现在已经不再是为了完成而完成了。练手；练脑；提高思维的整体性，连续性，可扩展性。
+    － 该完成的没有完成。不该完成的始终没有起色。
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;蜜月履行。&lt;/del&gt;
+    日本之行成为了美好的记忆。
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;去年的时间管理基本满意，需要继续坚持下来。&lt;/del&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h3&gt;2012 Time Spending：&lt;/h3&gt;
+
+
+&lt;ul&gt;
+  &lt;li&gt;
+    30% - spent @hospital or on the road to hospital
+  &lt;/li&gt;
+  &lt;li&gt;
+    5% - spent at self-building
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h3&gt;2013 TODO LIST：&lt;/h3&gt;
+
+
+&lt;ul&gt;
+  &lt;li&gt;
+    身体第一位，继续坚持体育锻炼
+  &lt;/li&gt;
+  &lt;li&gt;
+    继续管理自己的性格
+  &lt;/li&gt;
+  &lt;li&gt;
+    养娃 - 学习如何养好
+  &lt;/li&gt;
+  &lt;li&gt;
+    读书 &gt; 20 本(杂而不偏就可以)
+  &lt;/li&gt;
+  &lt;li&gt;
+    个人理财规划投资
+  &lt;/li&gt;
+  &lt;li&gt;
+    建站 &gt; 1000pv/day 我就心满意足. :-) 还未得道.
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h3&gt;2013 WISH LIST(The same as 2012's)：&lt;/h3&gt;
+
+
+&lt;p&gt;祝福我，我的家人，我认识的亲戚朋友身体健健康康！&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Arduino Auto Drive Car</title>
+			<link href="http://freetofeel.com/2012/12/16/arduino-auto-drive-car.html"/>
+			<updated>2012-12-16T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2012/12/16/arduino-auto-drive-car</id>
+			<content type="html">&lt;p&gt;这里介绍的是自己装配的arduino小车，周末阴雨连绵，找点乐趣玩玩。&lt;a href='http://arduino.cc/en'&gt;arduino&lt;/a&gt;很容易上手，如果你懂一两门程序语言就更简单了。电路电压知识，虽然初中高中都有学过，但都记不得了，不过用什么学什么，也来得容易。
+收到新电池，几经折腾，终于又重新装配好小车。&lt;/p&gt;
+
+&lt;p&gt;下面就是我所用到的大部分材料，有些工具就不罗列在这里了。&lt;/p&gt;
+
+&lt;h2&gt;1. 材料(总价: ¥379.1)&lt;/h2&gt;
+
+
+
+
+&lt;ul&gt;
+&lt;li&gt;
+智能小车底盘 寻迹小车 机器人小车底盘 带码盘/测速/送电池盒 - ¥ 43.00
+&lt;/li&gt;
+&lt;li&gt;
+40P公端杜邦线 彩排杜邦线 面包板连接线 面包板线 万能板连接线 - ¥5.9
+&lt;/li&gt;
+&lt;li&gt;
+SYB-170 面包板 透明 面包板 迷你小小面包板 万能板 -  ¥2.80
+&lt;/li&gt;
+&lt;li&gt;
+140条盒装 面包板线 面包板专用线 面包板跳线 - ¥15.00
+&lt;/li&gt;
+&lt;li&gt;
+新版红外线数字避障传感器,超小型,3-100cm可调,电流6ma - ¥16.00
+&lt;/li&gt;
+&lt;li&gt;
+1P 双头杜邦线 单根双头杜邦插头线 杜邦线 20CM - ¥0.15x20
+&lt;/li&gt;
+&lt;li&gt;
+原装芯片 L298N 电机驱动板/步进电机、直流电机驱动器 L298 - ¥19.00
+&lt;/li&gt;
+&lt;li&gt;
+HC-SR04超声波模块 超声波测距模块 测距模块 超声波 传感器 资料 - ¥7.50
+&lt;/li&gt;
+&lt;li&gt;
+Arduino Uno R3 Plus(Atmega16U2),10月最新生产预订送电源/USB线 - ¥64.80
+&lt;/li&gt;
+&lt;li&gt;
+狮子遥控飞机航模船模车模型锂电池2200mAH 11.1V 30C -  ¥78.00
+&lt;/li&gt;
+&lt;li&gt;
+双皇冠 IMAX B6 B8 B6AC 多功能平衡充 充电器(1台起批)高级彩盒 -  ¥108.00
+&lt;/li&gt;
+&lt;li&gt;
+单片机开发板学习板、智能小车配件-M3 20+6 铜柱+螺帽 - ¥0.36x10
+&lt;/li&gt;
+&lt;li&gt;
+单片机开发板学习板配件-原装正品 辉盛SG90 9G小舵机 9克伺服器 - ¥12.50
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;我的程序现在还很烂，就不贴出来误人子弟了，网上搜索很多。&lt;/p&gt;
+
+&lt;h2&gt;2. 参考资料&lt;/h2&gt;
+
+
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href='http://arduino.cc/en'&gt;arduino&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href='http://blog.sina.com.cn/s/articlelist_1581720921_0_1.html'&gt;http://blog.sina.com.cn/s/articlelist_1581720921_0_1.html&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href='http://letsmakerobots.com/start'&gt;http://letsmakerobots.com/start&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href='http://www.roboticfan.com/blog/user_2005/1229/index.shtml'&gt;机器人爱好者&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href='http://zpht2010.blog.163.com/blog/static/16561107720124811359823/?latestBlog'&gt;跟老林学机器人系列&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h2&gt;3. 上一小段视频, 就算是小车的第一个版本吧&lt;/h2&gt;
+
+
+&lt;p&gt;&lt;embed src=&quot;http://player.youku.com/player.php/sid/XNDg5Mjk3MjI0/v.swf&quot; allowFullScreen=&quot;true&quot; quality=&quot;high&quot; width=&quot;480&quot; height=&quot;400&quot; align=&quot;middle&quot; allowScriptAccess=&quot;always&quot; type=&quot;application/x-shockwave-flash&quot;&gt;&lt;/embed&gt;&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Visit Appspot.com From China</title>
+			<link href="http://freetofeel.com/2012/12/09/visit-appspot.html"/>
+			<updated>2012-12-09T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2012/12/09/visit-appspot</id>
+			<content type="html">&lt;p&gt;The reason behind this blog is to show you how to make &lt;b&gt;GAppProxy&lt;/b&gt; work again. In China, most of people rely on &lt;a href='https://code.google.com/p/gappproxy/'&gt;GAppProxy&lt;/a&gt; to access the 'outside world'. But appspot.com is blocked in China. So here is a simple tutorial to show you how to make it work.&lt;/p&gt;
+
+&lt;p&gt;The idea is very simple: find the workable google IP and add it to hosts file.&lt;/p&gt;
+
+&lt;br /&gt;
+
+
+&lt;p&gt;Step1:&lt;/p&gt;
+
+&lt;pre&gt;
+nslookup www.google.com
+&lt;/pre&gt;
+
+
+&lt;p&gt;You can find something like:&lt;/p&gt;
+
+&lt;pre&gt;
+nslookup www.google.com
+Server:   192.168.1.1
+Address:  192.168.1.1#53
+
+Non-authoritative answer:
+Name: www.google.com
+Address: 74.125.128.99
+Name: www.google.com
+Address: 74.125.128.105
+Name: www.google.com
+Address: 74.125.128.103
+Name: www.google.com
+Address: 74.125.128.147
+Name: www.google.com
+Address: 74.125.128.106
+Name: www.google.com
+Address: 74.125.128.104
+&lt;/pre&gt;
+
+
+&lt;p&gt;Basically you just need to try https://74.125.128.x/ to check which one is working. 'x' can be any number. If you can visit https://74.125.128.x/, continue to &lt;b&gt;Step2&lt;/b&gt;.&lt;/p&gt;
+
+&lt;br /&gt;
+
+
+&lt;p&gt;Step2:&lt;/p&gt;
+
+&lt;p&gt;Modify /etc/hosts file and add one line:&lt;/p&gt;
+
+&lt;pre&gt;
+74.125.128.x $your_app_engine_id.appspot.com
+&lt;/pre&gt;
+
+
+&lt;p&gt;Replace $your_app_engine_id with your registered google app engine ID.&lt;/p&gt;
+
+&lt;p&gt;Hope this will help you.&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>如何面对疾病</title>
+			<link href="http://freetofeel.com/2012/11/29/how-to-face-life.html"/>
+			<updated>2012-11-29T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2012/11/29/how-to-face-life</id>
+			<content type="html">&lt;p&gt;我一直踌躇如何下笔这篇blog，原因始于前一阵子做过的一次手术以及最近看的几篇文章.&lt;/p&gt;
+
+&lt;p&gt;以前一直是觉得生活无所谓写，都是些琐事，只有工作的东西，技术的东西写出来才有意思。曾有段时间将一个维持了很久的blog彻底丢弃。&lt;/p&gt;
+
+&lt;p&gt;而立之年，理解和意识已经慢慢的转了180度。我现在觉得除了生活之外的东西，其它都不重要。如果再细致，除了你自己的生活和思想，其它都不重要。你可能会说，这样说太自私了。
+其实一点都不自私，而且很宏大。没有很好的在意自己，就会拖累别人；没有很好的在意自己就不能在关键的时刻帮助别人。&lt;/p&gt;
+
+&lt;p&gt;
+我想写这篇blog，还有一个目的就是想把我搜集的，我想的，我总结的分享给更多人，引起更多人的思考，虽然本站从来就是少有人来。但我还是想做，也许是为了以后给自己回顾。
+&lt;/p&gt;
+
+
+&lt;p&gt;我先把文章的连接列出来：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href='http://vip.book.sina.com.cn/book/index_216231.html'&gt;一个癌症患者的康复之路：重生手记&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href='http://v.feibo.com/yunkeji/373?rdn=1353851035348&amp;from=timeline&amp;isappinstalled=0'&gt;杨振宁：佛教与科学彻底相容&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href='http://www.huzheng.org/getdoclist.php?category=note&amp;&amp;docpage=0'&gt;星际译王作者胡正的几篇文章&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href='http://book.douban.com/subject/1066108/'&gt;易经杂说-南怀瑾&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;所有的这些放在一起，以及加上我自己生病前前后后做的很多资料的调查以及思考，让我想说，鉴于中国医疗的环境的现状，鉴于目前科技水平医疗水平的现状，以及现阶段中国社会大部分职业工作者的那种向“钱”主义。如果你生病了，首先自己先去了解自己的病情，再者一定要去找个正规的大医院（现在三级甲等已经不算什么了）好点的医生（一般的医生非专家，碰上好医生的几率微忽甚微）.&lt;/p&gt;
+
+&lt;p&gt;
+以我的情况做个描述，当你听到医生告知你病情的时候，内心慌张，不知所措。因为之前很少去医院，加上当时以为只有医生能有办法解决你的困难，医生一句“开刀”，已经让我有点不知所措了. 值得庆幸的是之前一直看一个内分泌的专家，她有推荐一个外科医生，就像《重生日记》里面写的，可能不是科室里面最大的那个官，但却可能是当时来讲最可信的。因为我对这个内分泌专家的信任，传递了我的信心到这个外科医生身上。事实证明，不是最坏的那个。
+&lt;/p&gt;
+
+
+&lt;p&gt;
+我还有放易经杂说的连接，这个资料让我想到了几件事情，而且和重生日记中的条目很吻合。《易经杂说》中说：人重重的摔在地上，不要立刻站起来，在原地不要动，等身体恢复了“精气”再慢慢站起来。如果立刻站起来，大部分情况是受伤，如果等身体稍微恢复点站起来，反而可能什么事情也没有。还有一个例子说，我们出门在外地，总是带一包家乡的土，在生了水土不服病后，将土拿出来冲下去喝掉，有时候就突然好了。我挑这两个例子说，是因为都有听到或者自己亲身经历过。 这里也是想说，要相信人类身体的自我恢复功能，目前来看，没有医生会告诉你这个。尤其是西医更是循规蹈矩，在“钱”面前，一切更都得自食其力。不过不要误解我，我不是说所有医生都这样，但你能碰到好医生，现在只能靠碰运气，或者靠“抢”。
+&lt;br /&gt;
+重生手记中给出的理智的做法是：自己先研究病情，做各种资料收集，如果你能联系到国外医生，或者能读懂英文，那么帮助会很大；（如果你自己有点中医知识，效果会更好－这是我加的）。西医的意见你可以听做参考，但在这之前，你需要对这个西医做个认识，所以之前的医生搜索也很关键。综合所有信息，加上自己的心理承受能力，自己做最理智，最合适的判断。
+&lt;/p&gt;
+
+
+
+
+&lt;p&gt;
+另外杨振宁的文章和星际译王胡正的文章放在一起，有没有发现你脑海中的所谓的那些“非科学”，“迷信” 的东西，正在被越来越广泛的意识与接受。想起来小时候外婆给我说的事情，一直到了成年还是用书本老师交的那些全盘否定。直到慢慢的意识到也许可以试着观察，试着找证据，试着被证明。
+&lt;/p&gt;
+
+
+&lt;p&gt;文章可以结束了，想送给所有看到这篇文章的读者：多发善心，多结善果。&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Life Is Challenge</title>
+			<link href="http://freetofeel.com/2012/10/13/life-is-challenge.html"/>
+			<updated>2012-10-13T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2012/10/13/life-is-challenge</id>
+			<content type="html">&lt;p&gt;Since the beginning of this summer, I made some videos to record &quot;nature &amp;amp; life&quot;. I wish it will give me the same feeling when I look back them. And I also hope it will bring the others the happiness.&lt;/p&gt;
+
+&lt;br /&gt;
+
+
+&lt;h3&gt;The beginning of Summer&lt;/h3&gt;
+
+
+&lt;p&gt;
+&lt;video width=&quot;600&quot; height=&quot;400&quot; controls=&quot;controls&quot; src=&quot;https://dl.dropbox.com/u/13976659/videos/office-summer-beginning.MOV&quot; type=&quot;video/mov&quot;&gt;
+&lt;/video&gt;
+&lt;/p&gt;
+
+
+
+
+&lt;h3&gt;The end of Summer(Right click and 'play')&lt;/h3&gt;
+
+
+&lt;p&gt;
+&lt;video width=&quot;400&quot; height=&quot;600&quot; style=&quot;-moz-transform:rotate(90deg);
+  -webkit-transform:rotate(40deg);
+    -o-transform:rotate(40deg);
+      -ms-transform:rotate(40deg);
+        transform:rotate(40deg);&quot; controls preload src=&quot;https://dl.dropbox.com/u/13976659/videos/office-summer-end.MOV&quot; type=&quot;video/mov&quot;&gt;
+&lt;/video&gt;
+&lt;/p&gt;
+
+
+
+
+&lt;h3&gt;The beginning of Autumn&lt;/h3&gt;
+
+
+&lt;p&gt;
+&lt;video width=&quot;600&quot; height=&quot;300&quot; controls=&quot;controls&quot; src=&quot;https://dl.dropbox.com/u/13976659/videos/nanjing-xuanwuhu.MOV&quot; type=&quot;video/mov&quot;&gt;
+&lt;/video&gt;
+&lt;/p&gt;
+
+
+
+
+&lt;h3&gt;The middle of Autumn(Right click and 'play')&lt;/h3&gt;
+
+
+&lt;p&gt;
+&lt;video width=&quot;400&quot; height=&quot;600&quot; style=&quot;-moz-transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  transform:rotate(90deg);&quot; preload controls src=&quot;https://dl.dropbox.com/u/13976659/videos/changzhou-tweets.MOV&quot; type=&quot;video/mov&quot;&gt;
+&lt;/video&gt;
+&lt;/p&gt;
+
+
+&lt;p&gt;When you expected more from life, more are taken from your life. What you can expected? &lt;br /&gt; Except taking your courge and accepting the challenge, what else?&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Move From Godaddy DNS to Dnspod</title>
+			<link href="http://freetofeel.com/2012/10/02/move-to-dnspod.html"/>
+			<updated>2012-10-02T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2012/10/02/move-to-dnspod</id>
+			<content type="html">&lt;p&gt;It's the first time that my domain can not be resolved for around 6 hours. I learned &lt;a href='http://www.godaddy.com'&gt;godaddy&lt;/a&gt; DNS was blocked in China sometimes.&lt;/p&gt;
+
+&lt;p&gt;This is what I hate to work on a Chinese site. After several minutes struggle, I decide to move my dns from &lt;a href='http://www.godaddy.com'&gt;godaddy&lt;/a&gt; to &lt;a href='https://www.dnspod.cn/'&gt;dnspod&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href='https://www.dnspod.cn/'&gt;dnspod&lt;/a&gt; did really a nice work. No matter the user interfaces or the services. All of them  meet my requirements.&lt;/p&gt;
+
+&lt;p&gt;I don't want to repeat how to setup the dnspod. &lt;a href='https://www.google.com/search?q=dns+godaddy+dnspod&amp;oq=dns+godaddy+dnspod&amp;sugexp=chrome,mod=1&amp;sourceid=chrome&amp;ie=UTF-8'&gt;google search&lt;/a&gt; will tell you more about this.&lt;/p&gt;
+
+&lt;p&gt;Now I will just wait for the new dns takes affect. Actaully dns was solved quickly in China, but not in JiangSu province in my testing. Good luck to my &lt;a href='http://www.dachebang.com'&gt;www.dachebang.com&lt;/&gt;.&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Linode Facility Migration to Fremont</title>
+			<link href="http://freetofeel.com/2012/08/26/linode-migration.html"/>
+			<updated>2012-08-26T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2012/08/26/linode-migration</id>
+			<content type="html">&lt;p&gt;After using &lt;a href='www.linode.com'&gt;linode&lt;/a&gt; host center at Tokyo for a while, I decided to migrate my node to Fremont.&lt;/p&gt;
+
+&lt;p&gt;Linode provide you a &lt;a href='http://www.linode.com/speedtest/'&gt;speedtest page&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is my speed testing result. Those two tasks are started at the same time.&lt;/p&gt;
+
+&lt;pre&gt;
+100MB-tokyo.bin 1.2/100MB, 47 min left
+100MB-fremont.bin 66.5/100MB, 22 secs left
+&lt;/pre&gt;
+
+
+&lt;p&gt;But If I ping the speed test domain:&lt;/p&gt;
+
+&lt;pre&gt;
+$ ping speedtest.tokyo.linode.com
+PING speedtest.tokyo.linode.com (106.187.96.148): 56 data bytes
+64 bytes from 106.187.96.148: icmp_seq=0 ttl=51 time=82.885 ms
+64 bytes from 106.187.96.148: icmp_seq=1 ttl=51 time=77.757 ms
+64 bytes from 106.187.96.148: icmp_seq=2 ttl=51 time=77.919 ms
+
+$ ping speedtest.fremont.linode.com
+PING speedtest.fremont.linode.com (50.116.14.9): 56 data bytes
+64 bytes from 50.116.14.9: icmp_seq=0 ttl=51 time=146.268 ms
+Request timeout for icmp_seq 1
+64 bytes from 50.116.14.9: icmp_seq=2 ttl=51 time=146.403 ms
+64 bytes from 50.116.14.9: icmp_seq=3 ttl=51 time=145.409 ms
+64 bytes from 50.116.14.9: icmp_seq=4 ttl=51 time=146.396 ms
+64 bytes from 50.116.14.9: icmp_seq=5 ttl=51 time=148.467 ms
+&lt;/pre&gt;
+
+
+&lt;p&gt;As you can see the result is totaly different. So which one you can trust?&lt;/p&gt;
+
+&lt;p&gt;The response from linode support:&lt;/p&gt;
+
+&lt;pre&gt;
+Individual packets take less time to travel between our Tokyo datacenter and your location than our Fremont datacenter, but that our Fremont datacenter is able to provide you with faster download speeds to your location. Which location is better for you depends on whether your use case likes decreased latency, or better download speeds.
+&lt;/pre&gt;
+
+
+&lt;p&gt;At last I decide to switch to Fremont anyhow. So Linode provide me a new ip address. The interesting thing comes. My ISP blocked this ip address for some reason. You can find the fail point by using either &quot;traceroute&quot; or &lt;a href='http://library.linode.com/linux-tools/mtr/'&gt;MTR&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So I asked for a new ip address and reboot my node.&lt;/p&gt;
+
+&lt;p&gt;Don't forget to update your hosts file with new ip address to make your application work again. Good luck!&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>年末总结(Dragon Year Wish List)</title>
+			<link href="http://freetofeel.com/2012/01/22/dragon-year.html"/>
+			<updated>2012-01-22T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2012/01/22/dragon-year</id>
+			<content type="html">&lt;p&gt;开始慢慢享受除夕之夜了。最尽意的莫过于总结过去，展望明年。
+今年除夕只是飘着小雪，但家乡依然比上海冷。
+过去的一年我真的努力尝试去喜欢上海，去适应它。尽管为此我已经付出了代价。2011年，身体状况不佳，这个倒是给我提了一个很大的醒。
+2011年10月份开始，着实让我体会到了忙，所有的事情交织在一块，忙的我正事都来不及做了。&lt;/p&gt;
+
+&lt;h3&gt;2011 完成的目标&lt;/h3&gt;
+
+
+
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;del&gt;结婚，自己都觉得不好意思了；&lt;/del&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;下半年装修；&lt;/del&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;完成学车；&lt;/del&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;回家把护照给办了；&lt;/del&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;希望可以在工作中做的更多，得到更大的认可。&lt;/del&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;和亲戚朋友多联系，2010年，我们联系的太少了；&lt;/del&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;争取做一次说的过去的远徒旅行或者国外旅行一次 :-)；&lt;/del&gt;    
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;del&gt;多写点有价值的文章&lt;/del&gt;    
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h3&gt;2011 未完成的事情&lt;/h3&gt;
+
+
+
+
+&lt;ul&gt;
+  &lt;li&gt;
+    上线一个新的产品， 如果有精力将其它几个产品打包上线 -- &lt;br /&gt;事情多蹉跎，这个是我最想做的事情，在最后的几个月只能被搁置，完成率60%。
+  &lt;/li&gt;
+  &lt;li&gt;
+    在互联网上混的更实在，看到这领域太多的肤浅和吹嘘 -- &lt;br /&gt;因为第一次定目标，此目标定的太虚。想的没有用实体表达出来，以至目前无法测量。  
+  &lt;/li&gt;
+  &lt;li&gt;
+    寻找一种锻炼身体的方式，这个是最急切的任务 -- &lt;br /&gt;尝试了去打羽毛球，也确实坚持了半年多，但最后还是级别太低，没能最后坚持下来。  
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h3&gt;2012 TODO LIST：&lt;/h3&gt;
+
+
+
+
+&lt;ul&gt;
+  &lt;li&gt;
+    强身健体第一位，具体目标是锻炼腰部腹部肌肉，提高身体协调能力。
+  &lt;/li&gt;
+  &lt;li&gt;
+    职业发展： &lt;br /&gt;
+    a. 空间的预测;&lt;br /&gt;
+    b. 时间的估计，把持重点;&lt;br /&gt;
+    c. Have a better idea about how to manage team and how to manage company.
+  &lt;/li&gt;
+  &lt;li&gt;
+    增加静心休息的时间。
+  &lt;/li&gt;
+  &lt;li&gt;
+    买车。
+  &lt;/li&gt;
+  &lt;li&gt;
+    读书&gt;=15本；&lt;br /&gt;
+    电影&gt;=5;&lt;br /&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    完成网站建设，其实现在已经不再是为了完成而完成了。练手；练脑；提高思维的整体性，连续性，可扩展性。
+  &lt;/li&gt;
+  &lt;li&gt;
+    蜜月履行。
+  &lt;/li&gt;
+  &lt;li&gt;
+    去年的时间管理基本满意，需要继续坚持下来。
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h3&gt;2012 WISH LIST：&lt;/h3&gt;
+
+
+&lt;p&gt;祝福我，我的家人，我认识的亲戚朋友身体健健康康！&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>How And When To Use Mysql Federated Storage Engine</title>
+			<link href="http://freetofeel.com/2011/08/01/mysql-federated-engine.html"/>
+			<updated>2011-08-01T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2011/08/01/mysql-federated-engine</id>
+			<content type="html">&lt;p&gt;Learned from &lt;a href='http://conferences.oreillynet.com/presentations/mysql06/mixi_update.pdf'&gt;mixi update&lt;/a&gt; that they are using mysql federated engine for db partitioning.&lt;/p&gt;
+
+&lt;pre&gt;
+Use FEDERATED TABLE from MySQL 5.
+Or do SELECT twice which is faster than using FEDERATED TABLEs
+&lt;/pre&gt;
+
+
+&lt;p&gt;&lt;a href='http://dev.mysql.com/doc/refman/5.0/en/federated-storage-engine.html'&gt;Mysql Official document&lt;/a&gt; didn't talk too much about how and when to use federated engine. You can learned more from &lt;a href='http://www.xaprb.com/blog/2007/01/29/mysqls-federated-storage-engine-part-1/'&gt;Mysql Federated storage engine 1&lt;/a&gt; and &lt;a href='http://www.xaprb.com/blog/2007/01/31/mysqls-federated-storage-engine-part-2/'&gt;Mysql Federated storage engine 2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally I find some clues in &lt;a href='http://www.xaprb.com/blog/2007/01/31/mysqls-federated-storage-engine-part-2/'&gt;Mysql Federated storage engine 2&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;
+Strengths:
+
+For example, pretend you have a set of distributed servers working on small parts of a large task, and their results need to be merged back together when done without conflict. Many solutions to this problem involve modulo arithmetic for generating primary keys. This could be a good use of a FEDERATED table: just federate one central table on all the servers, have the processes INSERT into the table, and they’ll get non-conflicting primary key numbers. That’s a trivially easy way to coordinate distributed resource requests.
+
+The way it lets you mis-define tables holds great potential. For example, Giuseppe Maxia has already noted that you can define a FEDERATED table against a view. Views don’t have indexes (yet), but that shouldn’t stop you from telling the engine it does! That way, your WHERE clauses are sent through to the remote server unharmed, where the view can execute GROUP BY queries and the like. Giuseppe even outlines a way to get the remote server to execute arbitrary commands via a FEDERATED table!
+
+What about combinations with replication, triggers and so forth? There must be many more cool hacks waiting to be discovered.
+
+&lt;/pre&gt;
+
+
+&lt;p&gt;And in &lt;a href='http://mysql.lamphost.net/tech-resources/articles/mysql-federated-storage.html'&gt;Accessing Distributed Data with the Federated Storage Engine&lt;/a&gt;, you can find a simple demo that 'merge' two partioned tables into one by creating a view. Although, this is not what I expected. It will still make sense in some cases.&lt;/p&gt;
+
+&lt;p&gt;Still have some questions about how the performance looks like when use view? And what's the limitation of rows or table size when using federated storage engine?&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Form Ajax Submit With Jquery Form Plugin</title>
+			<link href="http://freetofeel.com/2011/07/26/jquery-ajax-file-upload-with-symfony4.html"/>
+			<updated>2011-07-26T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2011/07/26/jquery-ajax-file-upload-with-symfony4</id>
+			<content type="html">&lt;p&gt;I can't remember how I make file ajax upload work last time. So a blog might be the best place to record it.&lt;/p&gt;
+
+&lt;p&gt;Because &lt;a href='http://en.wikipedia.org/wiki/Xmlhttprequest'&gt;XMLHttpRequest&lt;/a&gt; didn't support file upload, and I didn't want to spend much time to hack it. So it might be simple to find a plugin to do it. I compared several plugins supporting file ajax upload.&lt;/p&gt;
+
+&lt;p&gt;At last I choose &lt;a href='http://malsup.com/jquery/form/'&gt;Jquery Form Plugin&lt;/a&gt;. Althrough it didn't sound like it supposed to be. Especially there is file field in your form. And the data format that client communicate with server is &lt;a href='http://en.wikipedia.org/wiki/Json'&gt;json&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So what does it look like?&lt;/p&gt;
+
+&lt;p&gt;JS Client:&lt;/p&gt;
+
+&lt;pre&gt;
+                            var options = {
+                                beforeSubmit: function(formData, jqForm, options) { 
+                                  var queryString = $.param(formData);
+                                    alert('About to submit: \n\n' + queryString); 
+                                    
+                                    for (var i=0; i &lt; formData.length; i++) { 
+                                        if (!formData[i].value) { 
+                                          return false; 
+                                    } 
+                                    } 
+                                },
+                                success: function(data) {
+                                        if(data &amp;&amp; typeof data == 'object'){
+                                            //...
+                                        }
+                                },
+                url:       '/action', 
+                dataType:  'json',
+                clearForm: true
+              }; 
+              
+                            $('#form').ajaxSubmit(options);
+                          return false; 
+&lt;/pre&gt;
+
+
+&lt;p&gt;Symfony Backend:&lt;/p&gt;
+
+&lt;pre&gt;
+
+        $json = json_encode($data);
+        if(!$request-&gt;isXmlHttpRequest()){
+          echo '&amp;lt;textarea&amp;gt;'.$json.'&amp;lt;/textarea&amp;gt;';
+          return sfView::NONE;
+        }else{
+        echo $json;
+          return sfView::NONE;
+        }
+&lt;/pre&gt;
+
+
+&lt;p&gt;You can check &lt;a href='http://malsup.com/jquery/form/#file-upload'&gt;plugin document&lt;/a&gt; to know why you need 'echo &quot;&amp;lt;textarea&amp;gt;&quot;'.  :-D&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Network Sharing Between Ubuntu And IPhone4(China Unicom Contract Version)</title>
+			<link href="http://freetofeel.com/2011/07/02/iphone4-network-sharing-under-ubuntu.html"/>
+			<updated>2011-07-02T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2011/07/02/iphone4-network-sharing-under-ubuntu</id>
+			<content type="html">&lt;p&gt;Find a solution from Internet that can make network sharing between Ubuntu And IPhone4.&lt;/p&gt;
+
+&lt;pre&gt;
+sudo add-apt-repository ppa:pmcenery/ppa
+
+sudo apt-get update
+
+sudo apt-get install gvfs ipheth-dkms ipheth-utils
+&lt;/pre&gt;
+
+
+&lt;p&gt;If you can pass all these steps, and then restart your machine. Bingo!&lt;/p&gt;
+
+&lt;p&gt;You can find more information &lt;a href='http://ivkin.net/2010/05/tethering-ubuntu-lucid-lynx-and-iphone-os/#comment-4790' &gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Restore Lost Commits After Git Hard Reset</title>
+			<link href="http://freetofeel.com/2011/06/22/get-commit-back-after-git-hard-reset.html"/>
+			<updated>2011-06-22T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2011/06/22/get-commit-back-after-git-hard-reset</id>
+			<content type="html">&lt;p&gt;Sometimes, you will make mistakes. But when someone told you there still is a hope that if you try xxxxx. What feeling will you have?&lt;/p&gt;
+
+&lt;p&gt;The following might be one solution after 'git reset --hard' and realized you made a mistake:&lt;/p&gt;
+
+&lt;pre&gt;
+  $ git reflog
+  $ git merge 7c61179
+&lt;/pre&gt;
+
+
+&lt;p&gt;Check the blog post &lt;a href='http://gitready.com/advanced/2009/01/17/restoring-lost-commits.html'&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Replace MySql Table with NoSQL DB</title>
+			<link href="http://freetofeel.com/2011/06/12/nosql-db-try.html"/>
+			<updated>2011-06-12T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2011/06/12/nosql-db-try</id>
+			<content type="html">&lt;h4&gt;Backgroud:&lt;/h4&gt;
+
+
+&lt;p&gt;I am not nosql fans. I don't have the habit to replace whole mysql db with nosql db. But if a mysql table can be replaced with nosql db and expensive queries are generated againest this table, I will give a try of nosql DB.&lt;/p&gt;
+
+&lt;p&gt;In our product, we have a unique user login log table to know how many users logined in a specify date. Here is the table structure:&lt;/p&gt;
+
+&lt;pre&gt;
+  unique_login_logs: 
+    _attributes:  {phpName: UniqueLoginLog}
+    id:
+    user_id: { type: integer }
+    date: { type: date, index: true }
+    created_at:
+    _uniques:
+      unique_date_type: [user_id, date]
+&lt;/pre&gt;
+
+
+&lt;p&gt;The expensive query looks like:&lt;/p&gt;
+
+&lt;pre&gt;
+select date, count(`user_id`) from unique_login_logs group by date order by date desc;'
+&lt;/pre&gt;
+
+
+&lt;p&gt;And the other related operations will be save an entry into this table or check the user entry for a specify date is in the table or not. Nothing more.&lt;/p&gt;
+
+&lt;h4&gt;Choose NoSQL DB from &lt;a href='http://en.wikipedia.org/wiki/NoSQL'&gt;wiki page&lt;/a&gt;: &lt;/h4&gt;
+
+
+
+
+&lt;pre&gt;
+...
+Key-value cache in RAM
+
+    Citrusleaf database
+    memcached
+    Oracle Coherence
+    Redis
+    Tuple space
+    Velocity
+
+Key-value stores implementing the Paxos algorithm
+
+    Keyspace
+
+Key-value stores on disk
+
+    BigTable
+    CDB
+    Citrusleaf database
+    Dynomite
+    Keyspace
+    membase
+    Memcachedb
+    Redis
+    Tokyo Cabinet
+    TreapDB
+    Tuple space
+    MongoDB
+...
+&lt;/pre&gt;
+
+
+&lt;p&gt;For my feature request, I need a disk stored key-value system. I just spend 1 minute to take a look the MongoDB features. It meet my feature requirements. That's enough. If you know more about the other nosql DBs, of course you should choose the one which suit yours best.&lt;/p&gt;
+
+&lt;h4&gt;Try MongoDB&lt;/h4&gt;
+
+
+&lt;p&gt;Step 1: Install MongoDB(http://www.mongodb.org/display/DOCS/Quickstart+Unix);&lt;/p&gt;
+
+&lt;p&gt;Step 2: Simple demo testing:&lt;/p&gt;
+
+&lt;p&gt;create a new db:&lt;/p&gt;
+
+&lt;pre&gt;
+use mydb;
+&lt;/pre&gt;
+
+
+&lt;p&gt;Save an entry:&lt;/p&gt;
+
+&lt;pre&gt;
+db.uniqueLoginLog.save({date: '2011-06-09', user_id: 101});
+db.uniqueLoginLog.save({date: '2011-06-09', user_id: 111});
+db.uniqueLoginLog.save({date: '2011-06-09', user_id: 102});
+..
+db.uniqueLoginLog.save({date: '2011-06-11', user_id: 100});
+db.uniqueLoginLog.save({date: '2011-06-11', user_id: 101});
+db.uniqueLoginLog.save({date: '2011-06-11', user_id: 102});
+&lt;/pre&gt;
+
+
+&lt;p&gt;Group entries by date:&lt;/p&gt;
+
+&lt;pre&gt;
+db.uniqueLoginLog.group(
+           {key: { date:true },
+            reduce: function(obj,prev) { prev.count ++; },
+            initial: { count: 0 }
+            });
+            
+&lt;/pre&gt;
+
+
+&lt;p&gt;The output looks like:&lt;/p&gt;
+
+&lt;pre&gt;
+[
+    {
+        &quot;date&quot; : &quot;2011-01-01&quot;,
+        &quot;count&quot; : 3
+    },
+    {
+        &quot;date&quot; : &quot;2011-01-02&quot;,
+        &quot;count&quot; : 3
+    },
+    {
+        &quot;date&quot; : &quot;2011-01-03&quot;,
+        &quot;count&quot; : 1
+    },
+    {
+        &quot;date&quot; : &quot;2011-01-04&quot;,
+        &quot;count&quot; : 1
+    }
+]
+&lt;/pre&gt;
+
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;With the output, I can do the order in client.&lt;/p&gt;
+
+&lt;h4&gt;Install PHP Mongo Extension&lt;/h4&gt;
+
+
+&lt;p&gt;You can install Mongo PHP extension with pecl command line or install it &lt;a href='http://pecl.php.net/package/mongo'&gt;manually&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;
+&gt; pecl search mongo
+Retrieving data...0%
+Matched packages, channel pecl.php.net:
+=======================================
+Package Stable/(Latest) Local
+mongo   1.1.4 (stable)        MongoDB database driver
+
+&gt; pecl install mongo
+&lt;/pre&gt;
+
+
+
+
+&lt;h4&gt;Get stored items with php function&lt;/h4&gt;
+
+
+&lt;p&gt;PHP code:&lt;/p&gt;
+
+&lt;pre&gt;
+$m = new Mongo();
+
+$db = $m-&gt;mydb;
+
+$collection = $db-&gt;uniqueLoginLog;
+
+
+$obj = array('date'=&gt; '2011-06-09', 'user_id'=&gt; 101);
+$collection-&gt;insert($obj);
+
+
+
+$keys = array(&quot;date&quot; =&gt; 1);
+$initial = array(&quot;count&quot; =&gt; 0);
+$reduce = &quot;function(obj,prev) { prev.count ++; }&quot;;
+$g = $collection-&gt;group($keys, $initial, $reduce);
+
+var_dump($g);
+
+&lt;/pre&gt;
+
+
+&lt;p&gt;Output looks like:&lt;/p&gt;
+
+&lt;pre&gt;
+array(4) {
+  [&quot;retval&quot;]=&gt;
+  array(3) {
+    [0]=&gt;
+    array(2) {
+      [&quot;date&quot;]=&gt;
+      string(10) &quot;2011-06-09&quot;
+      [&quot;count&quot;]=&gt;
+      float(17)
+    }
+    [1]=&gt;
+    array(2) {
+      [&quot;date&quot;]=&gt;
+      string(10) &quot;2011-06-11&quot;
+      [&quot;count&quot;]=&gt;
+      float(10)
+    }
+    [2]=&gt;
+    array(2) {
+      [&quot;date&quot;]=&gt;
+      string(10) &quot;2011-06-10&quot;
+      [&quot;count&quot;]=&gt;
+      float(7)
+    }
+  }
+  [&quot;count&quot;]=&gt;
+  float(34)
+  [&quot;keys&quot;]=&gt;
+  int(3)
+  [&quot;ok&quot;]=&gt;
+  float(1)
+}
+&lt;/pre&gt;
+
+
+
+
+&lt;h4&gt;Deploy to production?&lt;/h4&gt;
+
+
+&lt;p&gt;Until now, the demo is still a toy. If you want to deploy it to production, there are more work need to to be done. Take a look at the &lt;a href='http://www.mongodb.org/display/DOCS/Admin+Zone'&gt;admin zone&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For my feature implemention, I will consider &lt;a href='http://www.mongodb.org/display/DOCS/Replication'&gt;Replication&lt;/a&gt; next step.&lt;/p&gt;
+
+&lt;p&gt;Summary:&lt;/p&gt;
+
+&lt;p&gt;This is not a &lt;a href='http://www.mongodb.org/display/DOCS/Tutorial'&gt;toturial&lt;/a&gt; about how to use MongoDB. It is just a example that can use nosql db in your production.&lt;/p&gt;
+
+&lt;p&gt;Reference:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href='http://try.mongodb.org/'&gt;A Tiny MongoDB Browser Shell (mini tutorial included)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href='https://github.com/mongodb/mongo/tree/master/jstests/'&gt;JsTest&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+		</entry>
+	
+		<entry>
+			<title>When To Use Combine Index</title>
+			<link href="http://freetofeel.com/2011/05/24/mysql-index-merge.html"/>
+			<updated>2011-05-24T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2011/05/24/mysql-index-merge</id>
+			<content type="html">&lt;p&gt;There are already a lot of posts which gave a introduction of what index merge is in MySQL. One of them is:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href='http://brian.moonspot.net/2008/04/22/playing-with-mysql-index-merge/'&gt;Playing with MySQL's index merge&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Today I just noticed the combined index also can be affected by the single column index. For example:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Let's say we have a table named table1 which have 100,000 items. The size of this table is 35MB.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;Table structure:&lt;/p&gt;
+
+&lt;pre&gt;
+CREATE TABLE `table1` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) DEFAULT NULL,
+  `status1` int(11) DEFAULT NULL,
+  `status2` int(11) DEFAULT NULL,
+  `status3` int(11) DEFAULT NULL,
+  `status4` int(11) DEFAULT NULL,
+  `status5` int(11) DEFAULT NULL,
+  `status6` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `table1_name_unique` (`name`),
+  KEY `table1_status1` (`status1`),
+  KEY `table1_status2` (`status2`),
+  KEY `table1_status3` (`status3`),
+  KEY `table1_status4` (`status4`),
+  KEY `table1_status5` (`status5`),
+  KEY `table1_status6` (`status6`),
+  KEY `table1_combine_index` (`status1`,`status2`,`status3`,`status4`,`status5`,`status6``)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+&lt;/pre&gt;
+
+
+&lt;p&gt;We have a query need to select items from table1 table with checking all the status columns in where clause. Let's do a explain:&lt;/p&gt;
+
+&lt;pre&gt;
+explain select * from table1 where status1=1 and status2=1 and status3=1 and status4=1 and status5=1 and status6=1  
+&lt;/pre&gt;
+
+
+&lt;p&gt;Explain result:&lt;/p&gt;
+
+&lt;pre&gt;
+  select_type: SIMPLE
+  table: table1
+  type: index_merge
+  possible_keys: PRIMARY,table1_status1,table1_status2,table1_status3,table1_status4,table1_status5,table1_status6,table1_combine_index
+  key: table1_status1,table1_status2,table1_status3,table1_status4,table1_status5,table1_status6
+  key_len: 1,1,4,4,4,5
+  refs: NULL
+  rows: 1955
+  Extra: Using intersect(table1_status1,table1_status2,table1_status3,table1_status4,table1_status5,table1_status6); Using where
+&lt;/pre&gt;
+
+
+&lt;p&gt;The select query takes &lt;b&gt;3.5ms&lt;/b&gt; by intersecting indexes.&lt;/p&gt;
+
+&lt;p&gt;What happened if we force index to use table1_combine_index:&lt;/p&gt;
+
+&lt;pre&gt;
+explain select * from table1 force index (table1_combine_index)  where status1=1 and status2=1 and status3=1 and status4=1 and status5=1 and status6=1  
+&lt;/pre&gt;
+
+
+&lt;p&gt;Explain result:&lt;/p&gt;
+
+&lt;pre&gt;
+  select_type: SIMPLE
+  table: table1
+  type: ref
+  possible_keys: table1_combine_index
+  key: table1_combine_index
+  key_len: 9
+  refs: const,const
+  rows: 62590
+  Extra: Using where
+&lt;/pre&gt;
+
+
+&lt;p&gt;The select query takes &lt;b&gt;10.5ms&lt;/b&gt; by using combine index.&lt;/p&gt;
+
+&lt;p&gt;In this example, intersecting index is more useful than combine index. There is an article give a more detailed explanation why it works like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href='http://www.mysqlperformanceblog.com/2009/09/19/multi-column-indexes-vs-index-merge/'&gt;Multi Column indexes vs Index Merge&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Now it's time to make this example a little complicated.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;We have another table named table2, the structure looks like:&lt;/p&gt;
+
+&lt;pre&gt;
+CREATE TABLE `table2` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `table1_id` int(11) NOT NULL,
+  `column1` datetime NOT NULL,
+  `column2` varchar(255) NOT NULL,
+  `column3` text,
+  `column4` tinyint(4) NOT NULL,
+  `column5 ` tinyint(4) NOT NULL,
+  `column6 ` tinyint(4) NOT NULL,
+  `column7` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `column7 ` (`column7 `),
+  KEY `table2_FI_1` (`table1_id `)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+&lt;/pre&gt;
+
+
+&lt;p&gt;There are 20,000 rows in table2, with size 11MB. We have a feature request need to join table1 with table2 and sort by table2's id.&lt;/p&gt;
+
+&lt;pre&gt;
+SELECT sql_no_cache * FROM table2 LEFT JOIN table1 ON (table2.table1_id = table1.id) WHERE table1.status1=1 and table1.status2=1 and table1.status3=1 and table1.status4=1 and table1.status5=1 and table1.status6=1 ORDER BY table2.id DESC LIMIT 10;
+&lt;/pre&gt;
+
+
+&lt;p&gt;It takes &lt;b&gt;3s&lt;/b&gt; to finish the query. The explain tells you:&lt;/p&gt;
+
+&lt;pre&gt;
+  select_type: SIMPLE
+  table: table1
+  type: index_merge
+  possible_keys: PRIMARY,`table1_status1`,`table1_status2`,`table1_status3`,`table1_status4`,`table1_status5`,`table1_status6`,`table1_combine_index`
+  key: `table1_status1`,`table1_status2`,`table1_status3`,`table1_status4`,`table1_status5`,`table1_status6`
+  key_len: 1,1,4,4,4,5
+  refs: NULL
+  rows: 1955
+  Extra: Using intersect(`table1_status1`,`table1_status2`,`table1_status3`,`table1_status4`,`table1_status5`,`table1_status6`); Using where
+  
+  ---
+  select_type: SIMPLE
+  table: table2
+  type: ref
+  possible_keys: table2_FI_1
+  key: table2_FI_1
+  key_len: 4
+  refs: table1.id
+  rows: 1
+  Extra:  
+&lt;/pre&gt;
+
+
+&lt;p&gt;Now I want to remove these single column indexes in table1 to see what will happen:&lt;/p&gt;
+
+&lt;pre&gt;
+  select_type: SIMPLE
+  table: table2
+  type: index
+  possible_keys: table2_FI_1
+  key: PRIMARY
+  key_len: 4
+  refs: 
+  rows: 10
+  Extra:
+  
+  ---
+  
+  select_type: SIMPLE
+  table: table1
+  type: eq_ref
+  possible_keys: PRIMARY,table1_combine_index
+  key: PRIMARY
+  key_len: 4
+  refs: table2.table1_id
+  rows: 1
+  Extra: Using where
+&lt;/pre&gt;
+
+
+&lt;p&gt;After removing the single column indexes in table 1, this select query only takes &lt;b&gt;2.4ms&lt;/b&gt;. To explain this, we can simply treat (status1,status2,status3,status4,status5,status6) as one column in table1. I think the single columns indexes affected the 'join' performance. MySQL need to use these single indexes to filter the table1 firstly and then make a join with table2.&lt;/p&gt;
+
+&lt;p&gt;Summary:&lt;/p&gt;
+
+&lt;p&gt;Combine index is not always better than index merge. To know which one is better, explain your query, analyze it and adjust the index.&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Nginx, PHP-FPM, 404 error after upgrading to Ubuntu 11.04</title>
+			<link href="http://freetofeel.com/2011/05/06/upgrade-ubuntu-fpm-404-error.html"/>
+			<updated>2011-05-06T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2011/05/06/upgrade-ubuntu-fpm-404-error</id>
+			<content type="html">&lt;p&gt;After upgrading from ubuntu 10.10 to ubuntu 11.04 my local site didn't work anymore. It reponsed with a 404 page.&lt;/p&gt;
+
+&lt;p&gt;After researcing for a while, I found the root should be put outside the location property:
+Before:&lt;/p&gt;
+
+&lt;pre&gt;
+server {
+  server_name  localhost;
+
+  location / {
+        root   /var/www;
+        index  index.php index.html index.htm;
+    }
+ ....
+}
+
+&lt;/pre&gt;
+
+
+&lt;p&gt;After:&lt;/p&gt;
+
+&lt;pre&gt;
+server {
+
+  root   /var/www;
+  index  index.php index.html index.htm;
+  server_name  localhost;
+
+ ....
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;Now it works, but have no idea what has been changed since Ubuntu upgrade.&lt;/p&gt;
+</content>
+		</entry>
 	
 		<entry>
 			<title>Solve Wireless Issue When Upgrading From 10.10 to 11.04</title>
@@ -21,7 +1194,10 @@
 
 &lt;p&gt;The first step, I was using &lt;a href=&quot;https://help.ubuntu.com/community/WifiDocs/WirelessTroubleShootingGuide&quot;&gt;ubuntu trouble shooting&lt;/a&gt; to detect the issue.&lt;/p&gt;
 
-&lt;p&gt;a. Detail whether there are software or hardware blocks on your rf devices. To get a list of devices and their hardware and software status, try &quot;sudo rfkill list&quot;.&lt;/p&gt;
+&lt;ol type=&quot;a&quot;&gt;
+&lt;li&gt;Detail whether there are software or hardware blocks on your rf devices. To get a list of devices and their hardware and software status, try &quot;sudo rfkill list&quot;.&lt;/li&gt;
+&lt;/ol&gt;
+
 
 &lt;pre&gt;
 ~$ sudo rfkill list
@@ -33,7 +1209,10 @@
 
 &lt;p&gt;Unblock your devices by &quot;sudo rfkill unblock 0&quot;.&lt;/p&gt;
 
-&lt;p&gt;b. Check for Device Recognition for my HP laptop(amd64)&lt;/p&gt;
+&lt;ol type=&quot;a&quot;&gt;
+&lt;li&gt;Check for Device Recognition for my HP laptop(amd64)&lt;/li&gt;
+&lt;/ol&gt;
+
 
 &lt;pre&gt;
 ~$ sudo lshw -C network
@@ -77,7 +1256,10 @@
 
 &lt;p&gt;If your driver was not loaded, you can load it by &quot;sudo modprobe &lt;module&gt;&quot;&lt;/p&gt;
 
-&lt;p&gt;c. Identify PCI devices with PCI ID.&lt;/p&gt;
+&lt;ol type=&quot;a&quot;&gt;
+&lt;li&gt;Identify PCI devices with PCI ID.&lt;/li&gt;
+&lt;/ol&gt;
+
 
 &lt;pre&gt;
 ~$ sudo lspci -v | grep Ethernet
@@ -88,11 +1270,17 @@
 &lt;/pre&gt;
 
 
-&lt;p&gt;d. Check the addtional drivers, I found &quot;Broadcom STA wireless driver&quot; was using.&lt;/p&gt;
+&lt;ol type=&quot;a&quot;&gt;
+&lt;li&gt;Check the addtional drivers, I found &quot;Broadcom STA wireless driver&quot; was using.&lt;/li&gt;
+&lt;/ol&gt;
+
 
 &lt;p&gt;Everything looks good until now. Driver was working and was recognized. So I guess the issue might be the compatibility with new kernel?&lt;/p&gt;
 
-&lt;p&gt;e. With the help from google.&lt;/p&gt;
+&lt;ol type=&quot;a&quot;&gt;
+&lt;li&gt;With the help from google.&lt;/li&gt;
+&lt;/ol&gt;
+
 
 &lt;p&gt;i). Someone solve it by install &lt;a herf=&quot;http://ubuntuforums.org/showthread.php?t=1653157&quot;&gt;linux-backports-modules-wireless-maverick-generic&lt;/a&gt;. It is interesting to know what &lt;a hef=&quot;https://help.ubuntu.com/community/UbuntuBackports&quot;&gt;backports&lt;/a&gt; is.&lt;/p&gt;
 
@@ -636,15 +1824,14 @@ Memcached memory allocation: a slab has many pages. One page has many chunks. Ea
 			<content type="html">&lt;p&gt;My network-manager works fine. You can test by &lt;code&gt;sudo service network-manager start/stop&lt;/code&gt;. And my wireless network can be found by &lt;code&gt;sudo iwlist  scan&lt;/code&gt;.
 So there are two solutions:&lt;/p&gt;
 
-&lt;ul&gt;
+&lt;p&gt;&lt;ul&gt;
 &lt;li&gt;Right click the top panel and click 'add to panel' and select 'notifications area'. If this didn't work,then netstep:
 &lt;/li&gt;
 &lt;li&gt;
 &lt;code&gt;sudo vim /etc/NetworkManager/nm-sysmte-settings.conf&lt;/code&gt;. Modify false to true.
-&lt;code&gt;sudo service network-manager restart&lt;/code&gt;
+&lt;code&gt;sudo service network-manager restart&lt;/code&gt;&lt;/p&gt;
 
-In my ubuntu 10.10, after these trys, the wireless icon displayed in the panel again. Good luck to you.
-
+&lt;p&gt;In my ubuntu 10.10, after these trys, the wireless icon displayed in the panel again. Good luck to you.&lt;/p&gt;
 </content>
 		</entry>
 	
@@ -674,34 +1861,41 @@ Add &lt;a href='http://disqus.com'&gt;comment service&lt;/a&gt; into my blog.&lt
 &lt;/ol&gt;
 
 
-&lt;ul&gt;
-    &lt;li&gt;
-When importing data into InnoDB, make sure that MySQL does not have autocommit mode enabled because that requires a log flush to disk for every insert. To disable autocommit during your import operation, surround it with SET autocommit and COMMIT statements:
+&lt;p&gt;&lt;ul&gt;&lt;/p&gt;
 
-&lt;code&gt;SET autocommit=0;
+&lt;pre&gt;&lt;code&gt;&amp;lt;li&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When importing data into InnoDB, make sure that MySQL does not have autocommit mode enabled because that requires a log flush to disk for every insert. To disable autocommit during your import operation, surround it with SET autocommit and COMMIT statements:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;SET autocommit=0;
 ... SQL import statements ...
-COMMIT;&lt;/code&gt;
+COMMIT;&lt;/code&gt;&lt;/p&gt;
 
-If you use the mysqldump option --opt, you get dump files that are fast to import into an InnoDB  table, even without wrapping them with the SET autocommit and COMMIT statements. &lt;/li&gt;
-    &lt;li&gt;If you have UNIQUE constraints on secondary keys, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by temporarily turning off the uniqueness checks during the import session:
+&lt;p&gt;If you use the mysqldump option --opt, you get dump files that are fast to import into an InnoDB  table, even without wrapping them with the SET autocommit and COMMIT statements. &lt;/li&gt;&lt;/p&gt;
 
-&lt;code&gt;SET unique_checks=0;
+&lt;pre&gt;&lt;code&gt;&amp;lt;li&amp;gt;If you have UNIQUE constraints on secondary keys, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by temporarily turning off the uniqueness checks during the import session:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;SET unique_checks=0;
 ... SQL import statements ...
-SET unique_checks=1;&lt;/code&gt;
+SET unique_checks=1;&lt;/code&gt;&lt;/p&gt;
 
-For big tables, this saves a lot of disk I/O because InnoDB can use its insert buffer to write secondary index records in a batch. Be certain that the data contains no duplicate keys.&lt;/li&gt;
-    &lt;li&gt;#
+&lt;p&gt;For big tables, this saves a lot of disk I/O because InnoDB can use its insert buffer to write secondary index records in a batch. Be certain that the data contains no duplicate keys.&lt;/li&gt;&lt;/p&gt;
 
-If you have FOREIGN KEY constraints in your tables, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by turning the foreign key checks off for a while in the import session:
+&lt;pre&gt;&lt;code&gt;&amp;lt;li&amp;gt;#
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you have FOREIGN KEY constraints in your tables, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by turning the foreign key checks off for a while in the import session:
 &lt;code&gt;
 SET foreign_key_checks=0;
 ... SQL import statements ...
-SET foreign_key_checks=1;&lt;/code&gt;
+SET foreign_key_checks=1;&lt;/code&gt;&lt;/p&gt;
 
-For big tables, this can save a lot of disk I/O.
-&lt;/li&gt;
+&lt;p&gt;For big tables, this can save a lot of disk I/O.
+&lt;/li&gt;&lt;/p&gt;
 
-If the above solution still can not quick your import process. Try &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.0/en/mysqlimport.html&quot;&gt;mysqlimport&lt;/a&gt;.  You can use mysqldump to dump a sql file and a text file. There is an example, look like this:
+&lt;p&gt;If the above solution still can not quick your import process. Try &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.0/en/mysqlimport.html&quot;&gt;mysqlimport&lt;/a&gt;.  You can use mysqldump to dump a sql file and a text file. There is an example, look like this:
 &lt;pre name='code' class='sql'&gt;
 shell&gt; mysql -e 'CREATE TABLE imptest(id INT, n VARCHAR(30))' test
 shell&gt; ed
@@ -724,10 +1918,9 @@ shell&gt; mysql -e 'SELECT * FROM imptest' test
 +------+---------------+
 |  100 | Max Sydow     |
 |  101 | Count Dracula |
-+------+---------------+
++------+---------------+&lt;/p&gt;
 
-&lt;/pre&gt;
-
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;
 </content>
 		</entry>
 	
@@ -1559,13 +2752,12 @@ RT @jasontsui: 交通大学消息人士透露，交大被挑选6名学生参加�
 			<content type="html">&lt;p&gt;Most projects will add notes like '..don't forget to change the &quot;cache&quot; folder permission: $chmod -R 777 xxx' in their project install guide.
 But have you noticed that there are still a lot of users will ask the same question in their project forums? Yes, the solution is simple and easier. but why not make the simple thing more easier?&lt;/p&gt;
 
-&lt;pre name='code' class='php'&gt;
+&lt;p&gt;&lt;pre name='code' class='php'&gt;
 chmod($options['file'], isset($options['file_mode']) ? $options['file_mode'] : 0666);
 mkdir($dir, isset($options['dir_mode']) ? $options['dir_mode'] : 0777, true);
-&lt;/pre
+&amp;lt;/pre
 These code comes from symfony source code. It make me feels good in the installation process.
-It is easier to make this permission modification process transparent for your user. 
-
+It is easier to make this permission modification process transparent for your user.&lt;/p&gt;
 </content>
 		</entry>
 	
@@ -1631,7 +2823,8 @@ sh ./install.sh
 			<link href="http://freetofeel.com/2009/11/06/blowing-in-the-wind.html"/>
 			<updated>2009-11-06T00:00:00+08:00</updated>
 			<id>http://freetofeel.com/2009/11/06/blowing-in-the-wind</id>
-			<content type="html">&lt;p&gt;&lt;object height=&quot;100&quot; width=&quot;400&quot; align=&quot;middle&quot; codebase=&quot;http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot;&gt;&lt;param value=&quot;best&quot; name=&quot;quality&quot;/&gt;&lt;param value=&quot;never&quot; name=&quot;allowScriptAccess&quot;/&gt;&lt;param value=&quot;true&quot; name=&quot;allowFullScreen&quot;/&gt;&lt;param value=&quot;transparent&quot; name=&quot;wmode&quot;/&gt;&lt;param value=&quot;http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;amp;playerID=10&amp;amp;bg=0xeeeeee&amp;amp;leftbg=0x99ff00&amp;amp;lefticon=0x666666&amp;amp;rightbg=0x666666&amp;amp;rightbghover=0x99ff00&amp;amp;righticon=0xffffff&amp;amp;righticonhover=0xffffff&amp;amp;text=0x666666&amp;amp;slider=0x666666&amp;amp;track=0xFFFFFF&amp;amp;border=0x666666&amp;amp;loader=0x99ff00&amp;amp;loop=no&amp;amp;autostart=no&quot; name=&quot;movie&quot;/&gt;&lt;embed height=&quot;100&quot; width=&quot;400&quot; pluginspage=&quot;http://www.macromedia.com/go/getflashplayer&quot; flashvars=&quot;playerMode=embedded&quot; wmode=&quot;transparent&quot; bgcolor=&quot;#ffffff&quot; quality=&quot;best&quot; allowfullscreen=&quot;true&quot; allowscriptaccess=&quot;never&quot; src=&quot;http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;amp;playerID=10&amp;amp;bg=0xeeeeee&amp;amp;leftbg=0x99ff00&amp;amp;lefticon=0x666666&amp;amp;rightbg=0x666666&amp;amp;rightbghover=0x99ff00&amp;amp;righticon=0xffffff&amp;amp;righticonhover=0xffffff&amp;amp;text=0x666666&amp;amp;slider=0x666666&amp;amp;track=0xFFFFFF&amp;amp;border=0x666666&amp;amp;loader=0x99ff00&amp;amp;loop=no&amp;amp;autostart=no&quot; type=&quot;application/x-shockwave-flash&quot;/&gt;&lt;/object&gt;&lt;/p&gt;
+			<content type="html">&lt;object height=&quot;100&quot; width=&quot;400&quot; align=&quot;middle&quot; codebase=&quot;http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot;&gt;&lt;param value=&quot;best&quot; name=&quot;quality&quot;/&gt;&lt;param value=&quot;never&quot; name=&quot;allowScriptAccess&quot;/&gt;&lt;param value=&quot;true&quot; name=&quot;allowFullScreen&quot;/&gt;&lt;param value=&quot;transparent&quot; name=&quot;wmode&quot;/&gt;&lt;param value=&quot;http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;amp;playerID=10&amp;amp;bg=0xeeeeee&amp;amp;leftbg=0x99ff00&amp;amp;lefticon=0x666666&amp;amp;rightbg=0x666666&amp;amp;rightbghover=0x99ff00&amp;amp;righticon=0xffffff&amp;amp;righticonhover=0xffffff&amp;amp;text=0x666666&amp;amp;slider=0x666666&amp;amp;track=0xFFFFFF&amp;amp;border=0x666666&amp;amp;loader=0x99ff00&amp;amp;loop=no&amp;amp;autostart=no&quot; name=&quot;movie&quot;/&gt;&lt;embed height=&quot;100&quot; width=&quot;400&quot; pluginspage=&quot;http://www.macromedia.com/go/getflashplayer&quot; flashvars=&quot;playerMode=embedded&quot; wmode=&quot;transparent&quot; bgcolor=&quot;#ffffff&quot; quality=&quot;best&quot; allowfullscreen=&quot;true&quot; allowscriptaccess=&quot;never&quot; src=&quot;http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;amp;playerID=10&amp;amp;bg=0xeeeeee&amp;amp;leftbg=0x99ff00&amp;amp;lefticon=0x666666&amp;amp;rightbg=0x666666&amp;amp;rightbghover=0x99ff00&amp;amp;righticon=0xffffff&amp;amp;righticonhover=0xffffff&amp;amp;text=0x666666&amp;amp;slider=0x666666&amp;amp;track=0xFFFFFF&amp;amp;border=0x666666&amp;amp;loader=0x99ff00&amp;amp;loop=no&amp;amp;autostart=no&quot; type=&quot;application/x-shockwave-flash&quot;/&gt;&lt;/object&gt;
+
 
 &lt;pre&gt;&lt;code&gt;How many roads must a man walk down  一个人要经历多长的旅途
 
@@ -1720,17 +2913,22 @@ The most important part of Google Wave uses jQuery: &lt;a href=&quot;http://j.mp
 			<link href="http://freetofeel.com/2009/10/31/one-week-review.html"/>
 			<updated>2009-10-31T00:00:00+08:00</updated>
 			<id>http://freetofeel.com/2009/10/31/one-week-review</id>
-			<content type="html">&lt;ul&gt;
-    &lt;li&gt;&lt;strong&gt;YUI Conference&lt;/strong&gt; has been closed recently. There are a lot of valuable &lt;a href=&quot;http://yuilibrary.com/yuiconf2009/&quot;&gt;presentation&lt;/a&gt;.&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;http://www.douban.com/subject/3673223/&quot;&gt;Coders at Work&lt;/a&gt;&lt;/strong&gt; - &lt;br /&gt;&lt;em&gt;&lt;strong&gt;What you’ll learn&lt;/strong&gt;&lt;/em&gt;&lt;br /&gt;
-How the best programmers in the world do their job&lt;br /&gt;
-&lt;em&gt;&lt;strong&gt;Who is this book for?&lt;/strong&gt;&lt;/em&gt;&lt;br /&gt;
-Programmers interested in the point of view of leaders in the field. Programmers looking for approaches that work for some of these outstanding programmers.&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://couchdb.apache.org/&quot;&gt;CouchDB&lt;/a&gt; - The first database that I have known that can be operated by Javascript. Key-value stored, http, json to connect and read... &lt;br /&gt;&lt;a href=&quot;http://www.freetofeel.com/2009/10/one-week-review/sketch/&quot; rel=&quot;attachment wp-att-269&quot;&gt;&lt;img src=&quot;http://www.freetofeel.com/wp-content/uploads/2009/10/sketch.png&quot; alt=&quot;sketch&quot; title=&quot;sketch&quot; width=&quot;292&quot; height=&quot;340&quot; class=&quot;aligncenter size-full wp-image-269&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://bret.appspot.com/entry/how-friendfeed-uses-mysql&quot;&gt;How FriendFeed uses MySQL to store schema-less data&lt;/a&gt;&lt;ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+			<content type="html">&lt;p&gt;&lt;ul&gt;&lt;/p&gt;
 
+&lt;pre&gt;&lt;code&gt;&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;YUI Conference&amp;lt;/strong&amp;gt; has been closed recently. There are a lot of valuable &amp;lt;a href=&quot;http://yuilibrary.com/yuiconf2009/&quot;&amp;gt;presentation&amp;lt;/a&amp;gt;.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;a href=&quot;http://www.douban.com/subject/3673223/&quot;&amp;gt;Coders at Work&amp;lt;/a&amp;gt;&amp;lt;/strong&amp;gt; - &amp;lt;br /&amp;gt;&amp;lt;em&amp;gt;&amp;lt;strong&amp;gt;What you’ll learn&amp;lt;/strong&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;br /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;How the best programmers in the world do their job&lt;br /&gt;
+&lt;em&gt;&lt;strong&gt;Who is this book for?&lt;/strong&gt;&lt;/em&gt;&lt;br /&gt;
+Programmers interested in the point of view of leaders in the field. Programmers looking for approaches that work for some of these outstanding programmers.&lt;/li&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;li&amp;gt;&amp;lt;a href=&quot;http://couchdb.apache.org/&quot;&amp;gt;CouchDB&amp;lt;/a&amp;gt; - The first database that I have known that can be operated by Javascript. Key-value stored, http, json to connect and read... &amp;lt;br /&amp;gt;&amp;lt;a href=&quot;http://www.freetofeel.com/2009/10/one-week-review/sketch/&quot; rel=&quot;attachment wp-att-269&quot;&amp;gt;&amp;lt;img src=&quot;http://www.freetofeel.com/wp-content/uploads/2009/10/sketch.png&quot; alt=&quot;sketch&quot; title=&quot;sketch&quot; width=&quot;292&quot; height=&quot;340&quot; class=&quot;aligncenter size-full wp-image-269&quot; /&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;a href=&quot;http://bret.appspot.com/entry/how-friendfeed-uses-mysql&quot;&amp;gt;How FriendFeed uses MySQL to store schema-less data&amp;lt;/a&amp;gt;&amp;lt;ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
 </content>
 		</entry>
 	
@@ -1815,10 +3013,10 @@ But why the translation words was added into Get parameter in first case? The on
 			<id>http://freetofeel.com/2009/10/25/query-performance-optimization</id>
 			<content type="html">&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Simple Treatment Method for a bad query is accessing less data and fecting less columns.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;In MySQL, the simplest query cost metrics are:
-a. Execution time
-b. Number of rows examined
-c. Number of rows returned&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;In MySQL, the simplest query cost metrics are:&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Execution time&lt;/li&gt;
+&lt;li&gt;Number of rows examined&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Number of rows returned&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;The access types range from a full table scan to index scans, range scans, unique index lookups, and constants. Each of these is faster than the one before it. If you aren’t getting a good access type, the best way to solve the problem is usually by adding an appropriate index.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Duplicated test record with a cool SQL:
 Assuming there was serval record in your table 'animals[id,animal_type , animal_name]'&lt;/p&gt;
@@ -2087,10 +3285,10 @@ calculateEmployeeAverageAge(new Person());
 			<updated>2009-10-18T00:00:00+08:00</updated>
 			<id>http://freetofeel.com/2009/10/18/schema-optimization-and-indexing</id>
 			<content type="html">&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Choosing Data Type &gt;
-a. Smaller is usually better;
-b. Simple is good;
-c. Avoid NULL if possible - When a nullable column is indexed, it requires an extra byte per entry and can even cause a fixed-size index;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Choosing Data Type &gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Smaller is usually better;&lt;/li&gt;
+&lt;li&gt;Simple is good;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Avoid NULL if possible - When a nullable column is indexed, it requires an extra byte per entry and can even cause a fixed-size index;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Two kinds of numbers: whole numbers and real numbers (numbers with a fractional part)
 TINYINT, SMALLINT, MEDIUMINT, INT, or BIGINT. These require 8, 16, 24, 32, and 64 bits of storage space. Signed and unsigned types use the same amount of storage space and have the same performance, so use whatever’s best for your data range.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;MySQL lets you specify a “width” for integer types, such as INT(11). &amp;lt;@author:Oh, I was cheated!&gt;This is meaningless for most applications: it does not restrict the legal range of values, but simply specifies the number of characters MySQL’s interactive tools (such as the commandline client) will reserve for display purposes. For storage and computational purposes, INT(1) is identical to INT(20).&lt;/p&gt;&lt;/li&gt;
@@ -2514,9 +3712,9 @@ Falcon. solidDB and PBXT.&lt;/p&gt;&lt;/li&gt;
 MySQL operates in AUTOCOMMIT mode by default. It automatically executes each query in a separate transaction.
 MyISAM or Memory tables -  essentially always operate in AUTOCOMMIT mode.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;You can’t reliably mix different engines in a single transaction. If you mix transactional and nontransactional tables (for instance, InnoDB and MyISAM tables) in a transaction, the transaction will work properly if all goes well. However, if a rollback is required, the changes to the nontransactional table can’t be undone.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;InnoDB also supports explicit locking, which the SQL standard does not mention at all:
-a. SELECT ... LOCK IN SHARE MODE
-b. SELECT ... FOR UPDATE&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;InnoDB also supports explicit locking, which the SQL standard does not mention at all:&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;SELECT ... LOCK IN SHARE MODE&lt;/li&gt;
+&lt;li&gt;SELECT ... FOR UPDATE&lt;/li&gt;
 &lt;/ol&gt;
 
 
@@ -2576,8 +3774,8 @@ An NDB database consists of data nodes, management nodes, and SQL nodes (MySQL i
 The goal is to use Maria as a replacement for MyISAM, which is currently MySQL’s default storage engine.&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Table Conversions &gt;
-a. mysql&gt; ALTER TABLE mytable ENGINE = Falcon;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Table Conversions &gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;mysql&gt; ALTER TABLE mytable ENGINE = Falcon;&lt;/li&gt;
 &lt;/ol&gt;
 
 </content>

@@ -39,11 +39,14 @@
     <div class="contact">
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
+				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
 				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
 			</div>
 			<div class="rss">
+                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
 				<p>
 				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
 				</p>
@@ -64,82 +67,208 @@
 <div class="post">
   <ul class="content">
 		
-			<div class="post" id="postid-/2009/05/10/damnapachphpwindows-parent-created-child-process-357852">
-				<h3 class="title"><a href="/2009/05/10/damnapachphpwindows-parent-created-child-process-357852.html">Damn!Apach+PHP+Windows = Parent: Created child process 357852</a></h3>
+			<div class="post" id="postid-/2009/07/08/whats-web-os">
+				<h3 class="title"><a href="/2009/07/08/whats-web-os.html">Whats web OS?</a></h3>
 				
-				<p><strong>Parent: Created child process 357852</strong></p>
-
-<p>C:\Program Files\Apache Software Foundation\Apache2.2\logs\error.log</p>
-
-<blockquote>[Sun May 10 10:55:35 2009] [warn] pid file C:/Program Files/Apache Software Foundation/Apache2.2/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
-[Sun May 10 10:55:35 2009] [notice] Apache/2.2.6 (Win32) PHP/5.2.6 configured -- resuming normal operations
-[Sun May 10 10:55:35 2009] [notice] Server built: Sep  5 2007 08:58:56
-[Sun May 10 10:55:35 2009] [notice] Parent: Created child process 357852
-[Sun May 10 10:55:36 2009] [notice] Child 357852: Child process is running
-[Sun May 10 10:55:36 2009] [notice] Child 357852: Acquired the start mutex.
-[Sun May 10 10:55:36 2009] [notice] Child 357852: Starting 250 worker threads.
-[Sun May 10 10:55:36 2009] [notice] Child 357852: Starting thread to listen on port 80.
-[Sun May 10 10:57:28 2009] [notice] Parent: Received restart signal -- Restarting the server.
-[Sun May 10 10:57:28 2009] [notice] Child 357852: Exit event signaled. Child process is ending.
-[Sun May 10 10:57:29 2009] [notice] Child 357852: Released the start mutex
-[Sun May 10 10:57:30 2009] [notice] Child 357852: Waiting for 250 worker threads to exit.
-[Sun May 10 10:57:30 2009] [notice] Child 357852: All worker threads have exited.
-[Sun May 10 10:57:30 2009] [notice] Child 357852: Child process is exiting</blockquote>
-
-
-<p>To resolve this , take a look at this:</p>
-
-<blockquote>If you are getting this error, you are probably trying to use Apache, MySQL and PHP in a windows system. Just do this simple step to solve this issue.
-
-It is quite frustrating to see that all your PHP pages suddenly doesn't seem to work. If you check your Apache log file you will see this error: Parent: child process exited with status 3221225477 -- Restarting
-
-Don't worry just goto the PHP installation folder and look for libmysql.dll file.<span class="Apple-converted-space"> </span>
-
-Just copy this file and save it to your windows\system32 folder.
-
-Now restart MySQL and Apache servers.
-
-Everything should be fine now and all your PHP pages will work as normal.</blockquote>
-
+				<p>We known Google announced its <a href="http://googleblog.blogspot.com/2009/07/introducing-google-chrome-os.html">web OS</a> based on Chrome. As I have discussed this about two years ago with my colleagues, Web OS is the trending of the Operation System. What we need is a machine without hard disk, just strongest CPU and a network port. All the files, maybe we will call it data in Web OS era, will be stored in a data center. Every time when we start our machine, the Web OS opened. What we will do is remote. Calculation is remote, Storage is remote and Service is remote. I think the Cloud will be part of the data center at that time. There will be computer concept. What we needed is just an end point. Everything became simple , effective and worldwide shared.</p>
 
 
 				<div class="post-metadata">
-					May 10, 2009 | 
-					<a href='/2009/05/10/damnapachphpwindows-parent-created-child-process-357852.html#disqus_thread'>View Comments</a>
+					July 08, 2009 | 
+					<a href='/2009/07/08/whats-web-os.html#disqus_thread'>View Comments</a>
 					 
 				</div>
 
 			</div>
 		
-			<div class="post" id="postid-/2009/05/09/hello-world">
-				<h3 class="title"><a href="/2009/05/09/hello-world.html">JQuery validate password function can not work on Firefox3.1.10</a></h3>
+			<div class="post" id="postid-/2009/07/06/twitter-weekly-updates-for-2009-07-06">
+				<h3 class="title"><a href="/2009/07/06/twitter-weekly-updates-for-2009-07-06.html">Twitter Weekly Updates for 2009-07-06</a></h3>
 				
-				<p>When I use JQuery(Revision: 6246) with firefox 3.0.10, I found it is difficulty to validate the password field.
-//js code
-"data[User][password]": {
-required: true,
-minlength: 6,
-maxlength: 15
-},
-"data[User][confirmPassword]": {
-required: true,
-minlength: 6,
-maxlength: 15,
-equalTo: "#UserPassword"
-},
-//code end
-The error happened at line 1040 of jquery.validate.js
-//code
-equalTo: function(value, element, param) {
-return value == $(param).val();
-}
-//end
-The '$(param).val()' here is always empty. I test this on Chrome, it works fine there.</p>
+				<ul class="aktt_tweet_digest">
+    <li><a href="http://tinyurl.com/ngf92d" rel="nofollow">http://tinyurl.com/ngf92d</a> - The probability that you will change a piece of code in the near future increases when you make changes to... <a href="http://twitter.com/Joshua_C/statuses/2420039633">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
 
 
 				<div class="post-metadata">
-					May 09, 2009 | 
-					<a href='/2009/05/09/hello-world.html#disqus_thread'>View Comments</a>
+					July 06, 2009 | 
+					<a href='/2009/07/06/twitter-weekly-updates-for-2009-07-06.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app">
+				<h3 class="title"><a href="/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app.html">After auto redirect from PayPal, the session was lost[Cake App]</a></h3>
+				
+				<p>Reproduce steps:</p>
+
+<ol>
+<li>Customer login <a href="https://www.mysite.com">my site</a>;</li>
+<li>Choose a product and redirect to <a href="https://developer.paypal.com/cgi-bin/devscr">Paypal sandbox site</a> to complete the payment;</li>
+<li>After the payment, the customer will be auto redirected to my site;</li>
+<li>And then the customer session was lost.</li>
+</ol>
+
+
+<p>I found the fail reason.</p>
+
+<pre name="code" class="php">
+function __initSession() {
+    $iniSet = function_exists('ini_set');
+
+    if ($iniSet && env('HTTPS')) {
+        ini_set('session.cookie_secure', 1); 
+    } 
+    switch ($this->security) {
+     case 'high': $this->cookieLifeTime = 0;
+     if ($iniSet) {
+     ini_set('session.referer_check', $this->host);
+     } 
+     break;
+     case 'medium': $this->cookieLifeTime = 7 * 86400;
+     if ($iniSet) {
+     ini_set('session.referer_check', $this->host);
+     } 
+     break;
+     case 'low': default: $this->cookieLifeTime = 788940000; break;
+    }
+}
+</pre>
+
+
+<p>If you set the security level 'high' or 'medium' , the session wil be renewed.</p>
+
+<p>A piece of comment from a guy in php.net:</p>
+
+<pre name="code" class="html">
+If you have a value specified for session.referer_check you may run into difficulty when someone accesses your site and attempts to log in with a mis-capitalized URL.  
+The logon will fail because any calls to session_start() will result in the existing session being trashed and a new one being created.  This becomes a bigger problem when the logon is followed by a header("Location: ...") redirect, because the session_start() at the top of the page will fail.</pre>
+
+
+<p>So now , I have to avoid to use the refer_check.</p>
+
+
+				<div class="post-metadata">
+					June 30, 2009 | 
+					<a href='/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/06/29/vbox-this-kernel-requires-the-following-features-not-present-on-the-cpupae">
+				<h3 class="title"><a href="/2009/06/29/vbox-this-kernel-requires-the-following-features-not-present-on-the-cpupae.html">VBOX: this kernel requires the following features not present on the CPU:pae</a></h3>
+				
+				<p>Solution:
+In the main window of VirtualBox->settings->General selection on the left->the Advanced tab on the right.
+Enable PAE/NX is in the middle of the window in Extended Features.</p>
+
+
+				<div class="post-metadata">
+					June 29, 2009 | 
+					<a href='/2009/06/29/vbox-this-kernel-requires-the-following-features-not-present-on-the-cpupae.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/06/29/twitter-weekly-updates-for-2009-06-29">
+				<h3 class="title"><a href="/2009/06/29/twitter-weekly-updates-for-2009-06-29.html">Twitter Weekly Updates for 2009-06-29</a></h3>
+				
+				<ul class="aktt_tweet_digest">
+    <li>看到baidu blog上面一大堆的我顶我顶,让我想到可以诱导中国一大堆没有脱离幼稚的网民群体来给网站带点PV <a href="http://twitter.com/Joshua_C/statuses/2370909243">#</a></li>
+    <li><a href="http://bit.ly/bZs7T" rel="nofollow">http://bit.ly/bZs7T</a>
+ -- 早就有意识,这个只要大牌进来,所有的就只能喝汤 <a href="http://twitter.com/Joshua_C/statuses/2366023451">#</a></li>
+    <li><a href="http://bit.ly/ykdz6" rel="nofollow">http://bit.ly/ykdz6</a>
+ //旁边的还不自觉爆掉?留着干嘛 <a href="http://twitter.com/Joshua_C/statuses/2355885796">#</a></li>
+    <li>每行数据都有自己的版本控制 <a href="http://twitter.com/Joshua_C/statuses/2340868290">#</a></li>
+    <li>都是在强调写unit test的重要性，是不是应该有篇文档强调什么条件下是没有必要对一个方法一个模块写unit test的。低效的，收获甚微的。 <a href="http://twitter.com/Joshua_C/statuses/2336566494">#</a></li>
+    <li>既然是鸡肋,既不能当钢筋混凝土使 <a href="http://twitter.com/Joshua_C/statuses/2327036145">#</a></li>
+    <li>我决定把以前所有在网络上看得资料都download下来,准备过冬 <a href="http://twitter.com/Joshua_C/statuses/2325049439">#</a></li>
+    <li>unit test - 鸡肋 <a href="http://twitter.com/Joshua_C/statuses/2323740503">#</a></li>
+    <li>consensus driven development // ? <a href="http://twitter.com/Joshua_C/statuses/2323517357">#</a></li>
+    <li>Timelines bad, stability good -- cool <a href="http://twitter.com/Joshua_C/statuses/2323487490">#</a></li>
+    <li>replace of yslow <a href="http://bit.ly/rPV07" rel="nofollow">http://bit.ly/rPV07</a> <a href="http://twitter.com/Joshua_C/statuses/2320278819">#</a></li>
+    <li>为啥还是时段时序呢,... <a href="http://twitter.com/Joshua_C/statuses/2311900925">#</a></li>
+    <li>test <a href="http://twitter.com/Joshua_C/statuses/2291346432">#</a></li>
+    <li>RT: @mason_hzx: @<a href="http://twitter.com/Joshua_C">Joshua_C</a> 你是在说google? 不是，只是看到别人的帖子 <a href="http://twitter.com/Joshua_C/statuses/2287766859">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+				<div class="post-metadata">
+					June 29, 2009 | 
+					<a href='/2009/06/29/twitter-weekly-updates-for-2009-06-29.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/06/29/the-failed-requests-in-apachebench-test">
+				<h3 class="title"><a href="/2009/06/29/the-failed-requests-in-apachebench-test.html">The Failed requests in ApacheBench Test</a></h3>
+				
+				<p>Problem: I run <a href="http://httpd.apache.org/docs/2.0/programs/ab.html">ab </a>test<ab -c 10 -t 60 http://www.xxx.com> for my website yesterday, and there are so many failed request.
+And I found the following explanation from <a href="http://fixunix.com/linux/269587-apache-benchmark.html">fixunix</a>:</p>
+
+<pre  name="code" class="html">
+May not actually be a problem. Reason? It might be a site that serves dynamic context (such as different cookie IDs mentioned) where the file size changes between each query. 
+
+Easy way to verify: 
+
+Code:    $ wget <url>   
+
+Repeat that twice, then: 
+
+Code:    $ diff <retrieved filename> <retrieved filename>.1 
+
+See if there are differences. If yes, then you can ignore the length-related failures. If no, it's some other cause and need to investigate further.
+</pre>
+
+
+<p>I hope it will help you too if you have the same problem.</p>
+
+
+				<div class="post-metadata">
+					June 29, 2009 | 
+					<a href='/2009/06/29/the-failed-requests-in-apachebench-test.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/2009/06/22/twitter-weekly-updates-for-2009-06-22">
+				<h3 class="title"><a href="/2009/06/22/twitter-weekly-updates-for-2009-06-22.html">Twitter Weekly Updates for 2009-06-22</a></h3>
+				
+				<ul class="aktt_tweet_digest">
+    <li>Dinosaur is big enough , bug die out from the world; zzzzz~~~ <a href="http://twitter.com/Joshua_C/statuses/2277400408">#</a></li>
+    <li><a href="http://userfly.com/" rel="nofollow">http://userfly.com/</a> -- So cool! web master tool <a href="http://twitter.com/Joshua_C/statuses/2272200851">#</a></li>
+    <li>RT @<a href="http://twitter.com/mranti">mranti</a> After tens of thousands cops robbed people in #<a href="http://search.twitter.com/search?q=%23Shishou">Shishou</a> of a corpse, welcome to China ruled by Zombies. <a href="http://bit.ly/M1EJx" rel="nofollow">http://bit.ly/M1EJx</a> <a href="http://twitter.com/Joshua_C/statuses/2262796894">#</a></li>
+    <li>I will try to find another way to enhance the performance of element in Cake <a href="http://twitter.com/Joshua_C/statuses/2260701169">#</a></li>
+    <li>A little disappoint with Smart integrated with Cake. We couldn&#39;t use syntax like echo in element. <a href="http://twitter.com/Joshua_C/statuses/2260699723">#</a></li>
+    <li>It seems twitterfox stop to work now. ... <a href="http://twitter.com/Joshua_C/statuses/2260672322">#</a></li>
+    <li>Read-optimize your source code <a href="http://www.brendel.com/consulting/blog/2009/06/read-optimized-source-code.html" rel="nofollow">http://www.brendel.com/consulting/blog/2009/06/read-optimized-source-code.html</a> <a href="http://twitter.com/Joshua_C/statuses/2214899340">#</a></li>
+    <li>test <a href="http://twitter.com/Joshua_C/statuses/2202798952">#</a></li>
+    <li>Service overloaded? <a href="http://twitter.com/Joshua_C/statuses/2200766877">#</a></li>
+    <li>Why only &#39;The Lounge&#39; can work on opera unite? The others all displayed as &#39;404&#39; <a href="http://twitter.com/Joshua_C/statuses/2200683602">#</a></li>
+    <li>wordpress twitter plugin test <a href="http://twitter.com/Joshua_C/statuses/2189969248">#</a></li>
+    <li>twitter plugin test <a href="http://twitter.com/Joshua_C/statuses/2189958825">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+				<div class="post-metadata">
+					June 22, 2009 | 
+					<a href='/2009/06/22/twitter-weekly-updates-for-2009-06-22.html#disqus_thread'>View Comments</a>
 					 
 				</div>
 
@@ -147,6 +276,8 @@ The '$(param).val()' here is always empty. I test this on Chrome, it works fine 
 		
 		
 		<div class="paging">
+		
+			<a href="/page19" class="previous">&#x25C4; Previous</a>
 		
 		
 			
