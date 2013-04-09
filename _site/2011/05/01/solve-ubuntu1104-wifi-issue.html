@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Solve Wireless Issue When Upgrading From 10.10 to 11.04</title>
+   <meta name="author" content="Joshua Chi" />
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9434024-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		<!-- Google Analytics end -->
+</head>
+<body>
+
+<div class="site">
+  <div class="header">
+    <a href="/">Free To Feel</a>
+  </div>
+
+<!--start of side bar-->
+<div id="sidebar" >
+	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
+	<br />
+	Joshua Chi
+    <div class="contact">
+        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
+				<a href="https://github.com/joshuachi">My Github</a><br />
+				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.kiwitask.com">Find freelancer</a><br />
+			</div>
+			<div>
+				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
+			</div>
+			<div class="rss">
+                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+				<p>
+				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+				</p>
+				<p>
+				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
+				</p>
+			</div>	
+		
+			<p class='douban'>
+				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
+				</p>
+</div>
+<!--end of side bar-->
+
+	<div id='content'>
+		<div id="post">
+  <h3 class="title"><a href="/2011/05/01/solve-ubuntu1104-wifi-issue.html">Solve Wireless Issue When Upgrading From 10.10 to 11.04</a></h3>
+  <p>After upgrading from ubuntu 10.10 to ubuntu 11.04 the wireless stop working.</p>
+
+<p>The first step, I was using <a href="https://help.ubuntu.com/community/WifiDocs/WirelessTroubleShootingGuide">ubuntu trouble shooting</a> to detect the issue.</p>
+
+<ol type="a">
+<li>Detail whether there are software or hardware blocks on your rf devices. To get a list of devices and their hardware and software status, try "sudo rfkill list".</li>
+</ol>
+
+
+<pre>
+~$ sudo rfkill list
+0: hp-wifi: Wireless LAN
+    Soft blocked: yes
+    Hard blocked: yes
+</pre>
+
+
+<p>Unblock your devices by "sudo rfkill unblock 0".</p>
+
+<ol type="a">
+<li>Check for Device Recognition for my HP laptop(amd64)</li>
+</ol>
+
+
+<pre>
+~$ sudo lshw -C network
+  *-network UNCLAIMED     
+       description: Network controller
+       product: BCM4311 802.11a/b/g
+       vendor: Broadcom Corporation
+       physical id: 0
+       bus info: pci@0000:30:00.0
+       version: 01
+       width: 32 bits
+       clock: 33MHz
+       capabilities: pm msi pciexpress bus_master cap_list
+       configuration: latency=0
+       resources: memory:c8000000-c8003fff
+  *-network
+       description: Ethernet interface
+       product: NetXtreme BCM5788 Gigabit Ethernet
+       vendor: Broadcom Corporation
+       physical id: 1
+       bus info: pci@0000:02:01.0
+       logical name: eth0
+       version: 03
+       serial: 00:17:08:37:6a:64
+       size: 100Mbit/s
+       capacity: 1Gbit/s
+       width: 32 bits
+       clock: 66MHz
+       capabilities: pm vpd msi bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=tg3 driverversion=3.116 duplex=full firmware=5788-v3.26 ip=192.168.1.103 latency=64 link=yes mingnt=64 multicast=yes port=twisted pair speed=100Mbit/s
+       resources: irq:23 memory:d4000000-d400ffff
+</pre>
+
+
+<p>Here I can see 'tg3' driver was using. And by checking the loaded module the tg3 is there.</p>
+
+<pre>
+~$ sudo lsmod
+</pre>
+
+
+<p>If your driver was not loaded, you can load it by "sudo modprobe <module>"</p>
+
+<ol type="a">
+<li>Identify PCI devices with PCI ID.</li>
+</ol>
+
+
+<pre>
+~$ sudo lspci -v | grep Ethernet
+02:01.0 Ethernet controller: Broadcom Corporation NetXtreme BCM5788 Gigabit Ethernet (rev 03)
+
+~$ sudo lspci -v | grep Network
+30:00.0 Network controller: Broadcom Corporation BCM4311 802.11a/b/g (rev 01)
+</pre>
+
+
+<ol type="a">
+<li>Check the addtional drivers, I found "Broadcom STA wireless driver" was using.</li>
+</ol>
+
+
+<p>Everything looks good until now. Driver was working and was recognized. So I guess the issue might be the compatibility with new kernel?</p>
+
+<ol type="a">
+<li>With the help from google.</li>
+</ol>
+
+
+<p>i). Someone solve it by install <a herf="http://ubuntuforums.org/showthread.php?t=1653157">linux-backports-modules-wireless-maverick-generic</a>. It is interesting to know what <a hef="https://help.ubuntu.com/community/UbuntuBackports">backports</a> is.</p>
+
+<p>Unfortunately it didn't work for me.</p>
+
+<p>ii). So I tried the solution in this <a href="http://ubuntuforums.org/showthread.php?t=1653157&page=2">thread</a> by disable my "Broadcom STA wireless driver" and install b43.</p>
+
+<pre>
+Removing "bcmwl-kernel-source" by using Synaptic Package Manager
+Then installing "firmware-b43-installer" and "b43-fwcutter" again by Synaptic Package Manager. 
+</pre>
+
+
+<p>At the end of step e, and by rebooting laptop, the wifi issue was fixed. If you still has the issue, I suggest check the trouble shooting tutorial again. It is really helpful.</p>
+
+<p>Reference:</p>
+
+<p>1.http://linuxfans.keryxproject.org/?page_id=27</p>
+
+<p>2.http://www.ubuntumini.com/2009/11/broadcom-wireless-driver-fix-in-karmic.html</p>
+
+</div>
+
+
+<div id="disqus_thread">
+</div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = "/2011/05/01/solve-ubuntu1104-wifi-issue";
+    var disqus_url = "http://freetofeel.com"+"/2011/05/01/solve-ubuntu1104-wifi-issue.html";
+    var disqus_title = "Solve Wireless Issue When Upgrading From 10.10 to 11.04";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>08 Feb 2013</span> &raquo; <a href="/2013/02/08/year-summary.html">2013 Resolution</a></li>
+    
+      <li><span>16 Dec 2012</span> &raquo; <a href="/2012/12/16/arduino-auto-drive-car.html">Arduino Auto Drive Car</a></li>
+    
+      <li><span>09 Dec 2012</span> &raquo; <a href="/2012/12/09/visit-appspot.html">Visit Appspot.com From China</a></li>
+    
+  </ul>
+</div>
+
+
+	</div>
+  
+  <div class="footer">
+		<div id="copyright">
+			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+		</div>
+  </div>    
+</div>
+
+</body>
+</html>

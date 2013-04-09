@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Restore Lost Commits After Git Hard Reset</title>
+   <meta name="author" content="Joshua Chi" />
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9434024-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		<!-- Google Analytics end -->
+</head>
+<body>
+
+<div class="site">
+  <div class="header">
+    <a href="/">Free To Feel</a>
+  </div>
+
+<!--start of side bar-->
+<div id="sidebar" >
+	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
+	<br />
+	Joshua Chi
+    <div class="contact">
+        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
+				<a href="https://github.com/joshuachi">My Github</a><br />
+				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.kiwitask.com">Find freelancer</a><br />
+			</div>
+			<div>
+				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
+			</div>
+			<div class="rss">
+                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+				<p>
+				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+				</p>
+				<p>
+				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
+				</p>
+			</div>	
+		
+			<p class='douban'>
+				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
+				</p>
+</div>
+<!--end of side bar-->
+
+	<div id='content'>
+		<div id="post">
+  <h3 class="title"><a href="/2011/06/22/get-commit-back-after-git-hard-reset.html">Restore Lost Commits After Git Hard Reset</a></h3>
+  <p>Sometimes, you will make mistakes. But when someone told you there still is a hope that if you try xxxxx. What feeling will you have?</p>
+
+<p>The following might be one solution after 'git reset --hard' and realized you made a mistake:</p>
+
+<pre>
+  $ git reflog
+  $ git merge 7c61179
+</pre>
+
+
+<p>Check the blog post <a href='http://gitready.com/advanced/2009/01/17/restoring-lost-commits.html'>here</a>.</p>
+
+</div>
+
+
+<div id="disqus_thread">
+</div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = "/2011/06/22/get-commit-back-after-git-hard-reset";
+    var disqus_url = "http://freetofeel.com"+"/2011/06/22/get-commit-back-after-git-hard-reset.html";
+    var disqus_title = "Restore Lost Commits After Git Hard Reset";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>08 Feb 2013</span> &raquo; <a href="/2013/02/08/year-summary.html">2013 Resolution</a></li>
+    
+      <li><span>16 Dec 2012</span> &raquo; <a href="/2012/12/16/arduino-auto-drive-car.html">Arduino Auto Drive Car</a></li>
+    
+      <li><span>09 Dec 2012</span> &raquo; <a href="/2012/12/09/visit-appspot.html">Visit Appspot.com From China</a></li>
+    
+  </ul>
+</div>
+
+
+	</div>
+  
+  <div class="footer">
+		<div id="copyright">
+			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+		</div>
+  </div>    
+</div>
+
+</body>
+</html>

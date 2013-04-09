@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>How And When To Use Mysql Federated Storage Engine</title>
+   <meta name="author" content="Joshua Chi" />
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9434024-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		<!-- Google Analytics end -->
+</head>
+<body>
+
+<div class="site">
+  <div class="header">
+    <a href="/">Free To Feel</a>
+  </div>
+
+<!--start of side bar-->
+<div id="sidebar" >
+	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
+	<br />
+	Joshua Chi
+    <div class="contact">
+        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
+				<a href="https://github.com/joshuachi">My Github</a><br />
+				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.kiwitask.com">Find freelancer</a><br />
+			</div>
+			<div>
+				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
+			</div>
+			<div class="rss">
+                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+				<p>
+				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+				</p>
+				<p>
+				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
+				</p>
+			</div>	
+		
+			<p class='douban'>
+				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
+				</p>
+</div>
+<!--end of side bar-->
+
+	<div id='content'>
+		<div id="post">
+  <h3 class="title"><a href="/2011/08/01/mysql-federated-engine.html">How And When To Use Mysql Federated Storage Engine</a></h3>
+  <p>Learned from <a href='http://conferences.oreillynet.com/presentations/mysql06/mixi_update.pdf'>mixi update</a> that they are using mysql federated engine for db partitioning.</p>
+
+<pre>
+Use FEDERATED TABLE from MySQL 5.
+Or do SELECT twice which is faster than using FEDERATED TABLEs
+</pre>
+
+
+<p><a href='http://dev.mysql.com/doc/refman/5.0/en/federated-storage-engine.html'>Mysql Official document</a> didn't talk too much about how and when to use federated engine. You can learned more from <a href='http://www.xaprb.com/blog/2007/01/29/mysqls-federated-storage-engine-part-1/'>Mysql Federated storage engine 1</a> and <a href='http://www.xaprb.com/blog/2007/01/31/mysqls-federated-storage-engine-part-2/'>Mysql Federated storage engine 2</a>.</p>
+
+<p>Finally I find some clues in <a href='http://www.xaprb.com/blog/2007/01/31/mysqls-federated-storage-engine-part-2/'>Mysql Federated storage engine 2</a>:</p>
+
+<pre>
+Strengths:
+
+For example, pretend you have a set of distributed servers working on small parts of a large task, and their results need to be merged back together when done without conflict. Many solutions to this problem involve modulo arithmetic for generating primary keys. This could be a good use of a FEDERATED table: just federate one central table on all the servers, have the processes INSERT into the table, and they’ll get non-conflicting primary key numbers. That’s a trivially easy way to coordinate distributed resource requests.
+
+The way it lets you mis-define tables holds great potential. For example, Giuseppe Maxia has already noted that you can define a FEDERATED table against a view. Views don’t have indexes (yet), but that shouldn’t stop you from telling the engine it does! That way, your WHERE clauses are sent through to the remote server unharmed, where the view can execute GROUP BY queries and the like. Giuseppe even outlines a way to get the remote server to execute arbitrary commands via a FEDERATED table!
+
+What about combinations with replication, triggers and so forth? There must be many more cool hacks waiting to be discovered.
+
+</pre>
+
+
+<p>And in <a href='http://mysql.lamphost.net/tech-resources/articles/mysql-federated-storage.html'>Accessing Distributed Data with the Federated Storage Engine</a>, you can find a simple demo that 'merge' two partioned tables into one by creating a view. Although, this is not what I expected. It will still make sense in some cases.</p>
+
+<p>Still have some questions about how the performance looks like when use view? And what's the limitation of rows or table size when using federated storage engine?</p>
+
+</div>
+
+
+<div id="disqus_thread">
+</div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = "/2011/08/01/mysql-federated-engine";
+    var disqus_url = "http://freetofeel.com"+"/2011/08/01/mysql-federated-engine.html";
+    var disqus_title = "How And When To Use Mysql Federated Storage Engine";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>08 Feb 2013</span> &raquo; <a href="/2013/02/08/year-summary.html">2013 Resolution</a></li>
+    
+      <li><span>16 Dec 2012</span> &raquo; <a href="/2012/12/16/arduino-auto-drive-car.html">Arduino Auto Drive Car</a></li>
+    
+      <li><span>09 Dec 2012</span> &raquo; <a href="/2012/12/09/visit-appspot.html">Visit Appspot.com From China</a></li>
+    
+  </ul>
+</div>
+
+
+	</div>
+  
+  <div class="footer">
+		<div id="copyright">
+			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+		</div>
+  </div>    
+</div>
+
+</body>
+</html>
