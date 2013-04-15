@@ -13,7 +13,7 @@ tags:  marketing
 <div><span>6.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>网摘、RSS推广</div>
 <div><span>7.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>搜索引擎（SEO关键词优化推广）</div>
 <div><span>8.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>电子邮件推广</div>
-<div><span>9.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>QQ、QQ群推广</div>
+<div><span>9.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>QQ、QQ群推广</div
 <div><span>10.<span>&nbsp;&nbsp; </span></span>SNS网站推广</div>
 <div><span>11.<span>&nbsp;&nbsp; </span></span>友情链接推广（与知名网站互换友情链接，提网站升品牌知名度）</div>
 <div><span>12.<span>&nbsp;&nbsp; </span></span>bt电驴哇嘎资源网站推广（例如：给别人提供免费资料、电子书等下载资料，将广告融入资料）</div>
