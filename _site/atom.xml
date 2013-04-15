@@ -4,7 +4,7 @@
 	<title>Joshua Chi</title>
 	<link href="http://freetofeel.com/atom.xml" rel="self"/>
 	<link href="http://freetofeel.com/"/>
-	<updated>2013-04-15T13:21:54+08:00</updated>
+	<updated>2013-04-15T13:23:36+08:00</updated>
 	<id>http://freetofeel.com/</id>
 	<author>
 		<name>Joshua Chi</name>
@@ -14,9 +14,9 @@
 	
 		<entry>
 			<title>网站集成linkedin登录</title>
-			<link href="http://freetofeel.com/2013/04/16/integrate-linkedin-authentication.html"/>
-			<updated>2013-04-16T00:00:00+08:00</updated>
-			<id>http://freetofeel.com/2013/04/16/integrate-linkedin-authentication</id>
+			<link href="http://freetofeel.com/2013/04/15/integrate-linkedin-authentication.html"/>
+			<updated>2013-04-15T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2013/04/15/integrate-linkedin-authentication</id>
 			<content type="html">&lt;p&gt;&lt;a href='http://www.linkedin.com'&gt;Linkedin&lt;/a&gt;提供了几种方法供你集成登录验证到自己的网站。&lt;/p&gt;
 
 &lt;p&gt;一种是&lt;a href='https://developer.linkedin.com/documents/sign-linkedin'&gt;JS plugin&lt;/a&gt;的方式。这种方式用起来特别简单，只需要申请您的 app_key 就直接可以使用。
@@ -53,9 +53,9 @@ site-standard-profile-request/url - person - the URL to the member's authenticat
 	
 		<entry>
 			<title>网站线上推广[转]</title>
-			<link href="http://freetofeel.com/2013/04/15/online-marketing.html"/>
-			<updated>2013-04-15T00:00:00+08:00</updated>
-			<id>http://freetofeel.com/2013/04/15/online-marketing</id>
+			<link href="http://freetofeel.com/2013/04/14/online-marketing.html"/>
+			<updated>2013-04-14T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2013/04/14/online-marketing</id>
 			<content type="html">&lt;div&gt;
 &lt;div&gt;&lt;strong&gt;线上免费推广方法：&lt;/strong&gt;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;1.&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;软文推广（各大门户网站、专业咨询网站投放软文）&lt;/div&gt;
