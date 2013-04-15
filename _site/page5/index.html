@@ -40,6 +40,7 @@
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
 				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.leanprofile.com">Lean Profile</a><br />
 				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
@@ -66,6 +67,36 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2010/12/05/find-ubuntu-wireless-icon">
+				<h3 class="title"><a href="/2010/12/05/find-ubuntu-wireless-icon.html">Find Ubuntu Wireless Icon</a></h3>
+				
+				<p>My network-manager works fine. You can test by <code>sudo service network-manager start/stop</code>. And my wireless network can be found by <code>sudo iwlist  scan</code>.
+So there are two solutions:</p>
+
+<p><ul>
+<li>Right click the top panel and click 'add to panel' and select 'notifications area'. If this didn't work,then netstep:
+</li>
+<li>
+<code>sudo vim /etc/NetworkManager/nm-sysmte-settings.conf</code>. Modify false to true.
+<code>sudo service network-manager restart</code></p>
+
+<p>In my ubuntu 10.10, after these trys, the wireless icon displayed in the panel again. Good luck to you.</p>
+
+
+				<div class="post-metadata">
+					December 05, 2010 | 
+					<a href='/2010/12/05/find-ubuntu-wireless-icon.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#ubuntu'>ubuntu</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2010/11/30/try-to-use-githubpages-for-my-blog">
 				<h3 class="title"><a href="/2010/11/30/try-to-use-githubpages-for-my-blog.html">Try to Use Github Pages As My Blog</a></h3>
@@ -355,42 +386,6 @@ For you, you just try to copy some plist from /Usr/$YOURNAME/backup/ to /Usr/$YO
 							| 
 						
 						<a href='/tags.html#mac'>mac</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/05/31/error-while-executing-gem-gemgemnotfoundexception">
-				<h3 class="title"><a href="/2010/05/31/error-while-executing-gem-gemgemnotfoundexception.html">ERROR:  While executing gem ... (Gem::GemNotFoundException)</a></h3>
-				
-				<p>Try</p>
-
-<pre name='code' class='php'>
-gem clean
-</pre>
-
-
-<p><a href="http://stackoverflow.com/questions/2273503/ruby-gem-package-manager-failing-with-gemgemnotfoundexception">reference</a></p>
-
-<p>If you got</p>
-
-<pre name='code' class='php'>
-/usr/bin/gem:10: undefined method `manage_gems' for Gem:Module (NoMethodError)
-</pre>
-
-
-<p>Check if there are two gem under /usr/bin/ directory.</p>
-
-
-				<div class="post-metadata">
-					May 31, 2010 | 
-					<a href='/2010/05/31/error-while-executing-gem-gemgemnotfoundexception.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#gem'>gem</a>
 						
 					 
 				</div>

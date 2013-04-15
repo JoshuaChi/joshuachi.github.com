@@ -40,6 +40,7 @@
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
 				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.leanprofile.com">Lean Profile</a><br />
 				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
@@ -66,6 +67,89 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected">
+				<h3 class="title"><a href="/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected.html">The behavior of javascript is not always your expected</a></h3>
+				
+				<p>Let's raise the issue '07 + 08 = 07' firstly from <a href="http://www.debuggable.com/posts/7+8===7-in-javascript:4acba016-d204-489b-b5a0-1fd0cbdd56cb">this guy's article</a>.</p>
+
+<pre name='code' class='javascript'>
+var a = '07';
+var b = '08'
+
+alert(a + b); //'0708';
+</pre>
+
+
+<p>OK. We knew the result. What we will do is using the 'parseInt' method.</p>
+
+<pre name='code' class='javascript'>
+var a = '07';
+var b = '08'
+
+alert(parseInt(a) + parseInt(b)); //'07';
+</pre>
+
+
+<p>The result is not our expected this time.</p>
+
+<p>So boys give a lot of solutions.
+solution 1:</p>
+
+<pre name='code' class='javascript'>
+var a = '07';
+var b = '08'
+
+alert(parseInt(a, 10) + parseInt(b, 10)); //'15';
+</pre>
+
+
+<p>solution 2:</p>
+
+<pre name='code' class='javascript'>
+var a = '07';
+var b = '08'
+
+alert(Number(a) + Number(b)); //'15';
+</pre>
+
+
+<p>I like this solution. If the variable is a number, transform it to 'Number' directly to keep it safe. If the variable is a string, transform it to 'String' directly.
+The same issue occurred in Date function too.</p>
+
+<pre name='code' class='javascript'>
+var d = new Date(2009, 08, 02); //It's 2nd of JULY
+</pre>
+
+
+<p>The <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Date">reason</a>.</p>
+
+<blockquote>year
+    Integer value representing the year. For compatibility (in order to avoid the Y2K problem), you should always specify the year in full; use 1998, rather than 98.
+
+month
+    Integer value representing the month, beginning with 0 for January to 11 for December.
+
+date
+    Integer value representing the day of the month (1-31). </blockquote>
+
+
+
+
+
+				<div class="post-metadata">
+					October 24, 2009 | 
+					<a href='/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#javascript'>javascript</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2009/10/22/code-smell">
 				<h3 class="title"><a href="/2009/10/22/code-smell.html">Code Smell</a></h3>
@@ -362,89 +446,6 @@ mysql> ALTER TABLE test.load_data ENABLE KEYS;</p></li>
 					
 						
 						<a href='/tags.html#optimization'>optimization</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array">
-				<h3 class="title"><a href="/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array.html">How to remove a specific value from a javascript array</a></h3>
-				
-				<p><a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/splice">splice</a> - Changes the content of an array, adding new elements while removing old elements.</p>
-
-<blockquote>array.splice(index, howMany, [element1][, ..., elementN]);
-array.splice(index, [howMany, [element1][, ..., elementN]]);  // SpiderMonkey extension
-</blockquote>
-
-
-<p>index</p>
-
-<pre><code>Index at which to start changing the array. If negative, will begin that many elements from the end.
-</code></pre>
-
-<p>howMany</p>
-
-<pre><code>An integer indicating the number of old array elements to remove. If howMany is 0, no elements are removed. In this case, you should specify at least one new element. If no howMany parameter is specified (second syntax above, which is a SpiderMonkey extension), all elements after index are removed. 
-</code></pre>
-
-<p>element1, ..., elementN</p>
-
-<pre><code>The elements to add to the array. If you don't specify any elements, splice simply removes elements from the array. 
-</code></pre>
-
-<pre name='code' class='javascript'>
-// from this
-var arr = ['remove', 'specific', 'value', 'from', 'javascript', 'array']; // 6 items
- 
-// to this ("specific" value removed)
-var arr = ['remove', 'value', 'from', 'javascript', 'array']; //  5 items
- 
-// use this (removes "specific")
-arr.splice(arr.indexOf('specific'), 1);
- 
- 
-// full example
-var arr = ['remove', 'specific', 'value', 'from', 'javascript', 'array'];
-var value_to_remove = 'specific';
-arr.splice(arr.indexOf(value_to_remove), 1);
- 
- 
-// note: to support IE (anger rising as I type), you'll need this (thanks James!):
-if (!Array.prototype.indexOf)
-{
-  Array.prototype.indexOf = function(elt /*, from*/)
-  {
-    var len = this.length >>> 0;
- 
-    var from = Number(arguments[1]) || 0;
-    from = (from < 0)
-         ? Math.ceil(from)
-         : Math.floor(from);
-    if (from < 0)
-      from += len;
- 
-    for (; from < len; from++)
-    {
-      if (from in this &&
-          this[from] === elt)
-        return from;
-    }
-    return -1;
-  };
-}
-</pre>
-
-
-
-				<div class="post-metadata">
-					October 17, 2009 | 
-					<a href='/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#javascript'>javascript</a>
 						
 					 
 				</div>

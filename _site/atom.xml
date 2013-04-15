@@ -4,7 +4,7 @@
 	<title>Joshua Chi</title>
 	<link href="http://freetofeel.com/atom.xml" rel="self"/>
 	<link href="http://freetofeel.com/"/>
-	<updated>2013-04-15T11:37:07+08:00</updated>
+	<updated>2013-04-15T13:17:35+08:00</updated>
 	<id>http://freetofeel.com/</id>
 	<author>
 		<name>Joshua Chi</name>
@@ -13,67 +13,80 @@
 
 	
 		<entry>
-			<title>网站线上推广</title>
+			<title>网站集成linkedin登录</title>
+			<link href="http://freetofeel.com/2013/04/16/integrate-linkedin-authentication.html"/>
+			<updated>2013-04-16T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2013/04/16/integrate-linkedin-authentication</id>
+			<content type="html">&lt;p&gt;&lt;a href='http://www.linkedin.com'&gt;Linkedin&lt;/a&gt;提供了几种方法供你集成登录验证到自己的网站。&lt;/p&gt;
+
+&lt;p&gt;一种是&lt;a href='https://developer.linkedin.com/documents/sign-linkedin'&gt;JS plugin&lt;/a&gt;的方式。这种方式用起来特别简单，只需要申请您的 app_key 就直接可以使用。
+这种方式的缺点就是从linkedin返回的数据没有办法定制，它就只能返回以下五条属性：&lt;/p&gt;
+
+&lt;pre&gt;
+&quot;Field&quot; - &quot;Parent Node&quot; - &quot;Description&quot;
+first-name - person - the member's first name
+last-name - person - the member's last name
+headline - person - the member's headline (often &quot;Job Title at Company&quot;)
+site-standard-profile-request/url - person - the URL to the member's authenticated profile on LinkedIn (requires a login to be viewed, unlike public profiles)
+&lt;/pre&gt;
+
+
+&lt;p&gt;第二种就是&lt;a href='https://developer.linkedin.com/documents/authentication'&gt;oauth2.0&lt;/a&gt;的方式。&lt;/p&gt;
+
+&lt;p&gt;通过这种方式，你可以除了可以从linkedin拿你想拿的数据，而且可以随心所欲的嵌入到你的业务逻辑里面。&lt;/p&gt;
+
+&lt;p&gt;
+&lt;/p&gt;
+
+
+&lt;p&gt;我就是用的第二种。可以通过&lt;a href='http://www.leanprofile.com'&gt;LeanProfile&lt;/a&gt;查看。&lt;/p&gt;
+
+&lt;p&gt;具体实现可以参考&lt;a href='https://developer.linkedin.com/documents/authentication'&gt;Linkedin 文档&lt;/a&gt;。 不过需要说明就是，你需要保留一份用户的token，这个token可以方便你在它的失效期内（60天）向linkedin索要用户的信息。之所以是60天，也是Linkedin从数据安全角度考虑。&lt;/p&gt;
+
+&lt;p&gt;当然用户也可以自己选择是否绑定Linkedin。&lt;/p&gt;
+
+&lt;p&gt;当然更人性化点，&lt;a href='http://www.leanprofile.com'&gt;我们&lt;/a&gt;还提供用户也可以选择绑定和取消绑定Linkedin的功能。&lt;/p&gt;
+
+&lt;p&gt;在验证通过后，您就可以使用linkedin提供的其它的功能，比如：分享，等等&lt;/p&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>网站线上推广[转]</title>
 			<link href="http://freetofeel.com/2013/04/15/online-marketing.html"/>
 			<updated>2013-04-15T00:00:00+08:00</updated>
 			<id>http://freetofeel.com/2013/04/15/online-marketing</id>
 			<content type="html">&lt;div&gt;
-&lt;p&gt;&lt;strong&gt;线上免费推广方法：&lt;/strong&gt;&lt;/p&gt;
+&lt;div&gt;&lt;strong&gt;线上免费推广方法：&lt;/strong&gt;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;1.&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;软文推广（各大门户网站、专业咨询网站投放软文）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;2.&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;论坛推广（论坛发帖、顶贴）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;3.&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;知道、问问等问答平台推广&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;4.&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;百科推广（百度百科、互动百科等平台）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;5.&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;博客推广&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;6.&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;网摘、RSS推广&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;7.&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;搜索引擎（SEO关键词优化推广）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;8.&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;电子邮件推广&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;9.&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;QQ、QQ群推广&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;10.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;SNS网站推广&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;11.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;友情链接推广（与知名网站互换友情链接，提网站升品牌知名度）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;12.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;bt电驴哇嘎资源网站推广（例如：给别人提供免费资料、电子书等下载资料，将广告融入资料）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;13.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;视频、多媒体推广（例如：制作免费视频上传到优酷、土豆等，视频中植入广告）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;14.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;口碑推广&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;15.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;分类信息网站推广&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;16.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;微薄推广&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;strong&gt;线上付费推广方法&lt;/strong&gt;&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;17.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;病毒样式推广（例如：114啦网址导航通过网页病毒强行设置用户主页来进行推广）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;18.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;客户端软件推广（开发实用免费小软件等）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;19.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;网址导航推广（付费将网站登录到知名网址导航 如：好123等）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;20.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;轰动效应推广（如：贾君鹏事件）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;21.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;参加各种排行榜及评选活动（各类商业网站或专业站不定期举行各种网页评比大赛、网站TOP 10之类的活动，不但提高访问量，更是网站成名的好机会，如凤凰网举办的中文论坛排行榜）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;22.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;网站自己搞在线活动推广&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;23.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;广告联盟推广（当当、亚马逊最擅长的推广方式）&lt;/div&gt;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;&lt;span&gt;24.&lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;竞价排名推广&lt;/div&gt;
 &lt;/div&gt;
 
 
-
-
-&lt;hr&gt;
+&lt;hr /&gt;
 
 
 &lt;div class=entry-content&gt;

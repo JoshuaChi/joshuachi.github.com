@@ -40,6 +40,7 @@
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
 				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.leanprofile.com">Lean Profile</a><br />
 				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
@@ -66,6 +67,34 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2012/10/02/move-to-dnspod">
+				<h3 class="title"><a href="/2012/10/02/move-to-dnspod.html">Move From Godaddy DNS to Dnspod</a></h3>
+				
+				<p>It's the first time that my domain can not be resolved for around 6 hours. I learned <a href='http://www.godaddy.com'>godaddy</a> DNS was blocked in China sometimes.</p>
+
+<p>This is what I hate to work on a Chinese site. After several minutes struggle, I decide to move my dns from <a href='http://www.godaddy.com'>godaddy</a> to <a href='https://www.dnspod.cn/'>dnspod</a>.</p>
+
+<p><a href='https://www.dnspod.cn/'>dnspod</a> did really a nice work. No matter the user interfaces or the services. All of them  meet my requirements.</p>
+
+<p>I don't want to repeat how to setup the dnspod. <a href='https://www.google.com/search?q=dns+godaddy+dnspod&oq=dns+godaddy+dnspod&sugexp=chrome,mod=1&sourceid=chrome&ie=UTF-8'>google search</a> will tell you more about this.</p>
+
+<p>Now I will just wait for the new dns takes affect. Actaully dns was solved quickly in China, but not in JiangSu province in my testing. Good luck to my <a href='http://www.dachebang.com'>www.dachebang.com</>.</p>
+
+
+				<div class="post-metadata">
+					October 02, 2012 | 
+					<a href='/2012/10/02/move-to-dnspod.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#dns'>dns</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2012/08/26/linode-migration">
 				<h3 class="title"><a href="/2012/08/26/linode-migration.html">Linode Facility Migration to Fremont</a></h3>
@@ -469,273 +498,6 @@ sudo apt-get install gvfs ipheth-dkms ipheth-utils
 							| 
 						
 						<a href='/tags.html#git'>git</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2011/06/12/nosql-db-try">
-				<h3 class="title"><a href="/2011/06/12/nosql-db-try.html">Replace MySql Table with NoSQL DB</a></h3>
-				
-				<h4>Backgroud:</h4>
-
-
-<p>I am not nosql fans. I don't have the habit to replace whole mysql db with nosql db. But if a mysql table can be replaced with nosql db and expensive queries are generated againest this table, I will give a try of nosql DB.</p>
-
-<p>In our product, we have a unique user login log table to know how many users logined in a specify date. Here is the table structure:</p>
-
-<pre>
-  unique_login_logs: 
-    _attributes:  {phpName: UniqueLoginLog}
-    id:
-    user_id: { type: integer }
-    date: { type: date, index: true }
-    created_at:
-    _uniques:
-      unique_date_type: [user_id, date]
-</pre>
-
-
-<p>The expensive query looks like:</p>
-
-<pre>
-select date, count(`user_id`) from unique_login_logs group by date order by date desc;'
-</pre>
-
-
-<p>And the other related operations will be save an entry into this table or check the user entry for a specify date is in the table or not. Nothing more.</p>
-
-<h4>Choose NoSQL DB from <a href='http://en.wikipedia.org/wiki/NoSQL'>wiki page</a>: </h4>
-
-
-
-
-<pre>
-...
-Key-value cache in RAM
-
-    Citrusleaf database
-    memcached
-    Oracle Coherence
-    Redis
-    Tuple space
-    Velocity
-
-Key-value stores implementing the Paxos algorithm
-
-    Keyspace
-
-Key-value stores on disk
-
-    BigTable
-    CDB
-    Citrusleaf database
-    Dynomite
-    Keyspace
-    membase
-    Memcachedb
-    Redis
-    Tokyo Cabinet
-    TreapDB
-    Tuple space
-    MongoDB
-...
-</pre>
-
-
-<p>For my feature request, I need a disk stored key-value system. I just spend 1 minute to take a look the MongoDB features. It meet my feature requirements. That's enough. If you know more about the other nosql DBs, of course you should choose the one which suit yours best.</p>
-
-<h4>Try MongoDB</h4>
-
-
-<p>Step 1: Install MongoDB(http://www.mongodb.org/display/DOCS/Quickstart+Unix);</p>
-
-<p>Step 2: Simple demo testing:</p>
-
-<p>create a new db:</p>
-
-<pre>
-use mydb;
-</pre>
-
-
-<p>Save an entry:</p>
-
-<pre>
-db.uniqueLoginLog.save({date: '2011-06-09', user_id: 101});
-db.uniqueLoginLog.save({date: '2011-06-09', user_id: 111});
-db.uniqueLoginLog.save({date: '2011-06-09', user_id: 102});
-..
-db.uniqueLoginLog.save({date: '2011-06-11', user_id: 100});
-db.uniqueLoginLog.save({date: '2011-06-11', user_id: 101});
-db.uniqueLoginLog.save({date: '2011-06-11', user_id: 102});
-</pre>
-
-
-<p>Group entries by date:</p>
-
-<pre>
-db.uniqueLoginLog.group(
-           {key: { date:true },
-            reduce: function(obj,prev) { prev.count ++; },
-            initial: { count: 0 }
-            });
-            
-</pre>
-
-
-<p>The output looks like:</p>
-
-<pre>
-[
-    {
-        "date" : "2011-01-01",
-        "count" : 3
-    },
-    {
-        "date" : "2011-01-02",
-        "count" : 3
-    },
-    {
-        "date" : "2011-01-03",
-        "count" : 1
-    },
-    {
-        "date" : "2011-01-04",
-        "count" : 1
-    }
-]
-</pre>
-
-
-<p></p>
-
-<p>With the output, I can do the order in client.</p>
-
-<h4>Install PHP Mongo Extension</h4>
-
-
-<p>You can install Mongo PHP extension with pecl command line or install it <a href='http://pecl.php.net/package/mongo'>manually</a></p>
-
-<pre>
-> pecl search mongo
-Retrieving data...0%
-Matched packages, channel pecl.php.net:
-=======================================
-Package Stable/(Latest) Local
-mongo   1.1.4 (stable)        MongoDB database driver
-
-> pecl install mongo
-</pre>
-
-
-
-
-<h4>Get stored items with php function</h4>
-
-
-<p>PHP code:</p>
-
-<pre>
-$m = new Mongo();
-
-$db = $m->mydb;
-
-$collection = $db->uniqueLoginLog;
-
-
-$obj = array('date'=> '2011-06-09', 'user_id'=> 101);
-$collection->insert($obj);
-
-
-
-$keys = array("date" => 1);
-$initial = array("count" => 0);
-$reduce = "function(obj,prev) { prev.count ++; }";
-$g = $collection->group($keys, $initial, $reduce);
-
-var_dump($g);
-
-</pre>
-
-
-<p>Output looks like:</p>
-
-<pre>
-array(4) {
-  ["retval"]=>
-  array(3) {
-    [0]=>
-    array(2) {
-      ["date"]=>
-      string(10) "2011-06-09"
-      ["count"]=>
-      float(17)
-    }
-    [1]=>
-    array(2) {
-      ["date"]=>
-      string(10) "2011-06-11"
-      ["count"]=>
-      float(10)
-    }
-    [2]=>
-    array(2) {
-      ["date"]=>
-      string(10) "2011-06-10"
-      ["count"]=>
-      float(7)
-    }
-  }
-  ["count"]=>
-  float(34)
-  ["keys"]=>
-  int(3)
-  ["ok"]=>
-  float(1)
-}
-</pre>
-
-
-
-
-<h4>Deploy to production?</h4>
-
-
-<p>Until now, the demo is still a toy. If you want to deploy it to production, there are more work need to to be done. Take a look at the <a href='http://www.mongodb.org/display/DOCS/Admin+Zone'>admin zone</a></p>
-
-<p>For my feature implemention, I will consider <a href='http://www.mongodb.org/display/DOCS/Replication'>Replication</a> next step.</p>
-
-<p>Summary:</p>
-
-<p>This is not a <a href='http://www.mongodb.org/display/DOCS/Tutorial'>toturial</a> about how to use MongoDB. It is just a example that can use nosql db in your production.</p>
-
-<p>Reference:</p>
-
-<ul>
-<li><a href='http://try.mongodb.org/'>A Tiny MongoDB Browser Shell (mini tutorial included)</a></li>
-<li><a href='https://github.com/mongodb/mongo/tree/master/jstests/'>JsTest</a></li>
-</ul>
-
-
-
-				<div class="post-metadata">
-					June 12, 2011 | 
-					<a href='/2011/06/12/nosql-db-try.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mysql'>mysql</a>
-						, 
-					
-						
-						<a href='/tags.html#nosql'>nosql</a>
-						, 
-					
-						
-						<a href='/tags.html#mongodb'>mongodb</a>
 						
 					 
 				</div>

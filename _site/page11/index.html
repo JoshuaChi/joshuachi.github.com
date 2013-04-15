@@ -40,6 +40,7 @@
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
 				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.leanprofile.com">Lean Profile</a><br />
 				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
@@ -66,6 +67,29 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2009/11/03/push-and-pull-mode">
+				<h3 class="title"><a href="/2009/11/03/push-and-pull-mode.html">Push and pull mode </a></h3>
+				
+				<p>Push and pull are two data transfer mode in Internet. At the beginning of my studying of web development four years ago, there is only pull mode in fact. Everything is pull. When client send a request to server, it is pulling data from server actually. The result can be null or not null.  That means the response depend on server, not the pull object. We all know it is resource-wasting. If each time pull, the client can get something back, or the client pull the data when there should be response data in server side. So the geek invent many ways to achieve this. The following <a href="http://code.google.com/p/pubsubhubbub/">pubsubhubbub</a> is one of them. It can be used to replace the traditional Feed 'pull' mode.</p>
+
+<iframe src="http://docs.google.com/present/embed?id=ajd8t6gk4mh2_34dvbpchfs&size=m" frameborder="0" width="555" height="451"></iframe>
+
+
+
+				<div class="post-metadata">
+					November 03, 2009 | 
+					<a href='/2009/11/03/push-and-pull-mode.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#web'>web</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2009/11/02/twitter-weekly-updates-for-2009-11-02">
 				<h3 class="title"><a href="/2009/11/02/twitter-weekly-updates-for-2009-11-02.html">Twitter Weekly Updates for 2009-11-02</a></h3>
@@ -319,89 +343,6 @@ Sending data -
 							| 
 						
 						<a href='/tags.html#mysql'>mysql</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected">
-				<h3 class="title"><a href="/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected.html">The behavior of javascript is not always your expected</a></h3>
-				
-				<p>Let's raise the issue '07 + 08 = 07' firstly from <a href="http://www.debuggable.com/posts/7+8===7-in-javascript:4acba016-d204-489b-b5a0-1fd0cbdd56cb">this guy's article</a>.</p>
-
-<pre name='code' class='javascript'>
-var a = '07';
-var b = '08'
-
-alert(a + b); //'0708';
-</pre>
-
-
-<p>OK. We knew the result. What we will do is using the 'parseInt' method.</p>
-
-<pre name='code' class='javascript'>
-var a = '07';
-var b = '08'
-
-alert(parseInt(a) + parseInt(b)); //'07';
-</pre>
-
-
-<p>The result is not our expected this time.</p>
-
-<p>So boys give a lot of solutions.
-solution 1:</p>
-
-<pre name='code' class='javascript'>
-var a = '07';
-var b = '08'
-
-alert(parseInt(a, 10) + parseInt(b, 10)); //'15';
-</pre>
-
-
-<p>solution 2:</p>
-
-<pre name='code' class='javascript'>
-var a = '07';
-var b = '08'
-
-alert(Number(a) + Number(b)); //'15';
-</pre>
-
-
-<p>I like this solution. If the variable is a number, transform it to 'Number' directly to keep it safe. If the variable is a string, transform it to 'String' directly.
-The same issue occurred in Date function too.</p>
-
-<pre name='code' class='javascript'>
-var d = new Date(2009, 08, 02); //It's 2nd of JULY
-</pre>
-
-
-<p>The <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Date">reason</a>.</p>
-
-<blockquote>year
-    Integer value representing the year. For compatibility (in order to avoid the Y2K problem), you should always specify the year in full; use 1998, rather than 98.
-
-month
-    Integer value representing the month, beginning with 0 for January to 11 for December.
-
-date
-    Integer value representing the day of the month (1-31). </blockquote>
-
-
-
-
-
-				<div class="post-metadata">
-					October 24, 2009 | 
-					<a href='/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#javascript'>javascript</a>
 						
 					 
 				</div>

@@ -4,60 +4,34 @@ title: "网站线上推广[转]"
 tags:  marketing
 ---
 <div>
-<p><strong>线上免费推广方法：</strong></p>
+<div><strong>线上免费推广方法：</strong></div>
 <div><span>1.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>软文推广（各大门户网站、专业咨询网站投放软文）</div>
-<div>&nbsp;</div>
 <div><span>2.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>论坛推广（论坛发帖、顶贴）</div>
-<div>&nbsp;</div>
 <div><span>3.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>知道、问问等问答平台推广</div>
-<div>&nbsp;</div>
 <div><span>4.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>百科推广（百度百科、互动百科等平台）</div>
-<div>&nbsp;</div>
 <div><span>5.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>博客推广</div>
-<div>&nbsp;</div>
 <div><span>6.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>网摘、RSS推广</div>
-<div>&nbsp;</div>
 <div><span>7.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>搜索引擎（SEO关键词优化推广）</div>
-<div>&nbsp;</div>
 <div><span>8.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>电子邮件推广</div>
-<div>&nbsp;</div>
 <div><span>9.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>QQ、QQ群推广</div>
-<div>&nbsp;</div>
 <div><span>10.<span>&nbsp;&nbsp; </span></span>SNS网站推广</div>
-<div>&nbsp;</div>
 <div><span>11.<span>&nbsp;&nbsp; </span></span>友情链接推广（与知名网站互换友情链接，提网站升品牌知名度）</div>
-<div>&nbsp;</div>
 <div><span>12.<span>&nbsp;&nbsp; </span></span>bt电驴哇嘎资源网站推广（例如：给别人提供免费资料、电子书等下载资料，将广告融入资料）</div>
-<div>&nbsp;</div>
 <div><span>13.<span>&nbsp;&nbsp; </span></span>视频、多媒体推广（例如：制作免费视频上传到优酷、土豆等，视频中植入广告）</div>
-<div>&nbsp;</div>
 <div><span>14.<span>&nbsp;&nbsp; </span></span>口碑推广</div>
-<div>&nbsp;</div>
 <div><span>15.<span>&nbsp;&nbsp; </span></span>分类信息网站推广</div>
-<div>&nbsp;</div>
 <div><span>16.<span>&nbsp;&nbsp; </span></span>微薄推广</div>
-<div>&nbsp;</div>
 <div><strong>线上付费推广方法</strong></div>
-<div>&nbsp;</div>
 <div><span>17.<span>&nbsp;&nbsp; </span></span>病毒样式推广（例如：114啦网址导航通过网页病毒强行设置用户主页来进行推广）</div>
-<div>&nbsp;</div>
 <div><span>18.<span>&nbsp;&nbsp; </span></span>客户端软件推广（开发实用免费小软件等）</div>
-<div>&nbsp;</div>
 <div><span>19.<span>&nbsp;&nbsp; </span></span>网址导航推广（付费将网站登录到知名网址导航 如：好123等）</div>
-<div>&nbsp;</div>
 <div><span>20.<span>&nbsp;&nbsp; </span></span>轰动效应推广（如：贾君鹏事件）</div>
-<div>&nbsp;</div>
 <div><span>21.<span>&nbsp;&nbsp; </span></span>参加各种排行榜及评选活动（各类商业网站或专业站不定期举行各种网页评比大赛、网站TOP 10之类的活动，不但提高访问量，更是网站成名的好机会，如凤凰网举办的中文论坛排行榜）</div>
-<div>&nbsp;</div>
 <div><span>22.<span>&nbsp;&nbsp; </span></span>网站自己搞在线活动推广</div>
-<div>&nbsp;</div>
 <div><span>23.<span>&nbsp;&nbsp; </span></span>广告联盟推广（当当、亚马逊最擅长的推广方式）</div>
-<div>&nbsp;</div>
 <div><span>24.<span>&nbsp;&nbsp; </span></span>竞价排名推广</div>
 </div>
-
-
-<hr>
+<hr />
 <div class=entry-content>
 <p>&nbsp;别看这些地方不起眼，但是在百度权重高，搜索的时候经常能看到，每天检坚持坚持就会优化出很好的结果。（<a title=查看站点 href="http://blog.itfen.com/">IT分享</a>私人收藏使用，不介意大家拿去）</p>
 <p>一、百度可以发外链，写软文的地方<br><a href="http://hi.baidu.com/" target=_blank>http://hi.baidu.com/</a> (百度空间，百度博客，这个文章链接基本不会删除)<br><a href="http://cang.baidu.com/" target=_blank>http://cang.baidu.com/</a> (百度收藏，可以收藏自己网站网址，基本不会删除)<br><a href="http://zhidao.baidu.com/" target=_blank>http://zhidao.baidu.com/</a> (百度知道，可以使用自我自答，低等级慎用，易惩罚帐号，但是一旦留上，权重还是比较高的)<br><a href="http://tieba.baidu.com/" target=_blank>http://tieba.baidu.com/</a> (百度贴吧，可以留网址，一般不会删除，可以到相关的贴吧)<br><a href="http://wenku.baidu.com/" target=_blank>http://wenku.baidu.com/</a> (百度文库，可以上传doc word文档，文档可以加链接，算搜索引擎外链，六月份上线，审核不严)<br><a href="http://baike.baidu.com/" target=_blank>http://baike.baidu.com/</a> (百度百科，可以编辑词条，参考资料里面留自己网址，审核严格了，最近，一旦成功，权重较高)<br><a href="http://jingyan.baidu.com/" target=_blank>http://jingyan.baidu.com/</a> (百度经验，可以发比较有经验技巧的文章，来源写网址，刚上线，审核不严)<br><a href="http://youa.baidu.com/" target=_blank>http://youa.baidu.com/</a> (百度有啊，商品网站可以在此开店，权重较高)</p>

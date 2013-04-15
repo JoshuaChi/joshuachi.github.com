@@ -40,6 +40,7 @@
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
 				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.leanprofile.com">Lean Profile</a><br />
 				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
@@ -66,6 +67,57 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2009/12/15/2w-records-update-with-different-sql-engine">
+				<h3 class="title"><a href="/2009/12/15/2w-records-update-with-different-sql-engine.html">2W records update with different sql engine</a></h3>
+				
+				<p>This is just a test result:
+20000 records in table animals;</p>
+
+<pre name='code' class='sql'>
+CREATE TABLE `animals` (                                                           
+           `animal_id` mediumint(8) NOT NULL auto_increment,                                
+           `animal_type` varchar(25) collate utf8_unicode_ci NOT NULL,                      
+           `animal_name` varchar(25) collate utf8_unicode_ci NOT NULL,                      
+           `created` datetime NOT NULL default '2009-02-02 00:00:00',                       
+           `doubledata` double default NULL,                                                
+           PRIMARY KEY  (`animal_id`),                                                      
+           KEY `typekey` (`animal_type`,`animal_name`),                                     
+           KEY `datetime` (`created`),                                                      
+           KEY `DOUBLE` (`doubledata`)                                                      
+         ) ENGINE=MyISAM AUTO_INCREMENT=20001 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci  
+</pre>
+
+
+<p>sql file looks like this:</p>
+
+<pre name='code' class='sql'>
+update animals set animal_type = 'xxx' where animal_id = 1;
+update animals set animal_type = 'xxx' where animal_id = 2;
+.
+.
+.
+update animals set animal_type = 'dog123' where animal_id = 20000;
+</pre>
+
+
+<p>With Innodb engine, the update time > 5min( I just have no time to wait any more)
+With MyISAM, the update time = 30 seconds.</p>
+
+
+				<div class="post-metadata">
+					December 15, 2009 | 
+					<a href='/2009/12/15/2w-records-update-with-different-sql-engine.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#sql'>sql</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records">
 				<h3 class="title"><a href="/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records.html">The simplest and quickest way to create mysql table demo records.</a></h3>
@@ -269,38 +321,6 @@ mysqlimport -u [uname] -p[pass] [dbname] [backupfile.sql]
 							| 
 						
 						<a href='/tags.html#twitter'>twitter</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/11/19/sign-in-your-pdf-document">
-				<h3 class="title"><a href="/2009/11/19/sign-in-your-pdf-document.html">Sign in your PDF document</a></h3>
-				
-				<p>Have you ever succeed to sign in a PDF file?
-Today I try several methods of <a href="http://www.labnol.org/software/sign-pdf-documents/9333/">How to Sign Documents Electronically – No Ink or Paper Required></a>.
-1.
-I try to make an image signature at <a href="http://www.mylivesignature.com/mls_sigdraw.php">MyLiveSignature</a>. And then download it into my local machine;
-Try to convert my PDF file to word file via <a href="http://www.pdftoword.com/">web service</a>.
-And then upload the doc file and attached the signature image at the right place. Save it as PDF file again.
-The PDF file will be messed through this way. So I suggest the second way, easier and faster.</p>
-
-<ol>
-<li><p><a href="http://www.echosign.com/">Echosign</a>
-Upload you PDF file ask signature and get the signature document.</p></li>
-</ol>
-
-
-
-				<div class="post-metadata">
-					November 19, 2009 | 
-					<a href='/2009/11/19/sign-in-your-pdf-document.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#pdf'>pdf</a>
 						
 					 
 				</div>

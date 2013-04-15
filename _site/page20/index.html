@@ -40,6 +40,7 @@
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
 				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.leanprofile.com">Lean Profile</a><br />
 				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
@@ -66,6 +67,33 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2009/05/21/cakephp-admin-routing-fail">
+				<h3 class="title"><a href="/2009/05/21/cakephp-admin-routing-fail.html">CakePHP admin routing fail</a></h3>
+				
+				<p>If your router wirte like this</p>
+
+<blockquote>Router::connect('/:controller/:action/*', array('controller' =&gt; 'projects', 'action' =&gt; 'index'));</blockquote>
+
+
+<p>Then when you call http://{cakeroot}/admin/{controller}/{action}, it will fail with error:</p>
+
+<blockquote>Please create AdminControoler.</blockquote>
+
+
+<p>But It is OK when you change the router to</p>
+
+<blockquote>Router::connect('/:controller/:action', array('controller' =&gt; 'projects', 'action' =&gt; 'index'));</blockquote>
+
+
+
+				<div class="post-metadata">
+					May 21, 2009 | 
+					<a href='/2009/05/21/cakephp-admin-routing-fail.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2009/05/13/require_once-case-sensitive-in-php516-on-win32-platform">
 				<h3 class="title"><a href="/2009/05/13/require_once-case-sensitive-in-php516-on-win32-platform.html">require_once case sensitive in PHP5.1.6 on WIN32 platform</a></h3>

@@ -40,6 +40,7 @@
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
 				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.leanprofile.com">Lean Profile</a><br />
 				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
@@ -66,6 +67,38 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2009/06/29/the-failed-requests-in-apachebench-test">
+				<h3 class="title"><a href="/2009/06/29/the-failed-requests-in-apachebench-test.html">The Failed requests in ApacheBench Test</a></h3>
+				
+				<p>Problem: I run <a href="http://httpd.apache.org/docs/2.0/programs/ab.html">ab </a>test<ab -c 10 -t 60 http://www.xxx.com> for my website yesterday, and there are so many failed request.
+And I found the following explanation from <a href="http://fixunix.com/linux/269587-apache-benchmark.html">fixunix</a>:</p>
+
+<pre  name="code" class="html">
+May not actually be a problem. Reason? It might be a site that serves dynamic context (such as different cookie IDs mentioned) where the file size changes between each query. 
+
+Easy way to verify: 
+
+Code:    $ wget <url>   
+
+Repeat that twice, then: 
+
+Code:    $ diff <retrieved filename> <retrieved filename>.1 
+
+See if there are differences. If yes, then you can ignore the length-related failures. If no, it's some other cause and need to investigate further.
+</pre>
+
+
+<p>I hope it will help you too if you have the same problem.</p>
+
+
+				<div class="post-metadata">
+					June 29, 2009 | 
+					<a href='/2009/06/29/the-failed-requests-in-apachebench-test.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2009/06/22/twitter-weekly-updates-for-2009-06-22">
 				<h3 class="title"><a href="/2009/06/22/twitter-weekly-updates-for-2009-06-22.html">Twitter Weekly Updates for 2009-06-22</a></h3>
@@ -261,33 +294,6 @@ RewriteBase /subdirectory/
 				<div class="post-metadata">
 					May 25, 2009 | 
 					<a href='/2009/05/25/how-to-use-security-component-in-your-application.html#disqus_thread'>View Comments</a>
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/05/21/cakephp-admin-routing-fail">
-				<h3 class="title"><a href="/2009/05/21/cakephp-admin-routing-fail.html">CakePHP admin routing fail</a></h3>
-				
-				<p>If your router wirte like this</p>
-
-<blockquote>Router::connect('/:controller/:action/*', array('controller' =&gt; 'projects', 'action' =&gt; 'index'));</blockquote>
-
-
-<p>Then when you call http://{cakeroot}/admin/{controller}/{action}, it will fail with error:</p>
-
-<blockquote>Please create AdminControoler.</blockquote>
-
-
-<p>But It is OK when you change the router to</p>
-
-<blockquote>Router::connect('/:controller/:action', array('controller' =&gt; 'projects', 'action' =&gt; 'index'));</blockquote>
-
-
-
-				<div class="post-metadata">
-					May 21, 2009 | 
-					<a href='/2009/05/21/cakephp-admin-routing-fail.html#disqus_thread'>View Comments</a>
 					 
 				</div>
 

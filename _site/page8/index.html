@@ -40,6 +40,7 @@
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
 				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.leanprofile.com">Lean Profile</a><br />
 				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
@@ -66,6 +67,32 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2010/01/18/twitter-weekly-updates-for-2010-01-18">
+				<h3 class="title"><a href="/2010/01/18/twitter-weekly-updates-for-2010-01-18.html">Twitter Weekly Updates for 2010-01-18</a></h3>
+				
+				<ul class="aktt_tweet_digest">
+    <li><a href="http://blogs.wsj.com/chinarealtime/2010/01/15/clearing-up-confusion-on-google-and-china/" rel="nofollow">http://blogs.wsj.com/chinarealtime/2010/01/15/clearing-up-confusion-on-google-and-china/</a>  Clearing Up Confusion on Google and China <a href="http://twitter.com/Joshua_C/statuses/7824537607">#</a></li>
+</ul>
+
+
+<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a>.</p>
+
+
+
+				<div class="post-metadata">
+					January 18, 2010 | 
+					<a href='/2010/01/18/twitter-weekly-updates-for-2010-01-18.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#twitter'>twitter</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2010/01/13/what-i-learned-today">
 				<h3 class="title"><a href="/2010/01/13/what-i-learned-today.html">What I learned today</a></h3>
@@ -249,57 +276,6 @@ scp username@tohostname:/remotefile /localdir/</p>
 							| 
 						
 						<a href='/tags.html#scp'>scp</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/12/15/2w-records-update-with-different-sql-engine">
-				<h3 class="title"><a href="/2009/12/15/2w-records-update-with-different-sql-engine.html">2W records update with different sql engine</a></h3>
-				
-				<p>This is just a test result:
-20000 records in table animals;</p>
-
-<pre name='code' class='sql'>
-CREATE TABLE `animals` (                                                           
-           `animal_id` mediumint(8) NOT NULL auto_increment,                                
-           `animal_type` varchar(25) collate utf8_unicode_ci NOT NULL,                      
-           `animal_name` varchar(25) collate utf8_unicode_ci NOT NULL,                      
-           `created` datetime NOT NULL default '2009-02-02 00:00:00',                       
-           `doubledata` double default NULL,                                                
-           PRIMARY KEY  (`animal_id`),                                                      
-           KEY `typekey` (`animal_type`,`animal_name`),                                     
-           KEY `datetime` (`created`),                                                      
-           KEY `DOUBLE` (`doubledata`)                                                      
-         ) ENGINE=MyISAM AUTO_INCREMENT=20001 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci  
-</pre>
-
-
-<p>sql file looks like this:</p>
-
-<pre name='code' class='sql'>
-update animals set animal_type = 'xxx' where animal_id = 1;
-update animals set animal_type = 'xxx' where animal_id = 2;
-.
-.
-.
-update animals set animal_type = 'dog123' where animal_id = 20000;
-</pre>
-
-
-<p>With Innodb engine, the update time > 5min( I just have no time to wait any more)
-With MyISAM, the update time = 30 seconds.</p>
-
-
-				<div class="post-metadata">
-					December 15, 2009 | 
-					<a href='/2009/12/15/2w-records-update-with-different-sql-engine.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#sql'>sql</a>
 						
 					 
 				</div>

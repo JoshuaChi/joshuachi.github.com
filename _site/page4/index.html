@@ -40,6 +40,7 @@
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
 				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.leanprofile.com">Lean Profile</a><br />
 				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
@@ -66,6 +67,32 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2011/02/21/deal-with-mysql-error-150">
+				<h3 class="title"><a href="/2011/02/21/deal-with-mysql-error-150.html">mysql ERROR 1005 (ER_CANT_CREATE_TABLE)</a></h3>
+				
+				<p>To deal with this error, there are a lot of <a href='http://verysimple.com/2006/10/22/mysql-error-number-1005-cant-create-table-mydbsql-328_45frm-errno-150/'>suggestions</a>.
+In my case, it is because of:</p>
+
+<pre>
+  Make sure that the Charset and Collate options are the same both at the table level as well as individual field level for the key columns. (Thanks to FRR for this tip)
+</pre>
+
+
+
+				<div class="post-metadata">
+					February 21, 2011 | 
+					<a href='/2011/02/21/deal-with-mysql-error-150.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2011/02/16/mysql-update">
 				<h3 class="title"><a href="/2011/02/16/mysql-update.html">Same update query only update once</a></h3>
@@ -367,36 +394,6 @@ Memcached memory allocation: a slab has many pages. One page has many chunks. Ea
 					
 						
 						<a href='/tags.html#js'>js</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/12/05/find-ubuntu-wireless-icon">
-				<h3 class="title"><a href="/2010/12/05/find-ubuntu-wireless-icon.html">Find Ubuntu Wireless Icon</a></h3>
-				
-				<p>My network-manager works fine. You can test by <code>sudo service network-manager start/stop</code>. And my wireless network can be found by <code>sudo iwlist  scan</code>.
-So there are two solutions:</p>
-
-<p><ul>
-<li>Right click the top panel and click 'add to panel' and select 'notifications area'. If this didn't work,then netstep:
-</li>
-<li>
-<code>sudo vim /etc/NetworkManager/nm-sysmte-settings.conf</code>. Modify false to true.
-<code>sudo service network-manager restart</code></p>
-
-<p>In my ubuntu 10.10, after these trys, the wireless icon displayed in the panel again. Good luck to you.</p>
-
-
-				<div class="post-metadata">
-					December 05, 2010 | 
-					<a href='/2010/12/05/find-ubuntu-wireless-icon.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#ubuntu'>ubuntu</a>
 						
 					 
 				</div>

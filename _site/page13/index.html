@@ -40,6 +40,7 @@
         <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
 				<a href="https://github.com/joshuachi">My Github</a><br />
 				<a href="http://www.dachebang.com">搭车帮</a><br />
+				<a href="http://www.leanprofile.com">Lean Profile</a><br />
 				<a href="http://www.kiwitask.com">Find freelancer</a><br />
 			</div>
 			<div>
@@ -66,6 +67,89 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array">
+				<h3 class="title"><a href="/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array.html">How to remove a specific value from a javascript array</a></h3>
+				
+				<p><a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/splice">splice</a> - Changes the content of an array, adding new elements while removing old elements.</p>
+
+<blockquote>array.splice(index, howMany, [element1][, ..., elementN]);
+array.splice(index, [howMany, [element1][, ..., elementN]]);  // SpiderMonkey extension
+</blockquote>
+
+
+<p>index</p>
+
+<pre><code>Index at which to start changing the array. If negative, will begin that many elements from the end.
+</code></pre>
+
+<p>howMany</p>
+
+<pre><code>An integer indicating the number of old array elements to remove. If howMany is 0, no elements are removed. In this case, you should specify at least one new element. If no howMany parameter is specified (second syntax above, which is a SpiderMonkey extension), all elements after index are removed. 
+</code></pre>
+
+<p>element1, ..., elementN</p>
+
+<pre><code>The elements to add to the array. If you don't specify any elements, splice simply removes elements from the array. 
+</code></pre>
+
+<pre name='code' class='javascript'>
+// from this
+var arr = ['remove', 'specific', 'value', 'from', 'javascript', 'array']; // 6 items
+ 
+// to this ("specific" value removed)
+var arr = ['remove', 'value', 'from', 'javascript', 'array']; //  5 items
+ 
+// use this (removes "specific")
+arr.splice(arr.indexOf('specific'), 1);
+ 
+ 
+// full example
+var arr = ['remove', 'specific', 'value', 'from', 'javascript', 'array'];
+var value_to_remove = 'specific';
+arr.splice(arr.indexOf(value_to_remove), 1);
+ 
+ 
+// note: to support IE (anger rising as I type), you'll need this (thanks James!):
+if (!Array.prototype.indexOf)
+{
+  Array.prototype.indexOf = function(elt /*, from*/)
+  {
+    var len = this.length >>> 0;
+ 
+    var from = Number(arguments[1]) || 0;
+    from = (from < 0)
+         ? Math.ceil(from)
+         : Math.floor(from);
+    if (from < 0)
+      from += len;
+ 
+    for (; from < len; from++)
+    {
+      if (from in this &&
+          this[from] === elt)
+        return from;
+    }
+    return -1;
+  };
+}
+</pre>
+
+
+
+				<div class="post-metadata">
+					October 17, 2009 | 
+					<a href='/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#javascript'>javascript</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2009/10/14/chance-possibility-and-opportunity-difference">
 				<h3 class="title"><a href="/2009/10/14/chance-possibility-and-opportunity-difference.html">Chance, Possibility and Opportunity, difference?</a></h3>
@@ -458,26 +542,6 @@ The goal is to use Maria as a replacement for MyISAM, which is currently MySQL�
 							| 
 						
 						<a href='/tags.html#mysql'>mysql</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/08/15-common-mistakes-in-e-commerce-design">
-				<h3 class="title"><a href="/2009/10/08/15-common-mistakes-in-e-commerce-design.html">15 Common Mistakes in E-Commerce Design</a></h3>
-				
-				<p>This <a href="http://www.smashingmagazine.com/2009/10/08/15-common-mistakes-in-e-commerce-design-and-how-to-avoid-them/">article</a> can help me optimize your E-Commerce site.</p>
-
-
-				<div class="post-metadata">
-					October 08, 2009 | 
-					<a href='/2009/10/08/15-common-mistakes-in-e-commerce-design.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#e-commerce'>e-commerce</a>
 						
 					 
 				</div>
