@@ -67,6 +67,44 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2011/02/16/mysql-update">
+				<h3 class="title"><a href="/2011/02/16/mysql-update.html">Same update query only update once</a></h3>
+				
+				<p>Just learned more about the mysql update statement.
+I am very curious with this query:</p>
+
+<pre>
+UPDATE `table_name` SET `column3` = (`column1` | (`column2` * 2) ;
+</pre>
+
+
+<p>The first time, there are 10,000 items were updated. When I execute it again, 0 affected.</p>
+
+<p>So there is no where condition, how can this happen?
+Learn it from <a href='http://dev.mysql.com/doc/refman/5.1/en/update-speed.html'>mysql doc: Speed of UPDATE Statements</a>.</p>
+
+<p>Yes, it is because of the index.</p>
+
+<pre>
+  ...The speed of the write depends on the amount of data being updated and the number of indexes that are updated. Indexes that are not changed do not get updated. 
+</pre>
+
+
+
+				<div class="post-metadata">
+					February 16, 2011 | 
+					<a href='/2011/02/16/mysql-update.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2011/01/21/deal-with-mysql-error-1005-hy000">
 				<h3 class="title"><a href="/2011/01/21/deal-with-mysql-error-1005-hy000.html">Deal with mysql ERROR 1005 (HY000)</a></h3>
 				
@@ -359,31 +397,6 @@ So there are two solutions:</p>
 							| 
 						
 						<a href='/tags.html#ubuntu'>ubuntu</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2010/11/30/try-to-use-githubpages-for-my-blog">
-				<h3 class="title"><a href="/2010/11/30/try-to-use-githubpages-for-my-blog.html">Try to Use Github Pages As My Blog</a></h3>
-				
-				<p>Finally, I decide to move my blog to githubpages. I know github do a great job. I want to give a try.<br />
-Later I will try to import my old blog entries.<br />
-Until now, everything looks amazing.</p>
-<p>&#8212;<br />
-I finished the import from wordpress blog to github. I make a import.php script. Don&#8217;t forget to change the user name, password and database in this script.</p>
-<p>&#8212;<br />
-Add <a href='http://disqus.com'>comment service</a> into my blog.</p>
-
-				<div class="post-metadata">
-					November 30, 2010 | 
-					<a href='/2010/11/30/try-to-use-githubpages-for-my-blog.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#github'>github</a>
 						
 					 
 				</div>

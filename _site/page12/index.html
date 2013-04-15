@@ -67,6 +67,51 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2009/10/22/code-smell">
+				<h3 class="title"><a href="/2009/10/22/code-smell.html">Code Smell</a></h3>
+				
+				<p>There is a <a href="http://www.cnblogs.com/idior/archive/2006/06/13/424592.html">code smell list</a> that we can then as a reference.</p>
+
+<blockquote>
+In computer programming, code smell is any symptom in the source code of a computer program that indicates something may be wrong. It generally indicates that the code should be refactored or the overall design should be reexamined. The term appears to have been coined by Kent Beck on WardsWiki. Usage of the term increased after it was featured in Refactoring. Improving the Design of Existing Code.</blockquote>
+
+
+<p>Interesting Discussion about '<a href="http://stackoverflow.com/questions/114342/what-are-code-smells-what-is-the-best-way-to-correct-them">What are Code Smells? What is the best way to correct them?</a>'.</p>
+
+<p>A question is flying on my head:</p>
+
+<pre name='code' class='php'>
+class Person{
+ var $name;
+ var $age;
+//....
+}
+
+function calculateEmployeeAverageAge($employee){
+//...
+}
+
+calculateEmployeeAverageAge(new Person());
+</pre>
+
+
+<p>If there is a function like 'calculateEmployeeAverageAge', is it a code smell? I have met this before in our own product code. I mean the function must know much about the Person structure. But actually, we didn't want to a function rely on too much outside. I always avoid this way in my application. But the guy said 'Methods with a ridiculous (e.g. 7+) amount of parameters. This usually means that there should be a new class introduced (which, when passed, is called an indirect parameter.)' in this <a href="http://stackoverflow.com/questions/114342/what-are-code-smells-what-is-the-best-way-to-correct-them">discussion</a>.</p>
+
+
+				<div class="post-metadata">
+					October 22, 2009 | 
+					<a href='/2009/10/22/code-smell.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#refactor'>refactor</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2009/10/19/twitter-weekly-updates-for-2009-10-19">
 				<h3 class="title"><a href="/2009/10/19/twitter-weekly-updates-for-2009-10-19.html">Twitter Weekly Updates for 2009-10-19</a></h3>
 				
@@ -400,40 +445,6 @@ if (!Array.prototype.indexOf)
 							| 
 						
 						<a href='/tags.html#javascript'>javascript</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/10/14/chance-possibility-and-opportunity-difference">
-				<h3 class="title"><a href="/2009/10/14/chance-possibility-and-opportunity-difference.html">Chance, Possibility and Opportunity, difference?</a></h3>
-				
-				<p>I got the answer from internet, maybe wrong, hope somebody can help me correct it.</p>
-
-<p>possibility is the chance for something to happen.
-as in, "ladies and gents, this is your pilot. it is stormy and lightning is everywhere, so there's a possibility that the plane will crash."</p>
-
-<p>opportunity is the chance to do something.
-as in, "there came an opportunity for him to break up with his girlfriend, but he backed out when he saw that she has a collection of guns."</p>
-
-<p>chance is a word you can use for both.
-as in, "there's a chance (possibility) for you to flunk the exam because all you do is sleep and eat your toenails."
-and "this is your chance (opportunity) to be a senator! all you have to do is get money from the taxpayers!"</p>
-
-<p>Chance = You are lucky it's passing by
-Possibility= It is possible that it happen
-Opportunity=It pass by you only once , so grab it</p>
-
-
-				<div class="post-metadata">
-					October 14, 2009 | 
-					<a href='/2009/10/14/chance-possibility-and-opportunity-difference.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#life'>life</a>
 						
 					 
 				</div>

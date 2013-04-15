@@ -67,6 +67,37 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2010/01/13/what-i-learned-today">
+				<h3 class="title"><a href="/2010/01/13/what-i-learned-today.html">What I learned today</a></h3>
+				
+				<ol>
+<li><p><a href="http://www.shinguz.ch/MySQL/mysql_mv.html">Materialised Views with MySQL</a></li> -
+I gave a simple test as this '<a href="Materialized view makes login process 25k times faster">article</a>'. 10 times faster in my case.
+Before: 56 ms;
+After: 6ms;
+But the disadvantage of this is the data on the site will not be real time. So if you want to use method to speed up your site, it depends on what business of this page is.</p></li>
+<li><p>At last I understand, <a href="http://www.kiwitask.com">kiwi</a> is dead. If you lost your customer for a while, you will lost them forever.</p></li>
+<li><p>Don't say yes or not simplely. Please give some explanation of yes or no even if no body ask you the reason.</p></li>
+<li><p>Learn more about Scrum.
+<a href="http://www.freetofeel.com/2010/01/what-i-learned-today/scrum/" rel="attachment wp-att-365"><img src="http://www.freetofeel.com/wp-content/uploads/2010/01/scrum-300x195.jpg" alt="scrum" title="scrum" width="300" height="195" class="aligncenter size-medium wp-image-365" /></a></p></li>
+</ol>
+
+
+
+				<div class="post-metadata">
+					January 13, 2010 | 
+					<a href='/2010/01/13/what-i-learned-today.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#today'>today</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2010/01/11/twitter-weekly-updates-for-2010-01-11">
 				<h3 class="title"><a href="/2010/01/11/twitter-weekly-updates-for-2010-01-11.html">Twitter Weekly Updates for 2010-01-11</a></h3>
 				
@@ -269,40 +300,6 @@ With MyISAM, the update time = 30 seconds.</p>
 							| 
 						
 						<a href='/tags.html#sql'>sql</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records">
-				<h3 class="title"><a href="/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records.html">The simplest and quickest way to create mysql table demo records.</a></h3>
-				
-				<p>Take animals table as example,
-Field        Type     Extra</p>
-
-<hr />
-
-<p>id    mediumint(8)  auto_increment
-animal_type  varchar(25)      <br/>
-animal_name  varchar(25)</p>
-
-<p>Create one records in this table.
-Step1. insert into animals(<code>animal_type</code>, <code>animal_name</code>) values('dingo', 'cat');
-Step2:
-insert into animals(<code>animal_type</code>, <code>animal_name</code>) select animal_type, animal_name from animals;</p>
-
-<p>Re-run the step2 serval times, you will find the records was increased as geometric progressions.</p>
-
-
-				<div class="post-metadata">
-					December 14, 2009 | 
-					<a href='/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mysql'>mysql</a>
 						
 					 
 				</div>

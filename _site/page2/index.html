@@ -67,6 +67,79 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/2012/08/26/linode-migration">
+				<h3 class="title"><a href="/2012/08/26/linode-migration.html">Linode Facility Migration to Fremont</a></h3>
+				
+				<p>After using <a href='www.linode.com'>linode</a> host center at Tokyo for a while, I decided to migrate my node to Fremont.</p>
+
+<p>Linode provide you a <a href='http://www.linode.com/speedtest/'>speedtest page</a></p>
+
+<p>Here is my speed testing result. Those two tasks are started at the same time.</p>
+
+<pre>
+100MB-tokyo.bin 1.2/100MB, 47 min left
+100MB-fremont.bin 66.5/100MB, 22 secs left
+</pre>
+
+
+<p>But If I ping the speed test domain:</p>
+
+<pre>
+$ ping speedtest.tokyo.linode.com
+PING speedtest.tokyo.linode.com (106.187.96.148): 56 data bytes
+64 bytes from 106.187.96.148: icmp_seq=0 ttl=51 time=82.885 ms
+64 bytes from 106.187.96.148: icmp_seq=1 ttl=51 time=77.757 ms
+64 bytes from 106.187.96.148: icmp_seq=2 ttl=51 time=77.919 ms
+
+$ ping speedtest.fremont.linode.com
+PING speedtest.fremont.linode.com (50.116.14.9): 56 data bytes
+64 bytes from 50.116.14.9: icmp_seq=0 ttl=51 time=146.268 ms
+Request timeout for icmp_seq 1
+64 bytes from 50.116.14.9: icmp_seq=2 ttl=51 time=146.403 ms
+64 bytes from 50.116.14.9: icmp_seq=3 ttl=51 time=145.409 ms
+64 bytes from 50.116.14.9: icmp_seq=4 ttl=51 time=146.396 ms
+64 bytes from 50.116.14.9: icmp_seq=5 ttl=51 time=148.467 ms
+</pre>
+
+
+<p>As you can see the result is totaly different. So which one you can trust?</p>
+
+<p>The response from linode support:</p>
+
+<pre>
+Individual packets take less time to travel between our Tokyo datacenter and your location than our Fremont datacenter, but that our Fremont datacenter is able to provide you with faster download speeds to your location. Which location is better for you depends on whether your use case likes decreased latency, or better download speeds.
+</pre>
+
+
+<p>At last I decide to switch to Fremont anyhow. So Linode provide me a new ip address. The interesting thing comes. My ISP blocked this ip address for some reason. You can find the fail point by using either "traceroute" or <a href='http://library.linode.com/linux-tools/mtr/'>MTR</a>.</p>
+
+<p>So I asked for a new ip address and reboot my node.</p>
+
+<p>Don't forget to update your hosts file with new ip address to make your application work again. Good luck!</p>
+
+
+				<div class="post-metadata">
+					August 26, 2012 | 
+					<a href='/2012/08/26/linode-migration.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#linode'>linode</a>
+						, 
+					
+						
+						<a href='/tags.html#vps'>vps</a>
+						, 
+					
+						
+						<a href='/tags.html#fremont'>fremont</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/2012/01/22/dragon-year">
 				<h3 class="title"><a href="/2012/01/22/dragon-year.html">年末总结(Dragon Year Wish List)</a></h3>
 				
@@ -663,203 +736,6 @@ array(4) {
 					
 						
 						<a href='/tags.html#mongodb'>mongodb</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/2011/05/24/mysql-index-merge">
-				<h3 class="title"><a href="/2011/05/24/mysql-index-merge.html">When To Use Combine Index</a></h3>
-				
-				<p>There are already a lot of posts which gave a introduction of what index merge is in MySQL. One of them is:</p>
-
-<p><a href='http://brian.moonspot.net/2008/04/22/playing-with-mysql-index-merge/'>Playing with MySQL's index merge</a></p>
-
-<p>Today I just noticed the combined index also can be affected by the single column index. For example:</p>
-
-<ol>
-<li>Let's say we have a table named table1 which have 100,000 items. The size of this table is 35MB.</li>
-</ol>
-
-
-<p>Table structure:</p>
-
-<pre>
-CREATE TABLE `table1` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT NULL,
-  `status1` int(11) DEFAULT NULL,
-  `status2` int(11) DEFAULT NULL,
-  `status3` int(11) DEFAULT NULL,
-  `status4` int(11) DEFAULT NULL,
-  `status5` int(11) DEFAULT NULL,
-  `status6` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `table1_name_unique` (`name`),
-  KEY `table1_status1` (`status1`),
-  KEY `table1_status2` (`status2`),
-  KEY `table1_status3` (`status3`),
-  KEY `table1_status4` (`status4`),
-  KEY `table1_status5` (`status5`),
-  KEY `table1_status6` (`status6`),
-  KEY `table1_combine_index` (`status1`,`status2`,`status3`,`status4`,`status5`,`status6``)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
-</pre>
-
-
-<p>We have a query need to select items from table1 table with checking all the status columns in where clause. Let's do a explain:</p>
-
-<pre>
-explain select * from table1 where status1=1 and status2=1 and status3=1 and status4=1 and status5=1 and status6=1  
-</pre>
-
-
-<p>Explain result:</p>
-
-<pre>
-  select_type: SIMPLE
-  table: table1
-  type: index_merge
-  possible_keys: PRIMARY,table1_status1,table1_status2,table1_status3,table1_status4,table1_status5,table1_status6,table1_combine_index
-  key: table1_status1,table1_status2,table1_status3,table1_status4,table1_status5,table1_status6
-  key_len: 1,1,4,4,4,5
-  refs: NULL
-  rows: 1955
-  Extra: Using intersect(table1_status1,table1_status2,table1_status3,table1_status4,table1_status5,table1_status6); Using where
-</pre>
-
-
-<p>The select query takes <b>3.5ms</b> by intersecting indexes.</p>
-
-<p>What happened if we force index to use table1_combine_index:</p>
-
-<pre>
-explain select * from table1 force index (table1_combine_index)  where status1=1 and status2=1 and status3=1 and status4=1 and status5=1 and status6=1  
-</pre>
-
-
-<p>Explain result:</p>
-
-<pre>
-  select_type: SIMPLE
-  table: table1
-  type: ref
-  possible_keys: table1_combine_index
-  key: table1_combine_index
-  key_len: 9
-  refs: const,const
-  rows: 62590
-  Extra: Using where
-</pre>
-
-
-<p>The select query takes <b>10.5ms</b> by using combine index.</p>
-
-<p>In this example, intersecting index is more useful than combine index. There is an article give a more detailed explanation why it works like this:</p>
-
-<p><a href='http://www.mysqlperformanceblog.com/2009/09/19/multi-column-indexes-vs-index-merge/'>Multi Column indexes vs Index Merge</a></p>
-
-<ol>
-<li>Now it's time to make this example a little complicated.</li>
-</ol>
-
-
-<p>We have another table named table2, the structure looks like:</p>
-
-<pre>
-CREATE TABLE `table2` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `table1_id` int(11) NOT NULL,
-  `column1` datetime NOT NULL,
-  `column2` varchar(255) NOT NULL,
-  `column3` text,
-  `column4` tinyint(4) NOT NULL,
-  `column5 ` tinyint(4) NOT NULL,
-  `column6 ` tinyint(4) NOT NULL,
-  `column7` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `column7 ` (`column7 `),
-  KEY `table2_FI_1` (`table1_id `)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
-</pre>
-
-
-<p>There are 20,000 rows in table2, with size 11MB. We have a feature request need to join table1 with table2 and sort by table2's id.</p>
-
-<pre>
-SELECT sql_no_cache * FROM table2 LEFT JOIN table1 ON (table2.table1_id = table1.id) WHERE table1.status1=1 and table1.status2=1 and table1.status3=1 and table1.status4=1 and table1.status5=1 and table1.status6=1 ORDER BY table2.id DESC LIMIT 10;
-</pre>
-
-
-<p>It takes <b>3s</b> to finish the query. The explain tells you:</p>
-
-<pre>
-  select_type: SIMPLE
-  table: table1
-  type: index_merge
-  possible_keys: PRIMARY,`table1_status1`,`table1_status2`,`table1_status3`,`table1_status4`,`table1_status5`,`table1_status6`,`table1_combine_index`
-  key: `table1_status1`,`table1_status2`,`table1_status3`,`table1_status4`,`table1_status5`,`table1_status6`
-  key_len: 1,1,4,4,4,5
-  refs: NULL
-  rows: 1955
-  Extra: Using intersect(`table1_status1`,`table1_status2`,`table1_status3`,`table1_status4`,`table1_status5`,`table1_status6`); Using where
-  
-  ---
-  select_type: SIMPLE
-  table: table2
-  type: ref
-  possible_keys: table2_FI_1
-  key: table2_FI_1
-  key_len: 4
-  refs: table1.id
-  rows: 1
-  Extra:  
-</pre>
-
-
-<p>Now I want to remove these single column indexes in table1 to see what will happen:</p>
-
-<pre>
-  select_type: SIMPLE
-  table: table2
-  type: index
-  possible_keys: table2_FI_1
-  key: PRIMARY
-  key_len: 4
-  refs: 
-  rows: 10
-  Extra:
-  
-  ---
-  
-  select_type: SIMPLE
-  table: table1
-  type: eq_ref
-  possible_keys: PRIMARY,table1_combine_index
-  key: PRIMARY
-  key_len: 4
-  refs: table2.table1_id
-  rows: 1
-  Extra: Using where
-</pre>
-
-
-<p>After removing the single column indexes in table 1, this select query only takes <b>2.4ms</b>. To explain this, we can simply treat (status1,status2,status3,status4,status5,status6) as one column in table1. I think the single columns indexes affected the 'join' performance. MySQL need to use these single indexes to filter the table1 firstly and then make a join with table2.</p>
-
-<p>Summary:</p>
-
-<p>Combine index is not always better than index merge. To know which one is better, explain your query, analyze it and adjust the index.</p>
-
-
-				<div class="post-metadata">
-					May 24, 2011 | 
-					<a href='/2011/05/24/mysql-index-merge.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mysql'>mysql</a>
 						
 					 
 				</div>
