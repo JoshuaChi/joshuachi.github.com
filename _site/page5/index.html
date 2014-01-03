@@ -1,72 +1,121 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Joshua Chi's Blog</title>
-   <meta name="author" content="Joshua Chi" />
-   <!-- syntax highlighting CSS -->
-   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
 
-   <!-- Homepage CSS -->
-   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
 
-		<!-- Google Analytics -->
-		<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-9434024-4']);
-		_gaq.push(['_trackPageview']);
+  <title>
+    Joshua Chi's Blog &middot; 
+    Feel the life color
+  </title>
 
-		(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-		</script>
-		<!-- Google Analytics end -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 </head>
-<body>
 
-<div class="site">
-  <div class="header">
-    <a href="/">Free To Feel</a>
-  </div>
 
-<!--start of side bar-->
-<div id="sidebar" >
-	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
-	<br />
-	Joshua Chi
-    <div class="contact">
-        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
-				<a href="https://github.com/joshuachi">My Github</a><br />
-				<a href="http://www.dachebang.com">搭车帮</a><br />
-				<a href="http://www.leanprofile.com">Lean Profile</a><br />
-				<a href="http://www.kiwitask.com">Find freelancer</a><br />
-			</div>
-			<div>
-				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
-			</div>
-			<div class="rss">
-                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
-				<p>
-				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
-				</p>
-				<p>
-				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
-				</p>
-			</div>	
-		
-			<p class='douban'>
-				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
-				</p>
-</div>
-<!--end of side bar-->
+  <body>
 
-	<div id='content'>
-		<div id="home">
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Find a way to record my work and life. </p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a>
+            </li>
+            <li>
+              <a href="https://github.com/joshuachi">github.com/joshuachi</a>
+            </li>
+            <li><a href="http://www.kiwitask.com/">Find freelancer</a></li>
+            <li><a href="http://www.jieshuge.com/">免费电子书籍下载</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div id="home">
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2010/12/19/nodejs-with-socket-io">
+				<h3 class="title"><a href="/2010/12/19/nodejs-with-socket-io.html">Dig Into Nodejs</a></h3>
+				
+				<p>Just find a beautiful and simplest javascript code:</p>
+
+<pre>
+  // In both HTTP servers and clients it is possible to queue up several
+  // outgoing messages. This is easiest to imagine in the case of a client.
+  // Take the following situation:
+  //
+  //    req1 = client.request('GET', '/');
+  //    req2 = client.request('POST', '/');
+  //
+  // The question is what happens when the user does
+  //
+  //   req2.write("hello world\n");
+  //
+  // It's possible that the first request has not been completely flushed to
+  // the socket yet. Thus the outgoing messages need to be prepared to queue
+  // up data internally before sending it on further to the socket's queue.
+  //
+  // This function, outgoingFlush(), is called by both the Server
+  // implementation and the Client implementation to attempt to flush any
+
+
+  while (message.output.length) {
+    if (!socket.writable) return; // XXX Necessary?
+
+    var data = message.output.shift();
+    var encoding = message.outputEncodings.shift();
+
+    ret = socket.write(data, encoding);
+  }
+</pre>
+
+
+<p>Now I know how nodejs talk with server, which is using <a href='http://socket.io/'>Socket.IO</a> - multi-transport socket server.</p>
+
+
+				<div class="post-metadata">
+					December 19, 2010 | 
+					<a href='/2010/12/19/nodejs-with-socket-io.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#nodejs'>nodejs</a>
+						, 
+					
+						
+						<a href='/tags.html#js'>js</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2010/12/05/find-ubuntu-wireless-icon">
 				<h3 class="title"><a href="/2010/12/05/find-ubuntu-wireless-icon.html">Find Ubuntu Wireless Icon</a></h3>
@@ -133,30 +182,23 @@ Add <a href='http://disqus.com'>comment service</a> into my blog.</p>
 </ol>
 
 
-<p><ul></p>
-
-<pre><code>&lt;li&gt;
-</code></pre>
-
-<p>When importing data into InnoDB, make sure that MySQL does not have autocommit mode enabled because that requires a log flush to disk for every insert. To disable autocommit during your import operation, surround it with SET autocommit and COMMIT statements:</p>
+<p><ul>
+    <li>
+When importing data into InnoDB, make sure that MySQL does not have autocommit mode enabled because that requires a log flush to disk for every insert. To disable autocommit during your import operation, surround it with SET autocommit and COMMIT statements:</p>
 
 <p><code>SET autocommit=0;
 ... SQL import statements ...
 COMMIT;</code></p>
 
-<p>If you use the mysqldump option --opt, you get dump files that are fast to import into an InnoDB  table, even without wrapping them with the SET autocommit and COMMIT statements. </li></p>
-
-<pre><code>&lt;li&gt;If you have UNIQUE constraints on secondary keys, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by temporarily turning off the uniqueness checks during the import session:
-</code></pre>
+<p>If you use the mysqldump option --opt, you get dump files that are fast to import into an InnoDB  table, even without wrapping them with the SET autocommit and COMMIT statements. </li>
+    <li>If you have UNIQUE constraints on secondary keys, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by temporarily turning off the uniqueness checks during the import session:</p>
 
 <p><code>SET unique_checks=0;
 ... SQL import statements ...
 SET unique_checks=1;</code></p>
 
-<p>For big tables, this saves a lot of disk I/O because InnoDB can use its insert buffer to write secondary index records in a batch. Be certain that the data contains no duplicate keys.</li></p>
-
-<pre><code>&lt;li&gt;#
-</code></pre>
+<p>For big tables, this saves a lot of disk I/O because InnoDB can use its insert buffer to write secondary index records in a batch. Be certain that the data contains no duplicate keys.</li>
+    <li>#</p>
 
 <p>If you have FOREIGN KEY constraints in your tables, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by turning the foreign key checks off for a while in the import session:
 <code>
@@ -359,39 +401,6 @@ $c->addJoin(BookPeer::CATEGORY_ID, CategoryPeer::ID.' AND '.CategoryPeer::NAME.'
 
 			</div>
 		
-			<div class="post" id="postid-/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine">
-				<h3 class="title"><a href="/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine.html">Fighting with an issue in cracked mac machine</a></h3>
-				
-				<p>Problem: There is always a black border for every window in a cracked mac, including 'Finder', 'Terminal', even the icon on the desktop.</p>
-
-<p>Solution: Delete 'com.apple.universalaccess.plist' in /Usr/$YOURNAME/Library/Preferences/. And then Logout and login.</p>
-
-<p>It can fixed in my cracked mac machine.
-And the main idea was back up your mac preferences</p>
-
-<pre name='code' class='css'>
-cp -R /Usr/$YOURNAME/Library/Preferences/ /Usr/$YOURNAME/backup/
-</pre>
-
-
-<p>And then when you login again, the preferences will be recreated again, like a new user.
-For you, you just try to copy some plist from /Usr/$YOURNAME/backup/ to /Usr/$YOURNAME/Library/Preferences/. And then you can check which plist file was the fail reason</p>
-
-
-				<div class="post-metadata">
-					June 01, 2010 | 
-					<a href='/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mac'>mac</a>
-						
-					 
-				</div>
-
-			</div>
-		
 		
 		<div class="paging">
 		
@@ -408,14 +417,7 @@ For you, you just try to copy some plist from /Usr/$YOURNAME/backup/ to /Usr/$YO
 </div>
 </div>
 
-	</div>
-  
-  <div class="footer">
-		<div id="copyright">
-			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
-		</div>
-  </div>    
-</div>
+    </div>
 
-</body>
+  </body>
 </html>

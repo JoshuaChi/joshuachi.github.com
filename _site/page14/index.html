@@ -1,72 +1,190 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Joshua Chi's Blog</title>
-   <meta name="author" content="Joshua Chi" />
-   <!-- syntax highlighting CSS -->
-   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
 
-   <!-- Homepage CSS -->
-   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
 
-		<!-- Google Analytics -->
-		<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-9434024-4']);
-		_gaq.push(['_trackPageview']);
+  <title>
+    Joshua Chi's Blog &middot; 
+    Feel the life color
+  </title>
 
-		(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-		</script>
-		<!-- Google Analytics end -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 </head>
-<body>
 
-<div class="site">
-  <div class="header">
-    <a href="/">Free To Feel</a>
-  </div>
 
-<!--start of side bar-->
-<div id="sidebar" >
-	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
-	<br />
-	Joshua Chi
-    <div class="contact">
-        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
-				<a href="https://github.com/joshuachi">My Github</a><br />
-				<a href="http://www.dachebang.com">搭车帮</a><br />
-				<a href="http://www.leanprofile.com">Lean Profile</a><br />
-				<a href="http://www.kiwitask.com">Find freelancer</a><br />
-			</div>
-			<div>
-				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
-			</div>
-			<div class="rss">
-                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
-				<p>
-				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
-				</p>
-				<p>
-				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
-				</p>
-			</div>	
-		
-			<p class='douban'>
-				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
-				</p>
-</div>
-<!--end of side bar-->
+  <body>
 
-	<div id='content'>
-		<div id="home">
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Find a way to record my work and life. </p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a>
+            </li>
+            <li>
+              <a href="https://github.com/joshuachi">github.com/joshuachi</a>
+            </li>
+            <li><a href="http://www.kiwitask.com/">Find freelancer</a></li>
+            <li><a href="http://www.jieshuge.com/">免费电子书籍下载</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div id="home">
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2009/10/09/mysql-architecture">
+				<h3 class="title"><a href="/2009/10/09/mysql-architecture.html">MySQL Architecture</a></h3>
+				
+				<ol>
+<li><p>Each client connection gets its own thread within the server process.</p></li>
+<li><p>If it takes a lot of time on locks, why not separate read and write lock?
+Q:  How to synchronise the read database and write database?</p></li>
+<li><p>When we want to keep reading and writing date clean, we try to implement two types lock in db.
+Expected：
+Read locks on a resource are shared, or mutually nonblocking: many clients
+may read from a resource at the same time and not interfere with each other.
+Write locks, on the other hand, are exclusive—i.e., they block both read locks and
+other write locks—because the only safe policy is to have a single client writing to
+the resource at given time and to prevent all reads when a client is writing.</p></li>
+</ol>
+
+
+<p>MySQL way:
+a. Table locks - the lowest overhead;
+b. Row locks - the greatest concurrency.</p>
+
+<ol>
+<li><p>Transactions aren’t enough unless the system passes the ACID test.
+Atomicity
+Consistency
+Isolation
+Durability - Once committed, a transaction’s changes are permanent.</p></li>
+<li><p>Isolation Levels >
+READ UNCOMMITTED - Reading uncommitted data is also known as a dirty read;
+READ COMMITTED - The default isolation level for most database systems (but not MySQL!);
+REPEATABLE READ - MySQL’s default transaction isolation level.
+SERIALIZABLE - At this level, a lot of timeouts and lock contention may occur.</p></li>
+<li><p>Deadlock -
+The way InnoDB currently handles deadlocks is to roll back the transaction
+that has the fewest exclusive row locks.
+Deadlocks are a fact of life in transactional systems, and your applications
+should be designed to handle them.</p></li>
+<li><p>Transaction in MySQL >
+MySQL AB provides three transactional storage engines: InnoDB, NDB Cluster, and
+Falcon. solidDB and PBXT.</p></li>
+<li><p>AUTOCOMMIT >
+MySQL operates in AUTOCOMMIT mode by default. It automatically executes each query in a separate transaction.
+MyISAM or Memory tables -  essentially always operate in AUTOCOMMIT mode.</p></li>
+<li><p>You can’t reliably mix different engines in a single transaction. If you mix transactional and nontransactional tables (for instance, InnoDB and MyISAM tables) in a transaction, the transaction will work properly if all goes well. However, if a rollback is required, the changes to the nontransactional table can’t be undone.</p></li>
+<li><p>InnoDB also supports explicit locking, which the SQL standard does not mention at all:</p></li>
+<li>SELECT ... LOCK IN SHARE MODE</li>
+<li>SELECT ... FOR UPDATE</li>
+</ol>
+
+
+<p>MySQL supports the LOCK TABLES and UNLOCK TABLES commands, which are implemented in the server, not in the storage engines.</p>
+
+<ol>
+<li><p>MySQL’s Storage Engines >
+The MyISAM Engine >>
+Storage: The MyISAM format is platformneutral, meaning you can copy the data and index files from an Intel-based server to a PowerPC or Sun SPARC without any trouble.
+MyISAM tables created in MySQL 5.0 with variable-length rows are configured by default to handle 256 TB of data, using 6-byte pointers to the data records.</p></li>
+</ol>
+
+
+<p>Features:
+Locking and concurrency / Automatic repair / Manual repair(You can also use the myisamchk
+command-line tool to check and repair tables when the server is offline.) / Index features / Delayed key writes(However, after a server or system crash, the indexes will definitely be corrupted and will need repair.) /</p>
+
+<p>Compressed MyISAM tables:
+Compressed MyISAM tables can have indexes, but they’re read-only.</p>
+
+<p>The MyISAM Merge Engine >>
+A Merge table is the combination of several identical MyISAM tables into one virtual table. This is particularly useful when you use MySQL in logging and data warehousing applications.</p>
+
+<p>The InnoDB Engine >>
+InnoDB can’t build indexes by sorting, which MyISAM can do.
+Any operation that changes an InnoDB table’s structure will rebuild the entire table, including all the indexes.</p>
+
+<p>The Memory Engine >>
+Here are some good uses for Memory tables:
+a. For “lookup” or “mapping” tables, such as a table that maps postal codes to
+state names
+b. For caching the results of periodically aggregated data
+c. For intermediate results when analyzing data
+Support only fixed-size rows, so they really store VARCHARs as CHARs, which can waste memory.</p>
+
+<p>The Archive Engine >>
+It causes much less disk I/O than MyISAM, because it buffers data writes and compresses each row with zlib as it’s inserted.</p>
+
+<p>The CSV Engine >></p>
+
+<p>The Federated Engine >>
+The Federated engine does not store data locally. Each Federated table refers to a table on a remote MySQL server, so it actually connects to a remote server for all operations.</p>
+
+<p>The Blackhole Engine >>
+Blackhole engine useful for fancy replication setups and audit logging.</p>
+
+<p>The NDB Cluster Engine >>
+An NDB database consists of data nodes, management nodes, and SQL nodes (MySQL instances).</p>
+
+<p>The Falcon Engine >></p>
+
+<p>The solidDB Engine >></p>
+
+<p>The PBXT (Primebase XT) Engine >></p>
+
+<p>The Maria Storage Engine >>
+The goal is to use Maria as a replacement for MyISAM, which is currently MySQL’s default storage engine.</p>
+
+<ol>
+<li><p>Table Conversions ></p></li>
+<li>mysql> ALTER TABLE mytable ENGINE = Falcon;</li>
+</ol>
+
+
+
+				<div class="post-metadata">
+					October 09, 2009 | 
+					<a href='/2009/10/09/mysql-architecture.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2009/10/08/15-common-mistakes-in-e-commerce-design">
 				<h3 class="title"><a href="/2009/10/08/15-common-mistakes-in-e-commerce-design.html">15 Common Mistakes in E-Commerce Design</a></h3>
@@ -203,353 +321,6 @@
 
 			</div>
 		
-			<div class="post" id="postid-/2009/09/21/agile-design">
-				<h3 class="title"><a href="/2009/09/21/agile-design.html">Agile Design</a></h3>
-				
-				<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">1.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">敏捷设计之着眼于当下的需求，不预测未来的需求和需要</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">2.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">敏捷开发应用设计原则取出代码中的smell，当没有这些糟糕的smell的时候， 他们不会iqu应用这些原则，仅仅因为是一个原则就无条件的遵循它是错误的 -- 这句话太深入我心了，三年来，终于找到证据证明我的想法了。我一向讨厌那些死板教条，为了原则而原则，在没有开始代码之前就把这些条条框框把我们框住，太他妈混球了。这也证明了，代码世界中，很多混饭的。</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">C7</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">----------------------------------------------</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">1.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">满足工程设计标准的唯一文档就是源码</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">2.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">粘滞性 - 做正确的事情要比做错误的事情困难</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">3.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">为过多的可能性做设计，致使系统中含有绝不会用到的结构，从而变得混乱</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">4.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">如果只是简单的copy and past带来的重复代码，还是有希望治理的。但很多事情由于系统过于庞大，A开发者编写了一段功能代码，B因为没有看到的A的代码，而又重新编写了一段，这样的代码功能一样，但很难被发现。这个问题想彻底避免，我觉得也是很困难的，这就要求开发者在开始编码前就对整个系统有个通透的了解。这就是为什么说招10个初级程序员，还不如招两个中级程序员，招五个中级程序员，还不如招两个高级程序员。</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">5.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">敏捷设计是一个过程，持续的应用原则，模式和实践来保持系统任何时候都做得尽可能的简单，干净，富于想象力。</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">（写到这里让我想到，微软的程序员是绝没有机会实践这些东西的，他们一定很渴望，但却不可得，窃喜。）</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">C8</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">-----------------------------------------------</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">1.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">被依赖最多的功能，要注意解耦</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">C9</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">-----------------------------------------------</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">1.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">所有的原则都是使得我们可以尽可能的接近理想，而决不可能达到理想</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">2.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">对于扩展是开放的，对于更改是封闭的。</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">这就是为什么有时候我们您愿增加一段新的功能代码单独处理我们的另一端逻辑，而不愿更改那块被依赖很多次的代码</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">3.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">OCP一定要提前预测什么地方需要应用此原则</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">4.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">首先开发重要的部件，尽早的，经常性的发布</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">5.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">OCP - 面向对象的核心，只有当应用这个原则的时候才能看到面向对象的好处</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">C10</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">------------------------------------------------</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">1.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Liskov替换原则 - 子类型必须能替换掉它的基类型</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">2.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">读到这里又让我想起当初学习那么多的定理，推论的用处了，很多的都用在这里了</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">3.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Design By Contract(DBC) - 契约是通过为每个方法声明前置条件和后置条件来指定的。要是一个方法的一执行，前置方法必须为真，在执行结束后，后置方法必须为真。</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">4.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">为使第三方程序可控，可以将它们包装于你自己可以控制的函数内，以便未来什么时期将它替换掉。</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">C11</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">---------------------------------------------------</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">1.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">高层模块不依赖于底层模块，二者都依赖于抽象</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">抽象不依赖于细节，细节依赖于抽象</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">2.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">程序中所有的依赖关系都应该终止与抽象或者接口</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">C12</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">---------------------------------------------------</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">1.</div>
-
-
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">多重继承分离接口</div>
-
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>敏捷设计之着眼于当下的需求，不预测未来的需求和需要</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>敏捷开发应用设计原则取出代码中的smell，当没有这些糟糕的smell的时候， 他们不会iqu应用这些原则，仅仅因为是一个原则就无条件的遵循它是错误的 -- 这句话太深入我心了，三年来，终于找到证据证明我的想法了。我一向讨厌那些死板教条，为了原则而原则，在没有开始代码之前就把这些条条框框把我们框住，太他妈混球了。这也证明了，代码世界中，很多混饭的。</p>
-
-<p>C7</p>
-
-<hr />
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>满足工程设计标准的唯一文档就是源码</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>粘滞性 - 做正确的事情要比做错误的事情困难</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>为过多的可能性做设计，致使系统中含有绝不会用到的结构，从而变得混乱</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>如果只是简单的copy and past带来的重复代码，还是有希望治理的。但很多事情由于系统过于庞大，A开发者编写了一段功能代码，B因为没有看到的A的代码，而又重新编写了一段，这样的代码功能一样，但很难被发现。这个问题想彻底避免，我觉得也是很困难的，这就要求开发者在开始编码前就对整个系统有个通透的了解。这就是为什么说招10个初级程序员，还不如招两个中级程序员，招五个中级程序员，还不如招两个高级程序员。</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>敏捷设计是一个过程，持续的应用原则，模式和实践来保持系统任何时候都做得尽可能的简单，干净，富于想象力。</p>
-
-<p>（写到这里让我想到，微软的程序员是绝没有机会实践这些东西的，他们一定很渴望，但却不可得，窃喜。）</p>
-
-<p>C8</p>
-
-<hr />
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>被依赖最多的功能，要注意解耦</p>
-
-<p>C9</p>
-
-<hr />
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>所有的原则都是使得我们可以尽可能的接近理想，而决不可能达到理想</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>对于扩展是开放的，对于更改是封闭的。</p>
-
-<p>这就是为什么有时候我们您愿增加一段新的功能代码单独处理我们的另一端逻辑，而不愿更改那块被依赖很多次的代码</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>OCP一定要提前预测什么地方需要应用此原则</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>首先开发重要的部件，尽早的，经常性的发布</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>OCP - 面向对象的核心，只有当应用这个原则的时候才能看到面向对象的好处</p>
-
-<p>C10</p>
-
-<hr />
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>Liskov替换原则 - 子类型必须能替换掉它的基类型</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>读到这里又让我想起当初学习那么多的定理，推论的用处了，很多的都用在这里了</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>Design By Contract(DBC) - 契约是通过为每个方法声明前置条件和后置条件来指定的。要是一个方法的一执行，前置方法必须为真，在执行结束后，后置方法必须为真。</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>为使第三方程序可控，可以将它们包装于你自己可以控制的函数内，以便未来什么时期将它替换掉。</p>
-
-<p>C11</p>
-
-<hr />
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>高层模块不依赖于底层模块，二者都依赖于抽象</p>
-
-<p>抽象不依赖于细节，细节依赖于抽象</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>程序中所有的依赖关系都应该终止与抽象或者接口</p>
-
-<p>C12</p>
-
-<hr />
-
-<ol>
-<li></li>
-</ol>
-
-
-<p>多重继承分离接口</p>
-
-
-				<div class="post-metadata">
-					September 21, 2009 | 
-					<a href='/2009/09/21/agile-design.html#disqus_thread'>View Comments</a>
-					 
-				</div>
-
-			</div>
-		
 		
 		<div class="paging">
 		
@@ -566,14 +337,7 @@
 </div>
 </div>
 
-	</div>
-  
-  <div class="footer">
-		<div id="copyright">
-			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
-		</div>
-  </div>    
-</div>
+    </div>
 
-</body>
+  </body>
 </html>

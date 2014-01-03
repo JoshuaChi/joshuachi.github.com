@@ -1,72 +1,186 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Joshua Chi's Blog</title>
-   <meta name="author" content="Joshua Chi" />
-   <!-- syntax highlighting CSS -->
-   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
 
-   <!-- Homepage CSS -->
-   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
 
-		<!-- Google Analytics -->
-		<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-9434024-4']);
-		_gaq.push(['_trackPageview']);
+  <title>
+    Joshua Chi's Blog &middot; 
+    Feel the life color
+  </title>
 
-		(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-		</script>
-		<!-- Google Analytics end -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 </head>
-<body>
 
-<div class="site">
-  <div class="header">
-    <a href="/">Free To Feel</a>
-  </div>
 
-<!--start of side bar-->
-<div id="sidebar" >
-	<img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />
-	<br />
-	Joshua Chi
-    <div class="contact">
-        <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a><br />
-				<a href="https://github.com/joshuachi">My Github</a><br />
-				<a href="http://www.dachebang.com">搭车帮</a><br />
-				<a href="http://www.leanprofile.com">Lean Profile</a><br />
-				<a href="http://www.kiwitask.com">Find freelancer</a><br />
-			</div>
-			<div>
-				<a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
-			</div>
-			<div class="rss">
-                                <p><a href="http://feeds.feedburner.com/freetofeel"><img src="http://feeds.feedburner.com/~fc/freetofeel?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
-				<p>
-				<a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
-				</p>
-				<p>
-				<a href="http://feeds.feedburner.com/FreeToFeel">Subscribe(feedburner)</a>
-				</p>
-			</div>	
-		
-			<p class='douban'>
-				<script type="text/javascript" src="http://www.douban.com/service/badge/joshua_c/?show=collection&amp;select=random&amp;n=8&amp;columns=2&amp;hidelogo=yes&amp;cat=book|music" ></script> 
-				</p>
-</div>
-<!--end of side bar-->
+  <body>
 
-	<div id='content'>
-		<div id="home">
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Find a way to record my work and life. </p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="http://twitter.com/Joshua_C/">twitter.com/Joshua_C</a>
+            </li>
+            <li>
+              <a href="https://github.com/joshuachi">github.com/joshuachi</a>
+            </li>
+            <li><a href="http://www.kiwitask.com/">Find freelancer</a></li>
+            <li><a href="http://www.jieshuge.com/">免费电子书籍下载</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived Posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div id="home">
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/2009/10/18/schema-optimization-and-indexing">
+				<h3 class="title"><a href="/2009/10/18/schema-optimization-and-indexing.html">Schema Optimization and Indexing</a></h3>
+				
+				<ol>
+<li><p>Choosing Data Type ></p></li>
+<li>Smaller is usually better;</li>
+<li>Simple is good;</li>
+<li><p>Avoid NULL if possible - When a nullable column is indexed, it requires an extra byte per entry and can even cause a fixed-size index;</p></li>
+<li><p>Two kinds of numbers: whole numbers and real numbers (numbers with a fractional part)
+TINYINT, SMALLINT, MEDIUMINT, INT, or BIGINT. These require 8, 16, 24, 32, and 64 bits of storage space. Signed and unsigned types use the same amount of storage space and have the same performance, so use whatever’s best for your data range.</p></li>
+<li><p>MySQL lets you specify a “width” for integer types, such as INT(11). &lt;@author:Oh, I was cheated!>This is meaningless for most applications: it does not restrict the legal range of values, but simply specifies the number of characters MySQL’s interactive tools (such as the commandline client) will reserve for display purposes. For storage and computational purposes, INT(1) is identical to INT(20).</p></li>
+<li><p>VARCHAR - helps performance because it saves space. However, because the rows are variable-length, they can grow when you update them, which can cause extra work.</p></li>
+</ol>
+
+
+<p>CHAR - is fixed-length: MySQL always allocates enough space for the specified number of characters. When storing a CHAR value, MySQL removes any trailing
+spaces.</p>
+
+<ol>
+<li><p>Binary comparisons can be much simpler than character comparisons, so they are faster.</p></li>
+<li><p>Using ENUM instead of a string type.
+Note:ENUM field sorts by the internal integer values, not by the strings themselves.</p></li>
+<li><p>TIMESTAMP >
+By default, MySQL will set the first TIMESTAMP column to the current time when you insert a
+row without specifying a value for the column. MySQL also updates the first TIMESTAMP column’s value by default when you update the row, unless you assign a value explicitly in the UPDATE statement.</p></li>
+<li><p>What if you need to store a date and time value with subsecond resolution?
+You can use the BIGINT data type and store the value as a timestamp in microseconds, or you can use a DOUBLE.</p></li>
+<li><p>Date type choose priciple:
+Choose the smallest size that can hold your required range of values, and leave room for future growth if necessary.</p></li>
+<li><p>String types >
+Avoid string types for identifiers if possible, as they take up a lot of space and are generally slower than integer types. Be especially cautious when using string identifiers with MyISAM tables. MyISAM uses packed indexes for strings by default, which may make lookups much slower. In our tests, we’ve noted up to six times slower performance with packed indexes on MyISAM.</p></li>
+<li><p>Types of Indexes >
+B-Tree indexes - all the values are stored in order, and each leaf page is the same distance from the root.</p></li>
+<li><p>Full-text indexes >
+It finds keywords in the text instead of comparing values directly to the values in the index.</p></li>
+<li><p>Indexing Strategies for High Performance > Isolate the Column
+“Isolating” the column means it should not be part of an expression or be inside a function in the query.
+i).mysql> SELECT ... WHERE TO_DAYS(CURRENT_DATE) - TO_DAYS(date_col) &lt;= 10;
+ii). mysql> SELECT ... WHERE date_col >= DATE_SUB(CURRENT_DATE, INTERVAL 10 DAY);
+iii). mysql> SELECT ... WHERE date_col >= DATE_SUB('2008-01-17', INTERVAL 10 DAY);</p></li>
+<li><p>If you want to make index for a long column, the best way is using the prefix.
+Prefix indexes can be a great way to make indexes smaller and faster, but they have downsides too: MySQL cannot use prefix indexes for ORDER BY or GROUP BY queries, nor can it use them as covering indexes.</p>
+
+<blockquote><p>mysql> SELECT COUNT(DISTINCT city)/COUNT(<em>) FROM sakila.city_demo;
++-------------------------------+
+| COUNT(DISTINCT city)/COUNT(</em>) |
++-------------------------------+
+| 0.0312 |
++-------------------------------+
+mysql> SELECT COUNT(DISTINCT LEFT(city, 3))/COUNT(<em>) AS sel3,
+-> COUNT(DISTINCT LEFT(city, 4))/COUNT(</em>) AS sel4,
+-> COUNT(DISTINCT LEFT(city, 5))/COUNT(<em>) AS sel5,
+-> COUNT(DISTINCT LEFT(city, 6))/COUNT(</em>) AS sel6,
+-> COUNT(DISTINCT LEFT(city, 7))/COUNT(*) AS sel7
+-> FROM sakila.city_demo;
++--------+--------+--------+--------+--------+
+| sel3 | sel4 | sel5 | sel6 | sel7 |
++--------+--------+--------+--------+--------+
+| 0.0239 | 0.0293 | 0.0305 | 0.0309 | 0.0310 |
++--------+--------+--------+--------+--------+
+mysql> ALTER TABLE sakila.city_demo ADD KEY (city(7));</p></blockquote></li>
+<li><p>Clustered Indexes >
+solidDB and InnoDB are the only ones that support this type index.</p></li>
+<li><p>You should strive to insert data in primary key order when using InnoDB, and you should try to use a clustering key that will give a monotonically increasing value for each new row.</p></li>
+<li><p>MySQL can use the same index for both sorting and finding rows.
+Ordering the results by the index works only when the index’s order is exactly the same as the ORDER BY clause and all columns are sorted in the same direction (ascending or descending). If the query joins multiple tables, it works only when all columns in the ORDER BY clause refer to the first table. The ORDER BY clause also has the same limitation as lookup queries: it needs to form a leftmost prefix of the index.</p></li>
+<li><p>MySQL implements UNIQUE constraints and PRIMARY KEY constraints with indexes.</p></li>
+<li><p>Redundant indexes are a bit different from duplicated indexes. If there is an index on (A, B), another index on (A) would be redundant because it is a prefix of the first index. That is, the index on (A, B) can also be used as an index on (A) alone. (This type of redundancy applies only to B-Tree indexes.) However, an index on (B, A) would not be redundant, and neither would an index on (B), because B is not a leftmost prefix of (A, B).</p></li>
+<li><p>Where possible, try to extend existing indexes rather than adding new ones. It is usually more efficient to maintain one multicolumn index than several single-column indexes.</p></li>
+<li><p>?--
+If you don’t yet know your query distribution, strive to make your indexes as selective as you can, because highly selective indexes are usually more beneficial.</p></li>
+<li><p>As this example shows, InnoDB can lock rows it doesn’t really need even when it uses an index.
+Note:
+The problem is even worse when it can’t use an index to find and lock the rows: if there’s no index for the query, MySQL will do a full table scan and lock every row, whether it “needs” it or not.</p></li>
+<li><p>!--
+If MySQL uses an index for a range criterion in a query, it cannot also use another index (or a suffix of the same index) for ordering.</p></li>
+<li><p>Run 'CHECK TABLE xxx' to see if the table is corrupt;
+Fix corrupt tables with the 'REPAIR TABLE xxx' command.</p></li>
+<li><p>Two types of data fragmentation:
+a). Row fragmentation
+b). Intra-row fragmentation
+MyISAM tables may suffer from both types of fragmentation, but InnoDB never fragments short rows.
+!--To defragment data, you can either run OPTIMIZE TABLE or dump and reload the data;
+!--For storage engines that don’t support OPTIMIZE TABLE, you can rebuild the table with a no-op ALTER TABLE. Just alter the table to have the same engine it currently uses:
+ mysql> ALTER TABLE $table ENGINE=$engine;</p></li>
+<li><p>Example, you can change or drop a column’s default value in two ways (one fast, and one slow).
+slow}mysql> ALTER TABLE sakila.film
+ -> MODIFY COLUMN rental_duration TINYINT(3) NOT NULL DEFAULT 5;
+In theory, MySQL could have skipped building a new table. The default value for the column is actually stored in the table’s .frm file, so you should be able to change it without touching the table itself. MySQL doesn’t yet use this optimization, however: any MODIFY COLUMN will cause a table rebuild. You can change a column’s default with ALTER COLUMN,* though:
+fast}mysql> ALTER TABLE sakila.film
+ -> ALTER COLUMN rental_duration SET DEFAULT 5;</p></li>
+<li><p>Building MyISAM Indexes Quickly >>
+The usual trick for loading MyISAM tables efficiently is to disable keys, load the data, and reenable the keys:
+mysql> ALTER TABLE test.load_data DISABLE KEYS;
+-- load the data
+mysql> ALTER TABLE test.load_data ENABLE KEYS;</p></li>
+</ol>
+
+
+
+				<div class="post-metadata">
+					October 18, 2009 | 
+					<a href='/2009/10/18/schema-optimization-and-indexing.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						, 
+					
+						
+						<a href='/tags.html#index'>index</a>
+						, 
+					
+						
+						<a href='/tags.html#optimization'>optimization</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array">
 				<h3 class="title"><a href="/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array.html">How to remove a specific value from a javascript array</a></h3>
@@ -78,20 +192,14 @@ array.splice(index, [howMany, [element1][, ..., elementN]]);  // SpiderMonkey ex
 </blockquote>
 
 
-<p>index</p>
+<p>index
+    Index at which to start changing the array. If negative, will begin that many elements from the end.</p>
 
-<pre><code>Index at which to start changing the array. If negative, will begin that many elements from the end.
-</code></pre>
+<p>howMany
+    An integer indicating the number of old array elements to remove. If howMany is 0, no elements are removed. In this case, you should specify at least one new element. If no howMany parameter is specified (second syntax above, which is a SpiderMonkey extension), all elements after index are removed.</p>
 
-<p>howMany</p>
-
-<pre><code>An integer indicating the number of old array elements to remove. If howMany is 0, no elements are removed. In this case, you should specify at least one new element. If no howMany parameter is specified (second syntax above, which is a SpiderMonkey extension), all elements after index are removed. 
-</code></pre>
-
-<p>element1, ..., elementN</p>
-
-<pre><code>The elements to add to the array. If you don't specify any elements, splice simply removes elements from the array. 
-</code></pre>
+<p>element1, ..., elementN
+    The elements to add to the array. If you don't specify any elements, splice simply removes elements from the array.</p>
 
 <pre name='code' class='javascript'>
 // from this
@@ -422,132 +530,6 @@ D 得分最多的--和平型</p>
 
 			</div>
 		
-			<div class="post" id="postid-/2009/10/09/mysql-architecture">
-				<h3 class="title"><a href="/2009/10/09/mysql-architecture.html">MySQL Architecture</a></h3>
-				
-				<ol>
-<li><p>Each client connection gets its own thread within the server process.</p></li>
-<li><p>If it takes a lot of time on locks, why not separate read and write lock?
-Q:  How to synchronise the read database and write database?</p></li>
-<li><p>When we want to keep reading and writing date clean, we try to implement two types lock in db.
-Expected：
-Read locks on a resource are shared, or mutually nonblocking: many clients
-may read from a resource at the same time and not interfere with each other.
-Write locks, on the other hand, are exclusive—i.e., they block both read locks and
-other write locks—because the only safe policy is to have a single client writing to
-the resource at given time and to prevent all reads when a client is writing.</p></li>
-</ol>
-
-
-<p>MySQL way:
-a. Table locks - the lowest overhead;
-b. Row locks - the greatest concurrency.</p>
-
-<ol>
-<li><p>Transactions aren’t enough unless the system passes the ACID test.
-Atomicity
-Consistency
-Isolation
-Durability - Once committed, a transaction’s changes are permanent.</p></li>
-<li><p>Isolation Levels >
-READ UNCOMMITTED - Reading uncommitted data is also known as a dirty read;
-READ COMMITTED - The default isolation level for most database systems (but not MySQL!);
-REPEATABLE READ - MySQL’s default transaction isolation level.
-SERIALIZABLE - At this level, a lot of timeouts and lock contention may occur.</p></li>
-<li><p>Deadlock -
-The way InnoDB currently handles deadlocks is to roll back the transaction
-that has the fewest exclusive row locks.
-Deadlocks are a fact of life in transactional systems, and your applications
-should be designed to handle them.</p></li>
-<li><p>Transaction in MySQL >
-MySQL AB provides three transactional storage engines: InnoDB, NDB Cluster, and
-Falcon. solidDB and PBXT.</p></li>
-<li><p>AUTOCOMMIT >
-MySQL operates in AUTOCOMMIT mode by default. It automatically executes each query in a separate transaction.
-MyISAM or Memory tables -  essentially always operate in AUTOCOMMIT mode.</p></li>
-<li><p>You can’t reliably mix different engines in a single transaction. If you mix transactional and nontransactional tables (for instance, InnoDB and MyISAM tables) in a transaction, the transaction will work properly if all goes well. However, if a rollback is required, the changes to the nontransactional table can’t be undone.</p></li>
-<li><p>InnoDB also supports explicit locking, which the SQL standard does not mention at all:</p></li>
-<li>SELECT ... LOCK IN SHARE MODE</li>
-<li>SELECT ... FOR UPDATE</li>
-</ol>
-
-
-<p>MySQL supports the LOCK TABLES and UNLOCK TABLES commands, which are implemented in the server, not in the storage engines.</p>
-
-<ol>
-<li><p>MySQL’s Storage Engines >
-The MyISAM Engine >>
-Storage: The MyISAM format is platformneutral, meaning you can copy the data and index files from an Intel-based server to a PowerPC or Sun SPARC without any trouble.
-MyISAM tables created in MySQL 5.0 with variable-length rows are configured by default to handle 256 TB of data, using 6-byte pointers to the data records.</p></li>
-</ol>
-
-
-<p>Features:
-Locking and concurrency / Automatic repair / Manual repair(You can also use the myisamchk
-command-line tool to check and repair tables when the server is offline.) / Index features / Delayed key writes(However, after a server or system crash, the indexes will definitely be corrupted and will need repair.) /</p>
-
-<p>Compressed MyISAM tables:
-Compressed MyISAM tables can have indexes, but they’re read-only.</p>
-
-<p>The MyISAM Merge Engine >>
-A Merge table is the combination of several identical MyISAM tables into one virtual table. This is particularly useful when you use MySQL in logging and data warehousing applications.</p>
-
-<p>The InnoDB Engine >>
-InnoDB can’t build indexes by sorting, which MyISAM can do.
-Any operation that changes an InnoDB table’s structure will rebuild the entire table, including all the indexes.</p>
-
-<p>The Memory Engine >>
-Here are some good uses for Memory tables:
-a. For “lookup” or “mapping” tables, such as a table that maps postal codes to
-state names
-b. For caching the results of periodically aggregated data
-c. For intermediate results when analyzing data
-Support only fixed-size rows, so they really store VARCHARs as CHARs, which can waste memory.</p>
-
-<p>The Archive Engine >>
-It causes much less disk I/O than MyISAM, because it buffers data writes and compresses each row with zlib as it’s inserted.</p>
-
-<p>The CSV Engine >></p>
-
-<p>The Federated Engine >>
-The Federated engine does not store data locally. Each Federated table refers to a table on a remote MySQL server, so it actually connects to a remote server for all operations.</p>
-
-<p>The Blackhole Engine >>
-Blackhole engine useful for fancy replication setups and audit logging.</p>
-
-<p>The NDB Cluster Engine >>
-An NDB database consists of data nodes, management nodes, and SQL nodes (MySQL instances).</p>
-
-<p>The Falcon Engine >></p>
-
-<p>The solidDB Engine >></p>
-
-<p>The PBXT (Primebase XT) Engine >></p>
-
-<p>The Maria Storage Engine >>
-The goal is to use Maria as a replacement for MyISAM, which is currently MySQL’s default storage engine.</p>
-
-<ol>
-<li><p>Table Conversions ></p></li>
-<li>mysql> ALTER TABLE mytable ENGINE = Falcon;</li>
-</ol>
-
-
-
-				<div class="post-metadata">
-					October 09, 2009 | 
-					<a href='/2009/10/09/mysql-architecture.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mysql'>mysql</a>
-						
-					 
-				</div>
-
-			</div>
-		
 		
 		<div class="paging">
 		
@@ -564,14 +546,7 @@ The goal is to use Maria as a replacement for MyISAM, which is currently MySQL�
 </div>
 </div>
 
-	</div>
-  
-  <div class="footer">
-		<div id="copyright">
-			Copyright &copy; 2011 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
-		</div>
-  </div>    
-</div>
+    </div>
 
-</body>
+  </body>
 </html>

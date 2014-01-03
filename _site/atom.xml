@@ -4,13 +4,46 @@
 	<title>Joshua Chi</title>
 	<link href="http://freetofeel.com/atom.xml" rel="self"/>
 	<link href="http://freetofeel.com/"/>
-	<updated>2013-04-15T16:21:23+08:00</updated>
+	<updated>2014-01-03T10:31:44+08:00</updated>
 	<id>http://freetofeel.com/</id>
 	<author>
 		<name>Joshua Chi</name>
 		<email>joshokn@gmail.com</email>
 	</author>
 
+	
+		<entry>
+			<title>互联网中小公司招聘中经常忽视和自大的</title>
+			<link href="http://freetofeel.com/2013/08/27/HOW-TO-HIRE-GOOD-EMPLOYEE.html"/>
+			<updated>2013-08-27T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/2013/08/27/HOW-TO-HIRE-GOOD-EMPLOYEE</id>
+			<content type="html">&lt;p&gt;看到太多'不靠谱'的互联网招聘，想喷喷现有的招聘以及我认为靠谱的做法。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+中国人的招聘还是不要那么自大吧。在v2ex里面看到一个&lt;a href='http://www.v2ex.com/t/79706'&gt;讨论&lt;/a&gt;，我很反对不封顶的写法。很容易推断你的这种说法很是扯淡。反推：不要说什么不封顶，你就说年薪100W招聘一个超级NB的web developer。你敢这么写吗？当然这样说有点极端。我只是想说，你如果说不封顶，我认为你是扯淡。赶快拿掉吧。我不是技术牛人，但我看到这样的字眼，会认为这是一种歧视。就像N年前，广东的工厂跑到云南招聘的时候说的“管吃管住，赚大钱”。是的，你现在知道那些打工者的生活实际情况如何。和你老板商量商量salary写的透明些吧。当然如果你能把我下面即将要说的几点做到了，不写薪资也不是问题。
+&lt;/li&gt;
+&lt;li&gt;
+再则就是有个靠谱的产品，能让我／我们感受到用户的反馈，看到我们的努力的被认可，这是种心灵的安慰。
+&lt;/li&gt;
+&lt;li&gt;
+如果你只招developer，不好意思，我/我们真心不感兴趣。我们是有思想的技术工作者，我们对产品，市场，营销都是有自己的见解和实践。是的，我们不是工具，我们是创造者。一个/一些拥有技术背景、产品嗅觉也不是太差、互联网的起起伏伏也都有些思考的的创新者／颠覆家（好吧，我承认，最后这个词语吹的稍微太大。但我就是要这么写。 :-)）。当然这对IT人的职业发展也是很好的建议。
+&lt;/li&gt;
+&lt;li&gt;
+如果你还是遵循老套的上班“制度”（打卡，准时上下班，公司的布局依然老土的老土，etc）。你可能以为我是用google的公司文化来要求你们。那是你的眼界太浅，还没有看的更远。这是未来的趋势。文明的大势。人性化首先是对人的尊重，其次是对你企业的负责。研究表明／亲身经历，好的工程师能集中精力工作4小时，就已经很出色的。当然是保证高质量的产出的前提下。其它的时间要么是在破坏完美的东西，要么是不能集中注意力。总之都是在浪费时间。
+&lt;/li&gt;
+&lt;li&gt;
+不要简单的苛求某种技术人员了，你要知道，大部分技术都是一通二，二通三的。你应该更在意的是这个employee能不能快速高效的完成设计实施。举个例子，比如你说招聘php开发人员，我建议你替换成脚本语言熟练运用（prefer PHP）。因为我相信，写过python/django的应该没有问题handle php/symfony|zend。
+&lt;/li&gt;
+&lt;li&gt;
+福利福利！不要什么公司提供午餐的来诱骗“无知妇女”了。如果吃都成问题，谁有力气／心情去继续下午的工作。我觉得非国定假期的天数少于10天，病假扣工资的公司都不是靠谱／人性的公司。
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;先啰嗦那么多吧，不好意思，让你遇到了一个自大的乙方。也希望甲方看到此文，能善待你的员工，以及诚恳的对待即将招聘的人员。&lt;/p&gt;
+</content>
+		</entry>
 	
 		<entry>
 			<title>网站集成linkedin登录</title>
@@ -346,10 +379,8 @@ Arduino Uno R3 Plus(Atmega16U2),10月最新生产预订送电源/USB线 - ¥64.8
 
 &lt;p&gt;The idea is very simple: find the workable google IP and add it to hosts file.&lt;/p&gt;
 
-&lt;br /&gt;
-
-
-&lt;p&gt;Step1:&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+Step1:&lt;/p&gt;
 
 &lt;pre&gt;
 nslookup www.google.com
@@ -381,10 +412,8 @@ Address: 74.125.128.104
 
 &lt;p&gt;Basically you just need to try https://74.125.128.x/ to check which one is working. 'x' can be any number. If you can visit https://74.125.128.x/, continue to &lt;b&gt;Step2&lt;/b&gt;.&lt;/p&gt;
 
-&lt;br /&gt;
-
-
-&lt;p&gt;Step2:&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+Step2:&lt;/p&gt;
 
 &lt;p&gt;Modify /etc/hosts file and add one line:&lt;/p&gt;
 
@@ -456,10 +485,8 @@ Address: 74.125.128.104
 			<link href="http://freetofeel.com/2012/10/13/life-is-challenge.html"/>
 			<updated>2012-10-13T00:00:00+08:00</updated>
 			<id>http://freetofeel.com/2012/10/13/life-is-challenge</id>
-			<content type="html">&lt;p&gt;Since the beginning of this summer, I made some videos to record &quot;nature &amp;amp; life&quot;. I wish it will give me the same feeling when I look back them. And I also hope it will bring the others the happiness.&lt;/p&gt;
-
-&lt;br /&gt;
-
+			<content type="html">&lt;p&gt;Since the beginning of this summer, I made some videos to record &quot;nature &amp;amp; life&quot;. I wish it will give me the same feeling when I look back them. And I also hope it will bring the others the happiness.
+&lt;br /&gt;&lt;/p&gt;
 
 &lt;h3&gt;The beginning of Summer&lt;/h3&gt;
 
@@ -1819,10 +1846,8 @@ Now it supports C++, C#, Erlang, Haskell, Java, Objective C/Cocoa, OCaml, Perl, 
 &lt;pre&gt;&lt;code&gt;Individuals and interactions over processes and tools&lt;/code&gt;&lt;/pre&gt;
 
 
-&lt;br /&gt;
-
-
-&lt;p&gt;We know people is the kernel in a technical company. Anything is beneficial for people should be encouraged. But of course, it also should be beneficial for company firstly. Any rule that restrict people's mind should be removed.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+We know people is the kernel in a technical company. Anything is beneficial for people should be encouraged. But of course, it also should be beneficial for company firstly. Any rule that restrict people's mind should be removed.&lt;/p&gt;
 </content>
 		</entry>
 	
@@ -1986,30 +2011,23 @@ Add &lt;a href='http://disqus.com'&gt;comment service&lt;/a&gt; into my blog.&lt
 &lt;/ol&gt;
 
 
-&lt;p&gt;&lt;ul&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;li&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;When importing data into InnoDB, make sure that MySQL does not have autocommit mode enabled because that requires a log flush to disk for every insert. To disable autocommit during your import operation, surround it with SET autocommit and COMMIT statements:&lt;/p&gt;
+&lt;p&gt;&lt;ul&gt;
+    &lt;li&gt;
+When importing data into InnoDB, make sure that MySQL does not have autocommit mode enabled because that requires a log flush to disk for every insert. To disable autocommit during your import operation, surround it with SET autocommit and COMMIT statements:&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;SET autocommit=0;
 ... SQL import statements ...
 COMMIT;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;If you use the mysqldump option --opt, you get dump files that are fast to import into an InnoDB  table, even without wrapping them with the SET autocommit and COMMIT statements. &lt;/li&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;li&amp;gt;If you have UNIQUE constraints on secondary keys, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by temporarily turning off the uniqueness checks during the import session:
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you use the mysqldump option --opt, you get dump files that are fast to import into an InnoDB  table, even without wrapping them with the SET autocommit and COMMIT statements. &lt;/li&gt;
+    &lt;li&gt;If you have UNIQUE constraints on secondary keys, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by temporarily turning off the uniqueness checks during the import session:&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;SET unique_checks=0;
 ... SQL import statements ...
 SET unique_checks=1;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;For big tables, this saves a lot of disk I/O because InnoDB can use its insert buffer to write secondary index records in a batch. Be certain that the data contains no duplicate keys.&lt;/li&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;li&amp;gt;#
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For big tables, this saves a lot of disk I/O because InnoDB can use its insert buffer to write secondary index records in a batch. Be certain that the data contains no duplicate keys.&lt;/li&gt;
+    &lt;li&gt;#&lt;/p&gt;
 
 &lt;p&gt;If you have FOREIGN KEY constraints in your tables, starting from MySQL 3.23.52 and 4.0.3, you can speed up table imports by turning the foreign key checks off for a while in the import session:
 &lt;code&gt;
@@ -2417,13 +2435,10 @@ url = &quot;http://dummy.server.org/Create_a_Script.php?callback=call_me&amp;...
 [PIECE]
 &amp;lt;?php $this-&gt;FireEvent('AfterDiscussionHeaderRender'); ?&gt;
 &amp;lt;h2&amp;gt;&amp;lt;?php
-   if (Gdn::Config('Vanilla.Categories.Use') === TRUE) {&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  echo Anchor($this-&amp;gt;Discussion-&amp;gt;Category, 'categories/'.$this-&amp;gt;Discussion-&amp;gt;CategoryID.'/'.Format::Url($this-&amp;gt;Discussion-&amp;gt;Category));
-  echo '&amp;lt;span&amp;gt;&amp;amp;bull;&amp;lt;/span&amp;gt;';
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;   }
+   if (Gdn::Config('Vanilla.Categories.Use') === TRUE) {
+      echo Anchor($this-&gt;Discussion-&gt;Category, 'categories/'.$this-&gt;Discussion-&gt;CategoryID.'/'.Format::Url($this-&gt;Discussion-&gt;Category));
+      echo '&lt;span&gt;&amp;bull;&lt;/span&gt;';
+   }
    echo Format::Text($this-&gt;Discussion-&gt;Name);
 ?&gt;&amp;lt;/h2&amp;gt;
 [/PIECE]&lt;/p&gt;
@@ -3038,21 +3053,15 @@ The most important part of Google Wave uses jQuery: &lt;a href=&quot;http://j.mp
 			<link href="http://freetofeel.com/2009/10/31/one-week-review.html"/>
 			<updated>2009-10-31T00:00:00+08:00</updated>
 			<id>http://freetofeel.com/2009/10/31/one-week-review</id>
-			<content type="html">&lt;p&gt;&lt;ul&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;YUI Conference&amp;lt;/strong&amp;gt; has been closed recently. There are a lot of valuable &amp;lt;a href=&quot;http://yuilibrary.com/yuiconf2009/&quot;&amp;gt;presentation&amp;lt;/a&amp;gt;.&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;a href=&quot;http://www.douban.com/subject/3673223/&quot;&amp;gt;Coders at Work&amp;lt;/a&amp;gt;&amp;lt;/strong&amp;gt; - &amp;lt;br /&amp;gt;&amp;lt;em&amp;gt;&amp;lt;strong&amp;gt;What you’ll learn&amp;lt;/strong&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;br /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;How the best programmers in the world do their job&lt;br /&gt;
+			<content type="html">&lt;p&gt;&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;YUI Conference&lt;/strong&gt; has been closed recently. There are a lot of valuable &lt;a href=&quot;http://yuilibrary.com/yuiconf2009/&quot;&gt;presentation&lt;/a&gt;.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;http://www.douban.com/subject/3673223/&quot;&gt;Coders at Work&lt;/a&gt;&lt;/strong&gt; - &lt;br /&gt;&lt;em&gt;&lt;strong&gt;What you’ll learn&lt;/strong&gt;&lt;/em&gt;&lt;br /&gt;
+How the best programmers in the world do their job&lt;br /&gt;
 &lt;em&gt;&lt;strong&gt;Who is this book for?&lt;/strong&gt;&lt;/em&gt;&lt;br /&gt;
-Programmers interested in the point of view of leaders in the field. Programmers looking for approaches that work for some of these outstanding programmers.&lt;/li&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;li&amp;gt;&amp;lt;a href=&quot;http://couchdb.apache.org/&quot;&amp;gt;CouchDB&amp;lt;/a&amp;gt; - The first database that I have known that can be operated by Javascript. Key-value stored, http, json to connect and read... &amp;lt;br /&amp;gt;&amp;lt;a href=&quot;http://www.freetofeel.com/2009/10/one-week-review/sketch/&quot; rel=&quot;attachment wp-att-269&quot;&amp;gt;&amp;lt;img src=&quot;http://www.freetofeel.com/wp-content/uploads/2009/10/sketch.png&quot; alt=&quot;sketch&quot; title=&quot;sketch&quot; width=&quot;292&quot; height=&quot;340&quot; class=&quot;aligncenter size-full wp-image-269&quot; /&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;a href=&quot;http://bret.appspot.com/entry/how-friendfeed-uses-mysql&quot;&amp;gt;How FriendFeed uses MySQL to store schema-less data&amp;lt;/a&amp;gt;&amp;lt;ul&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/li&gt;
+Programmers interested in the point of view of leaders in the field. Programmers looking for approaches that work for some of these outstanding programmers.&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://couchdb.apache.org/&quot;&gt;CouchDB&lt;/a&gt; - The first database that I have known that can be operated by Javascript. Key-value stored, http, json to connect and read... &lt;br /&gt;&lt;a href=&quot;http://www.freetofeel.com/2009/10/one-week-review/sketch/&quot; rel=&quot;attachment wp-att-269&quot;&gt;&lt;img src=&quot;http://www.freetofeel.com/wp-content/uploads/2009/10/sketch.png&quot; alt=&quot;sketch&quot; title=&quot;sketch&quot; width=&quot;292&quot; height=&quot;340&quot; class=&quot;aligncenter size-full wp-image-269&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://bret.appspot.com/entry/how-friendfeed-uses-mysql&quot;&gt;How FriendFeed uses MySQL to store schema-less data&lt;/a&gt;&lt;ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;&lt;/p&gt;
 </content>
 		</entry>
@@ -3519,20 +3528,14 @@ array.splice(index, [howMany, [element1][, ..., elementN]]);  // SpiderMonkey ex
 &lt;/blockquote&gt;
 
 
-&lt;p&gt;index&lt;/p&gt;
+&lt;p&gt;index
+    Index at which to start changing the array. If negative, will begin that many elements from the end.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Index at which to start changing the array. If negative, will begin that many elements from the end.
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;howMany
+    An integer indicating the number of old array elements to remove. If howMany is 0, no elements are removed. In this case, you should specify at least one new element. If no howMany parameter is specified (second syntax above, which is a SpiderMonkey extension), all elements after index are removed.&lt;/p&gt;
 
-&lt;p&gt;howMany&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;An integer indicating the number of old array elements to remove. If howMany is 0, no elements are removed. In this case, you should specify at least one new element. If no howMany parameter is specified (second syntax above, which is a SpiderMonkey extension), all elements after index are removed. 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;element1, ..., elementN&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;The elements to add to the array. If you don't specify any elements, splice simply removes elements from the array. 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;element1, ..., elementN
+    The elements to add to the array. If you don't specify any elements, splice simply removes elements from the array.&lt;/p&gt;
 
 &lt;pre name='code' class='javascript'&gt;
 // from this
@@ -4836,8 +4839,7 @@ alert(b); //Displays 3.14; The copy has not changed
 &lt;/pre&gt;
 
 
-&lt;br /&gt;
-
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;pre name='code' class='javascript'&gt;
 var a= [1,2,3];
@@ -5073,12 +5075,10 @@ alert(b); //Displays [4,2,3]; The copy has not changed
 &lt;/strong&gt;
 content=&quot;2;url=http://freetofeel.com/&quot; - The number is the time, in seconds, until the page should be redirected. Then, separated by a semi-colon (;) is the URL that should be loaded.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Meta refresh tags have some drawbacks:&lt;/em&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* If the redirect happens quickly (less than 2-3 seconds), readers with older browsers can't hit the &quot;Back&quot; button. This is a usability problem.
-* If the redirect happens quickly and goes to a non-existant page, your readers won't be able to hit the &quot;Back&quot; button. This is a usability problem that will cause people to completely leave your site.
-* Refreshing the current page can confuse people. If they didn't request the reload, some people can get concerned about security.
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;Meta refresh tags have some drawbacks:&lt;/em&gt;
+    * If the redirect happens quickly (less than 2-3 seconds), readers with older browsers can't hit the &quot;Back&quot; button. This is a usability problem.
+    * If the redirect happens quickly and goes to a non-existant page, your readers won't be able to hit the &quot;Back&quot; button. This is a usability problem that will cause people to completely leave your site.
+    * Refreshing the current page can confuse people. If they didn't request the reload, some people can get concerned about security.&lt;/p&gt;
 </content>
 		</entry>
 	
