@@ -2,12 +2,12 @@
 
 layout: post
 title: "Use Solr Correctly"
-tags:  solr tsung performance
+tags:  solr solrj tsung performance
 
 ---
 
 ## Background
-Since we deploy solr to production, it was running fine for first few days, and then some day it will slow to response. It happened at least several times like this. We can start this analyzing from this graphite screenshot.
+Since we deploy solr to production, it was running fine for first few days, and then some day it will be slow to response. It happened at least several times like this. We can start this by analyzing from this graphite screenshot.
 
 [![Solr Graphite screenshot](http://freetofeel.com/images/solr-prod-slow_s.png)](http://freetofeel.com/images/solr-prod-slow.png)
 
@@ -17,7 +17,7 @@ Since we deploy solr to production, it was running fine for first few days, and 
 - We have three solr instances: one master and two slave, which managed by zookeeper 
 - All client requests will be queued into `queue.size.solr` firstly
 
-`Notice: we will not discuss the strucuture correct or wrong, I just want to focus on solr itself.`
+`Notice: we will not discuss the strucuture was designed correctly or not in this post. This blog will just focus on how to use solr itself.`
 
 ### More info about this graphite
 
@@ -45,7 +45,7 @@ From the graphite screenshot I thought it must be something wrong with solr itse
 I failed to get rid of this waring, which put me back to find more articles about this issue.
 
 ## Conclusion
-It is very possible that we use it wrong which was obvious if I had paied more attention to `...to avoid this error is to either reduce the frequency of commits, or reduce the amount of warming a searcher does...`. 
+It was very possible that we used it wrong which was obvious if I had paied more attention to `...to avoid this error is to either reduce the frequency of commits, or reduce the amount of warming a searcher does...`. 
 
 * Solr is not for realtime search;
 * Solr is not for replacement of RDB(e.g. mysql);
