@@ -17,7 +17,7 @@ Since we deploy solr to production, it was running fine for first few days, and 
 - We have three solr instances: one master and two slave, which managed by zookeeper 
 - All client requests will be queued into `queue.size.solr` firstly
 
-(`Notice: we will not discuss the strucuture correct or wrong, I just want to focus on solr itself.`)
+`Notice: we will not discuss the strucuture correct or wrong, I just want to focus on solr itself.`
 
 ### More info about this graphite
 
