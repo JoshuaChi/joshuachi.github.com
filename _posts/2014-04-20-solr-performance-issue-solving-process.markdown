@@ -9,7 +9,7 @@ tags:  solr tsung performance
 ## Background
 Since we deploy solr to production, it was running fine for first few days, and then some day it will slow to response. It happened at least several times like this. We can start this analyzing from this graphite screenshot.
 
-![Solr Graphite screenshot](http://freetofeel.com/images/solr-prod-slow.png)
+[![Solr Graphite screenshot](http://freetofeel.com/images/solr-prod-slow_s.png)](http://freetofeel.com/images/solr-prod-slow.png)
 
 
 ### The whole server strucuture:
