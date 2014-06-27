@@ -4,7 +4,7 @@ layout: post
 title: "Some suggestions when you work with solr"
 tags:  solr solrj tsung performance
 keywords: solr solrj tsung performance
-description: "Solr in production issue"
+description: "We try to show you how we use solr and how we solve the performance issue when use it on production."
 
 ---
 
