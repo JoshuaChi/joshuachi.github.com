@@ -1,12 +1,13 @@
-title:        Free To Feel
-tagline:      'Feel the life color'
-description:  "Find a way to record my work and life. "
+title:        'Free To Feel'
+tagline:      'Free To Feel'
+site_keywords:   "technical, entrepreneur, consulting, blog, personal, life, work, freelancer"
+description:  "Heading to entrepreneur."
 url:          "http://www.freetofeel.com/"
 author:
   name: 'Joshua Chi'
   email: "joshokn@gmail.com"
 markdown: rdiscount
-pygments: true
+highlighter: true
 paginate: true
 url: http://freetofeel.com
 name: Joshua Chi

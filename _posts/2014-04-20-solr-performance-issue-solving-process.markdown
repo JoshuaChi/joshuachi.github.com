@@ -1,8 +1,10 @@
 ---
 
 layout: post
-title: "Use Solr Correctly"
+title: "Some suggestions when you work with solr"
 tags:  solr solrj tsung performance
+keywords: solr solrj tsung performance
+description: "Solr in production issue"
 
 ---
 
