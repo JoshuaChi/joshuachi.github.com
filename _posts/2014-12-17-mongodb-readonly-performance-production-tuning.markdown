@@ -140,4 +140,3 @@ In the /etc/sysctl.conf file:
 - TCP_TW_RECYCLE Description: Enables fast recycling of TIME_WAIT sockets. Use with caution and ONLY in internal network where network connectivity speeds are “faster”.
 
 - TCP_TW_REUSE Description: Allows for reuse of sockets in TIME_WAIT state for new connections, only when it is safe from the network stack’s perspective.
-
