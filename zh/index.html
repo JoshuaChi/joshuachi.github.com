@@ -29,13 +29,13 @@ title: Joshua Chi's Blog
 		
 		<div class="paging">
 		{% if paginator.next_page %}
-			<a href="/page{{paginator.next_page}}" class="previous">&#x25C4; Previous</a>
+			<a href="/zh/page{{paginator.next_page}}" class="previous">&#x25C4; Previous</a>
 		{% endif %}
 		{% if paginator.previous_page %}
 			{% if paginator.previous_page == 1 %}
-			  <a href="/" class="next">Next &#x25BA;</a>
+			  <a href="/zh/" class="next">Next &#x25BA;</a>
 			{% else %}
-			  <a href="/page{{paginator.previous_page}}" class="next">Next &#x25BA;</a>
+			  <a href="/zh/page{{paginator.previous_page}}" class="next">Next &#x25BA;</a>
 			{% endif %}
 		{% endif %}
 		</div>

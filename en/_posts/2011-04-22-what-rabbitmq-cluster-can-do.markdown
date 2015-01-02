@@ -4,7 +4,7 @@ title: "What RabbitMQ Cluster Can Do"
 tags:  rabbitmq
 ---
 
-<h3>What RabbitMQ cluster can do - Scaling and Reliability</h3>
+###What RabbitMQ cluster can do - Scaling and Reliability
 
 
 * <b>Example 1</b>: 
@@ -48,7 +48,7 @@ And you can find following explanation:
 </pre>
 
 
-<h3>What RabbitMQ cluster can not do - High Availability</h3>
+###What RabbitMQ cluster can not do - High Availability
 
 So the 60 seconds is what RabbitMQ can not do. We call it high availability. 
 

@@ -14,3 +14,6 @@ name: Joshua Chi
 email: joshokn@gmail.com
 paginate: 7
 feedurl: /feed/
+paginate_per_category: true
+default_category: "en"
+safe: false
