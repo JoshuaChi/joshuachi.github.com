@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  
+    <meta name="description" content="Tuning mongodb read-only performance on production ENV." />
+  
+  
+  
+    <meta name="keywords" content="mongodb tokumx cowboy erlang bson tsung performance concurrency" />
+  
+  
+  
+    <meta http-equiv="date" content="Wednesday, 17  2014 00:00:00 GMT" />
+  
+  
+  <meta name="robots" content="INDEX,FOLLOW" />
+
+  <title>
+    Mongodb Read-only Performance Production Tuning &middot; Free To Feel
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/webicon.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Heading to entrepreneur.</p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div>
+        <a class="webicon twitter small" href="http://twitter.com/Joshua_C/">Twitter</a>
+        <a class="webicon github small" href="https://github.com/joshuachi">Github</a>
+        </div>
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li><a href="http://www.kiwitask.com/">Find freelancers</a></li>
+            <li><a href="http://www.jieshuge.com/">Free ebook download</a></li>
+            <li><a href="http://www.freetofeel.com/google-calendar-hours/">Google calendar hours calculator</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="post">
+  <h1>Mongodb Read-only Performance Production Tuning</h1>
+  <span class="post-date">17 Dec 2014</span>
+  <h3>MongoDB VS Tokumx</h3>
+
+<p>Check this post <a href="http://stackoverflow.com/questions/27359394/tokumx-vs-mongodb-read-performance">Tokumx VS mongodb read-only performance</a> @stackoverflow firstly, which I have already described the context when comparing MongoDB and Tokumx read-only performance.</p>
+
+<p><a href="http://www.tokutek.com/tokumx-for-mongodb/download-community/">TokuMX 2.0.0 Community Edition for MongoDB</a> is still built on MongoDB 2.4 which doesn't have GEO <a href="http://docs.mongodb.org/manual/core/2dsphere/">2dsphere</a> index yet. So the post@stackoverflow might not be fair for <a href="http://www.tokutek.com/tokumx-for-mongodb/">Tokumx</a>. Personally, I like tokumx.</p>
+
+<ul>
+<li>storage compress</li>
+<li>document level write lock</li>
+<li>concurrency write performance</li>
+<li>do not have to worry about emebeded document size change</li>
+<li>...</li>
+</ul>
+
+
+<p>A lot of those cool features you can find in <a href="http://www.tokutek.com/tokumx-for-mongodb/hdd-benchmarks/">TOKUMX™ BENCHMARK VS. MONGODB – HDD</a> and <a href="http://docs.tokutek.com/tokumx/">Tokumx Documentation</a></p>
+
+<h3>2d index VS 2dsphere index</h3>
+
+<blockquote><p>2d indexes support:</p>
+
+<ul>
+<li>Calculations using flat geometry</li>
+<li>Legacy coordinate pairs (i.e., geospatial points on a flat coordinate system)</li>
+<li>Compound indexes with only one additional field, as a suffix of the 2d index field</li>
+</ul>
+
+
+<p>2dsphere indexes support:</p>
+
+<ul>
+<li>Calculations on a sphere</li>
+<li>GeoJSON objects and include backwards compatibility for legacy coordinate pairs</li>
+<li>Compound indexes with scalar index fields (i.e. ascending or descending) as a prefix or suffix of the 2dsphere index field</li>
+</ul>
+</blockquote>
+
+<p>So basically if you have multiple fields need to be compound together, you need use 2dshpere index.</p>
+
+<p>Nothing is perfect, if you are doing sorting some fields, like <code>id desc</code>, you will have the [geo query with sort performance] issue(http://stackoverflow.com/questions/12908871/mongodb-geospatial-query-with-sort-performance-issues).</p>
+
+<h3>geoWithin VS near</h3>
+
+<p>So we choose 2dsphere index for our case. But performance matters if you are using <a href="http://docs.mongodb.org/manual/reference/operator/query/geoWithin/#op._S_geoWithin">geoWithin</a> and <a href="http://docs.mongodb.org/manual/reference/operator/query/near/#op._S_near">near</a>.</p>
+
+<pre><code>db.collection.find(
+   {
+   $query: {
+     geo:
+     {
+       $near :
+        {
+          $geometry: img.geo,
+          $maxDistance: 100000
+        }
+     },
+     gender: 3
+   },
+   $orderby: { '_pid' : -1 },
+   $limit: 3,
+   $skip: 1
+  }
+);
+
+ "cursor" : "S2NearCursor",
+ "isMultiKey" : false,
+ "n" : 54,
+ "nscannedObjects" : 502,
+ "nscanned" : 502,
+ "nscannedObjectsAllPlans" : 502,
+ "nscannedAllPlans" : 502,
+ "scanAndOrder" : true,
+ "indexOnly" : false,
+ "nYields" : 4,
+ "nChunkSkips" : 0,
+ "millis" : 3,
+ "indexBounds" : {
+ },
+
+
+db.collection.find(
+  {
+    $query: {
+      geo : {
+        $geoWithin : {
+          $centerSphere : [ img.geo.coordinates , 100/3959 ]
+        }
+      },
+      gender:3
+    },
+    $orderby: { '_pid' : -1 },
+    $limit: 3,
+    $skip: 1
+  }
+);
+
+ "cursor" : "BtreeCursor geo_2dsphere_gender_1",
+ "isMultiKey" : false,
+ "n" : 159,
+ "nscannedObjects" : 249,
+ "nscanned" : 337,
+ "nscannedObjectsAllPlans" : 249,
+ "nscannedAllPlans" : 337,
+ "scanAndOrder" : true,
+ "indexOnly" : false,
+ "nYields" : 3,
+ "nChunkSkips" : 0,
+ "millis" : 3,
+ "indexBounds" : {
+      "geo" : [],
+      "gender" : [
+           [
+                3,
+                3
+           ]
+      ]
+</code></pre>
+
+<p>You can see they are using two different cursor <code>S2NearCursor</code> and <code>BtreeCursor</code>. In our case <code>S2NearCursor</code> works better than <code>BtreeCursor</code>.</p>
+
+<h3>MongoDB and NUMA Hardware</h3>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Non-uniform_memory_access">What's Non-uniform memory access (NUMA)</a>?</li>
+<li><a href="http://en.wikipedia.org/wiki/Interleaved_memory">What's Interleaved memory</a></li>
+</ul>
+
+
+<p>NUMA and Interleaved Memory affect MongoDB perofmrnace, you can find below in <a href="http://docs.mongodb.org/manual/administration/production-notes/">Production notes</a>.</p>
+
+<blockquote><ul>
+<li><p>Running MongoDB on a system with Non-Uniform Access Memory (NUMA) can cause a number of operational problems, including slow performance for periods of time and high system process usage.</p></li>
+<li><p>When running MongoDB servers and clients on NUMA hardware, you should configure a memory interleave policy so that the host behaves in a non-NUMA fashion. MongoDB checks NUMA settings on start up when deployed on Linux (since version 2.0) and Windows (since version 2.6) machines, and prints a warning if the NUMA configuration may degrade performance.</p></li>
+<li><p>See The <a href="http://jcole.us/blog/archives/2010/09/28/mysql-swap-insanity-and-the-numa-architecture/">MySQL “swap insanity” problem and the effects of NUMA</a> post, which describes the effects of NUMA on databases. This blog post addresses the impact of NUMA for MySQL, but the issues for MongoDB are similar. The post introduces NUMA and its goals, and illustrates how these goals are not compatible with production databases.</p></li>
+</ul>
+</blockquote>
+
+<h3>Tunning client performance</h3>
+
+<p>In the /etc/sysctl.conf file:</p>
+
+<blockquote><ul>
+<li>net.ipv4.tcp_tw_recycle = 1</li>
+<li>net.ipv4.tcp_tw_reuse = 1</li>
+</ul>
+</blockquote>
+
+<ul>
+<li><p>TCP_TW_RECYCLE Description: Enables fast recycling of TIME_WAIT sockets. Use with caution and ONLY in internal network where network connectivity speeds are “faster”.</p></li>
+<li><p>TCP_TW_REUSE Description: Allows for reuse of sockets in TIME_WAIT state for new connections, only when it is safe from the network stack’s perspective.</p></li>
+</ul>
+
+
+</div>
+<div id="disqus_thread">
+</div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = "/en/2014/12/17/mongodb-readonly-performance-production-tuning";
+    var disqus_url = "http://freetofeel.com"+"/en/2014/12/17/mongodb-readonly-performance-production-tuning.html";
+    var disqus_title = "Mongodb Read-only Performance Production Tuning";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h4>
+          <a href="/en/2014/04/20/solr-performance-issue-solving-process.html">
+             &raquo; Some suggestions when you work with solr
+            <small>20 Apr 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/zh/2014/01/30/NEW-YEAR.html">
+             &raquo; 农历马年新年
+            <small>30 Jan 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/zh/2013/08/27/HOW-TO-HIRE-GOOD-EMPLOYEE.html">
+             &raquo; 互联网中小公司招聘中经常忽视和自大的
+            <small>27 Aug 2013</small>
+          </a>
+        </h4>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

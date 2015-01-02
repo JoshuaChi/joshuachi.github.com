@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  
+    <meta name="description" content="Heading to entrepreneur." />
+  
+  
+  
+    <meta name="keywords" content="technical, entrepreneur, consulting, blog, personal, life, work, freelancer" />
+  
+  
+  
+    <meta http-equiv="date" content="Sunday, 12  2011 00:00:00 GMT" />
+  
+  
+  <meta name="robots" content="INDEX,FOLLOW" />
+
+  <title>
+    Replace MySql Table with NoSQL DB &middot; Free To Feel
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/webicon.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Heading to entrepreneur.</p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div>
+        <a class="webicon twitter small" href="http://twitter.com/Joshua_C/">Twitter</a>
+        <a class="webicon github small" href="https://github.com/joshuachi">Github</a>
+        </div>
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li><a href="http://www.kiwitask.com/">Find freelancers</a></li>
+            <li><a href="http://www.jieshuge.com/">Free ebook download</a></li>
+            <li><a href="http://www.freetofeel.com/google-calendar-hours/">Google calendar hours calculator</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="post">
+  <h1>Replace MySql Table with NoSQL DB</h1>
+  <span class="post-date">12 Jun 2011</span>
+  <h4>Backgroud:</h4>
+
+
+<p>I am not nosql fans. I don't have the habit to replace whole mysql db with nosql db. But if a mysql table can be replaced with nosql db and expensive queries are generated againest this table, I will give a try of nosql DB.</p>
+
+<p>In our product, we have a unique user login log table to know how many users logined in a specify date. Here is the table structure:</p>
+
+<pre>
+  unique_login_logs: 
+    _attributes:  {phpName: UniqueLoginLog}
+    id:
+    user_id: { type: integer }
+    date: { type: date, index: true }
+    created_at:
+    _uniques:
+      unique_date_type: [user_id, date]
+</pre>
+
+
+<p>The expensive query looks like:</p>
+
+<pre>
+select date, count(`user_id`) from unique_login_logs group by date order by date desc;'
+</pre>
+
+
+<p>And the other related operations will be save an entry into this table or check the user entry for a specify date is in the table or not. Nothing more.</p>
+
+<h4>Choose NoSQL DB from <a href='http://en.wikipedia.org/wiki/NoSQL'>wiki page</a>: </h4>
+
+
+
+
+<pre>
+...
+Key-value cache in RAM
+
+    Citrusleaf database
+    memcached
+    Oracle Coherence
+    Redis
+    Tuple space
+    Velocity
+
+Key-value stores implementing the Paxos algorithm
+
+    Keyspace
+
+Key-value stores on disk
+
+    BigTable
+    CDB
+    Citrusleaf database
+    Dynomite
+    Keyspace
+    membase
+    Memcachedb
+    Redis
+    Tokyo Cabinet
+    TreapDB
+    Tuple space
+    MongoDB
+...
+</pre>
+
+
+<p>For my feature request, I need a disk stored key-value system. I just spend 1 minute to take a look the MongoDB features. It meet my feature requirements. That's enough. If you know more about the other nosql DBs, of course you should choose the one which suit yours best.</p>
+
+<h4>Try MongoDB</h4>
+
+
+<p>Step 1: Install MongoDB(http://www.mongodb.org/display/DOCS/Quickstart+Unix);</p>
+
+<p>Step 2: Simple demo testing:</p>
+
+<p>create a new db:</p>
+
+<pre>
+use mydb;
+</pre>
+
+
+<p>Save an entry:</p>
+
+<pre>
+db.uniqueLoginLog.save({date: '2011-06-09', user_id: 101});
+db.uniqueLoginLog.save({date: '2011-06-09', user_id: 111});
+db.uniqueLoginLog.save({date: '2011-06-09', user_id: 102});
+..
+db.uniqueLoginLog.save({date: '2011-06-11', user_id: 100});
+db.uniqueLoginLog.save({date: '2011-06-11', user_id: 101});
+db.uniqueLoginLog.save({date: '2011-06-11', user_id: 102});
+</pre>
+
+
+<p>Group entries by date:</p>
+
+<pre>
+db.uniqueLoginLog.group(
+           {key: { date:true },
+            reduce: function(obj,prev) { prev.count ++; },
+            initial: { count: 0 }
+            });
+            
+</pre>
+
+
+<p>The output looks like:</p>
+
+<pre>
+[
+    {
+        "date" : "2011-01-01",
+        "count" : 3
+    },
+    {
+        "date" : "2011-01-02",
+        "count" : 3
+    },
+    {
+        "date" : "2011-01-03",
+        "count" : 1
+    },
+    {
+        "date" : "2011-01-04",
+        "count" : 1
+    }
+]
+</pre>
+
+
+<p></p>
+
+<p>With the output, I can do the order in client.</p>
+
+<h4>Install PHP Mongo Extension</h4>
+
+
+<p>You can install Mongo PHP extension with pecl command line or install it <a href='http://pecl.php.net/package/mongo'>manually</a></p>
+
+<pre>
+> pecl search mongo
+Retrieving data...0%
+Matched packages, channel pecl.php.net:
+=======================================
+Package Stable/(Latest) Local
+mongo   1.1.4 (stable)        MongoDB database driver
+
+> pecl install mongo
+</pre>
+
+
+
+
+<h4>Get stored items with php function</h4>
+
+
+<p>PHP code:</p>
+
+<pre>
+$m = new Mongo();
+
+$db = $m->mydb;
+
+$collection = $db->uniqueLoginLog;
+
+
+$obj = array('date'=> '2011-06-09', 'user_id'=> 101);
+$collection->insert($obj);
+
+
+
+$keys = array("date" => 1);
+$initial = array("count" => 0);
+$reduce = "function(obj,prev) { prev.count ++; }";
+$g = $collection->group($keys, $initial, $reduce);
+
+var_dump($g);
+
+</pre>
+
+
+<p>Output looks like:</p>
+
+<pre>
+array(4) {
+  ["retval"]=>
+  array(3) {
+    [0]=>
+    array(2) {
+      ["date"]=>
+      string(10) "2011-06-09"
+      ["count"]=>
+      float(17)
+    }
+    [1]=>
+    array(2) {
+      ["date"]=>
+      string(10) "2011-06-11"
+      ["count"]=>
+      float(10)
+    }
+    [2]=>
+    array(2) {
+      ["date"]=>
+      string(10) "2011-06-10"
+      ["count"]=>
+      float(7)
+    }
+  }
+  ["count"]=>
+  float(34)
+  ["keys"]=>
+  int(3)
+  ["ok"]=>
+  float(1)
+}
+</pre>
+
+
+
+
+<h4>Deploy to production?</h4>
+
+
+<p>Until now, the demo is still a toy. If you want to deploy it to production, there are more work need to to be done. Take a look at the <a href='http://www.mongodb.org/display/DOCS/Admin+Zone'>admin zone</a></p>
+
+<p>For my feature implemention, I will consider <a href='http://www.mongodb.org/display/DOCS/Replication'>Replication</a> next step.</p>
+
+<p>Summary:</p>
+
+<p>This is not a <a href='http://www.mongodb.org/display/DOCS/Tutorial'>toturial</a> about how to use MongoDB. It is just a example that can use nosql db in your production.</p>
+
+<p>Reference:</p>
+
+<ul>
+<li><a href='http://try.mongodb.org/'>A Tiny MongoDB Browser Shell (mini tutorial included)</a></li>
+<li><a href='https://github.com/mongodb/mongo/tree/master/jstests/'>JsTest</a></li>
+</ul>
+
+
+</div>
+<div id="disqus_thread">
+</div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = "/en/2011/06/12/nosql-db-try";
+    var disqus_url = "http://freetofeel.com"+"/en/2011/06/12/nosql-db-try.html";
+    var disqus_title = "Replace MySql Table with NoSQL DB";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h4>
+          <a href="/en/2014/12/17/mongodb-readonly-performance-production-tuning.html">
+             &raquo; Mongodb Read-only Performance Production Tuning
+            <small>17 Dec 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/en/2014/04/20/solr-performance-issue-solving-process.html">
+             &raquo; Some suggestions when you work with solr
+            <small>20 Apr 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/zh/2014/01/30/NEW-YEAR.html">
+             &raquo; 农历马年新年
+            <small>30 Jan 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

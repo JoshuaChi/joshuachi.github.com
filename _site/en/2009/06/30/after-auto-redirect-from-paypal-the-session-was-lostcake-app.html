@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  
+    <meta name="description" content="Heading to entrepreneur." />
+  
+  
+  
+    <meta name="keywords" content="technical, entrepreneur, consulting, blog, personal, life, work, freelancer" />
+  
+  
+  
+    <meta http-equiv="date" content="Tuesday, 30  2009 00:00:00 GMT" />
+  
+  
+  <meta name="robots" content="INDEX,FOLLOW" />
+
+  <title>
+    After auto redirect from PayPal, the session was lost[Cake App] &middot; Free To Feel
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/webicon.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Heading to entrepreneur.</p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div>
+        <a class="webicon twitter small" href="http://twitter.com/Joshua_C/">Twitter</a>
+        <a class="webicon github small" href="https://github.com/joshuachi">Github</a>
+        </div>
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li><a href="http://www.kiwitask.com/">Find freelancers</a></li>
+            <li><a href="http://www.jieshuge.com/">Free ebook download</a></li>
+            <li><a href="http://www.freetofeel.com/google-calendar-hours/">Google calendar hours calculator</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="post">
+  <h1>After auto redirect from PayPal, the session was lost[Cake App]</h1>
+  <span class="post-date">30 Jun 2009</span>
+  <p>Reproduce steps:</p>
+
+<ol>
+<li>Customer login <a href="https://www.mysite.com">my site</a>;</li>
+<li>Choose a product and redirect to <a href="https://developer.paypal.com/cgi-bin/devscr">Paypal sandbox site</a> to complete the payment;</li>
+<li>After the payment, the customer will be auto redirected to my site;</li>
+<li>And then the customer session was lost.</li>
+</ol>
+
+
+<p>I found the fail reason.</p>
+
+<pre name="code" class="php">
+function __initSession() {
+    $iniSet = function_exists('ini_set');
+
+    if ($iniSet && env('HTTPS')) {
+        ini_set('session.cookie_secure', 1); 
+    } 
+    switch ($this->security) {
+     case 'high': $this->cookieLifeTime = 0;
+     if ($iniSet) {
+     ini_set('session.referer_check', $this->host);
+     } 
+     break;
+     case 'medium': $this->cookieLifeTime = 7 * 86400;
+     if ($iniSet) {
+     ini_set('session.referer_check', $this->host);
+     } 
+     break;
+     case 'low': default: $this->cookieLifeTime = 788940000; break;
+    }
+}
+</pre>
+
+
+<p>If you set the security level 'high' or 'medium' , the session wil be renewed.</p>
+
+<p>A piece of comment from a guy in php.net:</p>
+
+<pre name="code" class="html">
+If you have a value specified for session.referer_check you may run into difficulty when someone accesses your site and attempts to log in with a mis-capitalized URL.  
+The logon will fail because any calls to session_start() will result in the existing session being trashed and a new one being created.  This becomes a bigger problem when the logon is followed by a header("Location: ...") redirect, because the session_start() at the top of the page will fail.</pre>
+
+
+<p>So now , I have to avoid to use the refer_check.</p>
+
+</div>
+<div id="disqus_thread">
+</div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = "/en/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app";
+    var disqus_url = "http://freetofeel.com"+"/en/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app.html";
+    var disqus_title = "After auto redirect from PayPal, the session was lost[Cake App]";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h4>
+          <a href="/en/2014/12/17/mongodb-readonly-performance-production-tuning.html">
+             &raquo; Mongodb Read-only Performance Production Tuning
+            <small>17 Dec 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/en/2014/04/20/solr-performance-issue-solving-process.html">
+             &raquo; Some suggestions when you work with solr
+            <small>20 Apr 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/zh/2014/01/30/NEW-YEAR.html">
+             &raquo; 农历马年新年
+            <small>30 Jan 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

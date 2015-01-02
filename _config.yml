@@ -1,9 +1,12 @@
 title:        'Free To Feel'
 tagline:      'Free To Feel'
-safe:         false
+
 site_keywords:   "technical, entrepreneur, consulting, blog, personal, life, work, freelancer"
 description:  "Heading to entrepreneur."
+
 url:          "http://www.freetofeel.com/"
+safe:         false
+
 author:
   name: 'Joshua Chi'
   email: "joshokn@gmail.com"

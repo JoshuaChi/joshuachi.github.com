@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  
+    <meta name="description" content="Heading to entrepreneur." />
+  
+  
+  
+    <meta name="keywords" content="technical, entrepreneur, consulting, blog, personal, life, work, freelancer" />
+  
+  
+  
+  
+  <meta name="robots" content="INDEX,FOLLOW" />
+
+  <title>
+    Joshua Chi's Blog &middot; Free To Feel
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/webicon.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Heading to entrepreneur.</p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div>
+        <a class="webicon twitter small" href="http://twitter.com/Joshua_C/">Twitter</a>
+        <a class="webicon github small" href="https://github.com/joshuachi">Github</a>
+        </div>
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li><a href="http://www.kiwitask.com/">Find freelancers</a></li>
+            <li><a href="http://www.jieshuge.com/">Free ebook download</a></li>
+            <li><a href="http://www.freetofeel.com/google-calendar-hours/">Google calendar hours calculator</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div id="home">
+
+<div class="post">
+  <ul class="content">
+		
+			<div class="post" id="postid-/en/2009/07/08/whats-web-os">
+				<a href="/en/2009/07/08/whats-web-os.html"><h1 class="title">Whats web OS?</h1></a>
+				
+				<p>We known Google announced its <a href="http://googleblog.blogspot.com/2009/07/introducing-google-chrome-os.html">web OS</a> based on Chrome. As I have discussed this about two years ago with my colleagues, Web OS is the trending of the Operation System. What we need is a machine without hard disk, just strongest CPU and a network port. All the files, maybe we will call it data in Web OS era, will be stored in a data center. Every time when we start our machine, the Web OS opened. What we will do is remote. Calculation is remote, Storage is remote and Service is remote. I think the Cloud will be part of the data center at that time. There will be computer concept. What we needed is just an end point. Everything became simple , effective and worldwide shared.</p>
+
+
+				<div class="post-metadata">
+					July 08, 2009 | 
+					<a href='/en/2009/07/08/whats-web-os.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app">
+				<a href="/en/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app.html"><h1 class="title">After auto redirect from PayPal, the session was lost[Cake App]</h1></a>
+				
+				<p>Reproduce steps:</p>
+
+<ol>
+<li>Customer login <a href="https://www.mysite.com">my site</a>;</li>
+<li>Choose a product and redirect to <a href="https://developer.paypal.com/cgi-bin/devscr">Paypal sandbox site</a> to complete the payment;</li>
+<li>After the payment, the customer will be auto redirected to my site;</li>
+<li>And then the customer session was lost.</li>
+</ol>
+
+
+<p>I found the fail reason.</p>
+
+<pre name="code" class="php">
+function __initSession() {
+    $iniSet = function_exists('ini_set');
+
+    if ($iniSet && env('HTTPS')) {
+        ini_set('session.cookie_secure', 1); 
+    } 
+    switch ($this->security) {
+     case 'high': $this->cookieLifeTime = 0;
+     if ($iniSet) {
+     ini_set('session.referer_check', $this->host);
+     } 
+     break;
+     case 'medium': $this->cookieLifeTime = 7 * 86400;
+     if ($iniSet) {
+     ini_set('session.referer_check', $this->host);
+     } 
+     break;
+     case 'low': default: $this->cookieLifeTime = 788940000; break;
+    }
+}
+</pre>
+
+
+<p>If you set the security level 'high' or 'medium' , the session wil be renewed.</p>
+
+<p>A piece of comment from a guy in php.net:</p>
+
+<pre name="code" class="html">
+If you have a value specified for session.referer_check you may run into difficulty when someone accesses your site and attempts to log in with a mis-capitalized URL.  
+The logon will fail because any calls to session_start() will result in the existing session being trashed and a new one being created.  This becomes a bigger problem when the logon is followed by a header("Location: ...") redirect, because the session_start() at the top of the page will fail.</pre>
+
+
+<p>So now , I have to avoid to use the refer_check.</p>
+
+
+				<div class="post-metadata">
+					June 30, 2009 | 
+					<a href='/en/2009/06/30/after-auto-redirect-from-paypal-the-session-was-lostcake-app.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/06/29/vbox-this-kernel-requires-the-following-features-not-present-on-the-cpupae">
+				<a href="/en/2009/06/29/vbox-this-kernel-requires-the-following-features-not-present-on-the-cpupae.html"><h1 class="title">VBOX: this kernel requires the following features not present on the CPU:pae</h1></a>
+				
+				<p>Solution:
+In the main window of VirtualBox->settings->General selection on the left->the Advanced tab on the right.
+Enable PAE/NX is in the middle of the window in Extended Features.</p>
+
+
+				<div class="post-metadata">
+					June 29, 2009 | 
+					<a href='/en/2009/06/29/vbox-this-kernel-requires-the-following-features-not-present-on-the-cpupae.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/06/29/the-failed-requests-in-apachebench-test">
+				<a href="/en/2009/06/29/the-failed-requests-in-apachebench-test.html"><h1 class="title">The Failed requests in ApacheBench Test</h1></a>
+				
+				<p>Problem: I run <a href="http://httpd.apache.org/docs/2.0/programs/ab.html">ab </a>test<ab -c 10 -t 60 http://www.xxx.com> for my website yesterday, and there are so many failed request.
+And I found the following explanation from <a href="http://fixunix.com/linux/269587-apache-benchmark.html">fixunix</a>:</p>
+
+<pre  name="code" class="html">
+May not actually be a problem. Reason? It might be a site that serves dynamic context (such as different cookie IDs mentioned) where the file size changes between each query. 
+
+Easy way to verify: 
+
+Code:    $ wget <url>   
+
+Repeat that twice, then: 
+
+Code:    $ diff <retrieved filename> <retrieved filename>.1 
+
+See if there are differences. If yes, then you can ignore the length-related failures. If no, it's some other cause and need to investigate further.
+</pre>
+
+
+<p>I hope it will help you too if you have the same problem.</p>
+
+
+				<div class="post-metadata">
+					June 29, 2009 | 
+					<a href='/en/2009/06/29/the-failed-requests-in-apachebench-test.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/06/22/pure-css-to-make-the-footer-at-the-bottom-of-the-page">
+				<a href="/en/2009/06/22/pure-css-to-make-the-footer-at-the-bottom-of-the-page.html"><h1 class="title">Pure CSS to make the footer at the bottom of the page</h1></a>
+				
+				<p>Pure CSS, no javascript to make the footer at the bottom of the page.
+Imaging you have the html layout like the following:</p>
+
+<pre name="code" class="php">&lt;body&gt;
+
+&lt;div id="container"&gt;
+&lt;div id="header"&gt;&lt;/div&gt;
+&lt;div id="body"&gt;&lt;/div&gt;
+&lt;div id="footer"&gt;&lt;/div&gt;
+
+&lt;/body&gt;</pre>
+
+
+<p>What you will do is simple.</p>
+
+<pre  name="code" class="css">html,
+body {
+margin:0;
+padding:0;
+height:100%;
+}
+#container {
+min-height:100%;
+position:relative;
+}
+#footer {
+position:absolute;
+bottom:0;
+width:100%;
+height:60px;/* Height of the footer */
+background:#6cf;
+}
+</pre>
+
+
+<p>Thanks to <a href="http://matthewjamestaylor.com/">Matthew James Taylor</a> who gives the idea how to implement this.</p>
+
+
+				<div class="post-metadata">
+					June 22, 2009 | 
+					<a href='/en/2009/06/22/pure-css-to-make-the-footer-at-the-bottom-of-the-page.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/06/11/run-cakephp-cronjob-on-web-hosting">
+				<a href="/en/2009/06/11/run-cakephp-cronjob-on-web-hosting.html"><h1 class="title">Run CakePHP CronJob On Web Hosting</h1></a>
+				
+				<blockquote><span class="Apple-style-span" style="border-collapse: separate; color: #000000; font-family: 'Times New Roman'; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><span class="Apple-style-span" style="font-family: Verdana; font-size: 11px; white-space: pre;">/usr/local/bin/php /home/Username/www/cake/console/cake.php -app /home/</span></span><span class="Apple-style-span" style="border-collapse: separate; color: #000000; font-family: 'Times New Roman'; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><span class="Apple-style-span" style="font-family: Verdana; font-size: 11px; white-space: pre;">Username</span></span><span class="Apple-style-span" style="border-collapse: separate; color: #000000; font-family: 'Times New Roman'; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><span class="Apple-style-span" style="font-family: Verdana; font-size: 11px; white-space: pre;">/www/app cronjob</span></span></blockquote>
+
+
+<p>::Replace Username with your account name in Web Sharing Hosting.</p>
+
+
+				<div class="post-metadata">
+					June 11, 2009 | 
+					<a href='/en/2009/06/11/run-cakephp-cronjob-on-web-hosting.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/06/06/fighting-with-subdomain-problem-in-lunarpages">
+				<a href="/en/2009/06/06/fighting-with-subdomain-problem-in-lunarpages.html"><h1 class="title">Fighting with subdomain problem in Lunarpages</h1></a>
+				
+				<p>HostROOT -</p>
+
+<p>|- .htaccess(A)</p>
+
+<p style="text-align: left;">|--------------- |-subdirectory</p>
+
+
+<p style="text-align: left;">|--------------- -----------|- .htaccess(B)</p>
+
+
+<p>My host domain - http://www.example.com</p>
+
+<p>My sub domain - http://subdomain.example.com</p>
+
+<p>Don't forget to add a .htaccess file for your subdirectory and add the following content into it.</p>
+
+<blockquote>.htaccess(B)
+
+&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine on
+RewriteBase /subdirectory/
+&lt;/IfModule&gt;</blockquote>
+
+
+<blockquote></blockquote>
+
+
+<p>It worked as true. When I recall the process I fight with the</p>
+
+<p>Reference:http://bakery.cakephp.org/articles/view/mod-rewrite-on-godaddy-shared-hosting</p>
+
+
+				<div class="post-metadata">
+					June 06, 2009 | 
+					<a href='/en/2009/06/06/fighting-with-subdomain-problem-in-lunarpages.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+		
+		<div class="paging">
+		
+			<a href="/page12" class="previous">&#x25C4; Previous</a>
+		
+		
+			
+			  <a href="/page10" class="next">Next &#x25BA;</a>
+			
+		
+		</div>
+
+  </ul>
+</div>
+</div>
+
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  
+    <meta name="description" content="Heading to entrepreneur." />
+  
+  
+  
+    <meta name="keywords" content="technical, entrepreneur, consulting, blog, personal, life, work, freelancer" />
+  
+  
+  
+    <meta http-equiv="date" content="Sunday, 25  2009 00:00:00 GMT" />
+  
+  
+  <meta name="robots" content="INDEX,FOLLOW" />
+
+  <title>
+    Query Performance Optimization &middot; Free To Feel
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/webicon.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Heading to entrepreneur.</p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div>
+        <a class="webicon twitter small" href="http://twitter.com/Joshua_C/">Twitter</a>
+        <a class="webicon github small" href="https://github.com/joshuachi">Github</a>
+        </div>
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li><a href="http://www.kiwitask.com/">Find freelancers</a></li>
+            <li><a href="http://www.jieshuge.com/">Free ebook download</a></li>
+            <li><a href="http://www.freetofeel.com/google-calendar-hours/">Google calendar hours calculator</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="post">
+  <h1>Query Performance Optimization</h1>
+  <span class="post-date">25 Oct 2009</span>
+  <ol>
+<li><p>Simple Treatment Method for a bad query is accessing less data and fecting less columns.</p></li>
+<li><p>In MySQL, the simplest query cost metrics are:</p></li>
+<li>Execution time</li>
+<li>Number of rows examined</li>
+<li><p>Number of rows returned</p></li>
+<li><p>The access types range from a full table scan to index scans, range scans, unique index lookups, and constants. Each of these is faster than the one before it. If you aren’t getting a good access type, the best way to solve the problem is usually by adding an appropriate index.</p></li>
+<li><p>Duplicated test record with a cool SQL:
+Assuming there was serval record in your table 'animals[id,animal_type , animal_name]'</p>
+
+<blockquote><blockquote><p>insert into animals(animal_type , animal_name ) select animal_type , animal_name from animals.</p></blockquote></blockquote></li>
+<li><p>'The traditional approach to database design emphasizes doing as much work as possible with as few queries as possible.' - This advice doesn’t apply as much to MySQL. MySQL can run more than 50,000 simple queries per second on commodity server hardware and over 2,000 queries per second from a single correspondent on a Gigabit network.</p></li>
+<li><p>Summary: When Application Joins May Be More Efficient >>
+Not doing joins in the application may be more efficient when:
+You cache and reuse a lot of data from earlier queries
+You use multiple MyISAM tables
+You distribute data across multiple servers
+You replace joins with IN( ) lists on large tables
+A join refers to the same table multiple times</p></li>
+<li><p>Follow along with the illustration to see what happens when you send MySQL a query:
+1). The client sends the SQL statement to the server.
+2). The server checks the query cache. If there’s a hit, it returns the stored result from the cache; otherwise, it passes the SQL statement to the next step.
+3). The server parses, preprocesses, and optimizes the SQL into a query execution plan.
+4). The query execution engine executes the plan by making calls to the storage engine API.
+5). The server sends the result to the client.</p></li>
+<li><p>Fetching result directly without buffering:
+[code]</p>
+
+<h1>!/usr/bin/perl</h1>
+
+use DBI;
+my $dbh = DBI->connect('DBI:mysql:;host=localhost', 'user', 'p4ssword');
+my $sth = $dbh->prepare('SELECT * FROM HUGE_TABLE', { mysql_use_result => 1 });
+$sth->execute( );
+while ( my $row = $sth->fetchrow_array( ) ) {
+
+<h1>Do something with result</h1>
+
+<p>}
+[/code]
+Notice that the call to prepare( ) specified to “use” the result instead of “buffering” it. You can also specify this when connecting, which will make every statement unbuffered:
+[code]
+my $dbh = DBI->connect('DBI:mysql:;mysql_use_result=1', 'user', 'p4ssword');
+[/code]
+This will be usfully when your fetching data is too big.</p></li>
+<li><p>Query states:
+Sleep -
+  The thread is waiting for a new query from the client.
+Query -
+  The thread is either executing the query or sending the result back to the client.
+Locked -
+  The thread is waiting for a table lock to be granted at the server level.
+Analyzing and statistics -
+  The thread is checking storage engine statistics and optimizing the query.
+Copying to tmp table [on disk] -
+  The thread is processing the query and copying results to a temporary table, probably for a GROUP BY, for a filesort, or to satisfy a UNION. If the state ends with “on disk,” MySQL is converting an in-memory table to an on-disk table.
+Sorting result -
+  The thread is sorting a result set.
+Sending data -
+  This can mean several things: the thread might be sending data between stages of the query, generating the result set, or returning the result set to the client.</p></li>
+<li><p>MySQL uses the term “join” more broadly than you might be used to. In sum, it considers every query a join—not just every query that matches rows from two tables, but every query.</p></li>
+</ol>
+
+
+</div>
+<div id="disqus_thread">
+</div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = "/en/2009/10/25/query-performance-optimization";
+    var disqus_url = "http://freetofeel.com"+"/en/2009/10/25/query-performance-optimization.html";
+    var disqus_title = "Query Performance Optimization";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h4>
+          <a href="/en/2014/12/17/mongodb-readonly-performance-production-tuning.html">
+             &raquo; Mongodb Read-only Performance Production Tuning
+            <small>17 Dec 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/en/2014/04/20/solr-performance-issue-solving-process.html">
+             &raquo; Some suggestions when you work with solr
+            <small>20 Apr 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/zh/2014/01/30/NEW-YEAR.html">
+             &raquo; 农历马年新年
+            <small>30 Jan 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

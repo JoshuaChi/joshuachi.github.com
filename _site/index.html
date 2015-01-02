@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  
+    <meta name="description" content="Heading to entrepreneur." />
+  
+  
+  
+    <meta name="keywords" content="technical, entrepreneur, consulting, blog, personal, life, work, freelancer" />
+  
+  
+  
+  
+  <meta name="robots" content="INDEX,FOLLOW" />
+
+  <title>
+    Joshua Chi's Blog &middot; Free To Feel
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/webicon.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Heading to entrepreneur.</p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div>
+        <a class="webicon twitter small" href="http://twitter.com/Joshua_C/">Twitter</a>
+        <a class="webicon github small" href="https://github.com/joshuachi">Github</a>
+        </div>
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li><a href="http://www.kiwitask.com/">Find freelancers</a></li>
+            <li><a href="http://www.jieshuge.com/">Free ebook download</a></li>
+            <li><a href="http://www.freetofeel.com/google-calendar-hours/">Google calendar hours calculator</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div id="home">
+
+<div class="post">
+  <ul class="content">
+		
+			<div class="post" id="postid-/en/2014/12/17/mongodb-readonly-performance-production-tuning">
+				<a href="/en/2014/12/17/mongodb-readonly-performance-production-tuning.html"><h1 class="title">Mongodb Read-only Performance Production Tuning</h1></a>
+				
+				<h3>MongoDB VS Tokumx</h3>
+
+<p>Check this post <a href="http://stackoverflow.com/questions/27359394/tokumx-vs-mongodb-read-performance">Tokumx VS mongodb read-only performance</a> @stackoverflow firstly, which I have already described the context when comparing MongoDB and Tokumx read-only performance.</p>
+
+<p><a href="http://www.tokutek.com/tokumx-for-mongodb/download-community/">TokuMX 2.0.0 Community Edition for MongoDB</a> is still built on MongoDB 2.4 which doesn't have GEO <a href="http://docs.mongodb.org/manual/core/2dsphere/">2dsphere</a> index yet. So the post@stackoverflow might not be fair for <a href="http://www.tokutek.com/tokumx-for-mongodb/">Tokumx</a>. Personally, I like tokumx.</p>
+
+<ul>
+<li>storage compress</li>
+<li>document level write lock</li>
+<li>concurrency write performance</li>
+<li>do not have to worry about emebeded document size change</li>
+<li>...</li>
+</ul>
+
+
+<p>A lot of those cool features you can find in <a href="http://www.tokutek.com/tokumx-for-mongodb/hdd-benchmarks/">TOKUMX™ BENCHMARK VS. MONGODB – HDD</a> and <a href="http://docs.tokutek.com/tokumx/">Tokumx Documentation</a></p>
+
+<h3>2d index VS 2dsphere index</h3>
+
+<blockquote><p>2d indexes support:</p>
+
+<ul>
+<li>Calculations using flat geometry</li>
+<li>Legacy coordinate pairs (i.e., geospatial points on a flat coordinate system)</li>
+<li>Compound indexes with only one additional field, as a suffix of the 2d index field</li>
+</ul>
+
+
+<p>2dsphere indexes support:</p>
+
+<ul>
+<li>Calculations on a sphere</li>
+<li>GeoJSON objects and include backwards compatibility for legacy coordinate pairs</li>
+<li>Compound indexes with scalar index fields (i.e. ascending or descending) as a prefix or suffix of the 2dsphere index field</li>
+</ul>
+</blockquote>
+
+<p>So basically if you have multiple fields need to be compound together, you need use 2dshpere index.</p>
+
+<p>Nothing is perfect, if you are doing sorting some fields, like <code>id desc</code>, you will have the [geo query with sort performance] issue(http://stackoverflow.com/questions/12908871/mongodb-geospatial-query-with-sort-performance-issues).</p>
+
+<h3>geoWithin VS near</h3>
+
+<p>So we choose 2dsphere index for our case. But performance matters if you are using <a href="http://docs.mongodb.org/manual/reference/operator/query/geoWithin/#op._S_geoWithin">geoWithin</a> and <a href="http://docs.mongodb.org/manual/reference/operator/query/near/#op._S_near">near</a>.</p>
+
+<pre><code>db.collection.find(
+   {
+   $query: {
+     geo:
+     {
+       $near :
+        {
+          $geometry: img.geo,
+          $maxDistance: 100000
+        }
+     },
+     gender: 3
+   },
+   $orderby: { '_pid' : -1 },
+   $limit: 3,
+   $skip: 1
+  }
+);
+
+ "cursor" : "S2NearCursor",
+ "isMultiKey" : false,
+ "n" : 54,
+ "nscannedObjects" : 502,
+ "nscanned" : 502,
+ "nscannedObjectsAllPlans" : 502,
+ "nscannedAllPlans" : 502,
+ "scanAndOrder" : true,
+ "indexOnly" : false,
+ "nYields" : 4,
+ "nChunkSkips" : 0,
+ "millis" : 3,
+ "indexBounds" : {
+ },
+
+
+db.collection.find(
+  {
+    $query: {
+      geo : {
+        $geoWithin : {
+          $centerSphere : [ img.geo.coordinates , 100/3959 ]
+        }
+      },
+      gender:3
+    },
+    $orderby: { '_pid' : -1 },
+    $limit: 3,
+    $skip: 1
+  }
+);
+
+ "cursor" : "BtreeCursor geo_2dsphere_gender_1",
+ "isMultiKey" : false,
+ "n" : 159,
+ "nscannedObjects" : 249,
+ "nscanned" : 337,
+ "nscannedObjectsAllPlans" : 249,
+ "nscannedAllPlans" : 337,
+ "scanAndOrder" : true,
+ "indexOnly" : false,
+ "nYields" : 3,
+ "nChunkSkips" : 0,
+ "millis" : 3,
+ "indexBounds" : {
+      "geo" : [],
+      "gender" : [
+           [
+                3,
+                3
+           ]
+      ]
+</code></pre>
+
+<p>You can see they are using two different cursor <code>S2NearCursor</code> and <code>BtreeCursor</code>. In our case <code>S2NearCursor</code> works better than <code>BtreeCursor</code>.</p>
+
+<h3>MongoDB and NUMA Hardware</h3>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Non-uniform_memory_access">What's Non-uniform memory access (NUMA)</a>?</li>
+<li><a href="http://en.wikipedia.org/wiki/Interleaved_memory">What's Interleaved memory</a></li>
+</ul>
+
+
+<p>NUMA and Interleaved Memory affect MongoDB perofmrnace, you can find below in <a href="http://docs.mongodb.org/manual/administration/production-notes/">Production notes</a>.</p>
+
+<blockquote><ul>
+<li><p>Running MongoDB on a system with Non-Uniform Access Memory (NUMA) can cause a number of operational problems, including slow performance for periods of time and high system process usage.</p></li>
+<li><p>When running MongoDB servers and clients on NUMA hardware, you should configure a memory interleave policy so that the host behaves in a non-NUMA fashion. MongoDB checks NUMA settings on start up when deployed on Linux (since version 2.0) and Windows (since version 2.6) machines, and prints a warning if the NUMA configuration may degrade performance.</p></li>
+<li><p>See The <a href="http://jcole.us/blog/archives/2010/09/28/mysql-swap-insanity-and-the-numa-architecture/">MySQL “swap insanity” problem and the effects of NUMA</a> post, which describes the effects of NUMA on databases. This blog post addresses the impact of NUMA for MySQL, but the issues for MongoDB are similar. The post introduces NUMA and its goals, and illustrates how these goals are not compatible with production databases.</p></li>
+</ul>
+</blockquote>
+
+<h3>Tunning client performance</h3>
+
+<p>In the /etc/sysctl.conf file:</p>
+
+<blockquote><ul>
+<li>net.ipv4.tcp_tw_recycle = 1</li>
+<li>net.ipv4.tcp_tw_reuse = 1</li>
+</ul>
+</blockquote>
+
+<ul>
+<li><p>TCP_TW_RECYCLE Description: Enables fast recycling of TIME_WAIT sockets. Use with caution and ONLY in internal network where network connectivity speeds are “faster”.</p></li>
+<li><p>TCP_TW_REUSE Description: Allows for reuse of sockets in TIME_WAIT state for new connections, only when it is safe from the network stack’s perspective.</p></li>
+</ul>
+
+
+
+				<div class="post-metadata">
+					December 17, 2014 | 
+					<a href='/en/2014/12/17/mongodb-readonly-performance-production-tuning.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mongodb'>mongodb</a>
+						, 
+					
+						
+						<a href='/tags.html#tokumx'>tokumx</a>
+						, 
+					
+						
+						<a href='/tags.html#cowboy'>cowboy</a>
+						, 
+					
+						
+						<a href='/tags.html#erlang'>erlang</a>
+						, 
+					
+						
+						<a href='/tags.html#bson'>bson</a>
+						, 
+					
+						
+						<a href='/tags.html#tsung'>tsung</a>
+						, 
+					
+						
+						<a href='/tags.html#performance'>performance</a>
+						, 
+					
+						
+						<a href='/tags.html#concurrency'>concurrency</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2014/04/20/solr-performance-issue-solving-process">
+				<a href="/en/2014/04/20/solr-performance-issue-solving-process.html"><h1 class="title">Some suggestions when you work with solr</h1></a>
+				
+				<h2>Background</h2>
+
+<p>Since we deploy solr to production, it was running fine for first few days, and then some day it will be slow to response. It happened at least several times like this. We can start this by analyzing from this graphite screenshot.</p>
+
+<p><a href="http://freetofeel.com/images/solr-prod-slow.png"><img src="http://freetofeel.com/images/solr-prod-slow_s.png" alt="Solr Graphite screenshot" /></a></p>
+
+<h3>The whole server strucuture:</h3>
+
+<ul>
+<li>We have three solr instances: one master and two slave, which managed by zookeeper</li>
+<li>All client requests will be queued into <code>queue.size.solr</code> firstly</li>
+</ul>
+
+
+<p><code>Notice: we will not discuss the strucuture was designed correctly or not in this post. This blog will just focus on how to use solr itself.</code></p>
+
+<h3>More info about this graphite</h3>
+
+<ul>
+<li><code>queue.size.solr</code> was increased since <code>solr.request.time.avg</code> increased, which is obvious;</li>
+<li>The increasing of <code>solr.request.time.avg</code> was not caused by <code>solr.requests</code> which is quite stable during <code>Fri 12PM</code> to <code>Fri 8PM</code>;</li>
+<li>Please ignore the drop of <code>system.memory.Memfree</code> which is caused by a restart of solr instance on master(BTW, we stored index in RAM);</li>
+</ul>
+
+
+<h3>A warning from production solr log</h3>
+
+<blockquote><p>PERFORMANCE WARNING: Overlapping onDeckSearchers=X</p></blockquote>
+
+<p>You will find an explanation from <a href="http://wiki.apache.org/solr/FAQ#What_does_.22PERFORMANCE_WARNING:_Overlapping_onDeckSearchers.3DX.22_mean_in_my_logs.3F">solr wiki</a> page:</p>
+
+<blockquote><p>This warning means that at least one searcher hadn't yet finished warming in the background, when a commit was issued and another searcher started warming. This can not only eat up a lot of ram (as multiple on deck searches warm caches simultaneously) but it can can create a feedback cycle, since the more searchers warming in parallel means each searcher might take longer to warm.</p>
+
+<p>Typically the way to avoid this error is to either reduce the frequency of commits, or reduce the amount of warming a searcher does while it's on deck (by reducing the work in newSearcher listeners, and/or reducing the autowarmCount on your caches)</p>
+
+<p>See also the <maxWarmingSearchers/> option in SolrConfig.xml.</p></blockquote>
+
+<p>I want to add addtional information before we start analyzing. The warning was always there in production log. We saw around double size this warning type entries comparing with the ones day before.</p>
+
+<h2>Too early conclusion</h2>
+
+<p>From the graphite screenshot I thought it must be something wrong with solr itself. The things which we can control might only be solr configure and JVM. After playing all those two factors and several round tsung stress testings, I kept getting this warning.
+I failed to get rid of this waring, which put me back to find more articles about this issue.</p>
+
+<h2>Conclusion</h2>
+
+<p>It was very possible that we used it wrong which was obvious if I had paied more attention to <code>...to avoid this error is to either reduce the frequency of commits, or reduce the amount of warming a searcher does...</code>.</p>
+
+<ul>
+<li>Solr is not for realtime search;</li>
+<li>Solr is not for replacement of RDB(e.g. mysql);</li>
+<li>Solr rely on much of RAM if you have a big index size;</li>
+<li><code>Read</code>(<code>Search</code>) and <code>Write</code>(<code>Update</code>) should be treated differently;</li>
+</ul>
+
+
+<p>So the solution could be batch the <code>write</code> requests.</p>
+
+<p>Solrj client provides <a href="https://lucene.apache.org/solr/4_7_2/solr-solrj/org/apache/solr/client/solrj/impl/ConcurrentUpdateSolrServer.html">ConcurrentUpdateSolrServer</a> which contained a queue. So we can queued all requests firstly with <code>commitWithin</code> enabled.</p>
+
+<p>More tips about how to optimize your index performance if you also have the <code>write</code> issue:</p>
+
+<ul>
+<li><a href="http://wiki.apache.org/lucene-java/ImproveIndexingSpeed">How to make indexing faster</a></li>
+<li><a href="http://wiki.apache.org/solr/SolrPerformanceFactors">SolrPerformanceFactors</a></li>
+</ul>
+
+
+
+				<div class="post-metadata">
+					April 20, 2014 | 
+					<a href='/en/2014/04/20/solr-performance-issue-solving-process.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#solr'>solr</a>
+						, 
+					
+						
+						<a href='/tags.html#solrj'>solrj</a>
+						, 
+					
+						
+						<a href='/tags.html#tsung'>tsung</a>
+						, 
+					
+						
+						<a href='/tags.html#performance'>performance</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2012/12/09/visit-appspot">
+				<a href="/en/2012/12/09/visit-appspot.html"><h1 class="title">Visit Appspot.com From China</h1></a>
+				
+				<p>The reason behind this blog is to show you how to make <b>GAppProxy</b> work again. In China, most of people rely on <a href='https://code.google.com/p/gappproxy/'>GAppProxy</a> to access the 'outside world'. But appspot.com is blocked in China. So here is a simple tutorial to show you how to make it work.</p>
+
+<p>The idea is very simple: find the workable google IP and add it to hosts file.</p>
+
+<p><br />
+Step1:</p>
+
+<pre>
+nslookup www.google.com
+</pre>
+
+
+<p>You can find something like:</p>
+
+<pre>
+nslookup www.google.com
+Server:   192.168.1.1
+Address:  192.168.1.1#53
+
+Non-authoritative answer:
+Name: www.google.com
+Address: 74.125.128.99
+Name: www.google.com
+Address: 74.125.128.105
+Name: www.google.com
+Address: 74.125.128.103
+Name: www.google.com
+Address: 74.125.128.147
+Name: www.google.com
+Address: 74.125.128.106
+Name: www.google.com
+Address: 74.125.128.104
+</pre>
+
+
+<p>Basically you just need to try https://74.125.128.x/ to check which one is working. 'x' can be any number. If you can visit https://74.125.128.x/, continue to <b>Step2</b>.</p>
+
+<p><br />
+Step2:</p>
+
+<p>Modify /etc/hosts file and add one line:</p>
+
+<pre>
+74.125.128.x $your_app_engine_id.appspot.com
+</pre>
+
+
+<p>Replace $your_app_engine_id with your registered google app engine ID.</p>
+
+<p>Hope this will help you.</p>
+
+
+				<div class="post-metadata">
+					December 09, 2012 | 
+					<a href='/en/2012/12/09/visit-appspot.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#google'>google</a>
+						, 
+					
+						
+						<a href='/tags.html#gfw'>gfw</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2012/10/02/move-to-dnspod">
+				<a href="/en/2012/10/02/move-to-dnspod.html"><h1 class="title">Move From Godaddy DNS to Dnspod</h1></a>
+				
+				<p>It's the first time that my domain can not be resolved for around 6 hours. I learned <a href='http://www.godaddy.com'>godaddy</a> DNS was blocked in China sometimes.</p>
+
+<p>This is what I hate to work on a Chinese site. After several minutes struggle, I decide to move my dns from <a href='http://www.godaddy.com'>godaddy</a> to <a href='https://www.dnspod.cn/'>dnspod</a>.</p>
+
+<p><a href='https://www.dnspod.cn/'>dnspod</a> did really a nice work. No matter the user interfaces or the services. All of them  meet my requirements.</p>
+
+<p>I don't want to repeat how to setup the dnspod. <a href='https://www.google.com/search?q=dns+godaddy+dnspod&oq=dns+godaddy+dnspod&sugexp=chrome,mod=1&sourceid=chrome&ie=UTF-8'>google search</a> will tell you more about this.</p>
+
+<p>Now I will just wait for the new dns takes affect. Actaully dns was solved quickly in China, but not in JiangSu province in my testing. Good luck to my <a href='http://www.dachebang.com'>www.dachebang.com</>.</p>
+
+
+				<div class="post-metadata">
+					October 02, 2012 | 
+					<a href='/en/2012/10/02/move-to-dnspod.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#dns'>dns</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2012/08/26/linode-migration">
+				<a href="/en/2012/08/26/linode-migration.html"><h1 class="title">Linode Facility Migration to Fremont</h1></a>
+				
+				<p>After using <a href='www.linode.com'>linode</a> host center at Tokyo for a while, I decided to migrate my node to Fremont.</p>
+
+<p>Linode provide you a <a href='http://www.linode.com/speedtest/'>speedtest page</a></p>
+
+<p>Here is my speed testing result. Those two tasks are started at the same time.</p>
+
+<pre>
+100MB-tokyo.bin 1.2/100MB, 47 min left
+100MB-fremont.bin 66.5/100MB, 22 secs left
+</pre>
+
+
+<p>But If I ping the speed test domain:</p>
+
+<pre>
+$ ping speedtest.tokyo.linode.com
+PING speedtest.tokyo.linode.com (106.187.96.148): 56 data bytes
+64 bytes from 106.187.96.148: icmp_seq=0 ttl=51 time=82.885 ms
+64 bytes from 106.187.96.148: icmp_seq=1 ttl=51 time=77.757 ms
+64 bytes from 106.187.96.148: icmp_seq=2 ttl=51 time=77.919 ms
+
+$ ping speedtest.fremont.linode.com
+PING speedtest.fremont.linode.com (50.116.14.9): 56 data bytes
+64 bytes from 50.116.14.9: icmp_seq=0 ttl=51 time=146.268 ms
+Request timeout for icmp_seq 1
+64 bytes from 50.116.14.9: icmp_seq=2 ttl=51 time=146.403 ms
+64 bytes from 50.116.14.9: icmp_seq=3 ttl=51 time=145.409 ms
+64 bytes from 50.116.14.9: icmp_seq=4 ttl=51 time=146.396 ms
+64 bytes from 50.116.14.9: icmp_seq=5 ttl=51 time=148.467 ms
+</pre>
+
+
+<p>As you can see the result is totaly different. So which one you can trust?</p>
+
+<p>The response from linode support:</p>
+
+<pre>
+Individual packets take less time to travel between our Tokyo datacenter and your location than our Fremont datacenter, but that our Fremont datacenter is able to provide you with faster download speeds to your location. Which location is better for you depends on whether your use case likes decreased latency, or better download speeds.
+</pre>
+
+
+<p>At last I decide to switch to Fremont anyhow. So Linode provide me a new ip address. The interesting thing comes. My ISP blocked this ip address for some reason. You can find the fail point by using either "traceroute" or <a href='http://library.linode.com/linux-tools/mtr/'>MTR</a>.</p>
+
+<p>So I asked for a new ip address and reboot my node.</p>
+
+<p>Don't forget to update your hosts file with new ip address to make your application work again. Good luck!</p>
+
+
+				<div class="post-metadata">
+					August 26, 2012 | 
+					<a href='/en/2012/08/26/linode-migration.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#linode'>linode</a>
+						, 
+					
+						
+						<a href='/tags.html#vps'>vps</a>
+						, 
+					
+						
+						<a href='/tags.html#fremont'>fremont</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2011/08/01/mysql-federated-engine">
+				<a href="/en/2011/08/01/mysql-federated-engine.html"><h1 class="title">How And When To Use Mysql Federated Storage Engine</h1></a>
+				
+				<p>Learned from <a href='http://conferences.oreillynet.com/presentations/mysql06/mixi_update.pdf'>mixi update</a> that they are using mysql federated engine for db partitioning.</p>
+
+<pre>
+Use FEDERATED TABLE from MySQL 5.
+Or do SELECT twice which is faster than using FEDERATED TABLEs
+</pre>
+
+
+<p><a href='http://dev.mysql.com/doc/refman/5.0/en/federated-storage-engine.html'>Mysql Official document</a> didn't talk too much about how and when to use federated engine. You can learned more from <a href='http://www.xaprb.com/blog/2007/01/29/mysqls-federated-storage-engine-part-1/'>Mysql Federated storage engine 1</a> and <a href='http://www.xaprb.com/blog/2007/01/31/mysqls-federated-storage-engine-part-2/'>Mysql Federated storage engine 2</a>.</p>
+
+<p>Finally I find some clues in <a href='http://www.xaprb.com/blog/2007/01/31/mysqls-federated-storage-engine-part-2/'>Mysql Federated storage engine 2</a>:</p>
+
+<pre>
+Strengths:
+
+For example, pretend you have a set of distributed servers working on small parts of a large task, and their results need to be merged back together when done without conflict. Many solutions to this problem involve modulo arithmetic for generating primary keys. This could be a good use of a FEDERATED table: just federate one central table on all the servers, have the processes INSERT into the table, and they’ll get non-conflicting primary key numbers. That’s a trivially easy way to coordinate distributed resource requests.
+
+The way it lets you mis-define tables holds great potential. For example, Giuseppe Maxia has already noted that you can define a FEDERATED table against a view. Views don’t have indexes (yet), but that shouldn’t stop you from telling the engine it does! That way, your WHERE clauses are sent through to the remote server unharmed, where the view can execute GROUP BY queries and the like. Giuseppe even outlines a way to get the remote server to execute arbitrary commands via a FEDERATED table!
+
+What about combinations with replication, triggers and so forth? There must be many more cool hacks waiting to be discovered.
+
+</pre>
+
+
+<p>And in <a href='http://mysql.lamphost.net/tech-resources/articles/mysql-federated-storage.html'>Accessing Distributed Data with the Federated Storage Engine</a>, you can find a simple demo that 'merge' two partioned tables into one by creating a view. Although, this is not what I expected. It will still make sense in some cases.</p>
+
+<p>Still have some questions about how the performance looks like when use view? And what's the limitation of rows or table size when using federated storage engine?</p>
+
+
+				<div class="post-metadata">
+					August 01, 2011 | 
+					<a href='/en/2011/08/01/mysql-federated-engine.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						, 
+					
+						
+						<a href='/tags.html#federated'>federated</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2011/07/02/iphone4-network-sharing-under-ubuntu">
+				<a href="/en/2011/07/02/iphone4-network-sharing-under-ubuntu.html"><h1 class="title">Network Sharing Between Ubuntu And IPhone4(China Unicom Contract Version)</h1></a>
+				
+				<p>Find a solution from Internet that can make network sharing between Ubuntu And IPhone4.</p>
+
+<pre>
+sudo add-apt-repository ppa:pmcenery/ppa
+
+sudo apt-get update
+
+sudo apt-get install gvfs ipheth-dkms ipheth-utils
+</pre>
+
+
+<p>If you can pass all these steps, and then restart your machine. Bingo!</p>
+
+<p>You can find more information <a href='http://ivkin.net/2010/05/tethering-ubuntu-lucid-lynx-and-iphone-os/#comment-4790' >here</a>.</p>
+
+
+				<div class="post-metadata">
+					July 02, 2011 | 
+					<a href='/en/2011/07/02/iphone4-network-sharing-under-ubuntu.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#wifi'>wifi</a>
+						, 
+					
+						
+						<a href='/tags.html#ubuntu'>ubuntu</a>
+						, 
+					
+						
+						<a href='/tags.html#iphone4'>iphone4</a>
+						
+					 
+				</div>
+
+			</div>
+		
+		
+		<div class="paging">
+		
+			<a href="/page2" class="previous">&#x25C4; Previous</a>
+		
+		
+		</div>
+
+  </ul>
+</div>
+</div>
+
+    </div>
+
+  </body>
+</html>

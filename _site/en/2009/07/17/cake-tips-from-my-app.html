@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  
+    <meta name="description" content="Heading to entrepreneur." />
+  
+  
+  
+    <meta name="keywords" content="technical, entrepreneur, consulting, blog, personal, life, work, freelancer" />
+  
+  
+  
+    <meta http-equiv="date" content="Friday, 17  2009 00:00:00 GMT" />
+  
+  
+  <meta name="robots" content="INDEX,FOLLOW" />
+
+  <title>
+    Cake Tips from my App &middot; Free To Feel
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/webicon.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Heading to entrepreneur.</p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div>
+        <a class="webicon twitter small" href="http://twitter.com/Joshua_C/">Twitter</a>
+        <a class="webicon github small" href="https://github.com/joshuachi">Github</a>
+        </div>
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li><a href="http://www.kiwitask.com/">Find freelancers</a></li>
+            <li><a href="http://www.jieshuge.com/">Free ebook download</a></li>
+            <li><a href="http://www.freetofeel.com/google-calendar-hours/">Google calendar hours calculator</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="post">
+  <h1>Cake Tips from my App</h1>
+  <span class="post-date">17 Jul 2009</span>
+  <ol>
+<li><p>If you turn on cache in core.php, everytime when you modify your model , don't forget to clear the files under /tmp/cache/models/.</p></li>
+<li><p>Don't cache the element which has include the pagination logic. Because the sort and pagination will fail to work.</p></li>
+<li><p>If there is anonymous role in your ACL model, don't divide your ACL model like this:
+All --
+-----Anonymous
+-----Member--
+---------------Admin
+---------------Normal</p></li>
+</ol>
+
+
+<p>There is a <a href="http://groups.google.com/group/cake-php/browse_thread/thread/cdc817b4ee5de4d5/824fccaad92bfca6?hl=en&lnk=gst&q=use+Auth+component+in+AppController%3F#">thread</a> explained this.</p>
+
+<p>The following will be fine:
+All --
+-----Member--
+---------------Admin
+---------------Normal</p>
+
+<p>If you want 'post/view' page can be visited by anonymous user, just add it into $this->Auth->allowedActions = array(//....);</p>
+
+<ol>
+<li>If you want to use Auth component, you should decide you will use it entirely in your application or use it a little.
+For example, If you want to implement your ACL like cake <a href="http://book.cakephp.org/view/641/Simple-Acl-controlled-Application">demo</a>. You should remember, there is no need to write users/login action code. Cake will help you do the left including login and redirect, if you has set the auth property.</li>
+</ol>
+
+
+<pre name="code" class="php">
+    $this->Auth->allowedActions = array(//...);
+    $this->Auth->loginAction = array('controller' => 'controller_a', 'action' => 'action_a');
+    $this->Auth->loginRedirect = array('controller' => 'controller_b', 'action' => 'action_b');
+    $this->Auth->loginError = 'Username and password do not match. Please try again.';
+    $this->Auth->fields = array(
+     //...
+    );
+    $this->Auth->allowedControllers = array(//...);
+
+</pre>
+
+
+<p>And I think Miles <a href="http://www.milesj.me/blog/read/5/using-cakephps-auth-component">post</a> will help you a lot.</p>
+
+<ol>
+<li><p>If you want to send email through Gmail, take a look at this <a href="http://groups.google.com/group/cake-php/browse_thread/thread/8573140b2e72d1aa/839b6f576077ed18?hl=en&lnk=gst&q=Need+Help+of+Email+component+-+fail+to+send+email#839b6f576077ed18">thread</a>. And Marc has wrote an <a href="http://marcgrabanski.com/article/cakephp-email-google-apps-gmail">article</a> to implement this in another way.</p></li>
+<li><p>It is easy to customize all the error pages, copying the files you needed under cake\libs\view\errors into app\views\errors. And then you can customize it to what you want.</p></li>
+<li><p>Optimize your site performance
+I don't want to write a lot about this. Because you can find there are a lot of resources[1] about this.</p></li>
+</ol>
+
+
+<p>*resource[1]:
+1. <a href="http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/">8 Ways to Speed Up the Performance of CakePHP Apps</a>
+2. <a href="http://debuggable.com/posts/how-to-save-half-a-second-on-every-request-of-your-cakephp-app:49a69610-8648-4d65-815d-754c4834cda3">How To Save Half A Second On Every CakePHP Request</a>
+3. <a href="http://www.samaxes.com/2008/04/htaccess-gzip-and-cache-your-site-for-faster-loading-and-bandwidth-saving/">Learn more about cakephp with .htaccess</a> and <a href="http://www.askapache.com/htaccess/apache-htaccess.html">another</a> one about .htaccess
+4. <a href="http://www.g-loaded.eu/2006/12/04/optimize-and-compress-css-files">CSS Compress</a></p>
+
+</div>
+<div id="disqus_thread">
+</div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = "/en/2009/07/17/cake-tips-from-my-app";
+    var disqus_url = "http://freetofeel.com"+"/en/2009/07/17/cake-tips-from-my-app.html";
+    var disqus_title = "Cake Tips from my App";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h4>
+          <a href="/en/2014/12/17/mongodb-readonly-performance-production-tuning.html">
+             &raquo; Mongodb Read-only Performance Production Tuning
+            <small>17 Dec 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/en/2014/04/20/solr-performance-issue-solving-process.html">
+             &raquo; Some suggestions when you work with solr
+            <small>20 Apr 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/zh/2014/01/30/NEW-YEAR.html">
+             &raquo; 农历马年新年
+            <small>30 Jan 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
