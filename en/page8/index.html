@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  
+    <meta name="description" content="Heading to entrepreneur." />
+  
+  
+  
+    <meta name="keywords" content="technical, entrepreneur, consulting, blog, personal, life, work, freelancer" />
+  
+  
+  
+  
+  <meta name="robots" content="INDEX,FOLLOW" />
+
+  <title>
+    Joshua Chi's Blog &middot; Free To Feel
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/webicon.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Heading to entrepreneur.</p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div>
+        <a class="webicon twitter small" href="http://twitter.com/Joshua_C/">Twitter</a>
+        <a class="webicon github small" href="https://github.com/joshuachi">Github</a>
+        </div>
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li><a href="http://www.kiwitask.com/">Find freelancers</a></li>
+            <li><a href="http://www.jieshuge.com/">Free ebook download</a></li>
+            <li><a href="http://www.freetofeel.com/google-calendar-hours/">Google calendar hours calculator</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div id="home">
+
+<div class="post">
+  <ul class="content">
+		
+			<div class="post" id="postid-/en/2009/10/25/query-performance-optimization">
+				<a href="/en/2009/10/25/query-performance-optimization.html"><h1 class="title">Query Performance Optimization</h1></a>
+				
+				<ol>
+<li><p>Simple Treatment Method for a bad query is accessing less data and fecting less columns.</p></li>
+<li><p>In MySQL, the simplest query cost metrics are:</p></li>
+<li>Execution time</li>
+<li>Number of rows examined</li>
+<li><p>Number of rows returned</p></li>
+<li><p>The access types range from a full table scan to index scans, range scans, unique index lookups, and constants. Each of these is faster than the one before it. If you aren’t getting a good access type, the best way to solve the problem is usually by adding an appropriate index.</p></li>
+<li><p>Duplicated test record with a cool SQL:
+Assuming there was serval record in your table 'animals[id,animal_type , animal_name]'</p>
+
+<blockquote><blockquote><p>insert into animals(animal_type , animal_name ) select animal_type , animal_name from animals.</p></blockquote></blockquote></li>
+<li><p>'The traditional approach to database design emphasizes doing as much work as possible with as few queries as possible.' - This advice doesn’t apply as much to MySQL. MySQL can run more than 50,000 simple queries per second on commodity server hardware and over 2,000 queries per second from a single correspondent on a Gigabit network.</p></li>
+<li><p>Summary: When Application Joins May Be More Efficient >>
+Not doing joins in the application may be more efficient when:
+You cache and reuse a lot of data from earlier queries
+You use multiple MyISAM tables
+You distribute data across multiple servers
+You replace joins with IN( ) lists on large tables
+A join refers to the same table multiple times</p></li>
+<li><p>Follow along with the illustration to see what happens when you send MySQL a query:
+1). The client sends the SQL statement to the server.
+2). The server checks the query cache. If there’s a hit, it returns the stored result from the cache; otherwise, it passes the SQL statement to the next step.
+3). The server parses, preprocesses, and optimizes the SQL into a query execution plan.
+4). The query execution engine executes the plan by making calls to the storage engine API.
+5). The server sends the result to the client.</p></li>
+<li><p>Fetching result directly without buffering:
+[code]</p>
+
+<h1>!/usr/bin/perl</h1>
+
+use DBI;
+my $dbh = DBI->connect('DBI:mysql:;host=localhost', 'user', 'p4ssword');
+my $sth = $dbh->prepare('SELECT * FROM HUGE_TABLE', { mysql_use_result => 1 });
+$sth->execute( );
+while ( my $row = $sth->fetchrow_array( ) ) {
+
+<h1>Do something with result</h1>
+
+<p>}
+[/code]
+Notice that the call to prepare( ) specified to “use” the result instead of “buffering” it. You can also specify this when connecting, which will make every statement unbuffered:
+[code]
+my $dbh = DBI->connect('DBI:mysql:;mysql_use_result=1', 'user', 'p4ssword');
+[/code]
+This will be usfully when your fetching data is too big.</p></li>
+<li><p>Query states:
+Sleep -
+  The thread is waiting for a new query from the client.
+Query -
+  The thread is either executing the query or sending the result back to the client.
+Locked -
+  The thread is waiting for a table lock to be granted at the server level.
+Analyzing and statistics -
+  The thread is checking storage engine statistics and optimizing the query.
+Copying to tmp table [on disk] -
+  The thread is processing the query and copying results to a temporary table, probably for a GROUP BY, for a filesort, or to satisfy a UNION. If the state ends with “on disk,” MySQL is converting an in-memory table to an on-disk table.
+Sorting result -
+  The thread is sorting a result set.
+Sending data -
+  This can mean several things: the thread might be sending data between stages of the query, generating the result set, or returning the result set to the client.</p></li>
+<li><p>MySQL uses the term “join” more broadly than you might be used to. In sum, it considers every query a join—not just every query that matches rows from two tables, but every query.</p></li>
+</ol>
+
+
+
+				<div class="post-metadata">
+					October 25, 2009 | 
+					<a href='/en/2009/10/25/query-performance-optimization.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected">
+				<a href="/en/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected.html"><h1 class="title">The behavior of javascript is not always your expected</h1></a>
+				
+				<p>Let's raise the issue '07 + 08 = 07' firstly from <a href="http://www.debuggable.com/posts/7+8===7-in-javascript:4acba016-d204-489b-b5a0-1fd0cbdd56cb">this guy's article</a>.</p>
+
+<pre name='code' class='javascript'>
+var a = '07';
+var b = '08'
+
+alert(a + b); //'0708';
+</pre>
+
+
+<p>OK. We knew the result. What we will do is using the 'parseInt' method.</p>
+
+<pre name='code' class='javascript'>
+var a = '07';
+var b = '08'
+
+alert(parseInt(a) + parseInt(b)); //'07';
+</pre>
+
+
+<p>The result is not our expected this time.</p>
+
+<p>So boys give a lot of solutions.
+solution 1:</p>
+
+<pre name='code' class='javascript'>
+var a = '07';
+var b = '08'
+
+alert(parseInt(a, 10) + parseInt(b, 10)); //'15';
+</pre>
+
+
+<p>solution 2:</p>
+
+<pre name='code' class='javascript'>
+var a = '07';
+var b = '08'
+
+alert(Number(a) + Number(b)); //'15';
+</pre>
+
+
+<p>I like this solution. If the variable is a number, transform it to 'Number' directly to keep it safe. If the variable is a string, transform it to 'String' directly.
+The same issue occurred in Date function too.</p>
+
+<pre name='code' class='javascript'>
+var d = new Date(2009, 08, 02); //It's 2nd of JULY
+</pre>
+
+
+<p>The <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Date">reason</a>.</p>
+
+<blockquote>year
+    Integer value representing the year. For compatibility (in order to avoid the Y2K problem), you should always specify the year in full; use 1998, rather than 98.
+
+month
+    Integer value representing the month, beginning with 0 for January to 11 for December.
+
+date
+    Integer value representing the day of the month (1-31). </blockquote>
+
+
+
+
+
+				<div class="post-metadata">
+					October 24, 2009 | 
+					<a href='/en/2009/10/24/the-behavior-of-javascript-is-not-always-your-expected.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#javascript'>javascript</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/10/22/code-smell">
+				<a href="/en/2009/10/22/code-smell.html"><h1 class="title">Code Smell</h1></a>
+				
+				<p>There is a <a href="http://www.cnblogs.com/idior/archive/2006/06/13/424592.html">code smell list</a> that we can then as a reference.</p>
+
+<blockquote>
+In computer programming, code smell is any symptom in the source code of a computer program that indicates something may be wrong. It generally indicates that the code should be refactored or the overall design should be reexamined. The term appears to have been coined by Kent Beck on WardsWiki. Usage of the term increased after it was featured in Refactoring. Improving the Design of Existing Code.</blockquote>
+
+
+<p>Interesting Discussion about '<a href="http://stackoverflow.com/questions/114342/what-are-code-smells-what-is-the-best-way-to-correct-them">What are Code Smells? What is the best way to correct them?</a>'.</p>
+
+<p>A question is flying on my head:</p>
+
+<pre name='code' class='php'>
+class Person{
+ var $name;
+ var $age;
+//....
+}
+
+function calculateEmployeeAverageAge($employee){
+//...
+}
+
+calculateEmployeeAverageAge(new Person());
+</pre>
+
+
+<p>If there is a function like 'calculateEmployeeAverageAge', is it a code smell? I have met this before in our own product code. I mean the function must know much about the Person structure. But actually, we didn't want to a function rely on too much outside. I always avoid this way in my application. But the guy said 'Methods with a ridiculous (e.g. 7+) amount of parameters. This usually means that there should be a new class introduced (which, when passed, is called an indirect parameter.)' in this <a href="http://stackoverflow.com/questions/114342/what-are-code-smells-what-is-the-best-way-to-correct-them">discussion</a>.</p>
+
+
+				<div class="post-metadata">
+					October 22, 2009 | 
+					<a href='/en/2009/10/22/code-smell.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#refactor'>refactor</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/10/19/one-pixel-notched-corners">
+				<a href="/en/2009/10/19/one-pixel-notched-corners.html"><h1 class="title">One pixel notched corners</h1></a>
+				
+				<p>An interesting article <a href="http://www.askthecssguy.com/2008/03/one_pixel_notched_corners_as_u.html">One pixel notched corners as used by Google Analytics</a>.</p>
+
+<p>A simple explanation of the 'why':
+<a href="http://www.freetofeel.com/2009/10/one-pixel-notched-corners/one_pixel_corner/" rel="attachment wp-att-235"><img src="http://www.freetofeel.com/wp-content/uploads/2009/10/one_pixel_corner.gif" alt="one_pixel_corner" title="one_pixel_corner" width="220" height="186" class="aligncenter size-full wp-image-235" /></a></p>
+
+<pre name='code' class='html'>
+<style type="text/css">
+/* default stuff */
+.letsGiveItAFixedWidthOf200Pixels { width:200px; }
+
+.feature {
+    border:solid red;
+    border-width:0px 4px 2px;
+    background:#b0c0e6;
+}
+.feature div {
+  position:relative;
+  top: -4px;
+  left: 0;
+  border:solid blue;
+  border-width:4px 0 0;
+}
+</style>
+</head><body>
+
+<div class="examplesGoHere letsGiveItAFixedWidthOf200Pixels">
+    <h3>A div</h3>
+    <div class="feature">
+        <div>
+            <div>
+                a
+            </div>
+        </div>
+    </div>
+</div>
+</pre>
+
+
+
+				<div class="post-metadata">
+					October 19, 2009 | 
+					<a href='/en/2009/10/19/one-pixel-notched-corners.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#css'>css</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/10/19/lets-make-the-web-faster-google-code">
+				<a href="/en/2009/10/19/lets-make-the-web-faster-google-code.html"><h1 class="title">Lets make the web faster - Google Code</h1></a>
+				
+				<p><a href="http://code.google.com/speed/articles/optimizing-php.html">Interesting post</a>.</p>
+
+<ul>
+<li>Use caching</li>
+<li>Use output buffering</li>
+<li>Avoid writing naive setters and getters</li>
+<li>Don't copy variables for no reason</li>
+<li>Use caching</li>
+<li>Avoid doing SQL queries within a loop</li>
+</ul>
+
+
+
+
+
+				<div class="post-metadata">
+					October 19, 2009 | 
+					<a href='/en/2009/10/19/lets-make-the-web-faster-google-code.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#google'>google</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/10/18/the-start-up-feedback-loop">
+				<a href="/en/2009/10/18/the-start-up-feedback-loop.html"><h1 class="title">The Start-up Feedback Loop</h1></a>
+				
+				<p><a href="http://www.freetofeel.com/2009/10/the-start-up-feedback-loop/startup-feedback-loop1-287x300/" rel="attachment wp-att-227"><img src="http://www.freetofeel.com/wp-content/uploads/2009/10/startup-feedback-loop1-287x300.png" alt="startup-feedback-loop1-287x300" title="startup-feedback-loop1-287x300" width="287" height="300" class="aligncenter size-full wp-image-227" /></a></p>
+
+<p>After reading <a href="http://kevindewalt.com/blog/2009/10/14/the-best-programming-language-for-a-lean-startup/">The Best Programming Language for a Lean Startup</a>, I agree with the author's opinion. There is no a best language for your startup, even the language you choosed is not the key point for your startup. The proper is the best.</p>
+
+
+				<div class="post-metadata">
+					October 18, 2009 | 
+					<a href='/en/2009/10/18/the-start-up-feedback-loop.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#startup'>startup</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/10/18/schema-optimization-and-indexing">
+				<a href="/en/2009/10/18/schema-optimization-and-indexing.html"><h1 class="title">Schema Optimization and Indexing</h1></a>
+				
+				<ol>
+<li><p>Choosing Data Type ></p></li>
+<li>Smaller is usually better;</li>
+<li>Simple is good;</li>
+<li><p>Avoid NULL if possible - When a nullable column is indexed, it requires an extra byte per entry and can even cause a fixed-size index;</p></li>
+<li><p>Two kinds of numbers: whole numbers and real numbers (numbers with a fractional part)
+TINYINT, SMALLINT, MEDIUMINT, INT, or BIGINT. These require 8, 16, 24, 32, and 64 bits of storage space. Signed and unsigned types use the same amount of storage space and have the same performance, so use whatever’s best for your data range.</p></li>
+<li><p>MySQL lets you specify a “width” for integer types, such as INT(11). &lt;@author:Oh, I was cheated!>This is meaningless for most applications: it does not restrict the legal range of values, but simply specifies the number of characters MySQL’s interactive tools (such as the commandline client) will reserve for display purposes. For storage and computational purposes, INT(1) is identical to INT(20).</p></li>
+<li><p>VARCHAR - helps performance because it saves space. However, because the rows are variable-length, they can grow when you update them, which can cause extra work.</p></li>
+</ol>
+
+
+<p>CHAR - is fixed-length: MySQL always allocates enough space for the specified number of characters. When storing a CHAR value, MySQL removes any trailing
+spaces.</p>
+
+<ol>
+<li><p>Binary comparisons can be much simpler than character comparisons, so they are faster.</p></li>
+<li><p>Using ENUM instead of a string type.
+Note:ENUM field sorts by the internal integer values, not by the strings themselves.</p></li>
+<li><p>TIMESTAMP >
+By default, MySQL will set the first TIMESTAMP column to the current time when you insert a
+row without specifying a value for the column. MySQL also updates the first TIMESTAMP column’s value by default when you update the row, unless you assign a value explicitly in the UPDATE statement.</p></li>
+<li><p>What if you need to store a date and time value with subsecond resolution?
+You can use the BIGINT data type and store the value as a timestamp in microseconds, or you can use a DOUBLE.</p></li>
+<li><p>Date type choose priciple:
+Choose the smallest size that can hold your required range of values, and leave room for future growth if necessary.</p></li>
+<li><p>String types >
+Avoid string types for identifiers if possible, as they take up a lot of space and are generally slower than integer types. Be especially cautious when using string identifiers with MyISAM tables. MyISAM uses packed indexes for strings by default, which may make lookups much slower. In our tests, we’ve noted up to six times slower performance with packed indexes on MyISAM.</p></li>
+<li><p>Types of Indexes >
+B-Tree indexes - all the values are stored in order, and each leaf page is the same distance from the root.</p></li>
+<li><p>Full-text indexes >
+It finds keywords in the text instead of comparing values directly to the values in the index.</p></li>
+<li><p>Indexing Strategies for High Performance > Isolate the Column
+“Isolating” the column means it should not be part of an expression or be inside a function in the query.
+i).mysql> SELECT ... WHERE TO_DAYS(CURRENT_DATE) - TO_DAYS(date_col) &lt;= 10;
+ii). mysql> SELECT ... WHERE date_col >= DATE_SUB(CURRENT_DATE, INTERVAL 10 DAY);
+iii). mysql> SELECT ... WHERE date_col >= DATE_SUB('2008-01-17', INTERVAL 10 DAY);</p></li>
+<li><p>If you want to make index for a long column, the best way is using the prefix.
+Prefix indexes can be a great way to make indexes smaller and faster, but they have downsides too: MySQL cannot use prefix indexes for ORDER BY or GROUP BY queries, nor can it use them as covering indexes.</p>
+
+<blockquote><p>mysql> SELECT COUNT(DISTINCT city)/COUNT(<em>) FROM sakila.city_demo;
++-------------------------------+
+| COUNT(DISTINCT city)/COUNT(</em>) |
++-------------------------------+
+| 0.0312 |
++-------------------------------+
+mysql> SELECT COUNT(DISTINCT LEFT(city, 3))/COUNT(<em>) AS sel3,
+-> COUNT(DISTINCT LEFT(city, 4))/COUNT(</em>) AS sel4,
+-> COUNT(DISTINCT LEFT(city, 5))/COUNT(<em>) AS sel5,
+-> COUNT(DISTINCT LEFT(city, 6))/COUNT(</em>) AS sel6,
+-> COUNT(DISTINCT LEFT(city, 7))/COUNT(*) AS sel7
+-> FROM sakila.city_demo;
++--------+--------+--------+--------+--------+
+| sel3 | sel4 | sel5 | sel6 | sel7 |
++--------+--------+--------+--------+--------+
+| 0.0239 | 0.0293 | 0.0305 | 0.0309 | 0.0310 |
++--------+--------+--------+--------+--------+
+mysql> ALTER TABLE sakila.city_demo ADD KEY (city(7));</p></blockquote></li>
+<li><p>Clustered Indexes >
+solidDB and InnoDB are the only ones that support this type index.</p></li>
+<li><p>You should strive to insert data in primary key order when using InnoDB, and you should try to use a clustering key that will give a monotonically increasing value for each new row.</p></li>
+<li><p>MySQL can use the same index for both sorting and finding rows.
+Ordering the results by the index works only when the index’s order is exactly the same as the ORDER BY clause and all columns are sorted in the same direction (ascending or descending). If the query joins multiple tables, it works only when all columns in the ORDER BY clause refer to the first table. The ORDER BY clause also has the same limitation as lookup queries: it needs to form a leftmost prefix of the index.</p></li>
+<li><p>MySQL implements UNIQUE constraints and PRIMARY KEY constraints with indexes.</p></li>
+<li><p>Redundant indexes are a bit different from duplicated indexes. If there is an index on (A, B), another index on (A) would be redundant because it is a prefix of the first index. That is, the index on (A, B) can also be used as an index on (A) alone. (This type of redundancy applies only to B-Tree indexes.) However, an index on (B, A) would not be redundant, and neither would an index on (B), because B is not a leftmost prefix of (A, B).</p></li>
+<li><p>Where possible, try to extend existing indexes rather than adding new ones. It is usually more efficient to maintain one multicolumn index than several single-column indexes.</p></li>
+<li><p>?--
+If you don’t yet know your query distribution, strive to make your indexes as selective as you can, because highly selective indexes are usually more beneficial.</p></li>
+<li><p>As this example shows, InnoDB can lock rows it doesn’t really need even when it uses an index.
+Note:
+The problem is even worse when it can’t use an index to find and lock the rows: if there’s no index for the query, MySQL will do a full table scan and lock every row, whether it “needs” it or not.</p></li>
+<li><p>!--
+If MySQL uses an index for a range criterion in a query, it cannot also use another index (or a suffix of the same index) for ordering.</p></li>
+<li><p>Run 'CHECK TABLE xxx' to see if the table is corrupt;
+Fix corrupt tables with the 'REPAIR TABLE xxx' command.</p></li>
+<li><p>Two types of data fragmentation:
+a). Row fragmentation
+b). Intra-row fragmentation
+MyISAM tables may suffer from both types of fragmentation, but InnoDB never fragments short rows.
+!--To defragment data, you can either run OPTIMIZE TABLE or dump and reload the data;
+!--For storage engines that don’t support OPTIMIZE TABLE, you can rebuild the table with a no-op ALTER TABLE. Just alter the table to have the same engine it currently uses:
+ mysql> ALTER TABLE $table ENGINE=$engine;</p></li>
+<li><p>Example, you can change or drop a column’s default value in two ways (one fast, and one slow).
+slow}mysql> ALTER TABLE sakila.film
+ -> MODIFY COLUMN rental_duration TINYINT(3) NOT NULL DEFAULT 5;
+In theory, MySQL could have skipped building a new table. The default value for the column is actually stored in the table’s .frm file, so you should be able to change it without touching the table itself. MySQL doesn’t yet use this optimization, however: any MODIFY COLUMN will cause a table rebuild. You can change a column’s default with ALTER COLUMN,* though:
+fast}mysql> ALTER TABLE sakila.film
+ -> ALTER COLUMN rental_duration SET DEFAULT 5;</p></li>
+<li><p>Building MyISAM Indexes Quickly >>
+The usual trick for loading MyISAM tables efficiently is to disable keys, load the data, and reenable the keys:
+mysql> ALTER TABLE test.load_data DISABLE KEYS;
+-- load the data
+mysql> ALTER TABLE test.load_data ENABLE KEYS;</p></li>
+</ol>
+
+
+
+				<div class="post-metadata">
+					October 18, 2009 | 
+					<a href='/en/2009/10/18/schema-optimization-and-indexing.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						, 
+					
+						
+						<a href='/tags.html#index'>index</a>
+						, 
+					
+						
+						<a href='/tags.html#optimization'>optimization</a>
+						
+					 
+				</div>
+
+			</div>
+		
+		
+		<div class="paging">
+		
+			<a href="/page9" class="previous">&#x25C4; Previous</a>
+		
+		
+			
+			  <a href="/page7" class="next">Next &#x25BA;</a>
+			
+		
+		</div>
+
+  </ul>
+</div>
+</div>
+
+    </div>
+
+  </body>
+</html>

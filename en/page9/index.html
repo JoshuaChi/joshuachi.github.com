@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  
+    <meta name="description" content="Heading to entrepreneur." />
+  
+  
+  
+    <meta name="keywords" content="technical, entrepreneur, consulting, blog, personal, life, work, freelancer" />
+  
+  
+  
+  
+  <meta name="robots" content="INDEX,FOLLOW" />
+
+  <title>
+    Joshua Chi's Blog &middot; Free To Feel
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/webicon.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Heading to entrepreneur.</p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div>
+        <a class="webicon twitter small" href="http://twitter.com/Joshua_C/">Twitter</a>
+        <a class="webicon github small" href="https://github.com/joshuachi">Github</a>
+        </div>
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li><a href="http://www.kiwitask.com/">Find freelancers</a></li>
+            <li><a href="http://www.jieshuge.com/">Free ebook download</a></li>
+            <li><a href="http://www.freetofeel.com/google-calendar-hours/">Google calendar hours calculator</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div id="home">
+
+<div class="post">
+  <ul class="content">
+		
+			<div class="post" id="postid-/en/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array">
+				<a href="/en/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array.html"><h1 class="title">How to remove a specific value from a javascript array</h1></a>
+				
+				<p><a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/splice">splice</a> - Changes the content of an array, adding new elements while removing old elements.</p>
+
+<blockquote>array.splice(index, howMany, [element1][, ..., elementN]);
+array.splice(index, [howMany, [element1][, ..., elementN]]);  // SpiderMonkey extension
+</blockquote>
+
+
+<p>index
+    Index at which to start changing the array. If negative, will begin that many elements from the end.</p>
+
+<p>howMany
+    An integer indicating the number of old array elements to remove. If howMany is 0, no elements are removed. In this case, you should specify at least one new element. If no howMany parameter is specified (second syntax above, which is a SpiderMonkey extension), all elements after index are removed.</p>
+
+<p>element1, ..., elementN
+    The elements to add to the array. If you don't specify any elements, splice simply removes elements from the array.</p>
+
+<pre name='code' class='javascript'>
+// from this
+var arr = ['remove', 'specific', 'value', 'from', 'javascript', 'array']; // 6 items
+ 
+// to this ("specific" value removed)
+var arr = ['remove', 'value', 'from', 'javascript', 'array']; //  5 items
+ 
+// use this (removes "specific")
+arr.splice(arr.indexOf('specific'), 1);
+ 
+ 
+// full example
+var arr = ['remove', 'specific', 'value', 'from', 'javascript', 'array'];
+var value_to_remove = 'specific';
+arr.splice(arr.indexOf(value_to_remove), 1);
+ 
+ 
+// note: to support IE (anger rising as I type), you'll need this (thanks James!):
+if (!Array.prototype.indexOf)
+{
+  Array.prototype.indexOf = function(elt /*, from*/)
+  {
+    var len = this.length >>> 0;
+ 
+    var from = Number(arguments[1]) || 0;
+    from = (from < 0)
+         ? Math.ceil(from)
+         : Math.floor(from);
+    if (from < 0)
+      from += len;
+ 
+    for (; from < len; from++)
+    {
+      if (from in this &&
+          this[from] === elt)
+        return from;
+    }
+    return -1;
+  };
+}
+</pre>
+
+
+
+				<div class="post-metadata">
+					October 17, 2009 | 
+					<a href='/en/2009/10/17/how-to-remove-a-specific-value-from-a-javascript-array.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#javascript'>javascript</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/10/14/chance-possibility-and-opportunity-difference">
+				<a href="/en/2009/10/14/chance-possibility-and-opportunity-difference.html"><h1 class="title">Chance, Possibility and Opportunity, difference?</h1></a>
+				
+				<p>I got the answer from internet, maybe wrong, hope somebody can help me correct it.</p>
+
+<p>possibility is the chance for something to happen.
+as in, "ladies and gents, this is your pilot. it is stormy and lightning is everywhere, so there's a possibility that the plane will crash."</p>
+
+<p>opportunity is the chance to do something.
+as in, "there came an opportunity for him to break up with his girlfriend, but he backed out when he saw that she has a collection of guns."</p>
+
+<p>chance is a word you can use for both.
+as in, "there's a chance (possibility) for you to flunk the exam because all you do is sleep and eat your toenails."
+and "this is your chance (opportunity) to be a senator! all you have to do is get money from the taxpayers!"</p>
+
+<p>Chance = You are lucky it's passing by
+Possibility= It is possible that it happen
+Opportunity=It pass by you only once , so grab it</p>
+
+
+				<div class="post-metadata">
+					October 14, 2009 | 
+					<a href='/en/2009/10/14/chance-possibility-and-opportunity-difference.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#life'>life</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/10/13/sql-optimization">
+				<a href="/en/2009/10/13/sql-optimization.html"><h1 class="title">SQL Optimization</h1></a>
+				
+				<p>Two tables:
+city
+id,name,country_id
+1,xx,21
+2,tt,22
+3,tts,21
+4,ss,31</p>
+
+<p>country
+id,name
+21,AA
+22,BB
+31,CC
+41,EE
+51,TT</p>
+
+<p>The question is selecting the country name which has not attached with any city.</p>
+
+<blockquote><p>select * from country where id is not in (select id from country right join city where city.country_id = country.id);</p></blockquote>
+
+<p>But we can optimize this SQL like this:</p>
+
+<blockquote><p>select * from country left join city where city.country_id is null;</p></blockquote>
+
+
+				<div class="post-metadata">
+					October 13, 2009 | 
+					<a href='/en/2009/10/13/sql-optimization.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						, 
+					
+						
+						<a href='/tags.html#optimization'>optimization</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/10/09/mysql-architecture">
+				<a href="/en/2009/10/09/mysql-architecture.html"><h1 class="title">MySQL Architecture</h1></a>
+				
+				<ol>
+<li><p>Each client connection gets its own thread within the server process.</p></li>
+<li><p>If it takes a lot of time on locks, why not separate read and write lock?
+Q:  How to synchronise the read database and write database?</p></li>
+<li><p>When we want to keep reading and writing date clean, we try to implement two types lock in db.
+Expected：
+Read locks on a resource are shared, or mutually nonblocking: many clients
+may read from a resource at the same time and not interfere with each other.
+Write locks, on the other hand, are exclusive—i.e., they block both read locks and
+other write locks—because the only safe policy is to have a single client writing to
+the resource at given time and to prevent all reads when a client is writing.</p></li>
+</ol>
+
+
+<p>MySQL way:
+a. Table locks - the lowest overhead;
+b. Row locks - the greatest concurrency.</p>
+
+<ol>
+<li><p>Transactions aren’t enough unless the system passes the ACID test.
+Atomicity
+Consistency
+Isolation
+Durability - Once committed, a transaction’s changes are permanent.</p></li>
+<li><p>Isolation Levels >
+READ UNCOMMITTED - Reading uncommitted data is also known as a dirty read;
+READ COMMITTED - The default isolation level for most database systems (but not MySQL!);
+REPEATABLE READ - MySQL’s default transaction isolation level.
+SERIALIZABLE - At this level, a lot of timeouts and lock contention may occur.</p></li>
+<li><p>Deadlock -
+The way InnoDB currently handles deadlocks is to roll back the transaction
+that has the fewest exclusive row locks.
+Deadlocks are a fact of life in transactional systems, and your applications
+should be designed to handle them.</p></li>
+<li><p>Transaction in MySQL >
+MySQL AB provides three transactional storage engines: InnoDB, NDB Cluster, and
+Falcon. solidDB and PBXT.</p></li>
+<li><p>AUTOCOMMIT >
+MySQL operates in AUTOCOMMIT mode by default. It automatically executes each query in a separate transaction.
+MyISAM or Memory tables -  essentially always operate in AUTOCOMMIT mode.</p></li>
+<li><p>You can’t reliably mix different engines in a single transaction. If you mix transactional and nontransactional tables (for instance, InnoDB and MyISAM tables) in a transaction, the transaction will work properly if all goes well. However, if a rollback is required, the changes to the nontransactional table can’t be undone.</p></li>
+<li><p>InnoDB also supports explicit locking, which the SQL standard does not mention at all:</p></li>
+<li>SELECT ... LOCK IN SHARE MODE</li>
+<li>SELECT ... FOR UPDATE</li>
+</ol>
+
+
+<p>MySQL supports the LOCK TABLES and UNLOCK TABLES commands, which are implemented in the server, not in the storage engines.</p>
+
+<ol>
+<li><p>MySQL’s Storage Engines >
+The MyISAM Engine >>
+Storage: The MyISAM format is platformneutral, meaning you can copy the data and index files from an Intel-based server to a PowerPC or Sun SPARC without any trouble.
+MyISAM tables created in MySQL 5.0 with variable-length rows are configured by default to handle 256 TB of data, using 6-byte pointers to the data records.</p></li>
+</ol>
+
+
+<p>Features:
+Locking and concurrency / Automatic repair / Manual repair(You can also use the myisamchk
+command-line tool to check and repair tables when the server is offline.) / Index features / Delayed key writes(However, after a server or system crash, the indexes will definitely be corrupted and will need repair.) /</p>
+
+<p>Compressed MyISAM tables:
+Compressed MyISAM tables can have indexes, but they’re read-only.</p>
+
+<p>The MyISAM Merge Engine >>
+A Merge table is the combination of several identical MyISAM tables into one virtual table. This is particularly useful when you use MySQL in logging and data warehousing applications.</p>
+
+<p>The InnoDB Engine >>
+InnoDB can’t build indexes by sorting, which MyISAM can do.
+Any operation that changes an InnoDB table’s structure will rebuild the entire table, including all the indexes.</p>
+
+<p>The Memory Engine >>
+Here are some good uses for Memory tables:
+a. For “lookup” or “mapping” tables, such as a table that maps postal codes to
+state names
+b. For caching the results of periodically aggregated data
+c. For intermediate results when analyzing data
+Support only fixed-size rows, so they really store VARCHARs as CHARs, which can waste memory.</p>
+
+<p>The Archive Engine >>
+It causes much less disk I/O than MyISAM, because it buffers data writes and compresses each row with zlib as it’s inserted.</p>
+
+<p>The CSV Engine >></p>
+
+<p>The Federated Engine >>
+The Federated engine does not store data locally. Each Federated table refers to a table on a remote MySQL server, so it actually connects to a remote server for all operations.</p>
+
+<p>The Blackhole Engine >>
+Blackhole engine useful for fancy replication setups and audit logging.</p>
+
+<p>The NDB Cluster Engine >>
+An NDB database consists of data nodes, management nodes, and SQL nodes (MySQL instances).</p>
+
+<p>The Falcon Engine >></p>
+
+<p>The solidDB Engine >></p>
+
+<p>The PBXT (Primebase XT) Engine >></p>
+
+<p>The Maria Storage Engine >>
+The goal is to use Maria as a replacement for MyISAM, which is currently MySQL’s default storage engine.</p>
+
+<ol>
+<li><p>Table Conversions ></p></li>
+<li>mysql> ALTER TABLE mytable ENGINE = Falcon;</li>
+</ol>
+
+
+
+				<div class="post-metadata">
+					October 09, 2009 | 
+					<a href='/en/2009/10/09/mysql-architecture.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/09/20/start-my-site-promotion">
+				<a href="/en/2009/09/20/start-my-site-promotion.html"><h1 class="title">Start my site promotion?</h1></a>
+				
+				<p style="line-height: 1.7em; text-align: justify;">Human is a powerful machine for website promotion. If you have 20 people and 20 computers located in 20 different cities, you can do incredible things like:</p>
+
+
+<p style="line-height: 1.7em; text-align: justify;">1.Exposure: There will be 5000 advertising posts all over the websites in 24 hours, if each person copy and paste the same posts.</p>
+
+
+<p style="line-height: 1.7em; text-align: justify;">2. Traffic: Each person uses a small program to clear cookie, redial ADSL(Ip address will be changed) , and visit your website once every 2 minutes, then you can reach 14,000 unique visits each day. Very high traffic for startup websites.</p>
+
+
+<p style="line-height: 1.7em; text-align: justify;">3.Video marketing: Each person uses a small program to replay your video once every 6 seconds, then you can reach 12,000 views in one hour, and get it into the most popular video list.</p>
+
+
+<p style="line-height: 1.7em; text-align: justify;">4. Make rivals crazy: With the same trick, 20 PCs from 20 cities automatically refresh your rivals’ websites 24 hours a day(remember to change your IP and clear cookie once every 5 minutes), they will kill themselves.</p>
+
+
+
+				<div class="post-metadata">
+					September 20, 2009 | 
+					<a href='/en/2009/09/20/start-my-site-promotion.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/08/28/javascript-variable-reference-and-object-reference">
+				<a href="/en/2009/08/28/javascript-variable-reference-and-object-reference.html"><h1 class="title">Javascript value copy and reference copy</h1></a>
+				
+				<p>I will take an example in &lt;JavaScript: The Definitive Guide&gt;</p>
+
+<pre name='code' class='javascript'>
+var a= 3.14;
+var b = a; // copy the variable's value to a new variable
+a = 4;
+alert(b); //Displays 3.14; The copy has not changed
+</pre>
+
+
+<p><br /></p>
+
+<pre name='code' class='javascript'>
+var a= [1,2,3];
+var b = a; // copy that reference into a new variable
+a[0] = 4;
+alert(b); //Displays [4,2,3]; The copy has not changed
+</pre>
+
+
+<p>Actually,the basic data type is value copy, like string, number, etc. But others , like Object, Array and Function are copy reference. In its fundamental nature, there is no Object and Function in Javascript language, all of them are a type of Array.</p>
+
+
+				<div class="post-metadata">
+					August 28, 2009 | 
+					<a href='/en/2009/08/28/javascript-variable-reference-and-object-reference.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+			<div class="post" id="postid-/en/2009/08/22/some-orthodox-heresies-from-alex">
+				<a href="/en/2009/08/22/some-orthodox-heresies-from-alex.html"><h1 class="title">Some Orthodox Heresies from alex</h1></a>
+				
+				<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Plugins are not evil.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">The web is a force for social change.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">The internet centralizes power…slowly…oh so slowly…</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">CSS is the problem. Also, the solution.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Competition does not mean that your favorite player wins.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">JavaScript cannot save you. Even if it could, you should not let it, for the price of this short-term salvation is the end of what you like about the web.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Fast is better than slow. Slow is better than closed.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">A web that isn’t extensible will wither and die.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Proprietary can be incredibly fast.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">The sooner we take HTML out of the hands of C++ hackers, the sooner we’ll screw it up.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Extensibility is a crutch.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Plugins bring the advantages of slow development, unportable code, hard failure, and security holes to a platform designed to remove them. Also, they make the web awesome.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Getting what you want will not make you happy. It is your inner dissonance that brought you to the web in the first place. You might as well own it.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">“Proprietary” is the loser’s word for “I’m too lazy to copy the good parts”.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Small firms are always more nimble and therefore better.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">You can’t beat big companies in the end.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">HTML 5 is a cruel joke — I can’t wait for it to be done.</div>
+
+
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Original one is here.</div>
+
+
+<ul>
+    <li>Plugins are not evil.</li>
+    <li>The web is a force for social change.</li>
+    <li>The internet centralizes power…slowly…oh so slowly…</li>
+    <li>CSS is the problem. Also, the solution.</li>
+    <li>Competition does not mean that your favorite player wins.</li>
+    <li>JavaScript cannot save you. Even if it could, you should not let it, for the price of this short-term salvation is the end of what you like about the web.</li>
+    <li>Fast is better than slow. Slow is better than closed.</li>
+    <li>A web that isn’t extensible will wither and die.</li>
+    <li>Proprietary can be incredibly fast.</li>
+    <li>The sooner we take HTML out of the hands of C++ hackers, the sooner we’ll screw it up.</li>
+    <li>Extensibility is a crutch.</li>
+    <li>Plugins bring the advantages of slow development, unportable code, hard failure, and security holes to a platform designed to remove them. Also, they make the web awesome.</li>
+    <li>Getting what you want will not make you happy. It is your inner dissonance that brought you to the web in the first place. You might as well own it.</li>
+    <li>“Proprietary” is the loser’s word for “I’m too lazy to copy the good parts”.</li>
+    <li>Small firms are always more nimble and therefore better.</li>
+    <li>You can’t beat big companies in the end.</li>
+    <li>HTML 5 is a cruel joke — I can’t wait for it to be done.</li>
+</ul>
+
+
+<p>The original one is <a href="http://alex.dojotoolkit.org/2009/08/some-orthodox-heresies/">here</a>.</p>
+
+
+				<div class="post-metadata">
+					August 22, 2009 | 
+					<a href='/en/2009/08/22/some-orthodox-heresies-from-alex.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
+		
+		<div class="paging">
+		
+			<a href="/page10" class="previous">&#x25C4; Previous</a>
+		
+		
+			
+			  <a href="/page8" class="next">Next &#x25BA;</a>
+			
+		
+		</div>
+
+  </ul>
+</div>
+</div>
+
+    </div>
+
+  </body>
+</html>
