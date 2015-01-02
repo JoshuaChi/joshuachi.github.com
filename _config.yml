@@ -1,5 +1,6 @@
 title:        'Free To Feel'
 tagline:      'Free To Feel'
+safe:         false
 site_keywords:   "technical, entrepreneur, consulting, blog, personal, life, work, freelancer"
 description:  "Heading to entrepreneur."
 url:          "http://www.freetofeel.com/"
@@ -16,4 +17,3 @@ paginate: 7
 feedurl: /feed/
 paginate_per_category: true
 default_category: "en"
-safe: false
