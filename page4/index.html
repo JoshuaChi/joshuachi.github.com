@@ -58,7 +58,7 @@
             <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
             </li>
           </ul>
-          <p>Copyright &copy; 2015 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
 </p>
         </div>                
       </div>
@@ -69,6 +69,63 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/en/2010/12/19/nodejs-with-socket-io">
+				<a href="/en/2010/12/19/nodejs-with-socket-io.html"><h1 class="title">Dig Into Nodejs</h1></a>
+				
+				<p>Just find a beautiful and simplest javascript code:</p>
+
+<pre>
+  // In both HTTP servers and clients it is possible to queue up several
+  // outgoing messages. This is easiest to imagine in the case of a client.
+  // Take the following situation:
+  //
+  //    req1 = client.request('GET', '/');
+  //    req2 = client.request('POST', '/');
+  //
+  // The question is what happens when the user does
+  //
+  //   req2.write("hello world\n");
+  //
+  // It's possible that the first request has not been completely flushed to
+  // the socket yet. Thus the outgoing messages need to be prepared to queue
+  // up data internally before sending it on further to the socket's queue.
+  //
+  // This function, outgoingFlush(), is called by both the Server
+  // implementation and the Client implementation to attempt to flush any
+
+
+  while (message.output.length) {
+    if (!socket.writable) return; // XXX Necessary?
+
+    var data = message.output.shift();
+    var encoding = message.outputEncodings.shift();
+
+    ret = socket.write(data, encoding);
+  }
+</pre>
+
+
+<p>Now I know how nodejs talk with server, which is using <a href='http://socket.io/'>Socket.IO</a> - multi-transport socket server.</p>
+
+
+				<div class="post-metadata">
+					December 19, 2010 | 
+					<a href='/en/2010/12/19/nodejs-with-socket-io.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#nodejs'>nodejs</a>
+						, 
+					
+						
+						<a href='/tags.html#js'>js</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/en/2010/12/05/find-ubuntu-wireless-icon">
 				<a href="/en/2010/12/05/find-ubuntu-wireless-icon.html"><h1 class="title">Find Ubuntu Wireless Icon</h1></a>
@@ -348,39 +405,6 @@ $c->addJoin(BookPeer::CATEGORY_ID, CategoryPeer::ID.' AND '.CategoryPeer::NAME.'
 							| 
 						
 						<a href='/tags.html#mysql'>mysql</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine">
-				<a href="/en/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine.html"><h1 class="title">Fighting with an issue in cracked mac machine</h1></a>
-				
-				<p>Problem: There is always a black border for every window in a cracked mac, including 'Finder', 'Terminal', even the icon on the desktop.</p>
-
-<p>Solution: Delete 'com.apple.universalaccess.plist' in /Usr/$YOURNAME/Library/Preferences/. And then Logout and login.</p>
-
-<p>It can fixed in my cracked mac machine.
-And the main idea was back up your mac preferences</p>
-
-<pre name='code' class='css'>
-cp -R /Usr/$YOURNAME/Library/Preferences/ /Usr/$YOURNAME/backup/
-</pre>
-
-
-<p>And then when you login again, the preferences will be recreated again, like a new user.
-For you, you just try to copy some plist from /Usr/$YOURNAME/backup/ to /Usr/$YOURNAME/Library/Preferences/. And then you can check which plist file was the fail reason</p>
-
-
-				<div class="post-metadata">
-					June 01, 2010 | 
-					<a href='/en/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mac'>mac</a>
 						
 					 
 				</div>

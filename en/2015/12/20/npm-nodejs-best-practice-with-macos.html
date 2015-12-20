@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  
+    <meta name="description" content="Setup NPM NodeJS environment with MACOS." />
+  
+  
+  
+    <meta name="keywords" content="npm nodejs nvm macos" />
+  
+  
+  
+    <meta http-equiv="date" content="Sunday, 20  2015 00:00:00 GMT" />
+  
+  
+  <meta name="robots" content="INDEX,FOLLOW" />
+
+  <title>
+    NPM NodeJS Environment Setup Best Practice with MACOS &middot; Free To Feel
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/webicon.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1><a href="http://freetofeel.com">Free To Feel</a></h1>
+        <p class="lead">Heading to entrepreneur.</p>
+        <br>
+        <img src='http://www.gravatar.com/avatar/81759b36bd906bbf803ce4a5ce84e643.png' />Joshua Chi
+        <div>
+        <a class="webicon twitter small" href="http://twitter.com/Joshua_C/">Twitter</a>
+        <a class="webicon github small" href="https://github.com/joshuachi">Github</a>
+        </div>
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li><a href="http://www.kiwitask.com/">Find freelancers</a></li>
+            <li><a href="http://www.jieshuge.com/">Free ebook download</a></li>
+            <li><a href="http://www.freetofeel.com/google-calendar-hours/">Google calendar hours calculator</a></li>
+            <li><a href='http://www.freetofeel.com/archives.html'> Archived posts</a>
+            </li>
+            <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
+            </li>
+          </ul>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+</p>
+        </div>                
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="post">
+  <h1>NPM NodeJS Environment Setup Best Practice with MACOS</h1>
+  <span class="post-date">20 Dec 2015</span>
+  <h3>NPM Installation</h3>
+
+<h4>Do not install NPM with homebrew</h4>
+
+<ul>
+<li><a href="http://blog.npmjs.org/post/85484771375/how-to-install-npm">There is an extremely high correlation between "installed npm with Homebrew", and "npm is irreparably broken"</a></li>
+<li><a href="https://gist.github.com/DanHerbert/9520689">Explanation of the issue</a></li>
+</ul>
+
+
+<h4>Install it from official site</h4>
+
+<ul>
+<li>List all node modules installed globally:</li>
+</ul>
+
+
+<pre>
+    npm ls -g --depth=0
+</pre>
+
+
+<ul>
+<li>Delete global node_modules folder:</li>
+</ul>
+
+
+<pre>
+    sudo rm -rf /usr/local/lib/node_modules
+</pre>
+
+
+<ul>
+<li>Unintall Node</li>
+</ul>
+
+
+<pre>
+brew uninstall node
+or
+sudo rm /usr/local/bin/node
+</pre>
+
+
+<ul>
+<li>Clean symbol link to node modules globally.</li>
+</ul>
+
+
+<pre>
+    cd  /usr/local/bin && ls -l | grep "../lib/node_modules/" | awk '{print $9}'| xargs rm
+</pre>
+
+
+<ul>
+<li>Install NPM</li>
+</ul>
+
+
+<pre>
+curl -L https://www.npmjs.com/install.sh | sh
+</pre>
+
+
+<h3>Node Installation</h3>
+
+<h4>Install nvm</h4>
+
+<pre>
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+</pre>
+
+
+<h4>Switch version</h4>
+
+<pre>
+nvm install stable #Install latest stable node
+nvm install 4.2.2 #Install 4.2.2 version
+nvm install 0.12.7 #Install 0.12.7 version
+nvm use 0 #Will switch to use v0.12.7
+</pre>
+
+
+<h4>Use a <a href="https://blog.heroku.com/archives/2015/11/10/node-habits-2016#2-use-a-smart-npmrc">smart .npmrc</a></h4>
+
+<p>By default, npm doesn't save installed dependencies to package.json (and you should always track your dependencies!).</p>
+
+<p>If you use the --save flag to auto-update package.json, npm installs the packages with a leading carat (^), putting your modules at risk of drifting to different versions.</p>
+
+<p>One solution is installing packages like this:</p>
+
+<pre>
+$ npm install foobar --save --save-exact
+</pre>
+
+
+<p>Even better, you can set these options in ~/.npmrc to update your defaults:</p>
+
+<pre>
+$ npm config set save=true
+$ npm config set save-exact=true
+$ cat ~/.npmrc
+</pre>
+
+
+<p>Now, npm install foobar will automatically add foobar to package.json and your dependencies won't drift between installs!</p>
+
+<p>If you prefer to keep flexible dependencies in package.json, but still need to lock down dependencies for production, you can alternatively build npm's <a href="https://docs.npmjs.com/cli/shrinkwrap">shrinkwrap</a> into your workflow.
+This takes a little more effort, but has the added benefit of preserving exact versions of nested dependencies.</p>
+
+<h4>Dependencies version management</h4>
+
+<pre>
+*: Match any verion
+1.1.0: Exactly match the version
+~1.1.0: >=1.1.0 && < 1.2.0
+^1.1.0: >=1.1.0 && < 2.0.0
+</pre>
+
+
+<h4>nrm switch NPM soruce</h4>
+
+<p>http://www.tuicool.com/articles/nYjqeu</p>
+
+<h5>Install</h5>
+
+<pre><code>$ npm install -g nrm
+</code></pre>
+
+<h5>Usage</h5>
+
+<p>List all available sources</p>
+
+<pre><code>nrm ls                                                                                                                                    
+
+* npm ---- https://registry.npmjs.org/
+cnpm --- http://r.cnpmjs.org/
+taobao - http://registry.npm.taobao.org/
+eu ----- http://registry.npmjs.eu/
+au ----- http://registry.npmjs.org.au/
+sl ----- http://npm.strongloop.com/
+nj ----- https://registry.nodejitsu.com/
+</code></pre>
+
+<p><code>*</code> means source you are currently using</p>
+
+<h5>Switch</h5>
+
+<p>Switch to use the one from taobao</p>
+
+<pre>
+nrm use taobao                                                                                                 
+</pre>
+
+
+<p>Registry has been set to: http://registry.npm.taobao.org/</p>
+
+<h4>References</h4>
+
+<ul>
+<li><a href="https://blog.heroku.com/archives/2015/11/10/node-habits-2016#2-use-a-smart-npmrc">10 Habits of a Happy Node Hacker (2016)</a></li>
+<li><a href="https://github.com/streakq/js-tools-best-practice/blob/master/doc/node.md#nrm-%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2-npm-%E6%BA%90">NRM switch NPM sources</a></li>
+</ul>
+
+
+</div>
+<div id="disqus_thread">
+</div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = "/en/2015/12/20/npm-nodejs-best-practice-with-macos";
+    var disqus_url = "http://freetofeel.com"+"/en/2015/12/20/npm-nodejs-best-practice-with-macos.html";
+    var disqus_title = "NPM NodeJS Environment Setup Best Practice with MACOS";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h4>
+          <a href="/en/2014/12/17/mongodb-readonly-performance-production-tuning.html">
+             &raquo; Mongodb Read-only Performance Production Tuning
+            <small>17 Dec 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/en/2014/04/20/solr-performance-issue-solving-process.html">
+             &raquo; Some suggestions when you work with solr
+            <small>20 Apr 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/zh/2014/01/30/NEW-YEAR.html">
+             &raquo; 农历马年新年
+            <small>30 Jan 2014</small>
+          </a>
+        </h4>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

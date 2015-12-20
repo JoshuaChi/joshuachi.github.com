@@ -4,13 +4,185 @@
 	<title>Joshua Chi</title>
 	<link href="http://freetofeel.com/atom.xml" rel="self"/>
 	<link href="http://freetofeel.com/"/>
-	<updated>2015-01-02T17:46:45+08:00</updated>
+	<updated>2015-12-20T16:53:01+08:00</updated>
 	<id>http://freetofeel.com/</id>
 	<author>
 		<name>Joshua Chi</name>
 		<email>joshokn@gmail.com</email>
 	</author>
 
+	
+		<entry>
+			<title>NPM NodeJS Environment Setup Best Practice with MACOS</title>
+			<link href="http://freetofeel.com/en/2015/12/20/npm-nodejs-best-practice-with-macos.html"/>
+			<updated>2015-12-20T00:00:00+08:00</updated>
+			<id>http://freetofeel.com/en/2015/12/20/npm-nodejs-best-practice-with-macos</id>
+			<content type="html">&lt;h3&gt;NPM Installation&lt;/h3&gt;
+
+&lt;h4&gt;Do not install NPM with homebrew&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.npmjs.org/post/85484771375/how-to-install-npm&quot;&gt;There is an extremely high correlation between &quot;installed npm with Homebrew&quot;, and &quot;npm is irreparably broken&quot;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://gist.github.com/DanHerbert/9520689&quot;&gt;Explanation of the issue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h4&gt;Install it from official site&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;List all node modules installed globally:&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+    npm ls -g --depth=0
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Delete global node_modules folder:&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+    sudo rm -rf /usr/local/lib/node_modules
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Unintall Node&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+brew uninstall node
+or
+sudo rm /usr/local/bin/node
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Clean symbol link to node modules globally.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+    cd  /usr/local/bin &amp;&amp; ls -l | grep &quot;../lib/node_modules/&quot; | awk '{print $9}'| xargs rm
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Install NPM&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+curl -L https://www.npmjs.com/install.sh | sh
+&lt;/pre&gt;
+
+
+&lt;h3&gt;Node Installation&lt;/h3&gt;
+
+&lt;h4&gt;Install nvm&lt;/h4&gt;
+
+&lt;pre&gt;
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+&lt;/pre&gt;
+
+
+&lt;h4&gt;Switch version&lt;/h4&gt;
+
+&lt;pre&gt;
+nvm install stable #Install latest stable node
+nvm install 4.2.2 #Install 4.2.2 version
+nvm install 0.12.7 #Install 0.12.7 version
+nvm use 0 #Will switch to use v0.12.7
+&lt;/pre&gt;
+
+
+&lt;h4&gt;Use a &lt;a href=&quot;https://blog.heroku.com/archives/2015/11/10/node-habits-2016#2-use-a-smart-npmrc&quot;&gt;smart .npmrc&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;By default, npm doesn't save installed dependencies to package.json (and you should always track your dependencies!).&lt;/p&gt;
+
+&lt;p&gt;If you use the --save flag to auto-update package.json, npm installs the packages with a leading carat (^), putting your modules at risk of drifting to different versions.&lt;/p&gt;
+
+&lt;p&gt;One solution is installing packages like this:&lt;/p&gt;
+
+&lt;pre&gt;
+$ npm install foobar --save --save-exact
+&lt;/pre&gt;
+
+
+&lt;p&gt;Even better, you can set these options in ~/.npmrc to update your defaults:&lt;/p&gt;
+
+&lt;pre&gt;
+$ npm config set save=true
+$ npm config set save-exact=true
+$ cat ~/.npmrc
+&lt;/pre&gt;
+
+
+&lt;p&gt;Now, npm install foobar will automatically add foobar to package.json and your dependencies won't drift between installs!&lt;/p&gt;
+
+&lt;p&gt;If you prefer to keep flexible dependencies in package.json, but still need to lock down dependencies for production, you can alternatively build npm's &lt;a href=&quot;https://docs.npmjs.com/cli/shrinkwrap&quot;&gt;shrinkwrap&lt;/a&gt; into your workflow.
+This takes a little more effort, but has the added benefit of preserving exact versions of nested dependencies.&lt;/p&gt;
+
+&lt;h4&gt;Dependencies version management&lt;/h4&gt;
+
+&lt;pre&gt;
+*: Match any verion
+1.1.0: Exactly match the version
+~1.1.0: &gt;=1.1.0 &amp;&amp; &lt; 1.2.0
+^1.1.0: &gt;=1.1.0 &amp;&amp; &lt; 2.0.0
+&lt;/pre&gt;
+
+
+&lt;h4&gt;nrm switch NPM soruce&lt;/h4&gt;
+
+&lt;p&gt;http://www.tuicool.com/articles/nYjqeu&lt;/p&gt;
+
+&lt;h5&gt;Install&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;$ npm install -g nrm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5&gt;Usage&lt;/h5&gt;
+
+&lt;p&gt;List all available sources&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nrm ls                                                                                                                                    
+
+* npm ---- https://registry.npmjs.org/
+cnpm --- http://r.cnpmjs.org/
+taobao - http://registry.npm.taobao.org/
+eu ----- http://registry.npmjs.eu/
+au ----- http://registry.npmjs.org.au/
+sl ----- http://npm.strongloop.com/
+nj ----- https://registry.nodejitsu.com/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;*&lt;/code&gt; means source you are currently using&lt;/p&gt;
+
+&lt;h5&gt;Switch&lt;/h5&gt;
+
+&lt;p&gt;Switch to use the one from taobao&lt;/p&gt;
+
+&lt;pre&gt;
+nrm use taobao                                                                                                 
+&lt;/pre&gt;
+
+
+&lt;p&gt;Registry has been set to: http://registry.npm.taobao.org/&lt;/p&gt;
+
+&lt;h4&gt;References&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.heroku.com/archives/2015/11/10/node-habits-2016#2-use-a-smart-npmrc&quot;&gt;10 Habits of a Happy Node Hacker (2016)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/streakq/js-tools-best-practice/blob/master/doc/node.md#nrm-%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2-npm-%E6%BA%90&quot;&gt;NRM switch NPM sources&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+		</entry>
 	
 		<entry>
 			<title>Mongodb Read-only Performance Production Tuning</title>
@@ -2746,7 +2918,10 @@ sh ./install.sh
 			<link href="http://freetofeel.com/zh/2009/11/06/blowing-in-the-wind.html"/>
 			<updated>2009-11-06T00:00:00+08:00</updated>
 			<id>http://freetofeel.com/zh/2009/11/06/blowing-in-the-wind</id>
-			<content type="html">&lt;pre&gt;&lt;code&gt;How many roads must a man walk down  一个人要经历多长的旅途
+			<content type="html">&lt;object height=&quot;100&quot; width=&quot;400&quot; align=&quot;middle&quot; codebase=&quot;http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot;&gt;&lt;param value=&quot;best&quot; name=&quot;quality&quot;/&gt;&lt;param value=&quot;never&quot; name=&quot;allowScriptAccess&quot;/&gt;&lt;param value=&quot;true&quot; name=&quot;allowFullScreen&quot;/&gt;&lt;param value=&quot;transparent&quot; name=&quot;wmode&quot;/&gt;&lt;param value=&quot;http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;amp;playerID=10&amp;amp;bg=0xeeeeee&amp;amp;leftbg=0x99ff00&amp;amp;lefticon=0x666666&amp;amp;rightbg=0x666666&amp;amp;rightbghover=0x99ff00&amp;amp;righticon=0xffffff&amp;amp;righticonhover=0xffffff&amp;amp;text=0x666666&amp;amp;slider=0x666666&amp;amp;track=0xFFFFFF&amp;amp;border=0x666666&amp;amp;loader=0x99ff00&amp;amp;loop=no&amp;amp;autostart=no&quot; name=&quot;movie&quot;/&gt;&lt;embed height=&quot;100&quot; width=&quot;400&quot; pluginspage=&quot;http://www.macromedia.com/go/getflashplayer&quot; flashvars=&quot;playerMode=embedded&quot; wmode=&quot;transparent&quot; bgcolor=&quot;#ffffff&quot; quality=&quot;best&quot; allowfullscreen=&quot;true&quot; allowscriptaccess=&quot;never&quot; src=&quot;http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;amp;playerID=10&amp;amp;bg=0xeeeeee&amp;amp;leftbg=0x99ff00&amp;amp;lefticon=0x666666&amp;amp;rightbg=0x666666&amp;amp;rightbghover=0x99ff00&amp;amp;righticon=0xffffff&amp;amp;righticonhover=0xffffff&amp;amp;text=0x666666&amp;amp;slider=0x666666&amp;amp;track=0xFFFFFF&amp;amp;border=0x666666&amp;amp;loader=0x99ff00&amp;amp;loop=no&amp;amp;autostart=no&quot; type=&quot;application/x-shockwave-flash&quot;/&gt;&lt;/object&gt;
+
+
+&lt;pre&gt;&lt;code&gt;How many roads must a man walk down  一个人要经历多长的旅途
 
 Before they call him a man  才能成为真正的男人
 

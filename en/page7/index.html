@@ -58,7 +58,7 @@
             <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
             </li>
           </ul>
-          <p>Copyright &copy; 2015 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
 </p>
         </div>                
       </div>
@@ -69,6 +69,68 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/en/2009/12/14/mysql-backup-and-restore-system">
+				<a href="/en/2009/12/14/mysql-backup-and-restore-system.html"><h1 class="title">MySQL Database Backup and Restore</h1></a>
+				
+				<p><strong>Backup</strong>
+I was trying to find some backup and restore system for our product mysql database. There are a lot of tools can do this. But I think the simple way is using <a href="https://help.ubuntu.com/community/CronHowto">crontab</a> + <a href="http://www.ntchosting.com/mysql/database-dump.html">mysqldump</a>.</p>
+
+<p>So I write a simple script</p>
+
+<pre name='code' class='sql'>
+$ mysqldump -u [uname] -p[pass] [dbname] | gzip -9 > [backupfile.sql.gz]
+example:
+
+15 2 * * * root mysqldump -u root -pPASSWORD --all-databases | gzip > /usr/local/bk/database_`data '+%m-%d-%Y'`.sql.gz 
+</pre>
+
+
+<p>If you want to extract the .gz file, use the command below:</p>
+
+<pre name='code' class='html'>
+$ gunzip [backupfile.sql.gz]
+</pre>
+
+
+<p>This script will vardump all my database into the database_<code>data '+%m-%d-%Y'</code>.sql.gz zip file at 2::15am on every day of every month.</p>
+
+<p><strong>Restoring</strong>
+Restore the databases is simple.</p>
+
+<pre name='code' class='sql'>
+$ mysql -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
+</pre>
+
+
+<p>To restore from a compress sql:</p>
+
+<pre name='code' class='sql'>
+gunzip < [backupfile.sql.gz] | mysql -u [uname] -p[pass] [dbname]
+</pre>
+
+
+<p>If you need to restore a database that already exists, you'll need to use mysqlimport command. The syntax for mysqlimport is as follows</p>
+
+<pre name='code' class='sql'>
+mysqlimport -u [uname] -p[pass] [dbname] [backupfile.sql]
+</pre>
+
+
+
+				<div class="post-metadata">
+					December 14, 2009 | 
+					<a href='/en/2009/12/14/mysql-backup-and-restore-system.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/en/2009/12/11/using-rsync-and-ssh-to-synchronise-between-two-servers">
 				<a href="/en/2009/12/11/using-rsync-and-ssh-to-synchronise-between-two-servers.html"><h1 class="title">Using Rsync and SSH to synchronise between two servers</h1></a>
@@ -255,42 +317,6 @@ function get_ini_path()
 							| 
 						
 						<a href='/tags.html#php'>php</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2009/10/26/the-interesting-thing-about-google-translate">
-				<a href="/en/2009/10/26/the-interesting-thing-about-google-translate.html"><h1 class="title">The interesting thing about Google Translate</h1></a>
-				
-				<p>Have you noticed that when you open the <a href="http://translate.google.com">Google Translate page</a>, and you enter some simple words or a sentence you want to translate.
-The translated URL in your address bar looks like
-'http://translate.google.com/translate_t#el|en|%CE%9C%CE%BF%CF%85%20%CE%B1%CF%81%CE%AD%CF%83%CE%B5%CE%B9%20%CE%B1%CF%85%CF%84%CE%AE%20%CE%B7%20%CE%BC%CE%BF%CF%85%CF%83%CE%B9%CE%BA%CE%AE'
-Here we take the example,
-Translate sentence 'Μου αρέσει αυτή η μουσική' -> 'I like this music'
-Greek -> English
-As we seen, the sentence was encoded and appended as a parameter in the URL.
-But if you try to translate some longer sentence, like,
-'Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.Μου αρέσει αυτή η μουσική.'</p>
-
-<p>Now your address bar will look like 'http://translate.google.com/translate_t#'.
-No matter which case, the translation words will be stored in cache. The next time, the translation words will be searched in cache firstly.
-But why the translation words was added into Get parameter in first case? The only convenient that I can think is that we can copy and past the link from one browser to another. This convenient can not be achieved in the second case for the Get Parameter Length Limit. Is there any other secrets you know?</p>
-
-
-				<div class="post-metadata">
-					October 26, 2009 | 
-					<a href='/en/2009/10/26/the-interesting-thing-about-google-translate.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#google'>google</a>
-						, 
-					
-						
-						<a href='/tags.html#translate'>translate</a>
 						
 					 
 				</div>

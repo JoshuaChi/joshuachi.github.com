@@ -58,7 +58,7 @@
             <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
             </li>
           </ul>
-          <p>Copyright &copy; 2015 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
 </p>
         </div>                
       </div>
@@ -69,6 +69,49 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/en/2009/06/06/fighting-with-subdomain-problem-in-lunarpages">
+				<a href="/en/2009/06/06/fighting-with-subdomain-problem-in-lunarpages.html"><h1 class="title">Fighting with subdomain problem in Lunarpages</h1></a>
+				
+				<p>HostROOT -</p>
+
+<p>|- .htaccess(A)</p>
+
+<p style="text-align: left;">|--------------- |-subdirectory</p>
+
+
+<p style="text-align: left;">|--------------- -----------|- .htaccess(B)</p>
+
+
+<p>My host domain - http://www.example.com</p>
+
+<p>My sub domain - http://subdomain.example.com</p>
+
+<p>Don't forget to add a .htaccess file for your subdirectory and add the following content into it.</p>
+
+<blockquote>.htaccess(B)
+
+&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine on
+RewriteBase /subdirectory/
+&lt;/IfModule&gt;</blockquote>
+
+
+<blockquote></blockquote>
+
+
+<p>It worked as true. When I recall the process I fight with the</p>
+
+<p>Reference:http://bakery.cakephp.org/articles/view/mod-rewrite-on-godaddy-shared-hosting</p>
+
+
+				<div class="post-metadata">
+					June 06, 2009 | 
+					<a href='/en/2009/06/06/fighting-with-subdomain-problem-in-lunarpages.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/en/2009/05/26/solutionerror-2006-hy000-at-line-140-mysql-server-has-gone-away">
 				<a href="/en/2009/05/26/solutionerror-2006-hy000-at-line-140-mysql-server-has-gone-away.html"><h1 class="title">Solution:ERROR 2006 (HY000) at line 140: MySQL server has gone away</h1></a>
@@ -233,42 +276,10 @@ Everything should be fine now and all your PHP pages will work as normal.</block
 
 			</div>
 		
-			<div class="post" id="postid-/en/2009/05/09/hello-world">
-				<a href="/en/2009/05/09/hello-world.html"><h1 class="title">JQuery validate password function can not work on Firefox3.1.10</h1></a>
-				
-				<p>When I use JQuery(Revision: 6246) with firefox 3.0.10, I found it is difficulty to validate the password field.
-//js code
-"data[User][password]": {
-required: true,
-minlength: 6,
-maxlength: 15
-},
-"data[User][confirmPassword]": {
-required: true,
-minlength: 6,
-maxlength: 15,
-equalTo: "#UserPassword"
-},
-//code end
-The error happened at line 1040 of jquery.validate.js
-//code
-equalTo: function(value, element, param) {
-return value == $(param).val();
-}
-//end
-The '$(param).val()' here is always empty. I test this on Chrome, it works fine there.</p>
-
-
-				<div class="post-metadata">
-					May 09, 2009 | 
-					<a href='/en/2009/05/09/hello-world.html#disqus_thread'>View Comments</a>
-					 
-				</div>
-
-			</div>
-		
 		
 		<div class="paging">
+		
+			<a href="/page13" class="previous">&#x25C4; Previous</a>
 		
 		
 			

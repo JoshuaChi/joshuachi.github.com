@@ -58,7 +58,7 @@
             <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
             </li>
           </ul>
-          <p>Copyright &copy; 2015 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
 </p>
         </div>                
       </div>
@@ -69,6 +69,39 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/en/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine">
+				<a href="/en/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine.html"><h1 class="title">Fighting with an issue in cracked mac machine</h1></a>
+				
+				<p>Problem: There is always a black border for every window in a cracked mac, including 'Finder', 'Terminal', even the icon on the desktop.</p>
+
+<p>Solution: Delete 'com.apple.universalaccess.plist' in /Usr/$YOURNAME/Library/Preferences/. And then Logout and login.</p>
+
+<p>It can fixed in my cracked mac machine.
+And the main idea was back up your mac preferences</p>
+
+<pre name='code' class='css'>
+cp -R /Usr/$YOURNAME/Library/Preferences/ /Usr/$YOURNAME/backup/
+</pre>
+
+
+<p>And then when you login again, the preferences will be recreated again, like a new user.
+For you, you just try to copy some plist from /Usr/$YOURNAME/backup/ to /Usr/$YOURNAME/Library/Preferences/. And then you can check which plist file was the fail reason</p>
+
+
+				<div class="post-metadata">
+					June 01, 2010 | 
+					<a href='/en/2010/06/01/fighting-with-an-issue-in-cracked-mac-machine.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mac'>mac</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/en/2010/05/31/error-while-executing-gem-gemgemnotfoundexception">
 				<a href="/en/2010/05/31/error-while-executing-gem-gemgemnotfoundexception.html"><h1 class="title">ERROR:  While executing gem ... (Gem::GemNotFoundException)</h1></a>
@@ -281,60 +314,6 @@ url = "http://dummy.server.org/Create_a_Script.php?callback=call_me&......
 							| 
 						
 						<a href='/tags.html#jsonp'>jsonp</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2010/02/15/report-plugin-for-vanilla-2">
-				<a href="/en/2010/02/15/report-plugin-for-vanilla-2.html"><h1 class="title">Report plugin for Vanilla 2</h1></a>
-				
-				<p>You can find it <a href="http://vanillaforums.org/addon/520/report-system">here</a>.</p>
-
-<p>Install
-1. Unzip the plugin package and put it into Garden/plugins;
-2. Enable it in admin panel;</p>
-
-<p>Configure:
-1. Add the following code into file Garden\applications\vanilla\views\discussion\index.php
-//Arround line 12 ~14
-[CODE]
-&lt;?php $this->FireEvent('AfterDiscussionHeaderRender'); ?>
-[/CODE]</p>
-
-<p>Then the code likes:
-[PIECE]
-&lt;?php $this->FireEvent('AfterDiscussionHeaderRender'); ?>
-&lt;h2&gt;&lt;?php
-   if (Gdn::Config('Vanilla.Categories.Use') === TRUE) {
-      echo Anchor($this->Discussion->Category, 'categories/'.$this->Discussion->CategoryID.'/'.Format::Url($this->Discussion->Category));
-      echo '<span>&bull;</span>';
-   }
-   echo Format::Text($this->Discussion->Name);
-?>&lt;/h2&gt;
-[/PIECE]</p>
-
-<ol>
-<li><p>Config pagination for admin page:
-Add following line into config.php
-$Configuration['Vanilla']['Report']['PerPage'] = 10;</p></li>
-</ol>
-
-
-
-				<div class="post-metadata">
-					February 15, 2010 | 
-					<a href='/en/2010/02/15/report-plugin-for-vanilla-2.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#forum'>forum</a>
-						, 
-					
-						
-						<a href='/tags.html#vanilla'>vanilla</a>
 						
 					 
 				</div>

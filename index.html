@@ -58,7 +58,7 @@
             <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
             </li>
           </ul>
-          <p>Copyright &copy; 2015 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
 </p>
         </div>                
       </div>
@@ -69,6 +69,201 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/en/2015/12/20/npm-nodejs-best-practice-with-macos">
+				<a href="/en/2015/12/20/npm-nodejs-best-practice-with-macos.html"><h1 class="title">NPM NodeJS Environment Setup Best Practice with MACOS</h1></a>
+				
+				<h3>NPM Installation</h3>
+
+<h4>Do not install NPM with homebrew</h4>
+
+<ul>
+<li><a href="http://blog.npmjs.org/post/85484771375/how-to-install-npm">There is an extremely high correlation between "installed npm with Homebrew", and "npm is irreparably broken"</a></li>
+<li><a href="https://gist.github.com/DanHerbert/9520689">Explanation of the issue</a></li>
+</ul>
+
+
+<h4>Install it from official site</h4>
+
+<ul>
+<li>List all node modules installed globally:</li>
+</ul>
+
+
+<pre>
+    npm ls -g --depth=0
+</pre>
+
+
+<ul>
+<li>Delete global node_modules folder:</li>
+</ul>
+
+
+<pre>
+    sudo rm -rf /usr/local/lib/node_modules
+</pre>
+
+
+<ul>
+<li>Unintall Node</li>
+</ul>
+
+
+<pre>
+brew uninstall node
+or
+sudo rm /usr/local/bin/node
+</pre>
+
+
+<ul>
+<li>Clean symbol link to node modules globally.</li>
+</ul>
+
+
+<pre>
+    cd  /usr/local/bin && ls -l | grep "../lib/node_modules/" | awk '{print $9}'| xargs rm
+</pre>
+
+
+<ul>
+<li>Install NPM</li>
+</ul>
+
+
+<pre>
+curl -L https://www.npmjs.com/install.sh | sh
+</pre>
+
+
+<h3>Node Installation</h3>
+
+<h4>Install nvm</h4>
+
+<pre>
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+</pre>
+
+
+<h4>Switch version</h4>
+
+<pre>
+nvm install stable #Install latest stable node
+nvm install 4.2.2 #Install 4.2.2 version
+nvm install 0.12.7 #Install 0.12.7 version
+nvm use 0 #Will switch to use v0.12.7
+</pre>
+
+
+<h4>Use a <a href="https://blog.heroku.com/archives/2015/11/10/node-habits-2016#2-use-a-smart-npmrc">smart .npmrc</a></h4>
+
+<p>By default, npm doesn't save installed dependencies to package.json (and you should always track your dependencies!).</p>
+
+<p>If you use the --save flag to auto-update package.json, npm installs the packages with a leading carat (^), putting your modules at risk of drifting to different versions.</p>
+
+<p>One solution is installing packages like this:</p>
+
+<pre>
+$ npm install foobar --save --save-exact
+</pre>
+
+
+<p>Even better, you can set these options in ~/.npmrc to update your defaults:</p>
+
+<pre>
+$ npm config set save=true
+$ npm config set save-exact=true
+$ cat ~/.npmrc
+</pre>
+
+
+<p>Now, npm install foobar will automatically add foobar to package.json and your dependencies won't drift between installs!</p>
+
+<p>If you prefer to keep flexible dependencies in package.json, but still need to lock down dependencies for production, you can alternatively build npm's <a href="https://docs.npmjs.com/cli/shrinkwrap">shrinkwrap</a> into your workflow.
+This takes a little more effort, but has the added benefit of preserving exact versions of nested dependencies.</p>
+
+<h4>Dependencies version management</h4>
+
+<pre>
+*: Match any verion
+1.1.0: Exactly match the version
+~1.1.0: >=1.1.0 && < 1.2.0
+^1.1.0: >=1.1.0 && < 2.0.0
+</pre>
+
+
+<h4>nrm switch NPM soruce</h4>
+
+<p>http://www.tuicool.com/articles/nYjqeu</p>
+
+<h5>Install</h5>
+
+<pre><code>$ npm install -g nrm
+</code></pre>
+
+<h5>Usage</h5>
+
+<p>List all available sources</p>
+
+<pre><code>nrm ls                                                                                                                                    
+
+* npm ---- https://registry.npmjs.org/
+cnpm --- http://r.cnpmjs.org/
+taobao - http://registry.npm.taobao.org/
+eu ----- http://registry.npmjs.eu/
+au ----- http://registry.npmjs.org.au/
+sl ----- http://npm.strongloop.com/
+nj ----- https://registry.nodejitsu.com/
+</code></pre>
+
+<p><code>*</code> means source you are currently using</p>
+
+<h5>Switch</h5>
+
+<p>Switch to use the one from taobao</p>
+
+<pre>
+nrm use taobao                                                                                                 
+</pre>
+
+
+<p>Registry has been set to: http://registry.npm.taobao.org/</p>
+
+<h4>References</h4>
+
+<ul>
+<li><a href="https://blog.heroku.com/archives/2015/11/10/node-habits-2016#2-use-a-smart-npmrc">10 Habits of a Happy Node Hacker (2016)</a></li>
+<li><a href="https://github.com/streakq/js-tools-best-practice/blob/master/doc/node.md#nrm-%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2-npm-%E6%BA%90">NRM switch NPM sources</a></li>
+</ul>
+
+
+
+				<div class="post-metadata">
+					December 20, 2015 | 
+					<a href='/en/2015/12/20/npm-nodejs-best-practice-with-macos.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#npm'>npm</a>
+						, 
+					
+						
+						<a href='/tags.html#nodejs'>nodejs</a>
+						, 
+					
+						
+						<a href='/tags.html#nvm'>nvm</a>
+						, 
+					
+						
+						<a href='/tags.html#macos'>macos</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/en/2014/12/17/mongodb-readonly-performance-production-tuning">
 				<a href="/en/2014/12/17/mongodb-readonly-performance-production-tuning.html"><h1 class="title">Mongodb Read-only Performance Production Tuning</h1></a>
@@ -585,47 +780,6 @@ What about combinations with replication, triggers and so forth? There must be m
 					
 						
 						<a href='/tags.html#federated'>federated</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2011/07/02/iphone4-network-sharing-under-ubuntu">
-				<a href="/en/2011/07/02/iphone4-network-sharing-under-ubuntu.html"><h1 class="title">Network Sharing Between Ubuntu And IPhone4(China Unicom Contract Version)</h1></a>
-				
-				<p>Find a solution from Internet that can make network sharing between Ubuntu And IPhone4.</p>
-
-<pre>
-sudo add-apt-repository ppa:pmcenery/ppa
-
-sudo apt-get update
-
-sudo apt-get install gvfs ipheth-dkms ipheth-utils
-</pre>
-
-
-<p>If you can pass all these steps, and then restart your machine. Bingo!</p>
-
-<p>You can find more information <a href='http://ivkin.net/2010/05/tethering-ubuntu-lucid-lynx-and-iphone-os/#comment-4790' >here</a>.</p>
-
-
-				<div class="post-metadata">
-					July 02, 2011 | 
-					<a href='/en/2011/07/02/iphone4-network-sharing-under-ubuntu.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#wifi'>wifi</a>
-						, 
-					
-						
-						<a href='/tags.html#ubuntu'>ubuntu</a>
-						, 
-					
-						
-						<a href='/tags.html#iphone4'>iphone4</a>
 						
 					 
 				</div>

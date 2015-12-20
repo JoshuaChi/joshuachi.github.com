@@ -58,7 +58,7 @@
             <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
             </li>
           </ul>
-          <p>Copyright &copy; 2015 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
 </p>
         </div>                
       </div>
@@ -69,6 +69,60 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/en/2010/02/15/report-plugin-for-vanilla-2">
+				<a href="/en/2010/02/15/report-plugin-for-vanilla-2.html"><h1 class="title">Report plugin for Vanilla 2</h1></a>
+				
+				<p>You can find it <a href="http://vanillaforums.org/addon/520/report-system">here</a>.</p>
+
+<p>Install
+1. Unzip the plugin package and put it into Garden/plugins;
+2. Enable it in admin panel;</p>
+
+<p>Configure:
+1. Add the following code into file Garden\applications\vanilla\views\discussion\index.php
+//Arround line 12 ~14
+[CODE]
+&lt;?php $this->FireEvent('AfterDiscussionHeaderRender'); ?>
+[/CODE]</p>
+
+<p>Then the code likes:
+[PIECE]
+&lt;?php $this->FireEvent('AfterDiscussionHeaderRender'); ?>
+&lt;h2&gt;&lt;?php
+   if (Gdn::Config('Vanilla.Categories.Use') === TRUE) {
+      echo Anchor($this->Discussion->Category, 'categories/'.$this->Discussion->CategoryID.'/'.Format::Url($this->Discussion->Category));
+      echo '<span>&bull;</span>';
+   }
+   echo Format::Text($this->Discussion->Name);
+?>&lt;/h2&gt;
+[/PIECE]</p>
+
+<ol>
+<li><p>Config pagination for admin page:
+Add following line into config.php
+$Configuration['Vanilla']['Report']['PerPage'] = 10;</p></li>
+</ol>
+
+
+
+				<div class="post-metadata">
+					February 15, 2010 | 
+					<a href='/en/2010/02/15/report-plugin-for-vanilla-2.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#forum'>forum</a>
+						, 
+					
+						
+						<a href='/tags.html#vanilla'>vanilla</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/en/2010/02/01/mysql-custom-function">
 				<a href="/en/2010/02/01/mysql-custom-function.html"><h1 class="title">MySQL Custom Function</h1></a>
@@ -282,68 +336,6 @@ insert into animals(<code>animal_type</code>, <code>animal_name</code>) select a
 				<div class="post-metadata">
 					December 14, 2009 | 
 					<a href='/en/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mysql'>mysql</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2009/12/14/mysql-backup-and-restore-system">
-				<a href="/en/2009/12/14/mysql-backup-and-restore-system.html"><h1 class="title">MySQL Database Backup and Restore</h1></a>
-				
-				<p><strong>Backup</strong>
-I was trying to find some backup and restore system for our product mysql database. There are a lot of tools can do this. But I think the simple way is using <a href="https://help.ubuntu.com/community/CronHowto">crontab</a> + <a href="http://www.ntchosting.com/mysql/database-dump.html">mysqldump</a>.</p>
-
-<p>So I write a simple script</p>
-
-<pre name='code' class='sql'>
-$ mysqldump -u [uname] -p[pass] [dbname] | gzip -9 > [backupfile.sql.gz]
-example:
-
-15 2 * * * root mysqldump -u root -pPASSWORD --all-databases | gzip > /usr/local/bk/database_`data '+%m-%d-%Y'`.sql.gz 
-</pre>
-
-
-<p>If you want to extract the .gz file, use the command below:</p>
-
-<pre name='code' class='html'>
-$ gunzip [backupfile.sql.gz]
-</pre>
-
-
-<p>This script will vardump all my database into the database_<code>data '+%m-%d-%Y'</code>.sql.gz zip file at 2::15am on every day of every month.</p>
-
-<p><strong>Restoring</strong>
-Restore the databases is simple.</p>
-
-<pre name='code' class='sql'>
-$ mysql -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
-</pre>
-
-
-<p>To restore from a compress sql:</p>
-
-<pre name='code' class='sql'>
-gunzip < [backupfile.sql.gz] | mysql -u [uname] -p[pass] [dbname]
-</pre>
-
-
-<p>If you need to restore a database that already exists, you'll need to use mysqlimport command. The syntax for mysqlimport is as follows</p>
-
-<pre name='code' class='sql'>
-mysqlimport -u [uname] -p[pass] [dbname] [backupfile.sql]
-</pre>
-
-
-
-				<div class="post-metadata">
-					December 14, 2009 | 
-					<a href='/en/2009/12/14/mysql-backup-and-restore-system.html#disqus_thread'>View Comments</a>
 					
 						
 							| 

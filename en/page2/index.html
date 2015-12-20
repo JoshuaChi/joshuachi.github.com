@@ -58,7 +58,7 @@
             <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
             </li>
           </ul>
-          <p>Copyright &copy; 2015 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+          <p>Copyright &copy; 2014 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
 </p>
         </div>                
       </div>
@@ -69,6 +69,47 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/en/2011/07/02/iphone4-network-sharing-under-ubuntu">
+				<a href="/en/2011/07/02/iphone4-network-sharing-under-ubuntu.html"><h1 class="title">Network Sharing Between Ubuntu And IPhone4(China Unicom Contract Version)</h1></a>
+				
+				<p>Find a solution from Internet that can make network sharing between Ubuntu And IPhone4.</p>
+
+<pre>
+sudo add-apt-repository ppa:pmcenery/ppa
+
+sudo apt-get update
+
+sudo apt-get install gvfs ipheth-dkms ipheth-utils
+</pre>
+
+
+<p>If you can pass all these steps, and then restart your machine. Bingo!</p>
+
+<p>You can find more information <a href='http://ivkin.net/2010/05/tethering-ubuntu-lucid-lynx-and-iphone-os/#comment-4790' >here</a>.</p>
+
+
+				<div class="post-metadata">
+					July 02, 2011 | 
+					<a href='/en/2011/07/02/iphone4-network-sharing-under-ubuntu.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#wifi'>wifi</a>
+						, 
+					
+						
+						<a href='/tags.html#ubuntu'>ubuntu</a>
+						, 
+					
+						
+						<a href='/tags.html#iphone4'>iphone4</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/en/2011/06/22/get-commit-back-after-git-hard-reset">
 				<a href="/en/2011/06/22/get-commit-back-after-git-hard-reset.html"><h1 class="title">Restore Lost Commits After Git Hard Reset</h1></a>
@@ -836,44 +877,6 @@ Whilst RabbitMQ also supports clustering, clustering is intended to facilitate s
 							| 
 						
 						<a href='/tags.html#rabbitmq'>rabbitmq</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2011/03/08/do-we-still-need-scrum">
-				<a href="/en/2011/03/08/do-we-still-need-scrum.html"><h1 class="title">Do we still need scrum if ...</h1></a>
-				
-				<p>Just learned an interesting point from <a href='http://architects.dzone.com/articles/balancing-software'>'balance software' post</a>:</p>
-
-<h4>When Scrum has died</h4>
-
-
-<pre>
-  In the journey of dramatic improvements to bring your code base under control, there are few things that you should take notice off.
-
-  * An architecture will emerge that supports the design of the resident parts.  Things fit together sweetly and each part supports the other part in symbiotic relationships.
-  * The code base will get smaller and the team will shrink to, perhaps,  just 2 or 3 people.
-  * Each developer will take on greater responsibility and will find it difficult to break core principles.  The act of living those principles will result in a values that don't need to be listed on a poster on the wall.
-  * The scrum master will become redundant.
-  * The product owner will do more by working directly with the developers.
-  * The developers will represent the interest of their customers directly.
-  * The bottleneck will shift from development to the product owner and eventually the customer.
-</pre>
-
-
-<p>In my opinion, Scrum is used for company to delivery features to users quickly and interactively. As a team, with scrum you can easily prove your works after a short time. You don't have to wait for one year or longer. And big feature can be split into small ones. Everyone know what need to be done in following weeks. You don't have to write so many documents to trace what's going on. Ideally, as the authors said, if the code base can be made smaller and smaller. And the new feature will be just a plugin to your platform. Of course you don't need scrum. Should we call it as 'factory model'? As workers(developers) just need to collect the feature request and compose it by some existing functions. And plug it into the platform(codebase). I have not seen a company who has such a powerful platform. Will the bottleneck be the platform itself then?</p>
-
-
-				<div class="post-metadata">
-					March 08, 2011 | 
-					<a href='/en/2011/03/08/do-we-still-need-scrum.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#scrum'>scrum</a>
 						
 					 
 				</div>
