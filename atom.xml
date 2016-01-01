@@ -4,7 +4,7 @@
 	<title>Joshua Chi</title>
 	<link href="http://freetofeel.com/atom.xml" rel="self"/>
 	<link href="http://freetofeel.com/"/>
-	<updated>2016-01-01T13:10:43+08:00</updated>
+	<updated>2016-01-01T13:18:29+08:00</updated>
 	<id>http://freetofeel.com/</id>
 	<author>
 		<name>Joshua Chi</name>
@@ -3013,10 +3013,7 @@ sh ./install.sh
 			<link href="http://freetofeel.com/zh/2009/11/06/blowing-in-the-wind.html"/>
 			<updated>2009-11-06T00:00:00+08:00</updated>
 			<id>http://freetofeel.com/zh/2009/11/06/blowing-in-the-wind</id>
-			<content type="html">&lt;object height=&quot;100&quot; width=&quot;400&quot; align=&quot;middle&quot; codebase=&quot;http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0&quot; classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot;&gt;&lt;param value=&quot;best&quot; name=&quot;quality&quot;/&gt;&lt;param value=&quot;never&quot; name=&quot;allowScriptAccess&quot;/&gt;&lt;param value=&quot;true&quot; name=&quot;allowFullScreen&quot;/&gt;&lt;param value=&quot;transparent&quot; name=&quot;wmode&quot;/&gt;&lt;param value=&quot;http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;amp;playerID=10&amp;amp;bg=0xeeeeee&amp;amp;leftbg=0x99ff00&amp;amp;lefticon=0x666666&amp;amp;rightbg=0x666666&amp;amp;rightbghover=0x99ff00&amp;amp;righticon=0xffffff&amp;amp;righticonhover=0xffffff&amp;amp;text=0x666666&amp;amp;slider=0x666666&amp;amp;track=0xFFFFFF&amp;amp;border=0x666666&amp;amp;loader=0x99ff00&amp;amp;loop=no&amp;amp;autostart=no&quot; name=&quot;movie&quot;/&gt;&lt;embed height=&quot;100&quot; width=&quot;400&quot; pluginspage=&quot;http://www.macromedia.com/go/getflashplayer&quot; flashvars=&quot;playerMode=embedded&quot; wmode=&quot;transparent&quot; bgcolor=&quot;#ffffff&quot; quality=&quot;best&quot; allowfullscreen=&quot;true&quot; allowscriptaccess=&quot;never&quot; src=&quot;http://www.blogcastone.net/audio/player.swf?soundFile=http%3A%2F%2Fwww.txms.cn%2Fuploadfile%2F2005122121542851.mp3&amp;amp;playerID=10&amp;amp;bg=0xeeeeee&amp;amp;leftbg=0x99ff00&amp;amp;lefticon=0x666666&amp;amp;rightbg=0x666666&amp;amp;rightbghover=0x99ff00&amp;amp;righticon=0xffffff&amp;amp;righticonhover=0xffffff&amp;amp;text=0x666666&amp;amp;slider=0x666666&amp;amp;track=0xFFFFFF&amp;amp;border=0x666666&amp;amp;loader=0x99ff00&amp;amp;loop=no&amp;amp;autostart=no&quot; type=&quot;application/x-shockwave-flash&quot;/&gt;&lt;/object&gt;
-
-
-&lt;pre&gt;&lt;code&gt;How many roads must a man walk down  一个人要经历多长的旅途
+			<content type="html">&lt;pre&gt;&lt;code&gt;How many roads must a man walk down  一个人要经历多长的旅途
 
 Before they call him a man  才能成为真正的男人
 
