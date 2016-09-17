@@ -69,6 +69,116 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/en/2016/09/16/PROXYPASS-EVIL">
+				<a href="/en/2016/09/16/PROXYPASS-EVIL.html"><h1 class="title">PROXYPASS Evil</h1></a>
+				
+				<p>You are forced to invent new solution for your business, otherwise you are going to kick your own ass. :-)</p>
+
+<p>Although the post is targed with name "proxypass evil", it is not true.
+I like <a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html">proxypass</a>, it hides(protects) backend services from outside, especially when we are practicing <a href="http://martinfowler.com/articles/microservices.html">Microservices</a> nowdays.</p>
+
+<p>The post here is explainning a new solution to implement your heavy user experience website, with light backend service and Aliyun services.</p>
+
+<h2>Background</h2>
+
+<p><a href="http://www.aliyun.com">Aliyun(China)</a> service becomes more and more popular since more and more none-technical company transfer their website from their own hosting to Aliyun, the same as Amazon's.</p>
+
+<p><a href="https://cn.aliyun.com/product/oss">OSS</a> could be used to store static resource.</p>
+
+<p><a href="https://cn.aliyun.com/product/cdn">CDN</a> could be used to speed up the resoure loading, by binding with your domain <a href="https://en.wikipedia.org/wiki/CNAME_record">CNAME</a> and uploading website file object to OSS.</p>
+
+<h2>Context</h2>
+
+<ol>
+<li>You are giving a Amazon EC2 T2 medium node. Website is full of images and videos for around 1GB.</li>
+<li>You are told to make the site loading speed with a duration which human could accept, let's say 30s[1], with an expect a high traffic coming in following days.</li>
+<li>There are some small backend services, which frontend needs to talk with.</li>
+</ol>
+
+
+<h3>Let's compare two solutions:</h3>
+
+<p><strong>A</strong>. EC2 node to host site and all static resource requests are proxypassed to Aliyun OSS CDN;</p>
+
+<p><strong>B</strong>. Aliyun OSS CDN to host site and it will talk to backend service hosted at EC2 node;</p>
+
+<p>If you choose <strong>A</strong>, you have to prepare a powerful EC2 node, no matter of bandwidth or CPU, considering your node need to accept all traffic and pass back and forth from OSS/CDN.</p>
+
+<p>If you find solution <strong>B</strong>, you are binding your website with Aliyun service. Binding, I mean, actually your website experience is provided by Aliyun. Only if Aliyun dies, your website is going to die. The only tricky part is if you have backend services need to be integrated, you have to provide CORS in your backend services, considering www.example.com has a CNAME record bound with CDN already.</p>
+
+<p>Is this a cool idea? For me, yes! I can have a good sleep without worrying about our marketing team traffic plan.</p>
+
+<h3>Pains from EC2 or your own hosting.</h3>
+
+<p>In my first day implementing solution <strong>A</strong> in a EC2 node(T2 medium), the site is really fast, let's say 10s. After one day, nothing changes, when I load speed test the website again, it loads for around 1m. Unbelievable that it is "NOT STABLE" for Aliyun CDN. After comparing with solution <strong>B</strong>, it is not the CDN fault.</p>
+
+<p>Amazon EC2 T2 instances has a feature named "<a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html">CPU Credits</a>"</p>
+
+<blockquote><p>When a T2 instance uses fewer CPU resources than its base performance level allows (such as when it is idle), the unused CPU credits (or the difference between what was earned and what was spent) are stored in the credit balance for up to 24 hours, building CPU credits for bursting. When your T2 instance requires more CPU resources than its base performance level allows, it uses credits from the CPU credit balance to burst up to 100% utilization. The more credits your T2 instance has for CPU resources, the more time it can burst beyond its base performance level when more performance is needed.</p></blockquote>
+
+<p>Something to prove it.
+<img src="http://freetofeel.com/images/left-cpu-credits.jpg" alt="EC2 T2 Left CPU Credits" /></p>
+
+<p><img src="http://freetofeel.com/images/cpu-credits.jpg" alt="EC2 T2 CPU Credits" /></p>
+
+<p><code>2016.09.12 3:00 UTC</code> - the time the website is really fast, comparing with following days(e.g. 09.13, 09.14), the CPU credits usage never exceeds 0.2.</p>
+
+<p>It is the same reason if you have a poor server hosting by yourself, unless you could prepare a powerful CPU and memory.</p>
+
+<h2>REFs</h2>
+
+<ol>
+<li>30s - yes, since I joined this new company, this number is exciting all the creative guys. Sadly to say that we are using more and more cool technologies[e.g. <a href="https://en.wikipedia.org/wiki/WebGL">WebGL</a>] nowdays, but with slower and slower website load speed.</li>
+</ol>
+
+
+
+				<div class="post-metadata">
+					September 16, 2016 | 
+					<a href='/en/2016/09/16/PROXYPASS-EVIL.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#nginx'>nginx</a>
+						, 
+					
+						
+						<a href='/tags.html#proxypass'>proxypass</a>
+						, 
+					
+						
+						<a href='/tags.html#amazon'>amazon</a>
+						, 
+					
+						
+						<a href='/tags.html#ec2'>ec2</a>
+						, 
+					
+						
+						<a href='/tags.html#cpu-credit'>cpu-credit</a>
+						, 
+					
+						
+						<a href='/tags.html#aliyun'>aliyun</a>
+						, 
+					
+						
+						<a href='/tags.html#oss'>oss</a>
+						, 
+					
+						
+						<a href='/tags.html#cdn'>cdn</a>
+						, 
+					
+						
+						<a href='/tags.html#budget'>budget</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/en/2015/12/20/npm-nodejs-best-practice-with-macos">
 				<a href="/en/2015/12/20/npm-nodejs-best-practice-with-macos.html"><h1 class="title">NPM NodeJS Environment Setup Best Practice with MACOS</h1></a>
 				
@@ -729,56 +839,6 @@ Individual packets take less time to travel between our Tokyo datacenter and you
 					
 						
 						<a href='/tags.html#fremont'>fremont</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2011/08/01/mysql-federated-engine">
-				<a href="/en/2011/08/01/mysql-federated-engine.html"><h1 class="title">How And When To Use Mysql Federated Storage Engine</h1></a>
-				
-				<p>Learned from <a href='http://conferences.oreillynet.com/presentations/mysql06/mixi_update.pdf'>mixi update</a> that they are using mysql federated engine for db partitioning.</p>
-
-<pre>
-Use FEDERATED TABLE from MySQL 5.
-Or do SELECT twice which is faster than using FEDERATED TABLEs
-</pre>
-
-
-<p><a href='http://dev.mysql.com/doc/refman/5.0/en/federated-storage-engine.html'>Mysql Official document</a> didn't talk too much about how and when to use federated engine. You can learned more from <a href='http://www.xaprb.com/blog/2007/01/29/mysqls-federated-storage-engine-part-1/'>Mysql Federated storage engine 1</a> and <a href='http://www.xaprb.com/blog/2007/01/31/mysqls-federated-storage-engine-part-2/'>Mysql Federated storage engine 2</a>.</p>
-
-<p>Finally I find some clues in <a href='http://www.xaprb.com/blog/2007/01/31/mysqls-federated-storage-engine-part-2/'>Mysql Federated storage engine 2</a>:</p>
-
-<pre>
-Strengths:
-
-For example, pretend you have a set of distributed servers working on small parts of a large task, and their results need to be merged back together when done without conflict. Many solutions to this problem involve modulo arithmetic for generating primary keys. This could be a good use of a FEDERATED table: just federate one central table on all the servers, have the processes INSERT into the table, and they’ll get non-conflicting primary key numbers. That’s a trivially easy way to coordinate distributed resource requests.
-
-The way it lets you mis-define tables holds great potential. For example, Giuseppe Maxia has already noted that you can define a FEDERATED table against a view. Views don’t have indexes (yet), but that shouldn’t stop you from telling the engine it does! That way, your WHERE clauses are sent through to the remote server unharmed, where the view can execute GROUP BY queries and the like. Giuseppe even outlines a way to get the remote server to execute arbitrary commands via a FEDERATED table!
-
-What about combinations with replication, triggers and so forth? There must be many more cool hacks waiting to be discovered.
-
-</pre>
-
-
-<p>And in <a href='http://mysql.lamphost.net/tech-resources/articles/mysql-federated-storage.html'>Accessing Distributed Data with the Federated Storage Engine</a>, you can find a simple demo that 'merge' two partioned tables into one by creating a view. Although, this is not what I expected. It will still make sense in some cases.</p>
-
-<p>Still have some questions about how the performance looks like when use view? And what's the limitation of rows or table size when using federated storage engine?</p>
-
-
-				<div class="post-metadata">
-					August 01, 2011 | 
-					<a href='/en/2011/08/01/mysql-federated-engine.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mysql'>mysql</a>
-						, 
-					
-						
-						<a href='/tags.html#federated'>federated</a>
 						
 					 
 				</div>

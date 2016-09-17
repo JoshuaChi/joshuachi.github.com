@@ -69,6 +69,40 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/en/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records">
+				<a href="/en/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records.html"><h1 class="title">The simplest and quickest way to create mysql table demo records.</h1></a>
+				
+				<p>Take animals table as example,
+Field        Type     Extra</p>
+
+<hr />
+
+<p>id    mediumint(8)  auto_increment
+animal_type  varchar(25)      <br/>
+animal_name  varchar(25)</p>
+
+<p>Create one records in this table.
+Step1. insert into animals(<code>animal_type</code>, <code>animal_name</code>) values('dingo', 'cat');
+Step2:
+insert into animals(<code>animal_type</code>, <code>animal_name</code>) select animal_type, animal_name from animals;</p>
+
+<p>Re-run the step2 serval times, you will find the records was increased as geometric progressions.</p>
+
+
+				<div class="post-metadata">
+					December 14, 2009 | 
+					<a href='/en/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#mysql'>mysql</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/en/2009/12/14/mysql-backup-and-restore-system">
 				<a href="/en/2009/12/14/mysql-backup-and-restore-system.html"><h1 class="title">MySQL Database Backup and Restore</h1></a>
 				
@@ -278,44 +312,6 @@ sh ./install.sh
 							| 
 						
 						<a href='/tags.html#web'>web</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2009/10/31/check-your-current-php-ini-path">
-				<a href="/en/2009/10/31/check-your-current-php-ini-path.html"><h1 class="title">check your current php.ini path</h1></a>
-				
-				<p>You might have two different PHP versions installed: one for the command line, and another for the web. So use this function which was provided by symfony that can be easily judge.</p>
-
-<pre name='code' class='php'>
-/**
- * Gets the php.ini path used by the current PHP interpretor.
- *
- * @return string the php.ini path
- */
-function get_ini_path()
-{
-  if ($path = get_cfg_var('cfg_file_path'))
-  {
-    return $path;
-  }
-
-  return 'WARNING: not using a php.ini file';
-}
-</pre>
-
-
-
-				<div class="post-metadata">
-					October 31, 2009 | 
-					<a href='/en/2009/10/31/check-your-current-php-ini-path.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#php'>php</a>
 						
 					 
 				</div>

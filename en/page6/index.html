@@ -69,6 +69,63 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/en/2010/02/26/using-jsonp-to-do-the-cross-domain-request">
+				<a href="/en/2010/02/26/using-jsonp-to-do-the-cross-domain-request.html"><h1 class="title">Using JSONP to do the cross domain request </h1></a>
+				
+				<p>JSONP (script insertion)</p>
+
+<p>How does it work?</p>
+
+<p>Lets assume, that we have a textarea iResponse and we want to set its value to something that we will receive from the server. And that we have some server in a different domain. With script insertion we can send a HTTP-GET request to the server like this:</p>
+
+<pre name='code' class='javascript'>
+function insertScript( url){
+    var script = document.createElement("script");
+    script.setAttribute("src",url);
+    script.setAttribute("type","text/javascript");
+    document.body.appendChild(script);
+}
+</pre>
+
+
+<p>url in the request is a proper HTTP-GET request with the parameters. Hence server can receive input to work with. The trick with JSONP is how the output is passed back to the client. The newly downloaded “script” will be evaluated on load. Hence, if the script contains:</p>
+
+<pre name='code' class='javascript'>
+call_me( value );
+</pre>
+
+
+<p>A method call_me() will be called with the value as a parameter. Hence we should have another bit of script in our client to have a callback:</p>
+
+<pre name='code' class='javascript'>
+function call_me( vParam ){
+        document.getElementsByName("iResponse")[0].value = vParam;
+}
+</pre>
+
+
+<p>Finally, JSONP-based services are (if they are not tailored to a single client when the callback is predefined) should take the callback name as a parameter:</p>
+
+<pre name='code' class='javascript'>
+url = "http://dummy.server.org/Create_a_Script.php?callback=call_me&......
+</pre>
+
+
+
+				<div class="post-metadata">
+					February 26, 2010 | 
+					<a href='/en/2010/02/26/using-jsonp-to-do-the-cross-domain-request.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#jsonp'>jsonp</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/en/2010/02/15/report-plugin-for-vanilla-2">
 				<a href="/en/2010/02/15/report-plugin-for-vanilla-2.html"><h1 class="title">Report plugin for Vanilla 2</h1></a>
 				
@@ -306,40 +363,6 @@ With MyISAM, the update time = 30 seconds.</p>
 							| 
 						
 						<a href='/tags.html#sql'>sql</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records">
-				<a href="/en/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records.html"><h1 class="title">The simplest and quickest way to create mysql table demo records.</h1></a>
-				
-				<p>Take animals table as example,
-Field        Type     Extra</p>
-
-<hr />
-
-<p>id    mediumint(8)  auto_increment
-animal_type  varchar(25)      <br/>
-animal_name  varchar(25)</p>
-
-<p>Create one records in this table.
-Step1. insert into animals(<code>animal_type</code>, <code>animal_name</code>) values('dingo', 'cat');
-Step2:
-insert into animals(<code>animal_type</code>, <code>animal_name</code>) select animal_type, animal_name from animals;</p>
-
-<p>Re-run the step2 serval times, you will find the records was increased as geometric progressions.</p>
-
-
-				<div class="post-metadata">
-					December 14, 2009 | 
-					<a href='/en/2009/12/14/the-simplest-and-quickest-way-to-create-mysql-table-demo-records.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mysql'>mysql</a>
 						
 					 
 				</div>

@@ -69,6 +69,75 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/en/2009/07/17/cake-tips-from-my-app">
+				<a href="/en/2009/07/17/cake-tips-from-my-app.html"><h1 class="title">Cake Tips from my App</h1></a>
+				
+				<ol>
+<li><p>If you turn on cache in core.php, everytime when you modify your model , don't forget to clear the files under /tmp/cache/models/.</p></li>
+<li><p>Don't cache the element which has include the pagination logic. Because the sort and pagination will fail to work.</p></li>
+<li><p>If there is anonymous role in your ACL model, don't divide your ACL model like this:
+All --
+-----Anonymous
+-----Member--
+---------------Admin
+---------------Normal</p></li>
+</ol>
+
+
+<p>There is a <a href="http://groups.google.com/group/cake-php/browse_thread/thread/cdc817b4ee5de4d5/824fccaad92bfca6?hl=en&lnk=gst&q=use+Auth+component+in+AppController%3F#">thread</a> explained this.</p>
+
+<p>The following will be fine:
+All --
+-----Member--
+---------------Admin
+---------------Normal</p>
+
+<p>If you want 'post/view' page can be visited by anonymous user, just add it into $this->Auth->allowedActions = array(//....);</p>
+
+<ol>
+<li>If you want to use Auth component, you should decide you will use it entirely in your application or use it a little.
+For example, If you want to implement your ACL like cake <a href="http://book.cakephp.org/view/641/Simple-Acl-controlled-Application">demo</a>. You should remember, there is no need to write users/login action code. Cake will help you do the left including login and redirect, if you has set the auth property.</li>
+</ol>
+
+
+<pre name="code" class="php">
+    $this->Auth->allowedActions = array(//...);
+    $this->Auth->loginAction = array('controller' => 'controller_a', 'action' => 'action_a');
+    $this->Auth->loginRedirect = array('controller' => 'controller_b', 'action' => 'action_b');
+    $this->Auth->loginError = 'Username and password do not match. Please try again.';
+    $this->Auth->fields = array(
+     //...
+    );
+    $this->Auth->allowedControllers = array(//...);
+
+</pre>
+
+
+<p>And I think Miles <a href="http://www.milesj.me/blog/read/5/using-cakephps-auth-component">post</a> will help you a lot.</p>
+
+<ol>
+<li><p>If you want to send email through Gmail, take a look at this <a href="http://groups.google.com/group/cake-php/browse_thread/thread/8573140b2e72d1aa/839b6f576077ed18?hl=en&lnk=gst&q=Need+Help+of+Email+component+-+fail+to+send+email#839b6f576077ed18">thread</a>. And Marc has wrote an <a href="http://marcgrabanski.com/article/cakephp-email-google-apps-gmail">article</a> to implement this in another way.</p></li>
+<li><p>It is easy to customize all the error pages, copying the files you needed under cake\libs\view\errors into app\views\errors. And then you can customize it to what you want.</p></li>
+<li><p>Optimize your site performance
+I don't want to write a lot about this. Because you can find there are a lot of resources[1] about this.</p></li>
+</ol>
+
+
+<p>*resource[1]:
+1. <a href="http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/">8 Ways to Speed Up the Performance of CakePHP Apps</a>
+2. <a href="http://debuggable.com/posts/how-to-save-half-a-second-on-every-request-of-your-cakephp-app:49a69610-8648-4d65-815d-754c4834cda3">How To Save Half A Second On Every CakePHP Request</a>
+3. <a href="http://www.samaxes.com/2008/04/htaccess-gzip-and-cache-your-site-for-faster-loading-and-bandwidth-saving/">Learn more about cakephp with .htaccess</a> and <a href="http://www.askapache.com/htaccess/apache-htaccess.html">another</a> one about .htaccess
+4. <a href="http://www.g-loaded.eu/2006/12/04/optimize-and-compress-css-files">CSS Compress</a></p>
+
+
+				<div class="post-metadata">
+					July 17, 2009 | 
+					<a href='/en/2009/07/17/cake-tips-from-my-app.html#disqus_thread'>View Comments</a>
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/en/2009/07/11/the-other-twitter-clients-that-you-may-be-like">
 				<a href="/en/2009/07/11/the-other-twitter-clients-that-you-may-be-like.html"><h1 class="title">The other twitter clients that you may be like</h1></a>
 				
@@ -277,23 +346,6 @@ background:#6cf;
 				<div class="post-metadata">
 					June 22, 2009 | 
 					<a href='/en/2009/06/22/pure-css-to-make-the-footer-at-the-bottom-of-the-page.html#disqus_thread'>View Comments</a>
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2009/06/11/run-cakephp-cronjob-on-web-hosting">
-				<a href="/en/2009/06/11/run-cakephp-cronjob-on-web-hosting.html"><h1 class="title">Run CakePHP CronJob On Web Hosting</h1></a>
-				
-				<blockquote><span class="Apple-style-span" style="border-collapse: separate; color: #000000; font-family: 'Times New Roman'; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><span class="Apple-style-span" style="font-family: Verdana; font-size: 11px; white-space: pre;">/usr/local/bin/php /home/Username/www/cake/console/cake.php -app /home/</span></span><span class="Apple-style-span" style="border-collapse: separate; color: #000000; font-family: 'Times New Roman'; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><span class="Apple-style-span" style="font-family: Verdana; font-size: 11px; white-space: pre;">Username</span></span><span class="Apple-style-span" style="border-collapse: separate; color: #000000; font-family: 'Times New Roman'; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><span class="Apple-style-span" style="font-family: Verdana; font-size: 11px; white-space: pre;">/www/app cronjob</span></span></blockquote>
-
-
-<p>::Replace Username with your account name in Web Sharing Hosting.</p>
-
-
-				<div class="post-metadata">
-					June 11, 2009 | 
-					<a href='/en/2009/06/11/run-cakephp-cronjob-on-web-hosting.html#disqus_thread'>View Comments</a>
 					 
 				</div>
 

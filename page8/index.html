@@ -69,6 +69,44 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/en/2009/10/31/check-your-current-php-ini-path">
+				<a href="/en/2009/10/31/check-your-current-php-ini-path.html"><h1 class="title">check your current php.ini path</h1></a>
+				
+				<p>You might have two different PHP versions installed: one for the command line, and another for the web. So use this function which was provided by symfony that can be easily judge.</p>
+
+<pre name='code' class='php'>
+/**
+ * Gets the php.ini path used by the current PHP interpretor.
+ *
+ * @return string the php.ini path
+ */
+function get_ini_path()
+{
+  if ($path = get_cfg_var('cfg_file_path'))
+  {
+    return $path;
+  }
+
+  return 'WARNING: not using a php.ini file';
+}
+</pre>
+
+
+
+				<div class="post-metadata">
+					October 31, 2009 | 
+					<a href='/en/2009/10/31/check-your-current-php-ini-path.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#php'>php</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/en/2009/10/26/the-interesting-thing-about-google-translate">
 				<a href="/en/2009/10/26/the-interesting-thing-about-google-translate.html"><h1 class="title">The interesting thing about Google Translate</h1></a>
 				
@@ -397,28 +435,6 @@ calculateEmployeeAverageAge(new Person());
 							| 
 						
 						<a href='/tags.html#google'>google</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2009/10/18/the-start-up-feedback-loop">
-				<a href="/en/2009/10/18/the-start-up-feedback-loop.html"><h1 class="title">The Start-up Feedback Loop</h1></a>
-				
-				<p><a href="http://www.freetofeel.com/2009/10/the-start-up-feedback-loop/startup-feedback-loop1-287x300/" rel="attachment wp-att-227"><img src="http://www.freetofeel.com/wp-content/uploads/2009/10/startup-feedback-loop1-287x300.png" alt="startup-feedback-loop1-287x300" title="startup-feedback-loop1-287x300" width="287" height="300" class="aligncenter size-full wp-image-227" /></a></p>
-
-<p>After reading <a href="http://kevindewalt.com/blog/2009/10/14/the-best-programming-language-for-a-lean-startup/">The Best Programming Language for a Lean Startup</a>, I agree with the author's opinion. There is no a best language for your startup, even the language you choosed is not the key point for your startup. The proper is the best.</p>
-
-
-				<div class="post-metadata">
-					October 18, 2009 | 
-					<a href='/en/2009/10/18/the-start-up-feedback-loop.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#startup'>startup</a>
 						
 					 
 				</div>

@@ -69,6 +69,44 @@
 <div class="post">
   <ul class="content">
 		
+			<div class="post" id="postid-/en/2010/12/29/memcached-slabs">
+				<a href="/en/2010/12/29/memcached-slabs.html"><h1 class="title">Be Careful Of Your Memcached Slab Size</h1></a>
+				
+				<p>Recently, we found a very 'strange' bug. The memcached's evictions keep growing. But there is stil 10% free memory in this instance. The memcached instance size is around 600M, and it has recached 90% percentage usage for a long time. This issue happened after we deployed a fix, which changed the entry size stored in memcache.</p>
+
+<p>Let's give a brief analysis:
+Memcached memory allocation: a slab has many pages. One page has many chunks. Each chunk is a fixed size, based on the maximum size for the slab. So for example, there is 600Mb memory for the whole instance. And there are 540Mb has been used. Usually you store some big entries into memcache. Let's say 1500 bytes for each of them. So there are some big slabs with chunk size from 1000 bytes to 2000 bytes. And these slabs took 400Mb memory. Now you changed the size for these entries to 500 bytes. Let's call these entries 'Changed-Entries'. So memcached try to find some slabs which have 500 bytes size chunk. There are three possibilities:</p>
+
+<ol>
+<li><p>There is no such size slabs exist. So Memcached will use the free memory to create some proper size slab for 'Changed-Entries'; There are 60Mb free memory can be used. But if these entries need 100Mb. That means some old entries will be 'kicked out' from these new slabs. Eviction happens;</p></li>
+<li><p>If memcached found some used slabs which have 500 bytes chunk. It will kickout the expired items firstly. If the memroy still not enough for 'Changed-Entries', then the least used entries will be kicked out. Eviction happens;</p></li>
+<li><p>If there is no free memory and there is no propel slabs can be used, then eviction happens.</p></li>
+</ol>
+
+
+<p>If you want to learn more detail about how it works, take a look following references:</p>
+
+<ul>
+<li><p><a href='http://code.google.com/p/memcached/wiki/FAQ#When_do_expired_cached_items_get_deleted_from_the_cache?'>When do expired cached items get deleted from the cache?</a></p></li>
+<li><p><a href='http://dev.mysql.com/doc/refman/5.0/en/ha-memcached-using-memory.html'>Memory allocation within memcached</a></p></li>
+</ul>
+
+
+
+				<div class="post-metadata">
+					December 29, 2010 | 
+					<a href='/en/2010/12/29/memcached-slabs.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#memcached'>memcached</a>
+						
+					 
+				</div>
+
+			</div>
+		
 			<div class="post" id="postid-/en/2010/12/19/nodejs-with-socket-io">
 				<a href="/en/2010/12/19/nodejs-with-socket-io.html"><h1 class="title">Dig Into Nodejs</h1></a>
 				
@@ -377,33 +415,6 @@ $c->addJoin(BookPeer::CATEGORY_ID, CategoryPeer::ID.' AND '.CategoryPeer::NAME.'
 							| 
 						
 						<a href='/tags.html#trust'>trust</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/en/2010/06/03/mysql-avoid-filesort">
-				<a href="/en/2010/06/03/mysql-avoid-filesort.html"><h1 class="title">Mysql : Avoid Filesort</h1></a>
-				
-				<ul>
-    <li>You can avoid the filesort by making order by column appear in the where clause</li>
-
-    <li>When using join, make sure the left side join table column is used in the ORDER BY clause or change the join type</li>
-</ul>
-
-
-<p><a href="http://venublog.com/2007/11/29/mysql-how-to-avoid-filesort/">Reference</a></p>
-
-
-				<div class="post-metadata">
-					June 03, 2010 | 
-					<a href='/en/2010/06/03/mysql-avoid-filesort.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#mysql'>mysql</a>
 						
 					 
 				</div>
