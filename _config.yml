@@ -20,3 +20,5 @@ paginate: 7
 feedurl: /feed/
 paginate_per_category: true
 default_category: "en"
+# Gems
+#gems: [jekyll-paginate]

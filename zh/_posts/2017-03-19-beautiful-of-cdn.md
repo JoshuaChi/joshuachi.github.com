@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "灵活使用第三方CDN，解决网站高并发之忧"
-tags:  cdn 2017
+tags:  cdn 2017 回源 动静分离
 ---
 
 
