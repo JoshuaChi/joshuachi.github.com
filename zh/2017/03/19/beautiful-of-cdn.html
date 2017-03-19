@@ -14,13 +14,13 @@
   
   
   
-    <meta http-equiv="date" content="Monday, 16  2009 00:00:00 GMT" />
+    <meta http-equiv="date" content="Sunday, 19  2017 00:00:00 GMT" />
   
   
   <meta name="robots" content="INDEX,FOLLOW" />
 
   <title>
-    Folder or file permission in php project installation process &middot; Free To Feel
+    灵活使用第三方CDN，解决网站高并发之忧 &middot; Free To Feel
   </title>
 
   <!-- CSS -->
@@ -67,19 +67,48 @@
 
     <div class="content container">
       <div class="post">
-  <h1>Folder or file permission in php project installation process</h1>
-  <span class="post-date">16 Nov 2009</span>
-  <p>Most projects will add notes like '..don't forget to change the "cache" folder permission: $chmod -R 777 xxx' in their project install guide.
-But have you noticed that there are still a lot of users will ask the same question in their project forums? Yes, the solution is simple and easier. but why not make the simple thing more easier?</p>
+  <h1>灵活使用第三方CDN，解决网站高并发之忧</h1>
+  <span class="post-date">19 Mar 2017</span>
+  <p>CDN在互联网中的使用，由来已久。
+基于地域特征的缓存策略，解决了网站跨地域访问的速度限制。
+下面想说说近来基于Aliyun CDN 的几个架构方案，从不同的业务角度与网站要求来说说玩转CDN的各种手法。</p>
 
-<pre name='code' class='php'>
-chmod($options['file'], isset($options['file_mode']) ? $options['file_mode'] : 0666);
-mkdir($dir, isset($options['dir_mode']) ? $options['dir_mode'] : 0777, true);
-</pre>
+<h2>纯静态网站</h2>
 
+<p>纯静态网站是几乎可以把网站的“可用性”，“稳定性”，“可靠性”，等等所有一切和第三方CDN产品绑定在一起的。
+大部分第三方CDN都支持绑定网站入口("index.html").
+用阿里云的CDN加上阿里云OSS这套解决方案，你几乎就是可以把你网站运营完全扔给阿里云来处理了。
+当然如果回源机是你自己公司host，那么峰值带宽你就需要仔细测试考量。一般不推荐自己host源文件，也几乎没人那么去做（如果不是公司业务／政策限制）。</p>
 
-<p>These code comes from symfony source code. It make me feels good in the installation process.
-It is easier to make this permission modification process transparent for your user.</p>
+<p>纯静态网站第三方CDN托管是对任何公司都是性价比超高的方案。第三方公司如果有辅助功能或者辅助业务，比如流量监测之类的，那用起来更是得心应手。</p>
+
+<h2>动态请求的网站</h2>
+
+<h3>全站CDN</h3>
+
+<p>全站CDN的意思是把网站域名CNAME到CDN域名，所有请求都是经过CDN服务。
+对于网站运营人员来说就要很好的做网站动静分离，还有类似cookie透传开通。
+一般域名运营商不允许根域名做CNAME，所以如果要做类似 example.com 到 www.example.com 的跳转，还要先经过自己的web服务器做个vhost，个人感觉挺鸡肋的，架构思路不够清洁。</p>
+
+<p>全站CDN有点把不是CDN的职责硬要CDN揽上，这么做的结果就是上述说提，你还是需要动静分离。</p>
+
+<h3>动静分离的CDN</h3>
+
+<h4>Vhost中做分离</h4>
+
+<p>如果自己web服务器上做动静分离，就比较简单，你只需要在vhost配置文件中，把静态资源的请求一股脑的丢给CDN。
+这么做有个比较大的问题，对于很多大厂的CDN，某地狱的CDN节点也是一个集群，有自己的health check，当它们下线某个故障CDN节点，你server node 的DNS有可能缓存了这个故障节点的IP。当然运营商那边也有一级DNS缓存（稍后另说）。</p>
+
+<p>如果你就一个节点，那么100%的网站用户都会被影响，如果你有两个web节点，如果你很幸运之友一台缓存了故障CDN节点IP，那么只有50%的网站用户被影响。</p>
+
+<p>更推荐下面的index.html架构。</p>
+
+<h4>index.html中做分离</h4>
+
+<p>index.html中做分离的意思是，所有js,css,等静态资源直接引用CDN上的链接，这么做，web服务器中就比较干净简洁，不需要考虑太多静态资源的缓存处理的逻辑，所有缓存策略可以在CDN控制台中操作。
+当然这么做最主要的好处就是当CDN某节点故障，受影响都是一小部分用户，脱离web机器，故障节点IP只会被那个时刻正在使用网站用户的运营商缓存。再简单点说，本来是web服务器DNS缓存加上运营商缓存，现在问题只剩下运营商缓存。</p>
+
+<p>（阿里云的解释是运营商缓存问题没有解决办法）</p>
 
 </div>
 <div id="disqus_thread">
@@ -89,9 +118,9 @@ It is easier to make this permission modification process transparent for your u
     var disqus_shortname = 'freetofeel'; // required: replace example with your forum shortname
 
     // The following are highly recommended additional parameters. Remove the slashes in front to use.
-    var disqus_identifier = "/en/2009/11/16/folder-or-file-permission-in-php-project-installation-process";
-    var disqus_url = "http://freetofeel.com"+"/en/2009/11/16/folder-or-file-permission-in-php-project-installation-process.html";
-    var disqus_title = "Folder or file permission in php project installation process";
+    var disqus_identifier = "/zh/2017/03/19/beautiful-of-cdn";
+    var disqus_url = "http://freetofeel.com"+"/zh/2017/03/19/beautiful-of-cdn.html";
+    var disqus_title = "灵活使用第三方CDN，解决网站高并发之忧";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
@@ -108,15 +137,6 @@ It is easier to make this permission modification process transparent for your u
     
       <li>
         <h4>
-          <a href="/zh/2017/03/19/beautiful-of-cdn.html">
-             &raquo; 灵活使用第三方CDN，解决网站高并发之忧
-            <small>19 Mar 2017</small>
-          </a>
-        </h4>
-      </li>
-    
-      <li>
-        <h4>
           <a href="/en/2016/09/16/PROXYPASS-EVIL.html">
              &raquo; PROXYPASS Evil
             <small>16 Sep 2016</small>
@@ -129,6 +149,15 @@ It is easier to make this permission modification process transparent for your u
           <a href="/zh/2016/06/21/CONTRIBUTE-TO-SOCIETY.html">
              &raquo; 万变不离其中的高效协作，团队管理
             <small>21 Jun 2016</small>
+          </a>
+        </h4>
+      </li>
+    
+      <li>
+        <h4>
+          <a href="/zh/2016/01/01/A-day-to-be-rememberd-road-to-leadership.html">
+             &raquo; 万变不离其中的高效协作，团队管理
+            <small>01 Jan 2016</small>
           </a>
         </h4>
       </li>

@@ -57,7 +57,7 @@
             <li><a href="http://freetofeel.com/atom.xml">Subscribe(xml)</a>
             </li>
           </ul>
-          <p>Copyright &copy; 2016 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
+          <p>Copyright &copy; 2017 Joshua Chi - Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://github.com/">Github</a>
 </p>
         </div>                
       </div>
@@ -68,6 +68,77 @@
 
 <div class="post">
   <ul class="content">
+		
+			<div class="post" id="postid-/zh/2017/03/19/beautiful-of-cdn">
+				<a href="/zh/2017/03/19/beautiful-of-cdn.html"><h1 class="title">灵活使用第三方CDN，解决网站高并发之忧</h1></a>
+				
+				<p>CDN在互联网中的使用，由来已久。
+基于地域特征的缓存策略，解决了网站跨地域访问的速度限制。
+下面想说说近来基于Aliyun CDN 的几个架构方案，从不同的业务角度与网站要求来说说玩转CDN的各种手法。</p>
+
+<h2>纯静态网站</h2>
+
+<p>纯静态网站是几乎可以把网站的“可用性”，“稳定性”，“可靠性”，等等所有一切和第三方CDN产品绑定在一起的。
+大部分第三方CDN都支持绑定网站入口("index.html").
+用阿里云的CDN加上阿里云OSS这套解决方案，你几乎就是可以把你网站运营完全扔给阿里云来处理了。
+当然如果回源机是你自己公司host，那么峰值带宽你就需要仔细测试考量。一般不推荐自己host源文件，也几乎没人那么去做（如果不是公司业务／政策限制）。</p>
+
+<p>纯静态网站第三方CDN托管是对任何公司都是性价比超高的方案。第三方公司如果有辅助功能或者辅助业务，比如流量监测之类的，那用起来更是得心应手。</p>
+
+<h2>动态请求的网站</h2>
+
+<h3>全站CDN</h3>
+
+<p>全站CDN的意思是把网站域名CNAME到CDN域名，所有请求都是经过CDN服务。
+对于网站运营人员来说就要很好的做网站动静分离，还有类似cookie透传开通。
+一般域名运营商不允许根域名做CNAME，所以如果要做类似 example.com 到 www.example.com 的跳转，还要先经过自己的web服务器做个vhost，个人感觉挺鸡肋的，架构思路不够清洁。</p>
+
+<p>全站CDN有点把不是CDN的职责硬要CDN揽上，这么做的结果就是上述说提，你还是需要动静分离。</p>
+
+<h3>动静分离的CDN</h3>
+
+<h4>Vhost中做分离</h4>
+
+<p>如果自己web服务器上做动静分离，就比较简单，你只需要在vhost配置文件中，把静态资源的请求一股脑的丢给CDN。
+这么做有个比较大的问题，对于很多大厂的CDN，某地狱的CDN节点也是一个集群，有自己的health check，当它们下线某个故障CDN节点，你server node 的DNS有可能缓存了这个故障节点的IP。当然运营商那边也有一级DNS缓存（稍后另说）。</p>
+
+<p>如果你就一个节点，那么100%的网站用户都会被影响，如果你有两个web节点，如果你很幸运之友一台缓存了故障CDN节点IP，那么只有50%的网站用户被影响。</p>
+
+<p>更推荐下面的index.html架构。</p>
+
+<h4>index.html中做分离</h4>
+
+<p>index.html中做分离的意思是，所有js,css,等静态资源直接引用CDN上的链接，这么做，web服务器中就比较干净简洁，不需要考虑太多静态资源的缓存处理的逻辑，所有缓存策略可以在CDN控制台中操作。
+当然这么做最主要的好处就是当CDN某节点故障，受影响都是一小部分用户，脱离web机器，故障节点IP只会被那个时刻正在使用网站用户的运营商缓存。再简单点说，本来是web服务器DNS缓存加上运营商缓存，现在问题只剩下运营商缓存。</p>
+
+<p>（阿里云的解释是运营商缓存问题没有解决办法）</p>
+
+
+				<div class="post-metadata">
+					March 19, 2017 | 
+					<a href='/zh/2017/03/19/beautiful-of-cdn.html#disqus_thread'>View Comments</a>
+					
+						
+							| 
+						
+						<a href='/tags.html#cdn'>cdn</a>
+						, 
+					
+						
+						<a href='/tags.html#2017'>2017</a>
+						, 
+					
+						
+						<a href='/tags.html#回源'>回源</a>
+						, 
+					
+						
+						<a href='/tags.html#动静分离'>动静分离</a>
+						
+					 
+				</div>
+
+			</div>
 		
 			<div class="post" id="postid-/zh/2016/06/21/CONTRIBUTE-TO-SOCIETY">
 				<a href="/zh/2016/06/21/CONTRIBUTE-TO-SOCIETY.html"><h1 class="title">万变不离其中的高效协作，团队管理</h1></a>
@@ -611,114 +682,6 @@ site-standard-profile-request/url - person - the URL to the member's authenticat
 					
 						
 						<a href='/tags.html#newyear'>newyear</a>
-						
-					 
-				</div>
-
-			</div>
-		
-			<div class="post" id="postid-/zh/2012/12/16/arduino-auto-drive-car">
-				<a href="/zh/2012/12/16/arduino-auto-drive-car.html"><h1 class="title">Arduino Auto Drive Car</h1></a>
-				
-				<p>这里介绍的是自己装配的arduino小车，周末阴雨连绵，找点乐趣玩玩。<a href='http://arduino.cc/en'>arduino</a>很容易上手，如果你懂一两门程序语言就更简单了。电路电压知识，虽然初中高中都有学过，但都记不得了，不过用什么学什么，也来得容易。
-收到新电池，几经折腾，终于又重新装配好小车。</p>
-
-<p>下面就是我所用到的大部分材料，有些工具就不罗列在这里了。</p>
-
-<h2>1. 材料(总价: ¥379.1)</h2>
-
-
-
-
-<ul>
-<li>
-智能小车底盘 寻迹小车 机器人小车底盘 带码盘/测速/送电池盒 - ¥ 43.00
-</li>
-<li>
-40P公端杜邦线 彩排杜邦线 面包板连接线 面包板线 万能板连接线 - ¥5.9
-</li>
-<li>
-SYB-170 面包板 透明 面包板 迷你小小面包板 万能板 -  ¥2.80
-</li>
-<li>
-140条盒装 面包板线 面包板专用线 面包板跳线 - ¥15.00
-</li>
-<li>
-新版红外线数字避障传感器,超小型,3-100cm可调,电流6ma - ¥16.00
-</li>
-<li>
-1P 双头杜邦线 单根双头杜邦插头线 杜邦线 20CM - ¥0.15x20
-</li>
-<li>
-原装芯片 L298N 电机驱动板/步进电机、直流电机驱动器 L298 - ¥19.00
-</li>
-<li>
-HC-SR04超声波模块 超声波测距模块 测距模块 超声波 传感器 资料 - ¥7.50
-</li>
-<li>
-Arduino Uno R3 Plus(Atmega16U2),10月最新生产预订送电源/USB线 - ¥64.80
-</li>
-<li>
-狮子遥控飞机航模船模车模型锂电池2200mAH 11.1V 30C -  ¥78.00
-</li>
-<li>
-双皇冠 IMAX B6 B8 B6AC 多功能平衡充 充电器(1台起批)高级彩盒 -  ¥108.00
-</li>
-<li>
-单片机开发板学习板、智能小车配件-M3 20+6 铜柱+螺帽 - ¥0.36x10
-</li>
-<li>
-单片机开发板学习板配件-原装正品 辉盛SG90 9G小舵机 9克伺服器 - ¥12.50
-</li>
-</ul>
-
-
-<p>我的程序现在还很烂，就不贴出来误人子弟了，网上搜索很多。</p>
-
-<h2>2. 参考资料</h2>
-
-
-
-
-<ul>
-<li>
-<a href='http://arduino.cc/en'>arduino</a>
-</li>
-<li>
-<a href='http://blog.sina.com.cn/s/articlelist_1581720921_0_1.html'>http://blog.sina.com.cn/s/articlelist_1581720921_0_1.html</a>
-</li>
-<li>
-<a href='http://letsmakerobots.com/start'>http://letsmakerobots.com/start</a>
-</li>
-<li>
-<a href='http://www.roboticfan.com/blog/user_2005/1229/index.shtml'>机器人爱好者</a>
-</li>
-<li>
-<a href='http://zpht2010.blog.163.com/blog/static/16561107720124811359823/?latestBlog'>跟老林学机器人系列</a>
-</li>
-</ul>
-
-
-
-
-<h2>3. 上一小段视频, 就算是小车的第一个版本吧</h2>
-
-
-<p><embed src="http://player.youku.com/player.php/sid/XNDg5Mjk3MjI0/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
-
-
-				<div class="post-metadata">
-					December 16, 2012 | 
-					<a href='/zh/2012/12/16/arduino-auto-drive-car.html#disqus_thread'>View Comments</a>
-					
-						
-							| 
-						
-						<a href='/tags.html#arduino'>arduino</a>
-						, 
-					
-						
-						<a href='/tags.html#robot'>robot</a>
 						
 					 
 				</div>
