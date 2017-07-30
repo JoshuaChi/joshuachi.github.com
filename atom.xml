@@ -4,7 +4,7 @@
 	<title>Joshua Chi</title>
 	<link href="http://freetofeel.com/atom.xml" rel="self"/>
 	<link href="http://freetofeel.com/"/>
-	<updated>2017-03-19T12:36:27+08:00</updated>
+	<updated>2017-07-30T10:54:17+08:00</updated>
 	<id>http://freetofeel.com/</id>
 	<author>
 		<name>Joshua Chi</name>
@@ -110,9 +110,9 @@ I like &lt;a href=&quot;http://nginx.org/en/docs/http/ngx_http_proxy_module.html
 &lt;blockquote&gt;&lt;p&gt;When a T2 instance uses fewer CPU resources than its base performance level allows (such as when it is idle), the unused CPU credits (or the difference between what was earned and what was spent) are stored in the credit balance for up to 24 hours, building CPU credits for bursting. When your T2 instance requires more CPU resources than its base performance level allows, it uses credits from the CPU credit balance to burst up to 100% utilization. The more credits your T2 instance has for CPU resources, the more time it can burst beyond its base performance level when more performance is needed.&lt;/p&gt;&lt;/blockquote&gt;
 
 &lt;p&gt;Something to prove it.
-&lt;img src=&quot;http://freetofeel.com/images/left-cpu-credits.jpg&quot; alt=&quot;EC2 T2 Left CPU Credits&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://freetofeel.com/images/left-cpu-credits.jpg&quot; width=&quot;800&quot; alt=&quot;EC2 T2 Left CPU Credits&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://freetofeel.com/images/cpu-credits.jpg&quot; alt=&quot;EC2 T2 CPU Credits&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://freetofeel.com/images/cpu-credits.jpg&quot; width=&quot;800&quot; alt=&quot;EC2 T2 CPU Credits&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;2016.09.12 3:00 UTC&lt;/code&gt; - the time the website is really fast, comparing with following days(e.g. 09.13, 09.14), the CPU credits usage never exceeds 0.2.&lt;/p&gt;
 
@@ -124,101 +124,6 @@ I like &lt;a href=&quot;http://nginx.org/en/docs/http/ngx_http_proxy_module.html
 &lt;li&gt;30s - yes, since I joined this new company, this number is exciting all the creative guys. Sadly to say that we are using more and more cool technologies[e.g. &lt;a href=&quot;https://en.wikipedia.org/wiki/WebGL&quot;&gt;WebGL&lt;/a&gt;] nowdays, but with slower and slower website load speed.&lt;/li&gt;
 &lt;/ol&gt;
 
-</content>
-		</entry>
-	
-		<entry>
-			<title>万变不离其中的高效协作，团队管理</title>
-			<link href="http://freetofeel.com/zh/2016/06/21/CONTRIBUTE-TO-SOCIETY.html"/>
-			<updated>2016-06-21T00:00:00+08:00</updated>
-			<id>http://freetofeel.com/zh/2016/06/21/CONTRIBUTE-TO-SOCIETY</id>
-			<content type="html">&lt;p&gt;刚起床，因为昨晚加班到2点，让我意识到我必须快速把我头脑中的东西倒出来。
-这里主要想描述下我对团队协作管理的一点小总结。&lt;/p&gt;
-
-&lt;h2&gt;什么是万变不离其中&lt;/h2&gt;
-
-&lt;p&gt;时间是不恒定的，世界是变的。变化才是自然界的唯一法则。&lt;/p&gt;
-
-&lt;p&gt;大到宇宙，千千万世界，千千万法门；小到你每日三餐。&lt;/p&gt;
-
-&lt;p&gt;不同的行业，不同的公司，不同的项目，不同的部门，不同的团队，不同的队员，不同的职责。&lt;/p&gt;
-
-&lt;p&gt;但在我经历的几家公司，几个团队，即使这些公司行业不同，这些团队“背景”不同，但我总是隐约感到团队协作，团队管理，部门协作，公司治理上面是同质的。&lt;/p&gt;
-
-&lt;p&gt;现在让我们从下往上说比较简单容易推导。&lt;/p&gt;
-
-&lt;h2&gt;尊重团员，建立自信&lt;/h2&gt;
-
-&lt;p&gt;团队成员技能参差不齐，但没有一个是可以‘舍弃’的。唐僧师徒西天取经演化的团队协作的故事就不说了。&lt;/p&gt;
-
-&lt;p&gt;作为领导者必须的素质或者说品质之一：帮助你的团队建立自信。这句话建立在你开始于你尊重每个团队成员，公司员工。&lt;/p&gt;
-
-&lt;p&gt;借用很多“灵魂”演讲经常说的一句话：“你是特殊的，没有人能取代你”。&lt;/p&gt;
-
-&lt;p&gt;在你努力帮助每个团队成员建立自信的过程中，他们爆发出的能量是你不会‘奢望’的。&lt;/p&gt;
-
-&lt;h2&gt;团队协作&lt;/h2&gt;
-
-&lt;p&gt;敏捷中讲“stable velocity”，当团队稳定后，在协作流程成熟后，产出是稳定的。&lt;/p&gt;
-
-&lt;p&gt;说的土一点，不那么恰当点，养鸡场的鸡每天定时喂养，鸡的数量始终保持一个数量范围，最佳实践完全遵照“规范养殖”说的做，即使个别鸡生病，每天的产蛋量还是可预测的。但是如果你不断的变换鸡饲料，或者把鸡从一个笼子移到另一个笼子，最糟糕的是连“最佳实践”都没有，再好的鸡农也不会保证你每天可以有多少收入。&lt;/p&gt;
-
-&lt;h3&gt;＊ 任务明确&lt;/h3&gt;
-
-&lt;p&gt;不要期待你的每个团队成员都可以有分解任务的技能，这个要慢慢熏陶，慢慢培养的。&lt;/p&gt;
-
-&lt;p&gt;作为“服务生”的职责之一是尽早的把一个项目按照用户故事分解为大大小小的任务，每个任务也可以分解为更小的点。&lt;/p&gt;
-
-&lt;p&gt;提早对项目风险评估，及早把任务按照优先级排序。&lt;/p&gt;
-
-&lt;p&gt;如果你已经对团队成员的个性技能有所理解，任务完全可以因人定制。这么说，你可能要问敏捷不是“SELF-MANAGEMENT”吗？我只能说，有些太理想的东西要因时因地，时时变化。&lt;/p&gt;
-
-&lt;h3&gt;＊ 时间边框&lt;/h3&gt;
-
-&lt;p&gt;任何事情都不能无止境的做下去，所有的协作都讲究时间点－“DEADLINE”。QA不可能无止尽的测试，无止尽的提BUG。开发不可以揪着一个功能无止境的重构。时间太宝贵。在团队协作的时候，一旦时间点规划好后要严格执行，否则一切努力都会化为灰烬。&lt;/p&gt;
-
-&lt;p&gt;从这里扯一个远的话题，如果你是做乙方，一定遇到过难缠的客户，在项目最后一天，“绞尽脑汁”搞出一堆都称为高优先级的BUG，作为管理者，你要及时尽力“制止”这种行为。&lt;/p&gt;
-
-&lt;p&gt;原因1: 最后一天，团队很可能已经精疲力竭，假设这些“BUG”算作5%的工作量，前期95%的工作已经做完。假设项目上线是1月2日，你想让你的团队1月1日晚上通宵修复5%的bug吗？我的建议是适可而止。团队最劳累的时候出事故的风险最大，头脑不清楚时候的工作可能会让前期95%变为60%，你想这样吗？&lt;/p&gt;
-
-&lt;p&gt;原因2: 你不想告诉你的团队这就是他们以后的工作状态吧？你还有很多工作没有结束，比如稳定军心，保持恒定的团队VELOCITY，降低离职率，保持团队心态身体健康。如果是我，我会努力拒绝剩余5%的BUG，遭来客户的“怨言”。对！我是宁愿得罪客户，也不想让团队成员失去信息的服务生。&lt;/p&gt;
-
-&lt;p&gt;保护好你的时间边框。&lt;/p&gt;
-
-&lt;h3&gt;＊ 保持顺畅的沟通&lt;/h3&gt;
-
-&lt;p&gt;感冒了要留鼻涕打喷嚏。人生病了是主要由于上下气血不通。&lt;/p&gt;
-
-&lt;p&gt;工作心情不好了，要有通道即时抒发情绪。如果有通道都没有，人会病怏怏的，团队会效率低下。&lt;/p&gt;
-
-&lt;p&gt;作为“服务生”，项目结束后的“RETROPECTIVE MEETING”是一种，平时吃饭聊天，可以让团队成员抒发情绪。&lt;/p&gt;
-
-&lt;p&gt;以前我在公司中做的最大最在意的努力就是帮助建立上下顺畅的沟通，不要过滤信息，要有周期性。&lt;/p&gt;
-
-&lt;p&gt;最后你会感谢这种沟通，依赖这种沟通。&lt;/p&gt;
-
-&lt;h2&gt;用工具取代人力&lt;/h2&gt;
-
-&lt;p&gt;我是技术出身。所以喜欢寻找工具取代重复的人力劳动，既可以节省人月成本，也可以保证结果可预测，可信赖。&lt;/p&gt;
-
-&lt;p&gt;举例：&lt;/p&gt;
-
-&lt;p&gt;QA的多少工作可以用自动化测试取代？&lt;/p&gt;
-
-&lt;p&gt;项目伊始，有多少风险需要排查，是否有项目模版可以监测项目风险？&lt;/p&gt;
-
-&lt;p&gt;部门沟通，各种会议有多少可以通过简化流程，规范“NAMING CONVERSATION”[REF-1]来减少并且变得高效?&lt;/p&gt;
-
-&lt;h2&gt;REF&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;NAMING CONVERSATION - 我知道的最早出现在RUBY语言，通过规范各种命名，开发进行语言使用前先学习这种规范，以后看到都是大写字母的命名 就知道它说的是代码中的常量，类似。 以此类推，部门间也可以通过流程工具减少会议时间，看到这个状态表示，就表示是你们部门该做些什么行动了，优先级怎样，类似。&lt;/li&gt;
-&lt;/ol&gt;
-
-
-&lt;p&gt;以上所述，可以将团队改为“部门”或者“公司”通通适用。比如：从尊重公司的每个成员开始。&lt;/p&gt;
-
-&lt;p&gt;新年伊始，阳关洒在房间中，敬畏天地，感谢这个世界。&lt;/p&gt;
 </content>
 		</entry>
 	
