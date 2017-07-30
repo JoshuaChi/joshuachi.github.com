@@ -48,9 +48,9 @@ Amazon EC2 T2 instances has a feature named "[CPU Credits](http://docs.aws.amazo
 > When a T2 instance uses fewer CPU resources than its base performance level allows (such as when it is idle), the unused CPU credits (or the difference between what was earned and what was spent) are stored in the credit balance for up to 24 hours, building CPU credits for bursting. When your T2 instance requires more CPU resources than its base performance level allows, it uses credits from the CPU credit balance to burst up to 100% utilization. The more credits your T2 instance has for CPU resources, the more time it can burst beyond its base performance level when more performance is needed.
 
 Something to prove it.
-![EC2 T2 Left CPU Credits](http://freetofeel.com/images/left-cpu-credits.jpg)
+![EC2 T2 Left CPU Credits](http://freetofeel.com/images/left-cpu-credits.jpg =800x)
 
-![EC2 T2 CPU Credits](http://freetofeel.com/images/cpu-credits.jpg)
+![EC2 T2 CPU Credits](http://freetofeel.com/images/cpu-credits.jpg =800x)
 
 
 `2016.09.12 3:00 UTC` - the time the website is really fast, comparing with following days(e.g. 09.13, 09.14), the CPU credits usage never exceeds 0.2.
